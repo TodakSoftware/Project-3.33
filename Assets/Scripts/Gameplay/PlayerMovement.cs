@@ -7,12 +7,17 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController controller;
     MouseLook mouseLook;
+    public GameObject toLookGO;
     [HideInInspector] public Camera cam;
 
     [Title("Enable Setting")]
     public bool enableMove = true;
     public bool enableJump = true;
     public bool enableMouseLook = true;
+
+    [Title("Spawner")]
+    public bool spawnFullbody = true;
+    public bool spawnHandOnly = true;
 
     [Title("Databases")]
     public SO_Characters charactersSO;
@@ -41,7 +46,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject modelGO; // in player prefab
     GameObject fullbodyModel;
     GameObject handModel;
-    public GameObject hp;
+    [HideInInspector] public MobilePhone mobilePhone;
+    [HideInInspector] public MobilePhone mobilePhone2;
+    public GameObject hpPrefab;
     
 
     void Start()
@@ -51,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         cam = mouseLook.gameObject.transform.GetChild(0).GetComponent<Camera>();
 
         SetupPlayerMesh();
+
+        
     }
 
     // Update is called once per frame
@@ -84,33 +93,44 @@ public class PlayerMovement : MonoBehaviour
         }
 
         controller.Move(velocity * Time.deltaTime);
+
+        
     }
 
     void SetupPlayerMesh(){
-        //// Fullbody
-        //var fullbodyModel = Instantiate (charactersSO.characterLists[charIndex].fullbodyPrefab, new Vector3(modelGO.transform.position.x,modelGO.transform.position.y,modelGO.transform.position.z), Quaternion.identity);
-        //fullbodyModel.transform.parent = modelGO.transform;
+        // Fullbody
+        if(spawnFullbody){
+            var fullbodyModel = Instantiate (charactersSO.characterLists[charIndex].fullbodyPrefab, new Vector3(modelGO.transform.position.x,modelGO.transform.position.y,modelGO.transform.position.z), Quaternion.identity);
+            fullbodyModel.transform.parent = modelGO.transform;
+    
+            var hpPlaceholder = Instantiate(hpPrefab);
+            hpPlaceholder.transform.parent = fullbodyModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
+            hpPlaceholder.transform.localRotation = Quaternion.identity;
+            hpPlaceholder.transform.localPosition = Vector3.zero;
+            hpPlaceholder.GetComponent<MobilePhone>().enabled = false;
 
-        //var hpPlaceholder = Instantiate(hp);
-        //hpPlaceholder.transform.parent = fullbodyModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-        //hpPlaceholder.transform.localRotation = Quaternion.identity;
-        //hpPlaceholder.transform.localPosition = Vector3.zero;
+            mobilePhone = hpPlaceholder.GetComponent<MobilePhone>();
 
-        // Hidekan fullbody
-        //if(fullbodyModel != null){
-            //fullbodyModel.SetActive(false);
-        //}
+            fullbodyModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
+        }
+        
         
         // Hand only
-        var handModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(modelGO.transform.position.x,modelGO.transform.position.y,modelGO.transform.position.z), Quaternion.identity);
-        handModel.transform.parent = modelGO.transform;
+        if(spawnHandOnly){
+            var handModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(modelGO.transform.position.x,modelGO.transform.position.y,modelGO.transform.position.z), Quaternion.identity);
+            handModel.transform.parent = modelGO.transform;
+    
+            // Spawn Mobile Phone
+            var hpPlaceholder2 = Instantiate(hpPrefab);
+            hpPlaceholder2.GetComponent<MobilePhone>().player = this;
+            hpPlaceholder2.transform.parent = handModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
+            hpPlaceholder2.transform.localRotation = Quaternion.identity;
+            hpPlaceholder2.transform.localPosition = Vector3.zero;
 
-        // Spawn Mobile Phone
-        var hpPlaceholder2 = Instantiate(hp);
-        hpPlaceholder2.GetComponent<MobilePhone>().player = this;
-        hpPlaceholder2.transform.parent = handModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-        hpPlaceholder2.transform.localRotation = Quaternion.identity;
-        hpPlaceholder2.transform.localPosition = Vector3.zero;
+            mobilePhone2 = hpPlaceholder2.GetComponent<MobilePhone>();
+
+            handModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
+        }
 
         // Setup camera height
         mouseLook.gameObject.transform.localPosition = new Vector3(mouseLook.gameObject.transform.localPosition.x, charactersSO.characterLists[charIndex].cameraHeight, mouseLook.gameObject.transform.localPosition.z);
