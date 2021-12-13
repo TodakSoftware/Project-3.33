@@ -7,6 +7,10 @@ public class PlayerAbilities : MonoBehaviour
 {
     PlayerMovement playerMovement;
 
+    [Title("VHS Screen")]
+    public KeyCode vhsKey;
+    public GameObject vhsCam;
+
     [Title("Flashlight")]
     public KeyCode flashlightKey;
 
@@ -28,6 +32,18 @@ public class PlayerAbilities : MonoBehaviour
         ToggleFlashlight();
         ToggleThermalVision();
         ToggleNightVision();
+        ToggleVHSScreen();
+    }
+
+    // VHS Screen
+    void ToggleVHSScreen(){
+        if(Input.GetKeyDown(vhsKey)){
+            if(vhsCam.activeSelf){
+                vhsCam.SetActive(false);
+            }else{
+                vhsCam.SetActive(true);
+            }
+        }
     }
 
     // Flashlight
