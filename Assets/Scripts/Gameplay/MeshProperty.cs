@@ -27,10 +27,10 @@ public class MeshProperty : MonoBehaviour
 
     public void SwitchPhoneView(){
         if(!hpOnLeft){
-            player.SwitchPhoneLandscape();
+            player.SwitchPhoneLandscape(true);
             hpOnLeft = true;
         }else{
-            player.SwitchPhonePotrait();
+            player.SwitchPhoneLandscape(false);
             hpOnLeft = false;
         }
     }
@@ -38,10 +38,10 @@ public class MeshProperty : MonoBehaviour
     public void CameraZoomIn(){
         if(!zoomIn){
             zoomIn = true;
-            player.PhoneZoomIn();
+            player.PhoneZoomIn(true);
         }else{
             zoomIn = false;
-            player.PhoneZoomOut();
+            player.PhoneZoomIn(false);
         }
     }
 }

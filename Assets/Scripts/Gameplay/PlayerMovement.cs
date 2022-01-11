@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     MouseLook mouseLook;
     public GameObject toLookGO;
     [HideInInspector] public Camera cam;
+    bool selectAppMode;
 
     [Title("Enable Setting")]
     public bool enableMove = true;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool enableMouseLook = true;
 
     [Title("Spawner")]
-    public bool spawnFullbody = true;
+    public bool spawnFullbody = false;
     public bool spawnHandOnly = true;
 
     [Title("Databases")]
@@ -47,10 +48,8 @@ public class PlayerMovement : MonoBehaviour
     [Title("Mesh Setting")]
     [SerializeField] GameObject thirdModelGO; // in player prefab, For instantiated prefab to become a child
     [SerializeField] GameObject firstModelGO; // in player prefab, For instantiated prefab to become a child
-    GameObject fullbodyModel;
-    GameObject handModel;
+    GameObject playerModel;
     [HideInInspector] public MobilePhone mobilePhone;
-    [HideInInspector] public MobilePhone mobilePhone2;
     public GameObject hpPrefab;
     
 
@@ -63,10 +62,8 @@ public class PlayerMovement : MonoBehaviour
         SetupPlayerMesh();
 
         // Get Animator
-        if(handModel != null)
-            animator = handModel.GetComponent<Animator>();
-        else if(fullbodyModel != null)
-            animator = fullbodyModel.GetComponent<Animator>();
+        if(playerModel != null)
+            animator = playerModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -102,98 +99,85 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        if(Input.GetKeyDown(KeyCode.K)){
-            animator.SetBool("Interact", true);
-        }
-
-        if(Input.GetKeyDown(KeyCode.L)){
-            animator.SetBool("Interact", false);
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            if(!selectAppMode){
+                selectAppMode = true;
+                animator.SetBool("Interact", true);
+            }else{
+                selectAppMode = false;
+                animator.SetBool("Interact", false);
+            }
         }
 
         controller.Move(velocity * Time.deltaTime);
     }
 
     void SetupPlayerMesh(){
-        // Fullbody
+        // Spawn Model
         if(spawnFullbody){
-            fullbodyModel = Instantiate (charactersSO.characterLists[charIndex].fullbodyPrefab, new Vector3(thirdModelGO.transform.position.x,thirdModelGO.transform.position.y,thirdModelGO.transform.position.z), Quaternion.identity);
-            fullbodyModel.transform.parent = thirdModelGO.transform;
-            fullbodyModel.GetComponent<MeshProperty>().player = this;
-    
-            var hpPlaceholder = Instantiate(hpPrefab);
-            hpPlaceholder.transform.parent = fullbodyModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-            hpPlaceholder.transform.localRotation = Quaternion.identity;
-            hpPlaceholder.transform.localPosition = Vector3.zero;
-            hpPlaceholder.GetComponent<MobilePhone>().enabled = false;
+            playerModel = Instantiate (charactersSO.characterLists[charIndex].fullbodyPrefab, new Vector3(thirdModelGO.transform.position.x,thirdModelGO.transform.position.y,thirdModelGO.transform.position.z), Quaternion.identity);
+            playerModel.transform.parent = thirdModelGO.transform;
+            playerModel.GetComponent<MeshProperty>().player = this;
 
-            mobilePhone = hpPlaceholder.GetComponent<MobilePhone>();
+            thirdModelGO.transform.localPosition = new Vector3(thirdModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, thirdModelGO.transform.localPosition.z);
+        }else if(spawnHandOnly){
+            playerModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
+            playerModel.transform.parent = firstModelGO.transform;
+            playerModel.GetComponent<MeshProperty>().player = this;
 
-            fullbodyModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
-        }
-        
-        
-        // Hand only
-        if(spawnHandOnly){
-            handModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
-            handModel.transform.parent = firstModelGO.transform;
-            handModel.GetComponent<MeshProperty>().player = this;
-    
-            // Spawn Mobile Phone
-            var hpPlaceholder2 = Instantiate(hpPrefab);
-            hpPlaceholder2.GetComponent<MobilePhone>().player = this;
-            hpPlaceholder2.transform.parent = handModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-            hpPlaceholder2.transform.localRotation = Quaternion.identity;
-            hpPlaceholder2.transform.localPosition = Vector3.zero;
-
-            mobilePhone2 = hpPlaceholder2.GetComponent<MobilePhone>();
-
-            handModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
+            firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, firstModelGO.transform.localPosition.z);
         }
 
-        // Setup camera height
+        // Spawn Mobile
+        var hp = Instantiate(hpPrefab);
+        hp.transform.parent = playerModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
+        hp.transform.localRotation = Quaternion.identity;
+        hp.transform.localPosition = Vector3.zero;
+
+        mobilePhone = hp.GetComponent<MobilePhone>();
+        mobilePhone.player = this;
+
+        // Set player look at on MeshProperty
+        playerModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
+
+        // Setup camera height for fps onl
         mouseLook.gameObject.transform.localPosition = new Vector3(mouseLook.gameObject.transform.localPosition.x, charactersSO.characterLists[charIndex].cameraHeight, mouseLook.gameObject.transform.localPosition.z);
-        firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, firstModelGO.transform.localPosition.z);
     }
 
-    public void SwitchPhoneLandscape(){
+    public void SwitchPhoneLandscape(bool val){
         if(mobilePhone != null){
-            mobilePhone.gameObject.transform.parent = fullbodyModel.GetComponent<MeshProperty>().itemHandlerGO2.transform;
-            mobilePhone.gameObject.transform.localRotation = Quaternion.identity;
-            mobilePhone.gameObject.transform.localPosition = Vector3.zero;
-        }
-
-        if(mobilePhone2 != null){
-            mobilePhone2.gameObject.transform.parent = handModel.GetComponent<MeshProperty>().itemHandlerGO2.transform;
-            mobilePhone2.gameObject.transform.localRotation = Quaternion.identity;
-            mobilePhone2.gameObject.transform.localPosition = Vector3.zero;
-        }
-    }
-
-    public void SwitchPhonePotrait(){
-        if(mobilePhone != null){
-            mobilePhone.gameObject.transform.parent = fullbodyModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-            mobilePhone.gameObject.transform.localRotation = Quaternion.identity;
-            mobilePhone.gameObject.transform.localPosition = Vector3.zero;
-        }
-        
-        if(mobilePhone2 != null){
-            mobilePhone2.gameObject.transform.parent = handModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
-            mobilePhone2.gameObject.transform.localRotation = Quaternion.identity;
-            mobilePhone2.gameObject.transform.localPosition = Vector3.zero;
+            if(val){
+                mobilePhone.gameObject.transform.parent = playerModel.GetComponent<MeshProperty>().itemHandlerGO2.transform;
+                mobilePhone.gameObject.transform.localRotation = Quaternion.identity;
+                mobilePhone.gameObject.transform.localPosition = Vector3.zero;
+                mobilePhone.gameObject.GetComponent<MobilePhone>().ChangeLandscape(true);
+            }else{
+                mobilePhone.gameObject.transform.parent = playerModel.GetComponent<MeshProperty>().itemHandlerGO.transform;
+                mobilePhone.gameObject.transform.localRotation = Quaternion.identity;
+                mobilePhone.gameObject.transform.localPosition = Vector3.zero;
+                mobilePhone.gameObject.GetComponent<MobilePhone>().ChangeLandscape(false);
+            }
         }
     }
 
-    public void PhoneZoomIn(){
-        //mouseLook.gameObject.transform.DOLocalMoveZ(0.13f, .3f);
-        cam.DOFieldOfView(30f, .3f);
-        cam.gameObject.transform.DOLocalMoveX(-0.02f, .3f);
-        cam.gameObject.transform.DOLocalMoveY(-0.06f, .3f);
+    public void PhoneZoomIn(bool val){
+        if(val){
+            cam.DOFieldOfView(25f, .25f);
+            cam.gameObject.transform.DOLocalMoveX(-0.05f, .3f);
+            cam.gameObject.transform.DOLocalMoveY(-0.069f, .3f);
+
+            enableMouseLook = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }else{
+            cam.DOFieldOfView(65f, .25f);
+            cam.gameObject.transform.DOLocalMoveX(0f, .3f);
+            cam.gameObject.transform.DOLocalMoveY(0f, .3f);
+
+            enableMouseLook = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
-    public void PhoneZoomOut(){
-        //mouseLook.gameObject.transform.DOLocalMoveZ(0f, .3f);
-        cam.DOFieldOfView(50f, .3f);
-        cam.gameObject.transform.DOLocalMoveX(0f, .3f);
-        cam.gameObject.transform.DOLocalMoveY(0f, .3f);
-    }
 }

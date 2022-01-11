@@ -50,21 +50,11 @@ public class PlayerAbilities : MonoBehaviour
     void ToggleFlashlight(){
         
         if(Input.GetKeyDown(flashlightKey)){
-            // Fullbody
             if(playerMovement.mobilePhone != null){
                 if(playerMovement.mobilePhone.flashLight.activeSelf){
                     playerMovement.mobilePhone.flashLight.SetActive(false);
                 }else{
                     playerMovement.mobilePhone.flashLight.SetActive(true);
-                }
-            }
-            
-            // Hand Only
-            if(playerMovement.mobilePhone2 != null){
-                if(playerMovement.mobilePhone2.flashLight.activeSelf){
-                    playerMovement.mobilePhone2.flashLight.SetActive(false);
-                }else{
-                    playerMovement.mobilePhone2.flashLight.SetActive(true);
                 }
             }
         }
