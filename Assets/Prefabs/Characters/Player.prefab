@@ -120,7 +120,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 80
-  field of view: 47
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -170,6 +170,36 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1897317462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897317463}
+  m_Layer: 0
+  m_Name: FirstModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1897317463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897317462}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4141421802876426931}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4141421802876426928
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,11 +225,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4141421802876426928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141421803510776126}
   - {fileID: 4141421803197491437}
+  - {fileID: 1897317463}
   m_Father: {fileID: 4141421803574932294}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4141421803299596152}
   m_Layer: 0
-  m_Name: Model
+  m_Name: ThirdModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +371,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 47
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -412,7 +443,7 @@ GameObject:
   - component: {fileID: 4141421803574932289}
   - component: {fileID: 2102784625}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4141421803574932292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.02, z: -0.02}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141421803299596152}
@@ -472,16 +503,17 @@ MonoBehaviour:
   spawnFullbody: 0
   spawnHandOnly: 1
   charactersSO: {fileID: 11400000, guid: e6bcbffe23c641d45afd27576504a5d4, type: 2}
-  charIndex: 3
-  baseSpeed: 3
-  slowMultiplier: 1.5
+  charIndex: 0
+  baseSpeed: 2.6
+  slowMultiplier: 1.8
   runMultiplier: 1.2
   isGrounded: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 1
   jumpHeight: 0.5
-  modelGO: {fileID: 4141421803299596153}
+  thirdModelGO: {fileID: 4141421803299596153}
+  firstModelGO: {fileID: 1897317462}
   mobilePhone: {fileID: 0}
   mobilePhone2: {fileID: 0}
   hpPrefab: {fileID: 2471171583313746231, guid: 69b3dd32b5832084bacf5eb8cbd8cd22, type: 3}
@@ -661,7 +693,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 15
-  field of view: 47
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -728,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3354253986006155349
 Transform:
   m_ObjectHideFlags: 0
@@ -769,7 +801,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 80
-  field of view: 47
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

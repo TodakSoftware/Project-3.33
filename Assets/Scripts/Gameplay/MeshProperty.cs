@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class MeshProperty : MonoBehaviour
 {
-    public GameObject itemHandlerGO;
+    [HideInInspector] public PlayerMovement player;
+    public GameObject itemHandlerGO;  // Right
+    public GameObject itemHandlerGO2; // left
     [HideInInspector] public GameObject toLookAt;
+    private bool hpOnLeft, zoomIn;
     
     [Title("Procedural Animations")]
     public bool enableProcedural = true;
@@ -19,6 +22,26 @@ public class MeshProperty : MonoBehaviour
             if(toLookAt != null){
                 chestTarget.transform.position = new Vector3(chestTarget.transform.position.x, toLookAt.transform.position.y,chestTarget.transform.position.z);
             }
+        }
+    }
+
+    public void SwitchPhoneView(){
+        if(!hpOnLeft){
+            player.SwitchPhoneLandscape();
+            hpOnLeft = true;
+        }else{
+            player.SwitchPhonePotrait();
+            hpOnLeft = false;
+        }
+    }
+
+    public void CameraZoomIn(){
+        if(!zoomIn){
+            zoomIn = true;
+            player.PhoneZoomIn();
+        }else{
+            zoomIn = false;
+            player.PhoneZoomOut();
         }
     }
 }
