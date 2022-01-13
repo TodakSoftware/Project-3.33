@@ -12,6 +12,10 @@ public class MobilePhone : MonoBehaviour
     void Start()
     {
         canvas.worldCamera = player.cam;
+
+        if(player.GetComponent<PlayerMovement>().spawnHandOnly){
+            flashLight.transform.localPosition = new Vector3(0.029f, -4f, 0.012f);
+        }
     }
 
     // Update is called once per frame

@@ -119,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
             playerModel.transform.parent = thirdModelGO.transform;
             playerModel.GetComponent<MeshProperty>().player = this;
 
-            thirdModelGO.transform.localPosition = new Vector3(thirdModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, thirdModelGO.transform.localPosition.z);
+            //thirdModelGO.transform.localPosition = new Vector3(thirdModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, thirdModelGO.transform.localPosition.z);
         }else if(spawnHandOnly){
             playerModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
             playerModel.transform.parent = firstModelGO.transform;
             playerModel.GetComponent<MeshProperty>().player = this;
 
-            firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, firstModelGO.transform.localPosition.z);
+            firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, charactersSO.characterLists[charIndex].cameraDepth);
         }
 
         // Spawn Mobile

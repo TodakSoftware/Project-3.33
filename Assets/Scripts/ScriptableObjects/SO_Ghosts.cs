@@ -11,6 +11,7 @@ public struct GhostDetails{
     public GameObject fullbodyPrefab;
     public GameObject handPrefab;
     public float cameraHeight;
+    public float cameraDepth;
 }
 
 

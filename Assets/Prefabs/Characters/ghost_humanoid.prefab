@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6932979310192020097
 Transform:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5672943204654370434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8629775368736526439}
@@ -691,6 +691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8629775368356706706}
   - component: {fileID: 8629775368356706707}
+  - component: {fileID: 5101829082479096008}
   m_Layer: 0
   m_Name: ghost_humanoid
   m_TagString: Untagged
@@ -732,6 +733,37 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &5101829082479096008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629775368356706704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21bf6e6d62ce9947bc4f5c36c3a73f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toLookGO: {fileID: 8629775368549687846}
+  cam: {fileID: 0}
+  enableMove: 1
+  enableJump: 0
+  enableMouseLook: 1
+  spawnFullbody: 0
+  spawnHandOnly: 1
+  ghostsSO: {fileID: 11400000, guid: 3dbda0bce6d50124099e696871f5870d, type: 2}
+  ghostIndex: 0
+  baseSpeed: 2.6
+  slowMultiplier: 1.8
+  runMultiplier: 1.2
+  isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  jumpHeight: 0.5
+  thirdModelGO: {fileID: 8629775368650223021}
+  firstModelGO: {fileID: 5672943204654370434}
 --- !u!1 &8629775368549687846
 GameObject:
   m_ObjectHideFlags: 0
