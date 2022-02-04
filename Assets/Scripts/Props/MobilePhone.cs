@@ -46,7 +46,7 @@ public class MobilePhone : MonoBehaviour
         canvas.worldCamera = PlayerMovement.instance.cam;
 
         if(PlayerMovement.instance.spawnHandOnly){
-            flashLight.transform.localPosition = new Vector3(0.029f, -4f, 0.012f);
+            flashLight.transform.localPosition = new Vector3(0.0159f, 0.021f, 0.069f);
         }
 
         // Add Preinstalled apps
