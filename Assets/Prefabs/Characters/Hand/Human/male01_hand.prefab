@@ -811,7 +811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2468987387026784817}
   - component: {fileID: 1827461719961640372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CC_Base_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2246,10 +2246,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'spine_02'\n\tTransform 'spine_03'\n\tTransform
-    'spine_02'\n\tTransform 'spine_03'\n\tTransform 'spine_02'\n\tTransform 'spine_03'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -2271,6 +2268,7 @@ MonoBehaviour:
   toLookAt: {fileID: 0}
   enableProcedural: 1
   chestTarget: {fileID: 840534480153788435}
+  applyRootMotion: 0
 --- !u!114 &3881460574330011531
 MonoBehaviour:
   m_ObjectHideFlags: 0

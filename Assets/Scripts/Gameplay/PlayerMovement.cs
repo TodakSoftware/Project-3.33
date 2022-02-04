@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
     CharacterController controller;
     MouseLook mouseLook;
     public GameObject toLookGO;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public bool enableMove = true;
     public bool enableJump = true;
     public bool enableMouseLook = true;
+    public bool enableSelectApp = true;
 
     [Title("Spawner")]
     public bool spawnFullbody = false;
@@ -51,7 +53,17 @@ public class PlayerMovement : MonoBehaviour
     GameObject playerModel;
     [HideInInspector] public MobilePhone mobilePhone;
     public GameObject hpPrefab;
+    // -------------------------------------------
+    [Title("Human Captured")]
+    [SerializeField] bool isCaptured;
     
+    void Awake(){
+        if(instance == null){
+            instance = this;
+        }else{
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
@@ -69,47 +81,44 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(transform.position + new Vector3(0, -.05f, 0f), groundDistance, groundMask);
+        HandleGroundCheck();
 
-        float x = Input.GetAxis("Horizontal");   // W & S
-        float z = Input.GetAxis("Vertical");   // A & D
-
-        Vector3 move = transform.forward * z + transform.right * x;
-        move = Vector3.ClampMagnitude(move, 1f);
-
-        if(z < -0.5f){  // if walk backward
-            currentSpeed = baseSpeed / slowMultiplier;
-        }else if(z > 0.5f){    // if walk forward
-            currentSpeed = baseSpeed; 
-        }else if(x > 0.5f || x < -0.5f){   // if strafe
-            currentSpeed = baseSpeed / slowMultiplier; 
-        }
-
-        animator.SetFloat("Velocity Z", z);
-        animator.SetFloat("Velocity X", x);
-
-        controller.Move(move * currentSpeed * Time.deltaTime);
-
-        if(!isGrounded){
-            velocity.y += gravity * Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Jump") && isGrounded && enableJump)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            if(!selectAppMode){
-                selectAppMode = true;
-                animator.SetBool("Interact", true);
-            }else{
-                selectAppMode = false;
-                animator.SetBool("Interact", false);
+        if(enableSelectApp){
+            if(Input.GetKeyDown(KeyCode.Tab)){
+                HandleSelectApp();
             }
         }
 
+        if(enableMove){
+            HandleMovement();
+        }
+
+        if(enableJump){
+            if (Input.GetButtonDown("Jump") && isGrounded){
+                HandleJumping();
+            }
+        }
+
+        // Keep the gravity on
         controller.Move(velocity * Time.deltaTime);
+
+        // ----------------------------------- Caputed & Uncaptured ------------------------
+        //if (Input.GetMouseButtonDown(0) && !isCaptured){
+        //    isCaptured = true;
+        //    enableMove = false;
+        //    enableMouseLook = false;
+        //    enableSelectApp = false;
+        //    animator.SetTrigger("Captured");
+        //}
+//
+        //if (Input.GetMouseButtonDown(1) && isCaptured){
+        //    isCaptured = false;
+        //    enableMove = true;
+        //    enableMouseLook = true;
+        //    enableSelectApp = true;
+        //    animator.SetTrigger("Reset Captured");
+        //}
+        
     }
 
     void SetupPlayerMesh(){
@@ -117,13 +126,9 @@ public class PlayerMovement : MonoBehaviour
         if(spawnFullbody){
             playerModel = Instantiate (charactersSO.characterLists[charIndex].fullbodyPrefab, new Vector3(thirdModelGO.transform.position.x,thirdModelGO.transform.position.y,thirdModelGO.transform.position.z), Quaternion.identity);
             playerModel.transform.parent = thirdModelGO.transform;
-            playerModel.GetComponent<MeshProperty>().player = this;
-
-            //thirdModelGO.transform.localPosition = new Vector3(thirdModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, thirdModelGO.transform.localPosition.z);
         }else if(spawnHandOnly){
             playerModel = Instantiate (charactersSO.characterLists[charIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
             playerModel.transform.parent = firstModelGO.transform;
-            playerModel.GetComponent<MeshProperty>().player = this;
 
             firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -charactersSO.characterLists[charIndex].cameraHeight, charactersSO.characterLists[charIndex].cameraDepth);
         }
@@ -135,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
         hp.transform.localPosition = Vector3.zero;
 
         mobilePhone = hp.GetComponent<MobilePhone>();
-        mobilePhone.player = this;
 
         // Set player look at on MeshProperty
         playerModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
@@ -180,4 +184,46 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void HandleMovement(){
+        float x = Input.GetAxis("Horizontal");   // W & S
+        float z = Input.GetAxis("Vertical");   // A & D
+
+        Vector3 move = transform.forward * z + transform.right * x;
+        move = Vector3.ClampMagnitude(move, 1f);
+
+        if(z < -0.5f){  // if walk backward
+            currentSpeed = baseSpeed / slowMultiplier;
+        }else if(z > 0.5f){    // if walk forward
+            currentSpeed = baseSpeed; 
+        }else if(x > 0.5f || x < -0.5f){   // if strafe
+            currentSpeed = baseSpeed / slowMultiplier; 
+        }
+
+        animator.SetFloat("Velocity Z", z);
+        animator.SetFloat("Velocity X", x);
+
+        controller.Move(move * currentSpeed * Time.deltaTime);
+    }
+
+    private void HandleGroundCheck(){
+        isGrounded = Physics.CheckSphere(transform.position + new Vector3(0, -.05f, 0f), groundDistance, groundMask);
+
+        if(!isGrounded){
+            velocity.y += gravity * Time.deltaTime;
+        }
+    }
+
+    private void HandleJumping(){
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+
+    public void HandleSelectApp(){
+        if(!selectAppMode){
+            selectAppMode = true;
+            animator.SetBool("Interact", true);
+        }else{
+            selectAppMode = false;
+            animator.SetBool("Interact", false);
+        }
+    }
 }

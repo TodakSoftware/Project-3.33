@@ -109,6 +109,7 @@ MonoBehaviour:
   toLookAt: {fileID: 0}
   enableProcedural: 1
   chestTarget: {fileID: 6114886792048151506}
+  applyRootMotion: 0
 --- !u!114 &2029632008677661900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2824,7 +2825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9091673837402652397}
   - component: {fileID: 4986598719618949480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CC_Base_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

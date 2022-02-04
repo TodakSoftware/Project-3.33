@@ -48,7 +48,13 @@ public class GhostMovement : MonoBehaviour
     [Title("Mesh Setting")]
     [SerializeField] GameObject thirdModelGO; // in player prefab, For instantiated prefab to become a child
     [SerializeField] GameObject firstModelGO; // in player prefab, For instantiated prefab to become a child
-    GameObject playerModel;
+    GameObject ghostModel;
+
+    // -------------------------------------------
+    [Title("Ghost Capture")]
+    [SerializeField] bool isCapturing;
+    [SerializeField] float captureCooldown = 2f, captureTimer;
+
     
 
     void Start()
@@ -60,8 +66,8 @@ public class GhostMovement : MonoBehaviour
         SetupPlayerMesh();
 
         // Get Animator
-        if(playerModel != null)
-            animator = playerModel.GetComponent<Animator>();
+        if(ghostModel != null)
+            animator = ghostModel.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -97,26 +103,41 @@ public class GhostMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        if (Input.GetMouseButtonDown(0) && isGrounded && !isCapturing)
+        {
+            print("Capture");
+            animator.SetTrigger("Capturing");
+            isCapturing = true;
+            captureTimer = captureCooldown;
+        }
+
+        if(isCapturing && captureTimer <= 0){
+            captureTimer = 0;
+            isCapturing = false;
+        }else if(isCapturing && captureTimer > 0){
+            captureTimer -= Time.deltaTime;
+        }
+
         controller.Move(velocity * Time.deltaTime);
     }
 
     void SetupPlayerMesh(){
         // Spawn Model
         if(spawnFullbody){
-            playerModel = Instantiate (ghostsSO.ghostLists[ghostIndex].fullbodyPrefab, new Vector3(thirdModelGO.transform.position.x,thirdModelGO.transform.position.y,thirdModelGO.transform.position.z), Quaternion.identity);
-            playerModel.transform.parent = thirdModelGO.transform;
+            ghostModel = Instantiate (ghostsSO.ghostLists[ghostIndex].fullbodyPrefab, new Vector3(thirdModelGO.transform.position.x,thirdModelGO.transform.position.y,thirdModelGO.transform.position.z), Quaternion.identity);
+            ghostModel.transform.parent = thirdModelGO.transform;
             
             //thirdModelGO.transform.localPosition = new Vector3(thirdModelGO.transform.localPosition.x, -ghostsSO.ghostLists[ghostIndex].cameraHeight, thirdModelGO.transform.localPosition.z);
         }else if(spawnHandOnly){
-            playerModel = Instantiate (ghostsSO.ghostLists[ghostIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
-            playerModel.transform.parent = firstModelGO.transform;
+            ghostModel = Instantiate (ghostsSO.ghostLists[ghostIndex].handPrefab, new Vector3(firstModelGO.transform.position.x,firstModelGO.transform.position.y,firstModelGO.transform.position.z), Quaternion.identity);
+            ghostModel.transform.parent = firstModelGO.transform;
 
             firstModelGO.transform.localPosition = new Vector3(firstModelGO.transform.localPosition.x, -ghostsSO.ghostLists[ghostIndex].cameraHeight, ghostsSO.ghostLists[ghostIndex].cameraDepth);
         }
 
 
         // Set player look at on MeshProperty
-        playerModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
+        ghostModel.GetComponent<MeshProperty>().toLookAt = toLookGO;
 
         // Setup camera height for fps onl
         mouseLook.gameObject.transform.localPosition = new Vector3(mouseLook.gameObject.transform.localPosition.x, ghostsSO.ghostLists[ghostIndex].cameraHeight, mouseLook.gameObject.transform.localPosition.z);

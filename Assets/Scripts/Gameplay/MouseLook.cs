@@ -18,7 +18,7 @@ public class MouseLook : MonoBehaviour
         Cursor.visible = false;
     
         // Check if we are human or ghost
-        if(playerBody.GetComponent<PlayerMovement>() != null){
+        if(PlayerMovement.instance != null){
             isGhost = false;
         }else{
             isGhost = true;
@@ -29,7 +29,7 @@ public class MouseLook : MonoBehaviour
     void Update()
     {
         if(!isGhost){ // if Player, use this
-            if(playerBody.GetComponent<PlayerMovement>().enableMouseLook){
+            if(PlayerMovement.instance.enableMouseLook){
                 float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * mouseMultiplier * Time.deltaTime;
                 float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * mouseMultiplier * Time.deltaTime;
                 

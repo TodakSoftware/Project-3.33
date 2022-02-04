@@ -692,13 +692,14 @@ GameObject:
   - component: {fileID: 8629775368356706706}
   - component: {fileID: 8629775368356706707}
   - component: {fileID: 5101829082479096008}
+  - component: {fileID: 8001244399101407388}
   m_Layer: 0
   m_Name: ghost_humanoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8629775368356706706
 Transform:
   m_ObjectHideFlags: 0
@@ -764,6 +765,21 @@ MonoBehaviour:
   jumpHeight: 0.5
   thirdModelGO: {fileID: 8629775368650223021}
   firstModelGO: {fileID: 5672943204654370434}
+  isCapturing: 0
+  captureCooldown: 2
+  captureTimer: 0
+--- !u!114 &8001244399101407388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629775368356706704}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41437b358d15b2429f37feff25a6d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8629775368549687846
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class MeshProperty : MonoBehaviour
 {
-    [HideInInspector] public PlayerMovement player;
     public GameObject itemHandlerGO;  // Right
     public GameObject itemHandlerGO2; // left
     [HideInInspector] public GameObject toLookAt;
-    private bool hpOnLeft, zoomIn;
+    bool hpOnLeft, zoomIn;
     
     [Title("Procedural Animations")]
     public bool enableProcedural = true;
     public GameObject chestTarget;
-
 
 
     void Update(){
@@ -27,10 +25,10 @@ public class MeshProperty : MonoBehaviour
 
     public void SwitchPhoneView(){
         if(!hpOnLeft){
-            player.SwitchPhoneLandscape(true);
+            PlayerMovement.instance.SwitchPhoneLandscape(true);
             hpOnLeft = true;
         }else{
-            player.SwitchPhoneLandscape(false);
+            PlayerMovement.instance.SwitchPhoneLandscape(false);
             hpOnLeft = false;
         }
     }
@@ -38,10 +36,10 @@ public class MeshProperty : MonoBehaviour
     public void CameraZoomIn(){
         if(!zoomIn){
             zoomIn = true;
-            player.PhoneZoomIn(true);
+            PlayerMovement.instance.PhoneZoomIn(true);
         }else{
             zoomIn = false;
-            player.PhoneZoomIn(false);
+            PlayerMovement.instance.PhoneZoomIn(false);
         }
     }
 }

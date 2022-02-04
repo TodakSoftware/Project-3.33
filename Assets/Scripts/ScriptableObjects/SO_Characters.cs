@@ -6,8 +6,9 @@ using Sirenix.OdinInspector;
 
 [System.Serializable]
 public struct CharacterDetails{
+    [TableColumnWidth(70, Resizable = false)][PreviewField(Alignment = ObjectFieldAlignment.Left)] public Sprite avatarIcon;
+    [TableColumnWidth(50, Resizable = false)] public string code;
     public string name;
-    [PreviewField] public Sprite avatarIcon;
     public GameObject fullbodyPrefab;
     public GameObject handPrefab;
     public float cameraHeight;
@@ -18,6 +19,6 @@ public struct CharacterDetails{
 [CreateAssetMenu(fileName = "New Characters", menuName = "Database/Characters")]
 public class SO_Characters : ScriptableObject
 {
-    [TableList(ShowIndexLabels = true)]public List<CharacterDetails> characterLists;
+    [TableList(AlwaysExpanded = true, ShowIndexLabels = true)]public List<CharacterDetails> characterLists;
     
 }
