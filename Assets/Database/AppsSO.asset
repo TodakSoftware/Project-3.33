@@ -18,28 +18,33 @@ MonoBehaviour:
     name: Flashlight
     description: Flashlight
     price: 0
+    systemApp: 1
     drainRate: 0.1
   - appIcon: {fileID: 21300000, guid: 815260c5fc257294e999dda19cd0faeb, type: 3}
     code: A002
     name: Shop
     description: For buying apps
     price: 0
+    systemApp: 1
     drainRate: 0.1
   - appIcon: {fileID: 21300000, guid: f092ae3d73438734db2a8a4200b73dca, type: 3}
     code: A003
     name: Quickslot
     description: Quickslot
     price: 0
+    systemApp: 1
     drainRate: 0.1
   - appIcon: {fileID: 21300000, guid: 8b082034134d39e42b91d1594fbffb4e, type: 3}
     code: A004
     name: Thermal Camera
     description: Thermal Camera
-    price: 0
+    price: 35
+    systemApp: 0
     drainRate: 0.1
   - appIcon: {fileID: 21300000, guid: 4ff657b76aac226408aa9ca6ce20c494, type: 3}
     code: A005
     name: Night Vision
     description: Night Vision
-    price: 0
+    price: 35
+    systemApp: 0
     drainRate: 0.1

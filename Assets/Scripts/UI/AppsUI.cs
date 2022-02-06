@@ -25,9 +25,11 @@ public class AppsUI : MonoBehaviour
             break;
 
             case "A002": // Shop
+                MobilePhone.instance.OpenShopApp(true);
             break;
 
             case "A003": // Quickslot
+                MobilePhone.instance.OpenQuickslotApp(true);
             break;
 
             case "A004": // Thermal Camera

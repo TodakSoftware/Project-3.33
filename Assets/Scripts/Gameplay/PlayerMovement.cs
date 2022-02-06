@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     MouseLook mouseLook;
     public GameObject toLookGO;
     [HideInInspector] public Camera cam;
-    bool selectAppMode;
+    bool selectAppMode, chatGroupOpened;
 
     [Title("Enable Setting")]
     public bool enableMove = true;
     public bool enableJump = true;
     public bool enableMouseLook = true;
     public bool enableSelectApp = true;
+    public bool enableChatGroup = true;
 
     [Title("Spawner")]
     public bool spawnFullbody = false;
@@ -99,6 +100,16 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if(enableChatGroup){
+            if (Input.GetKeyDown(KeyCode.Space) && !chatGroupOpened){
+                HandleChatGroup();
+            }
+
+            if (Input.GetMouseButtonDown(1) && chatGroupOpened){
+                HandleChatGroup();
+            }
+        }
+
         // Keep the gravity on
         controller.Move(velocity * Time.deltaTime);
 
@@ -164,23 +175,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void PhoneZoomIn(bool val){
-        if(val){
-            cam.DOFieldOfView(25f, .25f);
-            cam.gameObject.transform.DOLocalMoveX(-0.05f, .3f);
-            cam.gameObject.transform.DOLocalMoveY(-0.069f, .3f);
-
-            enableMouseLook = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+    public void PhoneZoomIn(bool zoomIn){
+        if(zoomIn){
+            SelectAppCamView();
         }else{
-            cam.DOFieldOfView(65f, .25f);
-            cam.gameObject.transform.DOLocalMoveX(0f, .3f);
-            cam.gameObject.transform.DOLocalMoveY(0f, .3f);
-
-            enableMouseLook = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            ResetCamView();
         }
     }
 
@@ -219,11 +218,68 @@ public class PlayerMovement : MonoBehaviour
 
     public void HandleSelectApp(){
         if(!selectAppMode){
+            // if on chat mode, turn off 1st
+            if(chatGroupOpened){
+                HandleChatGroup();
+            }
             selectAppMode = true;
             animator.SetBool("Interact", true);
         }else{
             selectAppMode = false;
             animator.SetBool("Interact", false);
+
+            // Close built in app
+            MobilePhone.instance.shopPanel.SetActive(false);
+            MobilePhone.instance.quickslotPanel.SetActive(false);
+            MobilePhone.instance.chatGroupPanel.SetActive(false);
         }
+    }
+
+    public void HandleChatGroup(){
+        if(!chatGroupOpened){
+            // if on select mode, turn off 1st
+            if(selectAppMode){
+                HandleSelectApp();
+                Invoke("ChatGroupCamView",1f);
+            }else{
+                ChatGroupCamView();
+            }
+            chatGroupOpened = true;
+            MobilePhone.instance.OpenChatGroup(true);
+            
+        }else{
+            ResetCamView();
+            // zoom out
+            chatGroupOpened = false;
+            MobilePhone.instance.OpenChatGroup(false);
+        }
+    }
+
+    private void ChatGroupCamView(){
+        cam.DOFieldOfView(40f, .25f);
+        cam.gameObject.transform.DOLocalMoveX(0.09f, .3f);
+        cam.gameObject.transform.DOLocalMoveY(-0.08f, .3f);
+
+        enableMouseLook = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    private void SelectAppCamView(){
+        cam.DOFieldOfView(20f, .25f);
+        cam.gameObject.transform.DOLocalMoveX(-0.05f, .3f);
+        cam.gameObject.transform.DOLocalMoveY(-0.069f, .3f);
+
+        enableMouseLook = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    private void ResetCamView(){
+        cam.DOFieldOfView(65f, .25f);
+        cam.gameObject.transform.DOLocalMoveX(0f, .3f);
+        cam.gameObject.transform.DOLocalMoveY(0f, .3f);
+
+        enableMouseLook = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

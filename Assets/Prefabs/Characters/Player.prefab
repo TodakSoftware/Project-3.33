@@ -442,8 +442,9 @@ GameObject:
   - component: {fileID: 4141421803574932289}
   - component: {fileID: 2102784625}
   - component: {fileID: 2065464874}
+  - component: {fileID: 1735810211}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,8 +552,22 @@ MonoBehaviour:
   quickSlot1: 49
   quickSlot2: 50
   quickSlot3: 51
-  quickSlot4: 52
   flashlightKey: 102
+--- !u!114 &1735810211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141421803574932292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea5a212aeba5d214fb0f0b22a6c44ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCredits: 432
+  fearLevel: 0
+  timeOut: 0
 --- !u!1 &4141421803763917128
 GameObject:
   m_ObjectHideFlags: 0

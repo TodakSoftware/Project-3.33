@@ -12,9 +12,10 @@ public class MobilePhone : MonoBehaviour
     public bool enableDrain;
     
     [Title("Apps Related")]
-    public SO_Apps appsSO; 
-    public List<string> preinstalledApps = new List<string>();
+    public SO_Apps appsSO;
+    //public List<string> preinstalledApps = new List<string>();
     public List<string> currentApps = new List<string>();
+    public List<string> soldApps = new List<string>();
 
     [Title("Battery")]
     public TextMeshProUGUI batteryText;
@@ -30,8 +31,22 @@ public class MobilePhone : MonoBehaviour
     public GameObject appsPrefab;
     public Transform appsContentGroup;
 
-    [Title("In Apps Behaviour")]
+    [Title("In Apps Setup")]
     public GameObject shopPanel;
+    public GameObject quickslotPanel;
+    public GameObject chatGroupPanel;
+
+    [Title("Shop Related")]
+    public GameObject shopBtnPrefab;
+    public Transform shopContentGroup;
+    public TextMeshProUGUI shopCreditsText;
+
+    [Title("Clock Timer")]
+    public TextMeshProUGUI hpClockText;
+
+    [Title("Chat Related")]
+    public TMP_InputField chatInput;
+    public GameObject aboutAppPage;
 
     void Awake(){
         if(instance == null){
@@ -46,34 +61,23 @@ public class MobilePhone : MonoBehaviour
         canvas.worldCamera = PlayerMovement.instance.cam;
 
         if(PlayerMovement.instance.spawnHandOnly){
+            // flashLight.transform.localPosition = new Vector3(0.029f, -4f, 0.012f); OLD VALUES
             flashLight.transform.localPosition = new Vector3(0.0159f, 0.021f, 0.069f);
         }
 
         // Add Preinstalled apps
-        if(preinstalledApps.Count > 0){
-            foreach(var app in preinstalledApps){
-                if(!currentApps.Contains(app)){
-                    currentApps.Add(app);
+        if(appsSO.appLists.Count > 0){
+            foreach(var app in appsSO.appLists){
+                if(app.systemApp){
+                    currentApps.Add(app.code);
                 }
             }
         }
 
-        // Shown on phone
-        if(currentApps.Count > 0){
-            foreach(var code in currentApps){
-                foreach(var apps in appsSO.appLists){
-                    if(code == apps.code){
-                        var ap = Instantiate(appsPrefab);
-                        ap.GetComponent<AppsUI>().appCode = apps.code;
-                        ap.GetComponent<AppsUI>().appIcon.sprite = apps.appIcon;
-                        ap.GetComponent<AppsUI>().appName.text = apps.name;
-                        ap.transform.SetParent(appsContentGroup,false);
-                    }
-                } // end foreach appSO
-            } // end foreach currentApps
-        } // end count > 0
+        // Refresh main screen
+        RefreshMainScreen();
 
-
+        // Default flash light is on (Beinning of the game)
         if(PlayerAbilities.instance.flashlightOn){
             drainBattery(true, "A001");
         }
@@ -148,13 +152,98 @@ public class MobilePhone : MonoBehaviour
         } // else end
     }
 
+    // Refresh main screen apps
+    public void RefreshMainScreen(){
+        // Clear any existing content + currentAppList
+        if(appsContentGroup.childCount > 0){
+            foreach(Transform c in appsContentGroup){
+                Destroy(c.gameObject);
+            }
+        }
+
+        // Shown on phone
+        if(currentApps.Count > 0){
+            foreach(var code in currentApps){
+                foreach(var apps in appsSO.appLists){
+                    if(code == apps.code){
+                        var ap = Instantiate(appsPrefab);
+                        ap.GetComponent<AppsUI>().appCode = apps.code;
+                        ap.GetComponent<AppsUI>().appIcon.sprite = apps.appIcon;
+                        ap.GetComponent<AppsUI>().appName.text = apps.name;
+                        ap.transform.SetParent(appsContentGroup,false);
+                    }
+                } // end foreach appSO
+            } // end foreach currentApps
+        } // end count > 0
+    }
     
-    public void OpenShopApp(){
-        shopPanel.SetActive(true);
+    // Shop Apps
+    public void OpenShopApp(bool open){
+        if(open){
+            shopPanel.SetActive(true);
+            RefreshCreditUI();
+
+            // Clear any existing content
+            if(shopContentGroup.childCount > 0){
+                foreach(Transform c in shopContentGroup){
+                    Destroy(c.gameObject);
+                }
+            }
+
+            // List non system app
+            if(appsSO.appLists.Count > 0){
+                foreach(var apps in appsSO.appLists){
+                    if(!apps.systemApp){
+                        var ap = Instantiate(shopBtnPrefab);
+                        ap.GetComponent<ShopBtn>().appCode = apps.code;
+                        ap.GetComponent<ShopBtn>().appPrice = apps.price;
+                        ap.GetComponent<ShopBtn>().icon.sprite = apps.appIcon;
+                        ap.GetComponent<ShopBtn>().title.text = apps.name;
+                        ap.GetComponent<ShopBtn>().desc.text = apps.description;
+                        ap.GetComponent<ShopBtn>().price.text = "$"+apps.price;
+                        if(currentApps.Contains(apps.code)){
+                            ap.GetComponent<ShopBtn>().SetButtonSold();
+                        }
+                        ap.transform.SetParent(shopContentGroup,false);
+                    }
+                } // end foreach appSO
+            } // end count > 0
+
+        }else{
+            shopPanel.SetActive(false);
+        }
     }
 
-    public void CloseShopApp(){
-        shopPanel.SetActive(true);
+    // Refresh Credits UI
+    public void RefreshCreditUI(){
+        // Link credits to UI
+        shopCreditsText.text = "$" + PlayerManager.instance.currentCredits;
     }
 
+    // Quickslot Apps
+    public void OpenQuickslotApp(bool open){
+        if(open){
+            quickslotPanel.SetActive(true);
+        }else{
+            quickslotPanel.SetActive(false);
+        }
+    }
+
+    // Chat Group Apps
+    public void OpenChatGroup(bool open){
+        if(open){
+            chatGroupPanel.SetActive(true);
+            chatInput.text = "";
+        }else{
+            chatGroupPanel.SetActive(false);
+            if(aboutAppPage.activeSelf){
+                aboutAppPage.SetActive(false);
+            }
+        }
+    }
+
+    // Chat Back Button
+    public void CloseChatGroup(){
+        PlayerMovement.instance.HandleChatGroup();
+    }
 }

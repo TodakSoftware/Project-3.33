@@ -10,7 +10,8 @@ public struct AppDetails{
     [TableColumnWidth(50, Resizable = false)] public string code;
     public string name;
     [TextArea] public string description;
-    public int price;
+    [TableColumnWidth(50, Resizable = false)]public int price;
+    [TableColumnWidth(80, Resizable = false)]public bool systemApp;
     [PropertyTooltip("Amount drain per second")] public float drainRate; // ex. 2, 3, 5, 2.5 light intensity @ battery life -= Time.deltaTime * (drainRate / 1000)
 }
 

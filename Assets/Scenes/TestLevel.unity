@@ -1042,12 +1042,12 @@ GameObject:
   - component: {fileID: 135167714}
   - component: {fileID: 135167713}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &135167712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1191,6 +1191,7 @@ GameObject:
   - component: {fileID: 139895585}
   - component: {fileID: 139895587}
   - component: {fileID: 139895586}
+  - component: {fileID: 139895588}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -1260,6 +1261,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139895584}
   m_CullTransparentMesh: 1
+--- !u!114 &139895588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139895584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf7608a852360a44bf3969ae31399b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudTimerText: {fileID: 1069359682}
+  heartRateAnimator: {fileID: 1061682092}
+  altarImages:
+  - {fileID: 1491872257}
+  - {fileID: 1805580553}
+  - {fileID: 135167711}
+  - {fileID: 743207529}
+  - {fileID: 1696805071}
 --- !u!1 &147517312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,12 +3535,12 @@ GameObject:
   - component: {fileID: 743207532}
   - component: {fileID: 743207531}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Slot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743207530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4806,7 +4827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 03<color=red>:</color>33
+  m_text: 3<color=red>:</color>33
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04bce4946a25ed14b9ce4c377d6eb2d3, type: 2}
   m_sharedMaterial: {fileID: -382858007000919323, guid: 04bce4946a25ed14b9ce4c377d6eb2d3, type: 2}
@@ -7177,12 +7198,12 @@ GameObject:
   - component: {fileID: 1491872260}
   - component: {fileID: 1491872259}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1491872258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8386,12 +8407,12 @@ GameObject:
   - component: {fileID: 1696805074}
   - component: {fileID: 1696805073}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Slot5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696805072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9379,12 +9400,12 @@ GameObject:
   - component: {fileID: 1805580556}
   - component: {fileID: 1805580555}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1805580554
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11389,17 +11410,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2102784625, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
-      propertyPath: flashlightOn
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932292, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_Name
       value: player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4141421803574932292, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932294, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_RootOrder
@@ -11407,7 +11420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932294, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.97
       objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932294, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11415,7 +11428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932294, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.3
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4141421803574932294, guid: a540a9b1da5c0c745a1640405ac36bf1, type: 3}
       propertyPath: m_LocalRotation.w
