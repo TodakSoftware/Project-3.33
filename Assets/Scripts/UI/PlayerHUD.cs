@@ -18,6 +18,18 @@ public class PlayerHUD : MonoBehaviour
     [Title("Altar Related")]
     public GameObject[] altarImages;
 
+    [Title("Ritual Item Related")]
+    public SO_Ritual_Item ritualSO;
+    public Image ritualIcon;
+
+    [Title("Human Avatar")]
+    public Image playerIcon1;
+    public Image playerIcon2;
+    public Image playerIcon3;
+    public TextMeshProUGUI playerName1;
+    public TextMeshProUGUI playerName2;
+    public TextMeshProUGUI playerName3;
+
     void Awake()
     {
         if(instance == null){
@@ -27,9 +39,20 @@ public class PlayerHUD : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Start(){
+        SetItemSlot();
+    }
+
+    public void SetItemSlot(){
+        if(PlayerManager.instance.itemSlot != ""){
+            foreach(var i in ritualSO.itemLists){
+                if(i.code == PlayerManager.instance.itemSlot){
+                    ritualIcon.gameObject.SetActive(true);
+                    ritualIcon.sprite = i.itemIcon;
+                }
+            }
+        }else{
+            ritualIcon.gameObject.SetActive(false);
+        }
     }
 }

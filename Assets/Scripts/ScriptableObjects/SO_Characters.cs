@@ -19,6 +19,6 @@ public struct CharacterDetails{
 [CreateAssetMenu(fileName = "New Characters", menuName = "Database/Characters")]
 public class SO_Characters : ScriptableObject
 {
-    [TableList(AlwaysExpanded = true, ShowIndexLabels = true)]public List<CharacterDetails> characterLists;
+    [TableList(AlwaysExpanded = true, ShowIndexLabels = true)]public List<CharacterDetails> characterLists = new List<CharacterDetails>();
     
 }

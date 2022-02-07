@@ -55,7 +55,8 @@ public class GhostMovement : MonoBehaviour
     [SerializeField] bool isCapturing;
     [SerializeField] float captureCooldown = 2f, captureTimer;
 
-    
+    [Title("Others")]
+    public GameObject crosshair;
 
     void Start()
     {
@@ -73,34 +74,16 @@ public class GhostMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(transform.position + new Vector3(0, -.05f, 0f), groundDistance, groundMask);
+        HandleGroundCheck();
 
-        float x = Input.GetAxis("Horizontal");   // W & S
-        float z = Input.GetAxis("Vertical");   // A & D
-
-        Vector3 move = transform.forward * z + transform.right * x;
-        move = Vector3.ClampMagnitude(move, 1f);
-
-        if(z < -0.5f){  // if walk backward
-            currentSpeed = baseSpeed / slowMultiplier;
-        }else if(z > 0.5f){    // if walk forward
-            currentSpeed = baseSpeed; 
-        }else if(x > 0.5f || x < -0.5f){   // if strafe
-            currentSpeed = baseSpeed / slowMultiplier; 
+        if(enableMove){
+            HandleMovement();
         }
 
-        animator.SetFloat("Velocity Z", z);
-        animator.SetFloat("Velocity X", x);
-
-        controller.Move(move * currentSpeed * Time.deltaTime);
-
-        if(!isGrounded){
-            velocity.y += gravity * Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Jump") && isGrounded && enableJump)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if(enableJump){
+            if (Input.GetButtonDown("Jump") && isGrounded){
+                HandleJumping();
+            }
         }
 
         if (Input.GetMouseButtonDown(0) && isGrounded && !isCapturing)
@@ -109,8 +92,12 @@ public class GhostMovement : MonoBehaviour
             animator.SetTrigger("Capturing");
             isCapturing = true;
             captureTimer = captureCooldown;
+
+            //enableMove = false;
+            //Invoke("ResetCapture",.4f);
         }
 
+        // Capture cooldown
         if(isCapturing && captureTimer <= 0){
             captureTimer = 0;
             isCapturing = false;
@@ -118,6 +105,7 @@ public class GhostMovement : MonoBehaviour
             captureTimer -= Time.deltaTime;
         }
 
+        // Keep the gravity on
         controller.Move(velocity * Time.deltaTime);
     }
 
@@ -143,4 +131,39 @@ public class GhostMovement : MonoBehaviour
         mouseLook.gameObject.transform.localPosition = new Vector3(mouseLook.gameObject.transform.localPosition.x, ghostsSO.ghostLists[ghostIndex].cameraHeight, mouseLook.gameObject.transform.localPosition.z);
     }
 
+    private void HandleGroundCheck(){
+        isGrounded = Physics.CheckSphere(transform.position + new Vector3(0, -.05f, 0f), groundDistance, groundMask);
+
+        if(!isGrounded){
+            velocity.y += gravity * Time.deltaTime;
+        }
+    }
+
+    private void HandleMovement(){
+        float x = Input.GetAxis("Horizontal");   // W & S
+        float z = Input.GetAxis("Vertical");   // A & D
+
+        Vector3 move = transform.forward * z + transform.right * x;
+        move = Vector3.ClampMagnitude(move, 1f);
+
+        if(z < -0.5f){  // if walk backward
+            currentSpeed = baseSpeed / slowMultiplier;
+        }else if(z > 0.5f){    // if walk forward
+            currentSpeed = baseSpeed; 
+        }else if(x > 0.5f || x < -0.5f){   // if strafe
+            currentSpeed = baseSpeed / slowMultiplier; 
+        }
+
+        animator.SetFloat("Velocity Z", z);
+        animator.SetFloat("Velocity X", x);
+
+        controller.Move(move * currentSpeed * Time.deltaTime);
+    }
+
+    private void HandleJumping(){
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+    }
+    void ResetCapture(){
+        enableMove = true;
+    }
 }

@@ -58,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
     [Title("Human Captured")]
     [SerializeField] bool isCaptured;
     
+    
+    
     void Awake(){
         if(instance == null){
             instance = this;
@@ -71,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         mouseLook = GetComponentInChildren<MouseLook>();
         cam = mouseLook.gameObject.transform.GetChild(0).GetComponent<Camera>();
+        GetComponent<Interactor>().cam = cam;
 
         SetupPlayerMesh();
 
@@ -263,6 +266,8 @@ public class PlayerMovement : MonoBehaviour
         enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        GetComponent<Interactor>().crosshair.SetActive(false);
     }
     private void SelectAppCamView(){
         cam.DOFieldOfView(20f, .25f);
@@ -272,6 +277,8 @@ public class PlayerMovement : MonoBehaviour
         enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        GetComponent<Interactor>().crosshair.SetActive(false);
     }
     private void ResetCamView(){
         cam.DOFieldOfView(65f, .25f);
@@ -281,5 +288,7 @@ public class PlayerMovement : MonoBehaviour
         enableMouseLook = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        GetComponent<Interactor>().crosshair.SetActive(true);
     }
 }
