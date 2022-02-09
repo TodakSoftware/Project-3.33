@@ -30,6 +30,7 @@ public class MobilePhone : MonoBehaviour
     public GameObject flashLight;
     public GameObject appsPrefab;
     public Transform appsContentGroup;
+    [HideInInspector] public PlayerMovement playerMvmt;
 
     [Title("In Apps Setup")]
     public GameObject shopPanel;
@@ -58,9 +59,9 @@ public class MobilePhone : MonoBehaviour
 
     void Start()
     {
-        canvas.worldCamera = PlayerMovement.instance.cam;
+        canvas.worldCamera = playerMvmt.cam;
 
-        if(PlayerMovement.instance.spawnHandOnly){
+        if(playerMvmt.spawnHandOnly){
             // flashLight.transform.localPosition = new Vector3(0.029f, -4f, 0.012f); OLD VALUES
             flashLight.transform.localPosition = new Vector3(0.0159f, 0.021f, 0.069f);
         }
@@ -244,6 +245,6 @@ public class MobilePhone : MonoBehaviour
 
     // Chat Back Button
     public void CloseChatGroup(){
-        PlayerMovement.instance.HandleChatGroup();
+        playerMvmt.HandleChatGroup();
     }
 }

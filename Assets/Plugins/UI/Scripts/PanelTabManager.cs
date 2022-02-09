@@ -37,11 +37,16 @@ namespace Michsky.UI.Dark
         {
             currentButton = buttons[currentPanelIndex];
             currentButtonAnimator = currentButton.GetComponent<Animator>();
-            currentButtonAnimator.Play(buttonFadeIn);
+            if(currentButtonAnimator.gameObject.activeSelf){
+                currentButtonAnimator.Play(buttonFadeIn);
+            }
 
             currentPanel = panels[currentPanelIndex];
             currentPanelAnimator = currentPanel.GetComponent<Animator>();
-            currentPanelAnimator.Play(panelFadeIn);
+            if(currentPanelAnimator.gameObject.activeSelf){
+                currentPanelAnimator.Play(panelFadeIn);
+            }
+            
         }
 
         public void OpenFirstTab()

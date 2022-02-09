@@ -509,6 +509,8 @@ GameObject:
   - component: {fileID: 919132149354746716}
   - component: {fileID: 919132149354746715}
   - component: {fileID: 4282003768068700976}
+  - component: {fileID: -7557891361816233538}
+  - component: {fileID: -9144369908281978992}
   m_Layer: 0
   m_Name: ghost_student01_hand
   m_TagString: Untagged
@@ -567,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7226f814a5273414dac05e38fd052fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerMvmt: {fileID: 0}
   itemHandlerGO: {fileID: 0}
   itemHandlerGO2: {fileID: 0}
   toLookAt: {fileID: 0}
@@ -674,6 +676,44 @@ MonoBehaviour:
   - {fileID: 596491446301111351}
   - {fileID: 8155730884638567178}
   - {fileID: 8114613670134663877}
+--- !u!114 &-7557891361816233538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063475826980765895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &-9144369908281978992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063475826980765895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1280249230677804216
 GameObject:
   m_ObjectHideFlags: 0

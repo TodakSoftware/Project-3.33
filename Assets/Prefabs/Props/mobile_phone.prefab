@@ -2040,6 +2040,7 @@ GameObject:
   - component: {fileID: 4128570532249155810}
   - component: {fileID: 6558923108590719932}
   - component: {fileID: 1914885688223134837}
+  - component: {fileID: -3397433324442873184}
   m_Layer: 3
   m_Name: mobile_phone
   m_TagString: Untagged
@@ -2142,6 +2143,7 @@ MonoBehaviour:
   flashLight: {fileID: 1683020462}
   appsPrefab: {fileID: 8976126821766854737, guid: 75183d3a87ba1d541a846ad0ada0144f, type: 3}
   appsContentGroup: {fileID: 4155001703169836961}
+  playerMvmt: {fileID: 0}
   shopPanel: {fileID: 7694308002622269409}
   quickslotPanel: {fileID: 3682817167497666258}
   chatGroupPanel: {fileID: 8459283045658746552}
@@ -2170,6 +2172,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3397433324442873184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471171583313746231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2471438403626859166
 GameObject:
   m_ObjectHideFlags: 0

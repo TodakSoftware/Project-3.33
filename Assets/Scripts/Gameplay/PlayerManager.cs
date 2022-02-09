@@ -5,11 +5,16 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Sirenix.OdinInspector;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public static PlayerManager instance;
     public bool isGhost;
+    public int id;
+    public Player photonPlayer;
+    PlayerMovement playerMvmt;
 
     [Title("Human")]
     public int currentCredits;
@@ -24,11 +29,6 @@ public class PlayerManager : MonoBehaviour
     public bool timeOut;
     public int Duration {get; private set;}
     private int remainingDuration;
-
-    [Title("Win Lose Related")]
-    public bool gameEnded;
-    public GameObject uiWinLose;
-    public TextMeshProUGUI winLoseText;
     
 
     void Awake(){
@@ -37,19 +37,32 @@ public class PlayerManager : MonoBehaviour
         }else{
             Destroy(this);
         }
+
+        playerMvmt = GetComponent<PlayerMovement>();
+    }
+
+    [PunRPC]
+    public void Initialize(Player player){
+        photonPlayer = player;
+        id = player.ActorNumber;
+
+        GameManager.instance.players[id - 1] = this;
     }
 
     void Start(){
-        UpdateAltarSlot(totalContributed);
-        // Clock Timer
-        remainingDuration = 1560; // 1560 = Starting 26m
-        StartCoroutine(UpdateTimer());
-        if(!isGhost){
-            StartCoroutine(UpdateHeartRate());
-        }
+        if(photonView.IsMine){
+            //UpdateAltarSlot(totalContributed);
+            // Clock Timer
+            remainingDuration = 1560; // 1560 = Starting 26m
+            StartCoroutine(UpdateTimer());
+            if(!isGhost){
+                StartCoroutine(UpdateHeartRate());
+            }
+        } //end ismine
     }
 
     void Update(){
+        if(photonView.IsMine){
         if(canTransferItem){
             if(Input.GetKeyDown(KeyCode.E)){
                 if(itemSlot != ""){
@@ -64,9 +77,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        if(gameEnded){
+        if(GameManager.instance.gameEnded){
             StopAllCoroutines();
         }
+        } //end ismine
     }
 
     // --------------------------------- CLOCK TIMER FUNCTION START ----------------------------------
@@ -215,15 +229,15 @@ public class PlayerManager : MonoBehaviour
     // --------------------------------- ALTAR FUNCTION END ----------------------------------
 
     public void HumanWin(){
-        gameEnded = true;
-        uiWinLose.SetActive(true);
+        GameManager.instance.gameEnded = true;
+        GameManager.instance.uiWinLose.SetActive(true);
         if(!isGhost){
-            winLoseText.text = "Human Win!";
+            GameManager.instance.winLoseText.text = "Human Win!";
         }else{ // else ghost win
-            winLoseText.text = "<color=red>Ghost Lose!</color>";
+            GameManager.instance.winLoseText.text = "<color=red>Ghost Lose!</color>";
         }
 
-        PlayerMovement.instance.enableMouseLook = false;
+        playerMvmt.enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -231,15 +245,15 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void GhostWin(){
-        gameEnded = true;
-        uiWinLose.SetActive(true);
+        GameManager.instance.gameEnded = true;
+        GameManager.instance.uiWinLose.SetActive(true);
         if(!isGhost){
-            winLoseText.text = "<color=red>Human Lose!</color>";
+            GameManager.instance.winLoseText.text = "<color=red>Human Lose!</color>";
         }else{ // else ghost win
-            winLoseText.text = "Ghost Win!";
+            GameManager.instance.winLoseText.text = "Ghost Win!";
         }
 
-        PlayerMovement.instance.enableMouseLook = false;
+        playerMvmt.enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 

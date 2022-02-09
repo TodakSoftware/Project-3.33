@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 public class PlayerAbilities : MonoBehaviour
 {
     public static PlayerAbilities instance;
+    PlayerMovement playerMvmt;
     [Title("Flashlight")]
     public KeyCode flashlightKey;
     public bool flashlightOn = true;
@@ -26,6 +27,8 @@ public class PlayerAbilities : MonoBehaviour
         }else{
             Destroy(this);
         }
+
+        playerMvmt = GetComponent<PlayerMovement>();
     }
 
     void Update(){
@@ -38,13 +41,13 @@ public class PlayerAbilities : MonoBehaviour
 
     // Flashlight
     public void ToggleFlashlight(){
-        if(PlayerMovement.instance.mobilePhone != null){
+        if(playerMvmt.mobilePhone != null){
             if(flashlightOn){
-                PlayerMovement.instance.mobilePhone.flashLight.SetActive(false);
+                playerMvmt.mobilePhone.flashLight.SetActive(false);
                 MobilePhone.instance.drainBattery(false, "A001");
                 flashlightOn = false;
             }else{
-                PlayerMovement.instance.mobilePhone.flashLight.SetActive(true);
+                playerMvmt.mobilePhone.flashLight.SetActive(true);
                 MobilePhone.instance.drainBattery(true, "A001");
                 flashlightOn = true;
             }

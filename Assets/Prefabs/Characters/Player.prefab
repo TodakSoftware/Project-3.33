@@ -287,6 +287,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -406,6 +407,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -463,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 5
+  playerMvmt: {fileID: 0}
   playerBody: {fileID: 1242461481422498410}
   limitLookMin: -25
   limitLookMax: 45
@@ -511,13 +514,15 @@ GameObject:
   - component: {fileID: 1242461481422498414}
   - component: {fileID: 1242461481422498415}
   - component: {fileID: 1242461481422498400}
+  - component: {fileID: 1242461480500136714}
+  - component: {fileID: 1242461480500136713}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1242461481422498410
 Transform:
   m_ObjectHideFlags: 0
@@ -564,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135a082836a6e6847beb809215fead3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseLook: {fileID: 1242461480294379870}
   toLookGO: {fileID: 1242461479872647547}
   cam: {fileID: 0}
   enableMove: 1
@@ -572,7 +578,7 @@ MonoBehaviour:
   enableSelectApp: 1
   enableChatGroup: 1
   spawnFullbody: 0
-  spawnHandOnly: 1
+  spawnHandOnly: 0
   charactersSO: {fileID: 11400000, guid: e6bcbffe23c641d45afd27576504a5d4, type: 2}
   charIndex: 0
   baseSpeed: 2.6
@@ -588,7 +594,6 @@ MonoBehaviour:
   mobilePhone: {fileID: 0}
   hpPrefab: {fileID: 2471171583313746231, guid: 69b3dd32b5832084bacf5eb8cbd8cd22, type: 3}
   isCaptured: 0
-  crosshair: {fileID: 0}
 --- !u!114 &1242461481422498413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,9 +641,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGhost: 0
+  id: 0
   currentCredits: 432
   fearLevel: 0
   itemSlot: 
+  canTransferItem: 0
+  totalContributed: 0
+  altar: {fileID: 0}
   timeOut: 0
 --- !u!114 &1242461481422498400
 MonoBehaviour:
@@ -657,6 +666,47 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   interactable: {fileID: 0}
+  crosshair: {fileID: 0}
+  pickupText: {fileID: 0}
+--- !u!114 &1242461480500136714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242461481422498401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1242461480500136713}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1242461480500136713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242461481422498401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1242461481495144407
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +835,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2

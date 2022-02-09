@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPunCallbacks
 {
     public static PlayerMovement instance;
     CharacterController controller;
@@ -61,30 +63,47 @@ public class PlayerMovement : MonoBehaviour
     
     
     void Awake(){
-        if(instance == null){
-            instance = this;
-        }else{
-            Destroy(this);
-        }
+        //if(instance == null){
+        //    instance = this;
+        //}else{
+        //    Destroy(this);
+        //}
     }
 
     void Start()
     {
+        if(photonView.IsMine){
+            spawnHandOnly = true;
+            spawnFullbody = false;
+        }else{
+            spawnHandOnly = false;
+            spawnFullbody = true;
+        }
+
         controller = GetComponent<CharacterController>();
         mouseLook = GetComponentInChildren<MouseLook>();
         cam = mouseLook.gameObject.transform.GetChild(0).GetComponent<Camera>();
         GetComponent<Interactor>().cam = cam;
-
+        mouseLook.playerMvmt = this;
+        
         SetupPlayerMesh();
 
         // Get Animator
-        if(playerModel != null)
+        if(playerModel != null && photonView.IsMine){
             animator = playerModel.GetComponent<Animator>();
+            playerModel.GetComponent<MeshProperty>().playerMvmt = this;
+        }
+              
+        if(!photonView.IsMine){
+            cam.gameObject.SetActive(false);
+            //cam.GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(photonView.IsMine){
         HandleGroundCheck();
 
         if(enableSelectApp){
@@ -132,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
         //    enableSelectApp = true;
         //    animator.SetTrigger("Reset Captured");
         //}
-        
+        } //end is mine
     }
 
     void SetupPlayerMesh(){
@@ -154,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
         hp.transform.localPosition = Vector3.zero;
 
         mobilePhone = hp.GetComponent<MobilePhone>();
+        mobilePhone.playerMvmt = this;
 
         // Set player look at on MeshProperty
         playerModel.GetComponent<MeshProperty>().toLookAt = toLookGO;

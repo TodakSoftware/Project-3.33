@@ -2987,6 +2987,8 @@ GameObject:
   - component: {fileID: 2948692595845901876}
   - component: {fileID: 919132147816618899}
   - component: {fileID: 919132147816618898}
+  - component: {fileID: 5267406183742173898}
+  - component: {fileID: 4972402329047985237}
   m_Layer: 0
   m_Name: ghost_student01
   m_TagString: Untagged
@@ -3049,7 +3051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7226f814a5273414dac05e38fd052fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerMvmt: {fileID: 0}
   itemHandlerGO: {fileID: 0}
   itemHandlerGO2: {fileID: 0}
   toLookAt: {fileID: 0}
@@ -3071,6 +3073,56 @@ MonoBehaviour:
   - m_Rig: {fileID: 2078441372}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &5267406183742173898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448788304781225716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Velocity X
+  - Type: 1
+    SynchronizeType: 2
+    Name: Velocity Z
+  - Type: 9
+    SynchronizeType: 0
+    Name: Capturing
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
+--- !u!114 &4972402329047985237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448788304781225716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5267406183742173898}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8755360388339821810
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace Michsky.UI.Dark
 {
@@ -27,6 +29,30 @@ namespace Michsky.UI.Dark
 
         PanelBrushManager currentBrush;
         PanelBrushManager nextBrush;
+
+        [Header("Create Username Related")]
+        public GameObject createNamePanel;
+        public TextMeshProUGUI welcomeText;
+        public TMP_InputField createNameInput;
+
+        void Awake(){
+            if(PlayerPrefs.HasKey("Username333")){
+                createNamePanel.SetActive(false);
+                welcomeText.text = "Hello, " + PlayerPrefs.GetString("Username333");
+            }else{
+                createNamePanel.SetActive(true);
+            }
+        }
+
+        public void SetUsername(){
+            if(createNameInput.text.Length > 3){
+                PlayerPrefs.SetString("Username333", createNameInput.text);
+                createNamePanel.SetActive(false);
+                welcomeText.text = "Hello, " + PlayerPrefs.GetString("Username333");
+            }else{
+                print("Name too short");
+            }
+        }
 
         void Start()
         {

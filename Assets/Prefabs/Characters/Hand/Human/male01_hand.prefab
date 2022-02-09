@@ -2203,6 +2203,8 @@ GameObject:
   - component: {fileID: 5855714923375292477}
   - component: {fileID: 3881460574330011531}
   - component: {fileID: 4641634747390923096}
+  - component: {fileID: -768389905154195525}
+  - component: {fileID: 7327832791297494550}
   m_Layer: 0
   m_Name: male01_hand
   m_TagString: Untagged
@@ -2262,13 +2264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7226f814a5273414dac05e38fd052fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerMvmt: {fileID: 0}
   itemHandlerGO: {fileID: 5855714924562127314}
   itemHandlerGO2: {fileID: 224623776382076552}
   toLookAt: {fileID: 0}
   enableProcedural: 1
   chestTarget: {fileID: 840534480153788435}
-  applyRootMotion: 0
 --- !u!114 &3881460574330011531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,6 +2371,62 @@ MonoBehaviour:
   - m_Rig: {fileID: 2955726036827924408}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &-768389905154195525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738163923558859352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: Interact
+  - Type: 1
+    SynchronizeType: 1
+    Name: Velocity X
+  - Type: 1
+    SynchronizeType: 1
+    Name: Velocity Z
+  - Type: 9
+    SynchronizeType: 0
+    Name: Captured
+  - Type: 9
+    SynchronizeType: 0
+    Name: Reset Captured
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &7327832791297494550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738163923558859352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -768389905154195525}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6758691863940151953
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MeshProperty : MonoBehaviour
 {
+    [HideInInspector] public PlayerMovement playerMvmt;
     public GameObject itemHandlerGO;  // Right
     public GameObject itemHandlerGO2; // left
     [HideInInspector] public GameObject toLookAt;
@@ -25,10 +26,10 @@ public class MeshProperty : MonoBehaviour
 
     public void SwitchPhoneView(){
         if(!hpOnLeft){
-            PlayerMovement.instance.SwitchPhoneLandscape(true);
+            playerMvmt.SwitchPhoneLandscape(true);
             hpOnLeft = true;
         }else{
-            PlayerMovement.instance.SwitchPhoneLandscape(false);
+            playerMvmt.SwitchPhoneLandscape(false);
             hpOnLeft = false;
         }
     }
@@ -36,10 +37,10 @@ public class MeshProperty : MonoBehaviour
     public void CameraZoomIn(){
         if(!zoomIn){
             zoomIn = true;
-            PlayerMovement.instance.PhoneZoomIn(true);
+            playerMvmt.PhoneZoomIn(true);
         }else{
             zoomIn = false;
-            PlayerMovement.instance.PhoneZoomIn(false);
+            playerMvmt.PhoneZoomIn(false);
         }
     }
 }

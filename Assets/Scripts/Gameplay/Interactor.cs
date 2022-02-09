@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Interactor : MonoBehaviour
+public class Interactor : MonoBehaviourPunCallbacks
 {
     public Camera cam;
     public LayerMask interactableLayerMask;
@@ -17,11 +19,12 @@ public class Interactor : MonoBehaviour
     public TextMeshProUGUI pickupText;
 
     void Start(){
-        
+        crosshair = GameObject.Find("Crosshair");
     }
     // Update is called once per frame
     void Update()
     {
+        if(photonView.IsMine){
         if(cam != null){
             RaycastHit hit;
             if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2.5f, interactableLayerMask)){
@@ -56,6 +59,6 @@ public class Interactor : MonoBehaviour
                 }
             } // end raycast
         } // end cam != null
-        
+    } // end ismine
     }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class GhostMovement : MonoBehaviour
+public class GhostMovement : MonoBehaviourPunCallbacks
 {
     CharacterController controller;
     MouseLook mouseLook;
@@ -60,6 +62,14 @@ public class GhostMovement : MonoBehaviour
 
     void Start()
     {
+        if(photonView.IsMine){
+            spawnHandOnly = true;
+            spawnFullbody = false;
+        }else{
+            spawnHandOnly = false;
+            spawnFullbody = true;
+        }
+        
         controller = GetComponent<CharacterController>();
         mouseLook = GetComponentInChildren<MouseLook>();
         cam = mouseLook.gameObject.transform.GetChild(0).GetComponent<Camera>();
@@ -67,13 +77,20 @@ public class GhostMovement : MonoBehaviour
         SetupPlayerMesh();
 
         // Get Animator
-        if(ghostModel != null)
+        if(ghostModel != null && photonView.IsMine){
             animator = ghostModel.GetComponent<Animator>();
+        }
+
+        if(!photonView.IsMine){
+            cam.gameObject.SetActive(false);
+            //cam.GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(photonView.IsMine){
         HandleGroundCheck();
 
         if(enableMove){
@@ -107,6 +124,7 @@ public class GhostMovement : MonoBehaviour
 
         // Keep the gravity on
         controller.Move(velocity * Time.deltaTime);
+        } //end ismine
     }
 
     void SetupPlayerMesh(){
