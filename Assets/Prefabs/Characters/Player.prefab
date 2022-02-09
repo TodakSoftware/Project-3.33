@@ -468,7 +468,7 @@ MonoBehaviour:
   playerMvmt: {fileID: 0}
   playerBody: {fileID: 1242461481422498410}
   limitLookMin: -25
-  limitLookMax: 45
+  limitLookMax: 60
 --- !u!1 &1242461481290503619
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 1242461480500136714}
   - component: {fileID: 1242461480500136713}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135a082836a6e6847beb809215fead3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLook: {fileID: 1242461480294379870}
   toLookGO: {fileID: 1242461479872647547}
   cam: {fileID: 0}
   enableMove: 1

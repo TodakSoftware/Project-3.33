@@ -100,7 +100,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
 
     private IEnumerator UpdateTimer(){
-        while(remainingDuration > 0 && remainingDuration <= 1620){ // 1980 = 33m
+        while(remainingDuration > 0 && remainingDuration <= 1980){ // 1980 = 33m
             UpdateTimerUI(remainingDuration);
             remainingDuration++;
             yield return new WaitForSeconds(1f);
