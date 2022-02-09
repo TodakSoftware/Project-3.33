@@ -165,8 +165,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         //if(humanCount == 3 && ghostCount == 1){
-        //if(humanCount == 1 && ghostCount == 1){
-        if(humanCount == 1){
+        if(humanCount == 1 && ghostCount == 1){
+        //if(humanCount == 1){
             // Start Game
             photonView.RPC("ChangeScene", RpcTarget.All, PhotonNetwork.CurrentRoom.CustomProperties["Map"].ToString());
         }

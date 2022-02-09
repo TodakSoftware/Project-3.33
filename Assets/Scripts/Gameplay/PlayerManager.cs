@@ -32,13 +32,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     
 
     void Awake(){
-        if(instance == null){
-            instance = this;
-        }else{
-            Destroy(this);
+        if(photonView.IsMine){
+                if(instance == null){
+                instance = this;
+            }else{
+                Destroy(this);
+            }
         }
-
-        playerMvmt = GetComponent<PlayerMovement>();
+        
     }
 
     [PunRPC]
@@ -51,7 +52,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     void Start(){
         if(photonView.IsMine){
-            //UpdateAltarSlot(totalContributed);
+            UpdateAltarSlot(totalContributed);
             // Clock Timer
             remainingDuration = 1560; // 1560 = Starting 26m
             StartCoroutine(UpdateTimer());
@@ -63,23 +64,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     void Update(){
         if(photonView.IsMine){
-        if(canTransferItem){
-            if(Input.GetKeyDown(KeyCode.E)){
-                if(itemSlot != ""){
-                    altar.itemSlot.Add(itemSlot);
-                    altar.TempShowItem();
-                    itemSlot = "";
-                    PlayerHUD.instance.SetItemSlot();
-                    UpdateAltarSlot(altar.itemSlot.Count);
-                }else{
-                    print("No Item To Be Put");
-                } 
+            if(canTransferItem){
+                if(Input.GetKeyDown(KeyCode.E)){
+                    if(itemSlot != ""){
+                        altar.itemSlot.Add(itemSlot);
+                        altar.TempShowItem();
+                        itemSlot = "";
+                        PlayerHUD.instance.SetItemSlot();
+                        UpdateAltarSlot(altar.itemSlot.Count);
+                    }else{
+                        print("No Item To Be Put");
+                    } 
+                }
             }
-        }
 
-        if(GameManager.instance.gameEnded){
-            StopAllCoroutines();
-        }
+            if(GameManager.instance.gameEnded){
+                StopAllCoroutines();
+            }
         } //end ismine
     }
 
@@ -129,7 +130,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         if(timeOut && totalContributed < 5){
             // popup win for ghost/ lose for human
            //GhostWin();
+           if(photonView.IsMine){
            photonView.RPC("GhostWin", RpcTarget.All);
+           }
         }
         ResetTimer();
     }
@@ -224,7 +227,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         if(amount >= 5){
             amount = 5;
             // popup win for human/ lose for ghost
-            photonView.RPC("HumanWin", RpcTarget.All);
+            if(photonView.IsMine){
+                photonView.RPC("HumanWin", RpcTarget.All);
+            }
+            
             //HumanWin();
         }
     }
@@ -234,16 +240,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public void HumanWin(){
         GameManager.instance.gameEnded = true;
         GameManager.instance.uiWinLose.SetActive(true);
-        if(!isGhost){
+        //if(!isGhost){
+        if(PhotonNetwork.LocalPlayer.CustomProperties["team"].ToString() == "human"){
             GameManager.instance.winLoseText.text = "Human Win!";
         }else{ // else ghost win
             GameManager.instance.winLoseText.text = "<color=red>Ghost Lose!</color>";
         }
 
-        playerMvmt.enableMouseLook = false;
+        GetComponent<PlayerMovement>().enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        if(GetComponent<Interactor>().crosshair != null)
         GetComponent<Interactor>().crosshair.SetActive(false);
     }
 
@@ -251,16 +259,17 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     public void GhostWin(){
         GameManager.instance.gameEnded = true;
         GameManager.instance.uiWinLose.SetActive(true);
-        if(!isGhost){
+        if(PhotonNetwork.LocalPlayer.CustomProperties["team"].ToString() == "human"){
             GameManager.instance.winLoseText.text = "<color=red>Human Lose!</color>";
         }else{ // else ghost win
             GameManager.instance.winLoseText.text = "Ghost Win!";
         }
 
-        playerMvmt.enableMouseLook = false;
+        GetComponent<PlayerMovement>().enableMouseLook = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        if(GetComponent<Interactor>().crosshair != null)
         GetComponent<Interactor>().crosshair.SetActive(false);
     }
 }
