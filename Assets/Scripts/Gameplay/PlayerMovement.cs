@@ -6,6 +6,7 @@ using DG.Tweening;
 using Photon.Pun;
 using Photon.Realtime;
 
+
 public class PlayerMovement : MonoBehaviourPunCallbacks
 {
     public static PlayerMovement instance;
@@ -63,11 +64,11 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
     
     
     void Awake(){
-        //if(instance == null){
-        //    instance = this;
-        //}else{
-        //    Destroy(this);
-        //}
+        if(instance == null){
+            instance = this;
+        }else{
+            Destroy(this);
+        }
     }
 
     void Start()
@@ -98,6 +99,8 @@ public class PlayerMovement : MonoBehaviourPunCallbacks
             cam.gameObject.SetActive(false);
             //cam.GetComponent<AudioListener>().enabled = false;
         }
+
+        
     }
 
     // Update is called once per frame

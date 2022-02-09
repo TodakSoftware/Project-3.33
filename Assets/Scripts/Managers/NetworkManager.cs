@@ -26,7 +26,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Awake(){
         if(instance != null && instance != this){
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }else{
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -147,6 +148,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if(playAsHuman && humanCount > 3){
             print("Remove me as human");
             PhotonNetwork.LeaveRoom();
+            // find rom
+            JoinRandom(selectedMapName);
         }else{
             print("Current human : "+ humanCount);
         }
@@ -155,13 +158,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if(!playAsHuman && ghostCount > 1){
             print("Remove me as ghost");
             PhotonNetwork.LeaveRoom();
+            // find room
+            JoinRandom(selectedMapName);
         }else{
             print("Current Ghost : "+ ghostCount);
         }
 
         //if(humanCount == 3 && ghostCount == 1){
-        if(humanCount == 1 && ghostCount == 1){
-        //if(humanCount == 1){
+        //if(humanCount == 1 && ghostCount == 1){
+        if(ghostCount == 1){
             // Start Game
             photonView.RPC("ChangeScene", RpcTarget.All, PhotonNetwork.CurrentRoom.CustomProperties["Map"].ToString());
         }

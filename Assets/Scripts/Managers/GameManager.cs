@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start(){
         players = new PlayerManager[PhotonNetwork.PlayerList.Length];
         photonView.RPC("joiningTheGame", RpcTarget.AllBuffered);
+
+        if(PhotonNetwork.IsMasterClient){
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+        }
     }
 
     [PunRPC]
@@ -55,8 +60,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         //playerGO.GetComponent<PlayerMovement>().spawnHandOnly = true;
         PlayerManager playerMgr = playerGO.GetComponent<PlayerManager>();
         playerMgr.isGhost = false;
-        //playerMgr.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
-        //playerHUD.SetActive(true);
+        playerMgr.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
+        playerHUD.SetActive(true);
         //ghostHUD.SetActive(false);
     }
 
@@ -66,8 +71,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         //playerGO.GetComponent<GhostMovement>().spawnHandOnly = true;
         PlayerManager playerMgr = playerGO.GetComponent<PlayerManager>();
         playerMgr.isGhost = true;
-        //playerMgr.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
-        //ghostHUD.SetActive(true);
+        playerMgr.photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
+        ghostHUD.SetActive(true);
         //playerHUD.SetActive(false);
     }
 

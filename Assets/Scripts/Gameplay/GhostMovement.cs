@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.Rendering;
 
 public class GhostMovement : MonoBehaviourPunCallbacks
 {
@@ -65,6 +66,7 @@ public class GhostMovement : MonoBehaviourPunCallbacks
         if(photonView.IsMine){
             spawnHandOnly = true;
             spawnFullbody = false;
+            RenderSettings.ambientIntensity = 4f;
         }else{
             spawnHandOnly = false;
             spawnFullbody = true;

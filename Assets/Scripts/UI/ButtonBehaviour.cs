@@ -7,6 +7,8 @@ using Photon.Realtime;
 public class ButtonBehaviour : MonoBehaviourPunCallbacks
 {
     public void ExitGameButton(string mapName){
-        NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, mapName);
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(mapName);
+        //NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, mapName);
     }
 }

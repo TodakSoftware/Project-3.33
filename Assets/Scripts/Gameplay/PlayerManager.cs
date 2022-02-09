@@ -128,7 +128,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
         if(timeOut && totalContributed < 5){
             // popup win for ghost/ lose for human
-           GhostWin();
+           //GhostWin();
+           photonView.RPC("GhostWin", RpcTarget.All);
         }
         ResetTimer();
     }
@@ -223,11 +224,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         if(amount >= 5){
             amount = 5;
             // popup win for human/ lose for ghost
-            HumanWin();
+            photonView.RPC("HumanWin", RpcTarget.All);
+            //HumanWin();
         }
     }
     // --------------------------------- ALTAR FUNCTION END ----------------------------------
 
+    [PunRPC]
     public void HumanWin(){
         GameManager.instance.gameEnded = true;
         GameManager.instance.uiWinLose.SetActive(true);
@@ -244,6 +247,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         GetComponent<Interactor>().crosshair.SetActive(false);
     }
 
+    [PunRPC]
     public void GhostWin(){
         GameManager.instance.gameEnded = true;
         GameManager.instance.uiWinLose.SetActive(true);

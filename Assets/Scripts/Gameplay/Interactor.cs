@@ -20,6 +20,9 @@ public class Interactor : MonoBehaviourPunCallbacks
 
     void Start(){
         crosshair = GameObject.Find("Crosshair");
+        if(crosshair.gameObject != null){
+            pickupText = crosshair.gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        }
     }
     // Update is called once per frame
     void Update()
