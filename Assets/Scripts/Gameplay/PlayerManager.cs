@@ -7,6 +7,8 @@ using TMPro;
 using Sirenix.OdinInspector;
 using Photon.Pun;
 using Photon.Realtime;
+using Player = Photon.Realtime.Player;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
@@ -52,13 +54,24 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 
     void Start(){
         if(photonView.IsMine){
-            UpdateAltarSlot(totalContributed);
             // Clock Timer
             remainingDuration = 1560; // 1560 = Starting 26m
             StartCoroutine(UpdateTimer());
             if(!isGhost){
                 StartCoroutine(UpdateHeartRate());
             }
+
+            if(!isGhost){
+            // Clear first
+            foreach(var slot in PlayerHUD.instance.altarImages){
+                slot.SetActive(false);
+            }
+        }else{
+            // Clear first
+            foreach(var slot in GhostHUD.instance.altarImages){
+                slot.SetActive(false);
+            }
+        }
         } //end ismine
     }
 
@@ -68,20 +81,30 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 if(Input.GetKeyDown(KeyCode.E)){
                     if(itemSlot != ""){
                         altar.itemSlot.Add(itemSlot);
+                        totalContributed += 1;
+
+                        Hashtable customPropreties = new Hashtable();
+                        customPropreties["TotalContributed"] = totalContributed;
+                        PhotonNetwork.CurrentRoom.SetCustomProperties(customPropreties);
+
                         altar.TempShowItem();
                         itemSlot = "";
-                        PlayerHUD.instance.SetItemSlot();
-                        UpdateAltarSlot(altar.itemSlot.Count);
+                        GameManager.instance.playerHUD.GetComponent<PlayerHUD>().SetItemSlot();
+                        
+
+                        //UpdateAltarSlot();
+                        photonView.RPC("UpdateAltarSlot", RpcTarget.All);
                     }else{
                         print("No Item To Be Put");
                     } 
                 }
             }
-
-            if(GameManager.instance.gameEnded){
-                StopAllCoroutines();
-            }
+            
         } //end ismine
+
+        if(GameManager.instance.gameEnded){
+            StopAllCoroutines();
+        }
     }
 
     // --------------------------------- CLOCK TIMER FUNCTION START ----------------------------------
@@ -91,10 +114,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks
                 MobilePhone.instance.hpClockText.text = "<color=red>3:33</color>";
             }
             if(PlayerHUD.instance != null)
-            PlayerHUD.instance.hudTimerText.text = "<color=red>3:33</color>";
+            GameManager.instance.playerHUD.GetComponent<PlayerHUD>().hudTimerText.text = "<color=red>3:33</color>";
         }else{
             if(GhostHUD.instance != null)
-            GhostHUD.instance.hudTimerText.text = "<color=red>3:33</color>";
+            GameManager.instance.ghostHUD.GetComponent<GhostHUD>().hudTimerText.text = "<color=red>3:33</color>";
         }
         
         remainingDuration = 0;
@@ -200,32 +223,40 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     // --------------------------------- HEART RATE FUNCTION END ----------------------------------
 
     // --------------------------------- ALTAR FUNCTION START ----------------------------------
-    public void UpdateAltarSlot(int amount){
-
-        if(!isGhost){
+    [PunRPC]
+    public void UpdateAltarSlot(){
+        if(photonView.IsMine){
+            totalContributed = (int)PhotonNetwork.CurrentRoom.CustomProperties["TotalContributed"];
+            totalContributed += 1;
+        }else{
+            totalContributed = (int)PhotonNetwork.CurrentRoom.CustomProperties["TotalContributed"];
+        }
+        
+        //total += 1;
+        if(PhotonNetwork.LocalPlayer.CustomProperties["team"].ToString() == "human"){ 
             // Clear first
-            foreach(var slot in PlayerHUD.instance.altarImages){
+            foreach(var slot in GameManager.instance.playerHUD.GetComponent<PlayerHUD>().altarImages){
                 slot.SetActive(false);
             }
 
             // Enable current amount
-            for(int i = 0; i < amount; i++){
-                PlayerHUD.instance.altarImages[i].SetActive(true);
+            for(int i = 0; i < totalContributed; i++){
+                GameManager.instance.playerHUD.GetComponent<PlayerHUD>().altarImages[i].SetActive(true);
             }
         }else{
             // Clear first
-            foreach(var slot in GhostHUD.instance.altarImages){
+            foreach(var slot in GameManager.instance.ghostHUD.GetComponent<GhostHUD>().altarImages){
                 slot.SetActive(false);
             }
 
             // Enable current amount
-            for(int i = 0; i < amount; i++){
-                GhostHUD.instance.altarImages[i].SetActive(true);
+            for(int i = 0; i < totalContributed; i++){
+                GameManager.instance.ghostHUD.GetComponent<GhostHUD>().altarImages[i].SetActive(true);
             }
         }
 
-        if(amount >= 5){
-            amount = 5;
+        if(totalContributed >= 5){
+            totalContributed = 5;
             // popup win for human/ lose for ghost
             if(photonView.IsMine){
                 photonView.RPC("HumanWin", RpcTarget.All);

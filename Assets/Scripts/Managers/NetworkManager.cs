@@ -24,14 +24,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public List<prefabAttributes> propsPrefabs;
     public List<prefabAttributes> particlePrefabs;
 
+    [Header("Find Game Related")]
+    public int roomHumanCount = 1;
+    public int roomGhostCount = 1;
+
     void Awake(){
-        if(instance != null && instance != this){
-            //gameObject.SetActive(false);
-            Destroy(gameObject);
-        }else{
+        if(instance == null){
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
+        }else{
+            //GetComponent<PhotonView>().enabled = false;
+            //Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
+        DontDestroyOnLoad(this.gameObject);
 
         PhotonNetwork.AutomaticallySyncScene = true;
 
@@ -120,6 +126,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         print("ON JOIN RANDON FAILED");
         Hashtable customPropreties = new Hashtable();
         customPropreties["Map"] = selectedMapName;
+        customPropreties["TotalContributed"] = 0;
         string[] roomPropsInLobby = { "Map" };
 
         RoomOptions roomOpt = new RoomOptions();
@@ -165,8 +172,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         //if(humanCount == 3 && ghostCount == 1){
-        if(humanCount == 1 && ghostCount == 1){
-        //if(humanCount == 1){
+        if(humanCount == roomHumanCount && ghostCount == roomGhostCount){
             // Start Game
             photonView.RPC("ChangeScene", RpcTarget.All, PhotonNetwork.CurrentRoom.CustomProperties["Map"].ToString());
         }

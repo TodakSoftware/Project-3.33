@@ -46,6 +46,6 @@ public class Ritual_Altar : MonoBehaviourPunCallbacks
             tempItem[i].SetActive(true);
         }
 
-        PlayerManager.instance.totalContributed = itemSlot.Count;
+        //PlayerManager.instance.totalContributed = itemSlot.Count;
     }
 }
