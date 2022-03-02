@@ -5,19 +5,11 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 [System.Serializable]
-public enum GhostType{
-    HUMANOID,
-    CREATURE
-}
-
-[System.Serializable]
 public struct GhostDetails{
     [TableColumnWidth(70, Resizable = false)][PreviewField(Alignment = ObjectFieldAlignment.Left)] public Sprite avatarIcon;
     [TableColumnWidth(50, Resizable = false)] public string code;
     public string name;
-    public GhostType type;
-    public GameObject fullbodyPrefab;
-    public GameObject handPrefab;
+    public GameObject prefab;
     public float cameraHeight;
     public float cameraDepth;
 }

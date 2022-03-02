@@ -9,8 +9,7 @@ public struct CharacterDetails{
     [TableColumnWidth(70, Resizable = false)][PreviewField(Alignment = ObjectFieldAlignment.Left)] public Sprite avatarIcon;
     [TableColumnWidth(50, Resizable = false)] public string code;
     public string name;
-    public GameObject fullbodyPrefab;
-    public GameObject handPrefab;
+    public GameObject prefab;
     public float cameraHeight;
     public float cameraDepth;
 }
