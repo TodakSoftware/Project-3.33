@@ -1,11 +1,16 @@
 fileFormatVersion: 2
-guid: 5c3a756b28711f0439c33377f4d11e18
+guid: 42217ea865ded2c4b993cfb6f10f2857
 ModelImporter:
-  serializedVersion: 20100
+  serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lampu
+    second: {fileID: 2100000, guid: cf2e2abf083390240b24ca3197997755, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,6 +48,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -94,6 +100,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

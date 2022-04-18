@@ -10,7 +10,7 @@ Material:
   m_Name: DiningRoom_EnterGlass.180
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT
-    _NORMALMAP_TANGENT_SPACE _SURFACE_TYPE_TRANSPARENT
+    _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP_TANGENT_SPACE _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -136,7 +136,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BumpScale: 1
-    - _CoatMask: 0
+    - _CoatMask: 0.8
     - _CullMode: 0
     - _CullModeForward: 0
     - _Cutoff: 0
@@ -174,7 +174,7 @@ Material:
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
     - _InvTilingScale: 1
-    - _Ior: 1.5
+    - _Ior: 2.3
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
@@ -184,7 +184,7 @@ Material:
     - _MetallicRemapMin: 0
     - _Mode: 3
     - _NormalMapSpace: 0
-    - _NormalScale: 1
+    - _NormalScale: 0.5
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
@@ -219,7 +219,7 @@ Material:
     - _SurfaceType: 1
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
-    - _Thickness: 1
+    - _Thickness: 0.02
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -239,9 +239,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.7125203, g: 1, b: 0.9799488, a: 0.5}
+    - _BaseColor: {r: 0.29690284, g: 0.4528302, b: 0.44215024, a: 0.5}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.7125203, g: 1, b: 0.9799488, a: 0.5}
+    - _Color: {r: 0.2969028, g: 0.45283014, b: 0.4421502, a: 0.5}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
