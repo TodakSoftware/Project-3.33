@@ -4404,7 +4404,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720017538}
-  - component: {fileID: 720017537}
   m_Layer: 0
   m_Name: SceneIDMap
   m_TagString: Untagged
@@ -4412,22 +4411,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &720017537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720017536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 2062564369}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Entries:
-  - id: 0
-    category: 0
-    gameObject: {fileID: 1396381211}
 --- !u!4 &720017538
 Transform:
   m_ObjectHideFlags: 19
@@ -13204,20 +13187,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6317729205545350021, guid: 32f611db484b7a14d8d5a5e6841acc3e, type: 3}
   m_PrefabInstance: {fileID: 2062393322}
   m_PrefabAsset: {fileID: 0}
---- !u!115 &2062564369
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 5
-  m_Script: 
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_ExecutionOrder: 0
-  m_ClassName: SceneObjectIDMapSceneAsset
-  m_Namespace: UnityEngine.Rendering.HighDefinition
 --- !u!1 &2063167989
 GameObject:
   m_ObjectHideFlags: 0
