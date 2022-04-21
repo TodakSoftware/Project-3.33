@@ -3256,6 +3256,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6318620280537639870, guid: e794790e150980048a6a3bf8bc0d97e7, type: 3}
   m_PrefabInstance: {fileID: 506983971}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &523139061
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.595
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.022
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.169
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
+      propertyPath: m_Name
+      value: pocong_anim_tangan_keluar (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc78ffc7df0d5014db53eb233260bc74, type: 3}
 --- !u!1001 &524615058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4437,6 +4494,10 @@ MonoBehaviour:
   m_Script: {fileID: 2062564369}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Entries:
+  - id: 0
+    category: 0
+    gameObject: {fileID: 1396381211}
 --- !u!4 &720017538
 Transform:
   m_ObjectHideFlags: 19
