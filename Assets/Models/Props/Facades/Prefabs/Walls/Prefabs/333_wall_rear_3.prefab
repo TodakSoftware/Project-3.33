@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -59,8 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3121997816136982259, guid: 79aeab8ed0d8fb34a930d949a8190ad1, type: 3}
-  - {fileID: 4404889474314060297, guid: 79aeab8ed0d8fb34a930d949a8190ad1, type: 3}
+  - {fileID: 2100000, guid: 88579baa72729404da608cbdb26f257e, type: 2}
+  - {fileID: 2100000, guid: 38a3c74252584c847924dd44e7179e1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
