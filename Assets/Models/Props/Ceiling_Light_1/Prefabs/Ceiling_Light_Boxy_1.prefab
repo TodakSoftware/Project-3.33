@@ -308,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183662774170836839}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: -0.08462762, z: 0}
+  m_LocalPosition: {x: 0, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -327,8 +327,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7.676353
-  m_Range: 3.2
+  m_Intensity: 3
+  m_Range: 3.0717132
   m_SpotAngle: 154
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -341,18 +341,18 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
-      e00: 1.247153
+      e00: 0.43979424
       e01: 0
       e02: 0
       e03: 0
       e10: 0
-      e11: 2.083375
+      e11: 0.45919132
       e12: 0
       e13: 0
       e20: 0
       e21: 0
-      e22: 0.6451613
-      e23: -1.0645161
+      e22: 0.67301244
+      e23: -1.0673012
       e30: 0
       e31: 0
       e32: 0
@@ -368,11 +368,11 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1.6036524, y: 0.9599808}
+  m_AreaSize: {x: 4.547581, y: 4.355483}
   m_BounceIntensity: 1
   m_ColorTemperature: 7304
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.6, w: 1.852921}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.5358566, w: 3.5030754}
   m_UseBoundingSphereOverride: 1
   m_UseViewFrustumForShadowCasterCull: 0
   m_ShadowRadius: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 7.676353
+  m_Intensity: 3
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 77.9
@@ -402,8 +402,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 1.6036524
-  m_ShapeHeight: 0.9599808
+  m_ShapeWidth: 4.547581
+  m_ShapeHeight: 4.355483
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
