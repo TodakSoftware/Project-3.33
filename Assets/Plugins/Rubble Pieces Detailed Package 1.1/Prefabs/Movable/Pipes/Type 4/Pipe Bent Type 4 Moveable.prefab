@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4694831087468512}
   - component: {fileID: 33908646633777476}
   - component: {fileID: 23483875967116538}
-  - component: {fileID: 65111543851005954}
   - component: {fileID: 54767213662350604}
+  - component: {fileID: -3829358194862357991}
   m_Layer: 0
   m_Name: Pipe Bent Type 4 Moveable
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65111543851005954
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885100880194804}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4046479, y: 0.109527074, z: 0.30941144}
-  m_Center: {x: -0.15232393, y: -0.000000037393146, z: -0.2452943}
 --- !u!54 &54767213662350604
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,3 +101,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &-3829358194862357991
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885100880194804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 66dc3c5c63c7b3b48bcf62a859a0651e, type: 3}

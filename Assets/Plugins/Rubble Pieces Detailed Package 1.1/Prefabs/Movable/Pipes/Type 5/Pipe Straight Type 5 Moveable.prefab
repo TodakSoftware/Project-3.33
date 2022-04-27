@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4219179058234556}
   - component: {fileID: 33054456056715500}
   - component: {fileID: 23304660214445760}
-  - component: {fileID: 65032736520959558}
   - component: {fileID: 54861301122132716}
+  - component: {fileID: 7241529551672715279}
   m_Layer: 0
   m_Name: Pipe Straight Type 5 Moveable
   m_TagString: Untagged
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65032736520959558
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189336077975946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5046479, y: 0.10952707, z: 0.10952705}
-  m_Center: {x: 0.24767604, y: 0.0000000037252943, z: 0.000000016833066}
 --- !u!54 &54861301122132716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,3 +101,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &7241529551672715279
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189336077975946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5b05ec5dd6ff00d4ab03ee1b255ba1ab, type: 3}
