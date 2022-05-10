@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2341515617109853702}
+  - component: {fileID: 1340696513074038009}
   m_Layer: 0
   m_Name: SM_blackboard
   m_TagString: Untagged
@@ -26,11 +27,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1639974348451634441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1340696513074038009
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923125737608996732}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.6431923, y: 1.7891712, z: 0.18117008}
+  m_Center: {x: -0.018981934, y: 1.0486983, z: 0.05138263}
 --- !u!1001 &1245494363707620066
 PrefabInstance:
   m_ObjectHideFlags: 0
