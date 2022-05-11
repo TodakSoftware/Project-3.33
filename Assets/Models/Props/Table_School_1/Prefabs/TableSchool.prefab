@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableSchool
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4e16ecd32c84f4147a38955098d37f54, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e16ecd32c84f4147a38955098d37f54, type: 3}
 --- !u!1 &6694255125933091135 stripped
@@ -95,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88657683, y: 0.8230752, z: 0.55510545}
   m_Center: {x: 0, y: 0.41141552, z: 0}
---- !u!82 &6232764786162836124
+--- !u!82 &3220885302095611634
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,8 +119,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 1.1268129
+  MaxDistance: 1.1268139
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -151,7 +155,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -191,3 +195,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3103054155482354445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6694255125933091135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75aa86f7f263d6d44b1790c4a293d99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundHere: {fileID: 3220885302095611634}
