@@ -86,7 +86,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1518191251468297703
+--- !u!65 &-3068610354750366581
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88657683, y: 0.8230752, z: 0.55510545}
   m_Center: {x: 0, y: 0.41141552, z: 0}
---- !u!82 &3220885302095611634
+--- !u!82 &7995628424287141922
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,10 +109,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cf0c3d526be451a4eacce9a7a29edc82, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1bb3cb973add1ac4096abbba5e90f790, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.3
+  m_Pitch: 0.65
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -195,7 +195,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3103054155482354445
+--- !u!114 &5372700310772251110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,4 +207,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75aa86f7f263d6d44b1790c4a293d99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundHere: {fileID: 3220885302095611634}
+  soundHere: {fileID: 7995628424287141922}
