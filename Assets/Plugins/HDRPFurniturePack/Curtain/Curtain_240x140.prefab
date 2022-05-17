@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8049096419731944060}
   - component: {fileID: 951975057043166228}
   - component: {fileID: 3725162202574773726}
-  - component: {fileID: 7041026577876971469}
   - component: {fileID: 1995645896173296821}
   m_Layer: 0
   m_Name: Curtain_240x140
@@ -4205,7 +4204,7 @@ Cloth:
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders:
   - {fileID: 0}
-  - {fileID: 7041026577876971469}
+  - {fileID: 0}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
@@ -4215,20 +4214,6 @@ Cloth:
   - {x: 0.6666667, y: 0.16666667, z: 0.16666667}
   - {x: 0.5, y: 0.5, z: 0}
   m_VirtualParticleIndices: 
---- !u!136 &7041026577876971469
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8049096419728846460}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 1.41
-  m_Direction: 0
-  m_Center: {x: -0.011449099, y: 0.45, z: -0.11}
 --- !u!136 &1995645896173296821
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4242,4 +4227,4 @@ CapsuleCollider:
   m_Radius: 0.15
   m_Height: 1.41
   m_Direction: 0
-  m_Center: {x: -0.011449099, y: 1.05, z: -0.11}
+  m_Center: {x: -0.011449099, y: 0.96, z: -0.11}
