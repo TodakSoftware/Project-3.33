@@ -8,6 +8,7 @@ using UnityEngine;
 
     public class CameraController : MonoBehaviour
     {
+        public bool isEnable;
         public float Sensitivity = 10f;
         public float minPitch = -30f;
         public float maxPitch = 60f;
@@ -20,18 +21,21 @@ using UnityEngine;
 
         void OnEnable()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            LockCursor(true);
         }
 
         void Update(){
-            parent.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Sensitivity);
+            if(isEnable){
+                parent.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Sensitivity);
+            }
         }
 
         void LateUpdate()
         {
-            CameraRotate();
             transform.position = boneParent.position;
+            if(isEnable){
+                CameraRotate();
+            }
         }
 
         void CameraRotate()
@@ -42,6 +46,15 @@ using UnityEngine;
             yaw += Input.GetAxis("Mouse X") * Sensitivity;
             pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
             transform.eulerAngles = new Vector3(pitch, yaw, 0f);
-            
+        }
+
+        public void LockCursor(bool isLock){
+            if(isLock){
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }else{
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
         }
     }

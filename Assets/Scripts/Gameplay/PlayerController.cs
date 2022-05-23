@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,24 +14,38 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject playerMesh; // player mesh reference
     // ----------------------------------------------------------------------------------
     // ENABLER RELATED
-    [SerializeField] bool canMove, canRun, canJump, canInteractPhone;
+    [Header("----- ENABLER -----")]
+    [SerializeField] bool canMove;
+    [SerializeField] bool canRun, canJump, canMouselook, canInteractPhone;
     // ----------------------------------------------------------------------------------
     // MOVEMENT RELATED
-    float currentSpeed; // Realtime walk speed value (For debugging) Do Not Change this
+    [Header("----- MOVEMENT -----")]
     [SerializeField] float movementSpeed = 2f; // Actual speed for movement
+    float currentSpeed; // Realtime walk speed value (For debugging) Do Not Change this
     [SerializeField] float jumpSpeed = .5f; // Jump height
+    Vector3 movementDir;
     float gravity = -9.81f; // Ground check (For debugging) Do Not Change this
     // ----------------------------------------------------------------------------------
     // SPRINT/RUN RELATED
     [SerializeField] float runMultiplier = 1; // Multiplier for running
+    float tempRunMultiplier, runAnim = 0.3f; // Smooth multiplier for running (+animation)
+    bool isRunning, walkForward;
     // ----------------------------------------------------------------------------------
     // ANIMATION RELATED
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
     // ----------------------------------------------------------------------------------
+    // CAMERA RELATED
+    [Header("----- CAMERA -----")]
+    [SerializeField] CameraController camController;
+    // ----------------------------------------------------------------------------------
     // PHONE RELATED 
-    [SerializeField] Transform itemHolderRight, itemHolderLeft;
-    public GameObject phonePrefab; // <--- Will replaced by photon
-    bool isInteractPhone;
+    [Header("----- PHONE -----")]
+    [SerializeField] Transform itemHolderRight;
+    [SerializeField] Transform itemHolderLeft;
+    [SerializeField] GameObject phonePrefab; // <--- Will replaced by photon
+    GameObject instantiatedPhone; // <--- For references
+    bool isInteractPhone, phoneSwitchedPlaces;
+    public bool interactAnimEnd;
     // ----------------------------------------------------------------------------------
 
     void Awake()
@@ -45,12 +61,42 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleGravity();
-        
         if(canJump){
-            HandleJumping();
+            if(Input.GetButtonDown("Jump") && characterController.isGrounded){
+                HandleJumping();
+            }
         }
         if(canInteractPhone){
-            HandleInteractPhone();
+            if(Input.GetButtonDown("Interact Phone")){
+                HandleInteractPhone();
+            }
+        }
+        if(canMouselook){
+            if(!camController.enabled){
+                camController.enabled = true;
+            }
+        }else{
+            if(camController.enabled){
+                camController.enabled = false;
+            }
+        }
+
+        // CAN ONLY DO SPRINTING WHEN WALK FORWARD (Do it in Update function because of Input processing)
+        if(canRun && walkForward && inputHorizontal == 0 && !isInteractPhone){
+            if(Input.GetButton("Sprint")){
+                characterController.Move(movementDir * Time.fixedDeltaTime * tempRunMultiplier);
+                //anim.speed = runMultiplier + 0.3f; // additional 0.3f to match with walk anim (speedup)
+                anim.SetBool("Running", true);
+                isRunning = true;
+            }else if(Input.GetButtonUp("Sprint")){
+                //anim.speed = 1; // revert back to normal speed animation
+                anim.SetBool("Running", false);
+                isRunning = false;
+            }
+        }else if(canRun && walkForward && inputHorizontal != 0){
+            anim.SetBool("Running", false);
+            walkForward = false;
+            isRunning = false;
         }
     }
 
@@ -64,19 +110,20 @@ public class PlayerController : MonoBehaviour
         // Setup player custom skin / early game ability / etc.
 
         // Spawn Phone (Will replace with photon prefab)
-        var tPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
-        tPhone.transform.SetParent(itemHolderRight, false);
+        instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        instantiatedPhone.transform.SetParent(itemHolderRight, false);
     }
 
+/* -------------------------------------------- BASIC MOVEMENT HANDLER FUNCTIONS START -------------------------------------------------*/
     void HandleGravity(){
         if(characterController.isGrounded && velocity.y < 0){
             velocity.y = -2f;
         }
         
         // Handle Gravity
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-    }
+        velocity.y += gravity * Time.fixedDeltaTime;
+        characterController.Move(velocity * Time.fixedDeltaTime);
+    } // end HandleGravity
 
     void SmoothAnimation(){ // Smoothing animation movement value by inc/dec value by 0.09f per second instead snap
         // Smooth Vertical
@@ -128,66 +175,94 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        // Tweak Running animation
+        if(isRunning){
+            tempRunMultiplier += 0.08f;
+            if(tempRunMultiplier >= runMultiplier){
+                tempRunMultiplier = runMultiplier;
+            }
+
+            // Animation
+            runAnim += 0.07f;
+            if(runAnim >= 1f){
+                anim.speed = 1f;
+                runAnim = 1f;
+            }else{
+                anim.speed = runAnim;
+            }
+        }else if(tempRunMultiplier > 0 && !isRunning){
+                tempRunMultiplier = 0;
+                runAnim = 0.3f;
+        }
     } // end smooth animation
 
     void HandleMovement(){
         inputHorizontal = Input.GetAxis("Horizontal");
         inputVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = transform.right * inputHorizontal + transform.forward * inputVertical;
-        movement = Vector3.ClampMagnitude(movement, 1f);
+        movementDir = transform.right * inputHorizontal + transform.forward * inputVertical;
+        movementDir = Vector3.ClampMagnitude(movementDir, 1f);
 
         if(inputVertical < -0.5f){  // if walk backward
             currentSpeed = movementSpeed / 1.4f;
+            walkForward = false;
         }else if(inputVertical > 0.5f){    // if walk forward
-            currentSpeed = movementSpeed; 
-
-            // CAN ONLY DO SPRINTING WHEN WALK FORWARD
-            if(canRun){
-                if(Input.GetButton("Sprint")){
-                    characterController.Move(movement * Time.deltaTime * runMultiplier);
-                    anim.speed = runMultiplier + 0.3f; // additional 0.3f to match with walk anim (speedup)
-                }else if(Input.GetButtonUp("Sprint")){
-                    anim.speed = 1; // revert back to normal speed animation
-                }
+            currentSpeed = movementSpeed;
+            if(inputVertical > 0){ // Detailing. Only set true if above 0
+                walkForward = true;
             }
-
         }else if(inputHorizontal > 0.5f || inputHorizontal < -0.5f){   // if strafe
             currentSpeed = movementSpeed / 1.4f;
+            walkForward = false;
         }
 
-        characterController.Move(movement * currentSpeed * Time.deltaTime); // keeps gravity fall
+        characterController.Move(movementDir * currentSpeed * Time.fixedDeltaTime); // keeps gravity fall
 
         // ANIMATION RELATED
         SmoothAnimation();
         
         anim.SetFloat("Vertical", smoothVer);
         anim.SetFloat("Horizontal", smoothHor);
-    }
+    } // end HandleMovement
 
     void HandleJumping(){
-        if(Input.GetButtonDown("Jump") && characterController.isGrounded){
-            velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
-        }
-    }
+        velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
+    } // end HandleJumping
 
     void HandleInteractPhone()
     {
-        if(Input.GetButtonDown("Interact Phone")){
-            if(!isInteractPhone){ // if not interacting phone, can proceed interact
-                // Disable mouse look & enable cursor
-                isInteractPhone = true;
-                // Play animation
-                anim.SetBool("InteractPhone", isInteractPhone);
-                // Zoom In
-            }else{
-                // Disable mouse look & enable cursor
-                isInteractPhone = false;
-                // Play animation
-                anim.SetBool("InteractPhone", isInteractPhone);
-                // Zoom In
-            }
+        if(!isInteractPhone && !interactAnimEnd){
+            // Disable mouse look & enable cursor
+            camController.isEnable = false;
+            camController.LockCursor(false);
+            isInteractPhone = true;
+            // Play interact phone animation
+            anim.SetBool("InteractPhone", isInteractPhone);
+            // Zoom In
+        }else if(isInteractPhone && interactAnimEnd){
+            // Enable Mouselook
+            camController.isEnable = true;
+            camController.LockCursor(true);
+            isInteractPhone = false;
+            // Play closed interact phone animation
+            anim.SetBool("InteractPhone", isInteractPhone);
+            // Zoom out
+        }
+    } // end HandleInteractPhone
+
+/* -------------------------------------------- BASIC MOVEMENT HANDLER FUNCTIONS END -------------------------------------------------*/
+
+/* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
+    public void SwitchPhonePosition(){
+        if(!phoneSwitchedPlaces){
+            phoneSwitchedPlaces = true;
+            instantiatedPhone.transform.SetParent(itemHolderLeft, false);
+        }else{
+            phoneSwitchedPlaces = false;
+            instantiatedPhone.transform.SetParent(itemHolderRight, false);
         }
     }
+/* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
 
 } // end monobehaviour
