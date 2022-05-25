@@ -32,6 +32,7 @@ Material:
   - _ENABLE_FOG_ON_TRANSPARENT
   - _NORMALMAP
   - _NORMALMAP_TANGENT_SPACE
+  - _REFRACTION_PLANE
   - _SPECULARCOLORMAP
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
@@ -221,7 +222,7 @@ Material:
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
-    - _RefractionModel: 0
+    - _RefractionModel: 1
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
