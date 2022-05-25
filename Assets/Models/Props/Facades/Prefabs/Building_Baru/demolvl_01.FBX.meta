@@ -1,0 +1,678 @@
+fileFormatVersion: 2
+guid: 03a22462e7dd99f4cb81f6316556ed23
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_ceiling
+    second: {fileID: 2100000, guid: 1160106bd10612840a179e98bdbc4451, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_back
+    second: {fileID: 2100000, guid: 05f7f45dc4b717f44a4c7c5b80673ece, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_ceiling
+    second: {fileID: 2100000, guid: 2f922ffb628e7da4fbaef9db58df5dcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_floor
+    second: {fileID: 2100000, guid: 26aaed454ddab2c4e9df802ff2fe03d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_wall
+    second: {fileID: 2100000, guid: 0b2885c20d9b34a44be8ed6b5d105817, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe1
+    second: {fileID: 2100000, guid: 687b968502b585b45815cd3ac8e65f1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe2
+    second: {fileID: 2100000, guid: bff96292cdab3e947913fa2fbfb28106, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_floor_class
+    second: {fileID: 2100000, guid: e73089a1083e3814da44b239cd6cd61c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar
+    second: {fileID: 2100000, guid: d616d13393fa18647923c36ea53215bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar2
+    second: {fileID: 2100000, guid: efdd77c2e09ed15449d215a9f7344e78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_top
+    second: {fileID: 2100000, guid: 6abbb372166f80f4a925382360427d88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairEdges
+    second: {fileID: 2100000, guid: d7064fbf2caf82f469a14ef685c769ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairGrill
+    second: {fileID: 2100000, guid: 588bc011ba6efc84bb322126350dbc39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairLanding
+    second: {fileID: 2100000, guid: 605b6ac412dc23d48a13b6ebf9627e2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairRail
+    second: {fileID: 2100000, guid: 9e41ad6518ed64c4697ca7383f62f70e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairSteps
+    second: {fileID: 2100000, guid: a3076e4c49796c743ae4a424d066de4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairWall
+    second: {fileID: 2100000, guid: 97f80683da4883e48a7cfa41d585ed96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairbottom
+    second: {fileID: 2100000, guid: c197a100680a0704fa078ff5fb1b1ef7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairpillar
+    second: {fileID: 2100000, guid: a67f2bcec1ed9e846910c1c054caaaeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_stairpillar2
+    second: {fileID: 2100000, guid: d45a387e2b47a934d8325ff521c48781, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_blackboard
+    second: {fileID: 2100000, guid: 1e7fa3d03392b8b4c80939b9e36f4372, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_door
+    second: {fileID: 2100000, guid: ab5b20fb0bad07e43ae2d6e64a570d6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wallback
+    second: {fileID: 2100000, guid: 15d6ea84691e09b498d758b8d96229b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wallfront
+    second: {fileID: 2100000, guid: 1a90f3f0ab87f8c47af29e8aea70169e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wallrear1
+    second: {fileID: 2100000, guid: 9d34a3e299dc16a46be891a9f3ffd5c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_wallrear2
+    second: {fileID: 2100000, guid: 90bb49589c7fb6444b6aed08f5046072, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_window
+    second: {fileID: 2100000, guid: 9cce5629251ee8f45a72925e69870d3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe1
+    second: {fileID: 2100000, guid: 90053b0c7ac3f504db4f9d5135a8ae2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe2
+    second: {fileID: 2100000, guid: b4244c2fbac4bec4790249d81102a623, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_ceiling_D
+    second: {fileID: 2800000, guid: 81a875c7d3443824ebe3b3d61261d466, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_ceiling_N
+    second: {fileID: 2800000, guid: 750a9350363e4af418fe2c87b451b900, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_ceiling_S
+    second: {fileID: 2800000, guid: b2660360317e1184ea669bbb8dc30462, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_back_D
+    second: {fileID: 2800000, guid: 05c91cc50d286314b9e166f966f7faa3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_back_N
+    second: {fileID: 2800000, guid: d15dfbb11db599640be3241d1910406f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_back_S
+    second: {fileID: 2800000, guid: bca0c173afe925c41a362759da6860e2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_ceiling_D
+    second: {fileID: 2800000, guid: 743ee4d55565b324ea8f29fc4d755b2a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_ceiling_N
+    second: {fileID: 2800000, guid: 6563f71461d4b464e841302cf8f798f4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_ceiling_S
+    second: {fileID: 2800000, guid: b679bf646cbea7843811a90010f58b9d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_floor_D
+    second: {fileID: 2800000, guid: d5bc1a101570e5d40a1cd373af98e131, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_floor_N
+    second: {fileID: 2800000, guid: 6199d0c820a07394dbe02a2c30ff0af3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_floor_S
+    second: {fileID: 2800000, guid: a442a69a23e4d9549a5e981ed6207921, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_wall_D
+    second: {fileID: 2800000, guid: 817dc0103e68afa4d9462766b7727816, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_wall_N
+    second: {fileID: 2800000, guid: 1de86904c6b0f2b44bc5d52c39bd1334, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_wall_S
+    second: {fileID: 2800000, guid: aca42b8cb535e2644a25617fc7b6caf4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe1_D
+    second: {fileID: 2800000, guid: 356de00968bd55646b1a67a1cc831f41, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe1_N
+    second: {fileID: 2800000, guid: 477b063d57aef794cb9c087c928fe11a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe1_S
+    second: {fileID: 2800000, guid: 4f988893f4072e24a8aac2251dac61b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe2_D
+    second: {fileID: 2800000, guid: 0729c9f5d109fb0468359cc7defea546, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe2_N
+    second: {fileID: 2800000, guid: f532801a1db0f204eb90a964804cf625, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_doorframe2_S
+    second: {fileID: 2800000, guid: fec749ba5cd3dc140a4763c6b82d1780, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_floor_class_D
+    second: {fileID: 2800000, guid: 79e2cc269e0d39f42a3d1bb70d377acd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_floor_class_N
+    second: {fileID: 2800000, guid: 12bbd3fb6fd6f6b41809f7e408a07142, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_floor_class_S
+    second: {fileID: 2800000, guid: 1bb5007afe6b6fd429785ca52784b5ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar2_D
+    second: {fileID: 2800000, guid: 424190a3bbdb6334c83af8d4d9844e28, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar2_N
+    second: {fileID: 2800000, guid: f9e7228ab80b6534d8c5241f088b0069, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar2_S
+    second: {fileID: 2800000, guid: 8b8a328fb22c5974ca6134da2512203c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair2_D
+    second: {fileID: 2800000, guid: 50b77bc7dcbea4f4b963d837d7a1cbcf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair2_N
+    second: {fileID: 2800000, guid: 83c148288860974408347e0b930dc457, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair2_S
+    second: {fileID: 2800000, guid: 829d198fe6a95074ead607c94cfc25bb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair_D
+    second: {fileID: 2800000, guid: 89fc52adead059347b77a98c6ad316a2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair_N
+    second: {fileID: 2800000, guid: 2ab21b33dcfee0949bf7dc106dd79765, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillarStair_S
+    second: {fileID: 2800000, guid: f3e4249d9cb2c77448127ef7022507cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_D
+    second: {fileID: 2800000, guid: d6d326fc660daf246850e0eec5bfea47, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_N
+    second: {fileID: 2800000, guid: 742b953dd62905e4ba2b144458180984, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_S
+    second: {fileID: 2800000, guid: 5a361191c75507e42811dd27289289d5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_top_D
+    second: {fileID: 2800000, guid: f24503cf7e08ed54aad5018e690c9037, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_top_N
+    second: {fileID: 2800000, guid: 1bf4a7f8c7c41ad4d874db3610a43648, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_pillar_top_S
+    second: {fileID: 2800000, guid: 0d785abc36963a747b7f41341ef29792, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairBottom_D
+    second: {fileID: 2800000, guid: 1e8d2eee62686f645bdf96e12ebe5c0d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairBottom_N
+    second: {fileID: 2800000, guid: 7afc47035e653334a8be1f120f6fcc38, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairBottom_S
+    second: {fileID: 2800000, guid: 9c1d318070d65c54fb0275e3b72f8a07, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairEdges_D
+    second: {fileID: 2800000, guid: 52b9d4809229f9543b52368e5676ee0d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairEdges_N
+    second: {fileID: 2800000, guid: 983e5a76e66a45949885953260b63509, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairEdges_S
+    second: {fileID: 2800000, guid: f96c500ddb747c14eacacf7800e2307f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairGrill_D
+    second: {fileID: 2800000, guid: 04eaf8f04da45dc479244ffd303d5e06, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairGrill_N
+    second: {fileID: 2800000, guid: 41e44b67af93ee241b0e8411d4f16389, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairGrill_S
+    second: {fileID: 2800000, guid: bb10d8d2b1c54cd44950e4f8e34958ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairLanding_D
+    second: {fileID: 2800000, guid: 742821ee0cf993145b09ec4c969b2fa9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairLanding_N
+    second: {fileID: 2800000, guid: fdf7f8b68a3a1a540a0ea86843e78a97, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairLanding_S
+    second: {fileID: 2800000, guid: 24f0a0c9be587004e84e359fb4fc4036, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairRail_D
+    second: {fileID: 2800000, guid: ad24dceb2ae24634081a3ee815886fb3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairRail_N
+    second: {fileID: 2800000, guid: 770bebb3b83f8a64ab3526c0186a39be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairRail_S
+    second: {fileID: 2800000, guid: eedb035a34b18fa47b9099ce9f2a5b2c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairSteps_D
+    second: {fileID: 2800000, guid: a557b98ece56de448a1a7a0c24a62f0e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairSteps_N
+    second: {fileID: 2800000, guid: 82a54fbfd3abd324f85a7339ed7b1780, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairSteps_S
+    second: {fileID: 2800000, guid: 2afba7cd5434f944d827714f72617c5a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairWall_D
+    second: {fileID: 2800000, guid: 2b5fde0d0e8ba6a4eafa6a6f84e914ea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairWall_N
+    second: {fileID: 2800000, guid: ef971706663af5f42ad9b5d7580d479a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_stairWall_S
+    second: {fileID: 2800000, guid: 75ac2cc4f2ed4f84d99d64aa312289e8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_back_D
+    second: {fileID: 2800000, guid: ad43d64a83c84cb42a83a567c0888bf6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_back_N
+    second: {fileID: 2800000, guid: d989cceecb4e3074f817277b1fc705ef, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_back_S
+    second: {fileID: 2800000, guid: 0fd253624e430aa40a06b079d5a46050, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_blackboard_D
+    second: {fileID: 2800000, guid: 116f9110ab4587c4b84d0d8d83b6e7c2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_blackboard_N
+    second: {fileID: 2800000, guid: fa6abe995223fda45a0b4acf14687025, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_blackboard_S
+    second: {fileID: 2800000, guid: 2c70bf54e748e294fa9ffd73819ff57f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_door_D
+    second: {fileID: 2800000, guid: 2a9e8d05e5b71db4193ae0cd724a3e8a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_door_N
+    second: {fileID: 2800000, guid: 0489aeb2bbacf464aa91cab9379f86e2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_door_S
+    second: {fileID: 2800000, guid: f660ea72d35d7414cb8744e281e69e04, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_front_D
+    second: {fileID: 2800000, guid: b0c0028f704e6764ca08e5d021e13cbe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_front_N
+    second: {fileID: 2800000, guid: 33329a2b1fd5f2f47931cf2967c33a82, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_front_S
+    second: {fileID: 2800000, guid: a96a4e4bb783e244b89e273b555f84b9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear1_D
+    second: {fileID: 2800000, guid: 191d056d5963a6a48b5fb0678718e0e4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear1_N
+    second: {fileID: 2800000, guid: 6f07cf95307b444428485651ff1ec13c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear1_S
+    second: {fileID: 2800000, guid: 6796f4703d2662045811acee700dd7e3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear2_D
+    second: {fileID: 2800000, guid: 10ac60e816ecbaa4892098f378e5675e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear2_N
+    second: {fileID: 2800000, guid: c079f2698e724e345b4a97b2b975ba2e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_wall_rear2_S
+    second: {fileID: 2800000, guid: 5d64c0873fbb1914c8efbbd66cfe9dd0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_window_D
+    second: {fileID: 2800000, guid: f76c27be48c943c4b9b94ad63c5dc45b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_window_N
+    second: {fileID: 2800000, guid: 793ceaa0b08f0124da5dc47581ac1653, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_window_S
+    second: {fileID: 2800000, guid: 86b14efac9185314997f330073b9733b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe2_D
+    second: {fileID: 2800000, guid: f6ce0a6f5b40a864fb5032d3781e9311, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe2_N
+    second: {fileID: 2800000, guid: fddc65f6dc773004c90efe4c2a493bc5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe_D
+    second: {fileID: 2800000, guid: 21c1afd25aa286a40ad23733080f694e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 333_windowframe_N
+    second: {fileID: 2800000, guid: f3d19d5dc4759bb42864794875346b24, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
