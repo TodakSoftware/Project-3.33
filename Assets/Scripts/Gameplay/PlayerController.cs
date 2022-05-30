@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPunCallbacks
 {
     // STATIC VARIABLE
     Vector3 velocity; 
@@ -46,6 +48,11 @@ public class PlayerController : MonoBehaviour
     GameObject instantiatedPhone; // <--- For references
     bool isInteractPhone, phoneSwitchedPlaces;
     public bool interactAnimEnd;
+    // ----------------------------------------------------------------------------------
+    // PHOTON RELATED 
+    [Header("----- PHOTON -----")]
+    int playerID; 
+    Player photonPlayer;
     // ----------------------------------------------------------------------------------
 
     void Awake()
@@ -265,4 +272,15 @@ public class PlayerController : MonoBehaviour
     }
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
 
+/* --------------------------------------------  PHOTON RELATED FUNCTIONS START -------------------------------------------------*/
+    [PunRPC]
+    public void InitializePhotonPlayer(Player player){ // Called by GamaManager (SpawnPlayers())
+        photonPlayer = player;
+        playerID = player.ActorNumber;
+
+        // Register self into playerControllerArray in GameManager
+        GameManager.instance.playerControllerArray[playerID - 1] = this;
+
+    }
+/* --------------------------------------------  PHOTON RELATED FUNCTIONS END -------------------------------------------------*/
 } // end monobehaviour
