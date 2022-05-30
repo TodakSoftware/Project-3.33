@@ -33,6 +33,9 @@ public class MenuManager : MonoBehaviour
 
         // Set Version
         versionText.text = "v"+Application.version;
+
+        // Set fps Limit = 60fps
+        Application.targetFrameRate = 60;
     }
 
     public IEnumerator CloseLoadingScreen(float duration){ // Close loading screen after certain seconds

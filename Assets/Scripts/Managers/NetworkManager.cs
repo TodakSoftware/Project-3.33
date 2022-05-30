@@ -192,10 +192,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         StopCoroutine(MenuManager.instance.coroutinefindRoomTimeout);
     } // end OnLeftRoom
 
-    public override void OnDisconnected(DisconnectCause cause)
-    {
+    public override void OnDisconnected(DisconnectCause cause){
         print("Error : " + cause);
-        //DisconnectCause.DisconnectByClientLogic // <--- Close application DC
+        //DisconnectCause.DisconnectByClientLogic // <--- Player close the game suddenly
         // if disconnect suddenly -> Popup Reconnect UI Prefab
         // if internet not reachable -> loading screen will popup & reconnect
     }
@@ -204,6 +203,48 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
 
     // ----------------------- FIND GAME RELATED START -------------------
+    void UpdateTotalFindGame(){ // Update room properties when player enters | Start the game here
+        if(PhotonNetwork.InRoom){
+            int totalHuman = 0;
+            int totalGhost = 0;
+            foreach(var player in PhotonNetwork.CurrentRoom.Players){
+                if(player.Value.CustomProperties["Team"].ToString() == "Human"){
+                    totalHuman += 1;
+                }else{
+                    totalGhost += 1;
+                }
+            }
+
+            // Update room properties when someone joined a room
+            if(PhotonNetwork.IsMasterClient){
+                Hashtable roomProperties = new Hashtable();
+                roomProperties.Add("networkTotalHuman", totalHuman);
+                roomProperties.Add("networkTotalGhost", totalGhost);
+                PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
+            }
+
+            // If a room match all requirement, Host responsible to change the scene
+            if(totalHuman == maxHumanPerGame && totalGhost == maxGhostPerGame && isFindingGame){ // Only do this when we are finding game
+                if(PhotonNetwork.IsMasterClient){
+                    PhotonNetwork.CurrentRoom.IsVisible = false; // Set Room IsVisible = false
+                    ChangeSceneAsync("TestMapGaban"); // Host load level async
+                }else{
+                    // Popup Loading UI on non Host
+                    var canvas = GameObject.FindGameObjectWithTag("MainCanvas");
+                    var loading = Instantiate(SOManager.instance.prefabs.modalLoadingScene);
+                    loading.transform.SetParent(canvas.transform, false);
+                }
+
+                isFindingGame = false; // Set status to isFindingGame
+            }
+
+            if(isFindingGame){ // Only do this when we are finding game
+                MenuManager.instance.UpdateUI_FindgameTotal(totalHuman, totalGhost);
+            }
+        } // end PhotonNetwork.InRoom
+
+    } // end UpdateTotalFindGame
+    
     public void JoinTeam(string team){ // Used by buttons in ChooseRole Screen
         Hashtable playerProperties = new Hashtable();
         Hashtable expectedRoomProperties = new Hashtable();
@@ -247,48 +288,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
     } // end JoinTeam
-
-    void UpdateTotalFindGame(){ // Update room properties when player enters | Start the game here
-        if(PhotonNetwork.InRoom){
-            int totalHuman = 0;
-            int totalGhost = 0;
-            foreach(var player in PhotonNetwork.CurrentRoom.Players){
-                if(player.Value.CustomProperties["Team"].ToString() == "Human"){
-                    totalHuman += 1;
-                }else{
-                    totalGhost += 1;
-                }
-            }
-
-            // Update room properties when someone joined a room
-            if(PhotonNetwork.IsMasterClient){
-                Hashtable roomProperties = new Hashtable();
-                roomProperties.Add("networkTotalHuman", totalHuman);
-                roomProperties.Add("networkTotalGhost", totalGhost);
-                PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
-            }
-
-            // If a room match all requirement, Host responsible to change the scene
-            if(totalHuman == maxHumanPerGame && totalGhost == maxGhostPerGame && isFindingGame){ // Only do this when we are finding game
-                if(PhotonNetwork.IsMasterClient){
-                    PhotonNetwork.CurrentRoom.IsVisible = false; // Set Room IsVisible = false
-                    ChangeSceneAsync("TestMapGaban"); // Host load level async
-                }else{
-                    // Popup Loading UI on non Host
-                    var canvas = GameObject.FindGameObjectWithTag("MainCanvas");
-                    var loading = Instantiate(SOManager.instance.prefabs.modalLoadingScene);
-                    loading.transform.SetParent(canvas.transform, false);
-                }
-
-                isFindingGame = false; // Set status to isFindingGame
-            }
-
-            if(isFindingGame){ // Only do this when we are finding game
-                MenuManager.instance.UpdateUI_FindgameTotal(totalHuman, totalGhost);
-            }
-        } // end PhotonNetwork.InRoom
-
-    } // end UpdateTotalFindGame
 
     public void CancelFindGameOrLeaveRoom(){ // Cancel while finding game or Leave Room. Used by cancel button in Modal_Findgame
         // Makesure we are in a room
