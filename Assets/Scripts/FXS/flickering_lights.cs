@@ -42,7 +42,7 @@ public class flickering_lights : MonoBehaviour
             lampSini.enabled=!lampSini.enabled;
             bulbSini.SetActive(!bulbSini.activeSelf);
             Timer=Random.Range(minTime,maxTime);
-            soundSini.PlayOneShot(audioSini);
+            //soundSini.PlayOneShot(audioSini);
             
             
         }
