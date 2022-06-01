@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MeshEvent : MonoBehaviour
+public class MeshEvent : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject meshOwner;
 
@@ -13,14 +14,14 @@ public class MeshEvent : MonoBehaviour
     }
     public void SwapPhonePosition(){ // ANIMATION HUMAN INTERACT PHONE (FRAME 42)
         // tell player to swipe phone position
-        meshOwner.GetComponent<PlayerController>().SwitchPhonePosition();
+        meshOwner.GetComponent<Human>().SwitchPhonePosition();
     }
 
     public void NotifyInteractEnd(){ // ANIMATION HUMAN INTERACT PHONE (FRAME END)
-        meshOwner.GetComponent<PlayerController>().interactAnimEnd = true;
+        meshOwner.GetComponent<Human>().interactAnimEnd = true;
     }
 
     public void NotifyInteractReset(){ // ANIMATION HUMAN INTERACT PHONE (FRAME START)
-        meshOwner.GetComponent<PlayerController>().interactAnimEnd = false;
+        meshOwner.GetComponent<Human>().interactAnimEnd = false;
     }
 }
