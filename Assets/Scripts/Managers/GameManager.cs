@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(isHuman){
             player = PhotonNetwork.Instantiate(NetworkManager.instance.GetCharactersName("Player_Male01"), spawnpoints_Human[0].position, Quaternion.identity);
         }else{
-            player = PhotonNetwork.Instantiate(NetworkManager.instance.GetCharactersName("Player_Male02"), spawnpoints_Ghost[0].position, Quaternion.identity);
+            player = PhotonNetwork.Instantiate(NetworkManager.instance.GetCharactersName("Player_Male01"), spawnpoints_Ghost[0].position, Quaternion.identity);
         }
 
         PlayerController playerController = player.GetComponent<PlayerController>();

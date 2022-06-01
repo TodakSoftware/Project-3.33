@@ -1,3 +1,4 @@
+// Handle player(Human/Ghost) movement
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,16 +13,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // STATIC VARIABLE
     Vector3 velocity; 
     CharacterController characterController;
-    Animator anim;
+    [HideInInspector] public Animator anim;
     [SerializeField] GameObject playerMesh; // player mesh reference
+    public E_Team team;
     // ----------------------------------------------------------------------------------
     // ENABLER RELATED
-    [Header("----- ENABLER -----")]
-    [SerializeField] bool canMove;
-    [SerializeField] bool canRun, canJump, canMouselook, canInteractPhone;
+    [Header("ENABLER")]
+    public bool canMove;
+    public bool canRun, canJump, canMouselook;
     // ----------------------------------------------------------------------------------
     // MOVEMENT RELATED
-    [Header("----- MOVEMENT -----")]
+    [Header("MOVEMENT")]
     [SerializeField] float movementSpeed = 2f; // Actual speed for movement
     float currentSpeed; // Realtime walk speed value (For debugging) Do Not Change this
     [SerializeField] float jumpSpeed = .5f; // Jump height
@@ -37,20 +39,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
     // ----------------------------------------------------------------------------------
     // CAMERA RELATED
-    [Header("----- CAMERA -----")]
-    [SerializeField] CameraController camController;
+    [HideInInspector] public CameraController camController;
     // ----------------------------------------------------------------------------------
-    // PHONE RELATED 
-    [Header("----- PHONE -----")]
-    [SerializeField] Transform itemHolderRight;
-    [SerializeField] Transform itemHolderLeft;
-    [SerializeField] GameObject phonePrefab; // <--- Will replaced by photon
-    GameObject instantiatedPhone; // <--- For references
-    bool isInteractPhone, phoneSwitchedPlaces;
-    public bool interactAnimEnd;
-    // ----------------------------------------------------------------------------------
-    // PHOTON RELATED 
-    [Header("----- PHOTON -----")]
+    // PHOTON RELATED
     int playerID; 
     Player photonPlayer;
     // ----------------------------------------------------------------------------------
@@ -59,25 +50,26 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         characterController = GetComponent<CharacterController>();
         anim = playerMesh.GetComponent<Animator>();
-    }
-
-    void Start(){
-        SetupPlayer();
-    }
+    } // end Awake
 
     void Update()
     {
         HandleGravity();
+
+        if(!photonView.IsMine){ // If this script is not ours to control, end it
+            return;
+        }
+
+        if(photonView.Owner != photonView.Controller){ // if player disconnect, prevent host from controlling
+            return;
+        }
+
         if(canJump){
             if(Input.GetButtonDown("Jump") && characterController.isGrounded){
                 HandleJumping();
             }
-        }
-        if(canInteractPhone){
-            if(Input.GetButtonDown("Interact Phone")){
-                HandleInteractPhone();
-            }
-        }
+        } // end canJump
+        
         if(canMouselook){
             if(!camController.enabled){
                 camController.enabled = true;
@@ -86,10 +78,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if(camController.enabled){
                 camController.enabled = false;
             }
-        }
+        } // end canMouseLook
 
         // CAN ONLY DO SPRINTING WHEN WALK FORWARD (Do it in Update function because of Input processing)
-        if(canRun && walkForward && inputHorizontal == 0 && !isInteractPhone){
+        if(canRun && walkForward && inputHorizontal == 0){ //  && !isInteractPhone
             if(Input.GetButton("Sprint")){
                 characterController.Move(movementDir * Time.fixedDeltaTime * tempRunMultiplier);
                 //anim.speed = runMultiplier + 0.3f; // additional 0.3f to match with walk anim (speedup)
@@ -104,22 +96,24 @@ public class PlayerController : MonoBehaviourPunCallbacks
             anim.SetBool("Running", false);
             walkForward = false;
             isRunning = false;
-        }
-    }
+        } // end canRun && walkForward && inputHorizontal == 0 
+
+        
+    } // end Update
 
     void FixedUpdate() {
+        if(!photonView.IsMine){ // If this script is not ours to control, end it
+            return;
+        }
+
+        if(photonView.Owner != photonView.Controller){ // if player disconnect, prevent host from controlling
+            return;
+        }
+
         if(canMove){
             HandleMovement();
         }
-    }
-
-    void SetupPlayer(){
-        // Setup player custom skin / early game ability / etc.
-
-        // Spawn Phone (Will replace with photon prefab)
-        instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
-        instantiatedPhone.transform.SetParent(itemHolderRight, false);
-    }
+    } // end FixedUpdate
 
 /* -------------------------------------------- BASIC MOVEMENT HANDLER FUNCTIONS START -------------------------------------------------*/
     void HandleGravity(){
@@ -237,40 +231,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
     } // end HandleJumping
 
-    void HandleInteractPhone()
-    {
-        if(!isInteractPhone && !interactAnimEnd){
-            // Disable mouse look & enable cursor
-            camController.isEnable = false;
-            camController.LockCursor(false);
-            isInteractPhone = true;
-            // Play interact phone animation
-            anim.SetBool("InteractPhone", isInteractPhone);
-            // Zoom In
-        }else if(isInteractPhone && interactAnimEnd){
-            // Enable Mouselook
-            camController.isEnable = true;
-            camController.LockCursor(true);
-            isInteractPhone = false;
-            // Play closed interact phone animation
-            anim.SetBool("InteractPhone", isInteractPhone);
-            // Zoom out
-        }
-    } // end HandleInteractPhone
-
 /* -------------------------------------------- BASIC MOVEMENT HANDLER FUNCTIONS END -------------------------------------------------*/
 
-/* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
-    public void SwitchPhonePosition(){
-        if(!phoneSwitchedPlaces){
-            phoneSwitchedPlaces = true;
-            instantiatedPhone.transform.SetParent(itemHolderLeft, false);
-        }else{
-            phoneSwitchedPlaces = false;
-            instantiatedPhone.transform.SetParent(itemHolderRight, false);
-        }
-    }
-/* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
 
 /* --------------------------------------------  PHOTON RELATED FUNCTIONS START -------------------------------------------------*/
     [PunRPC]
@@ -280,7 +242,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         // Register self into playerControllerArray in GameManager
         GameManager.instance.playerControllerArray[playerID - 1] = this;
-
     }
 /* --------------------------------------------  PHOTON RELATED FUNCTIONS END -------------------------------------------------*/
 } // end monobehaviour

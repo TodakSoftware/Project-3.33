@@ -1,14 +1,13 @@
-﻿//SlapChickenGames
-//2021
-//Camera spine controller
+﻿//Camera spine controller
 
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 namespace scgFullBodyController
 {
-    public class CameraControlledIK : MonoBehaviour
+    public class CameraControlledIK : MonoBehaviourPunCallbacks
     {
         public Transform spineToOrientate;
 

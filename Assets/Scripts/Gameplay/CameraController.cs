@@ -1,12 +1,11 @@
-﻿//SlapChickenGames
-//2021
-//Camera controller for x and y movement
+﻿//Camera controller for x and y movement
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-    public class CameraController : MonoBehaviour
+    public class CameraController : MonoBehaviourPunCallbacks
     {
         public bool isEnable;
         public float Sensitivity = 10f;
@@ -19,7 +18,7 @@ using UnityEngine;
         [HideInInspector] public float yaw = 0f;
         [HideInInspector] public float relativeYaw = 0f;
 
-        void OnEnable()
+        new void OnEnable()
         {
             LockCursor(true);
         }
