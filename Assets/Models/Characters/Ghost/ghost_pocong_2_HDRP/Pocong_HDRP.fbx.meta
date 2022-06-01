@@ -6,12 +6,27 @@ ModelImporter:
   - first:
       74: 1738081963689743715
     second: pocong|rigAction
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_pocong_01
+    second: {fileID: 2100000, guid: 20050d1814cc0d048b381f561a626be8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_pocong_02
+    second: {fileID: 2100000, guid: 13c14b209e644b848a61b8e050079ed3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_pocong_03
+    second: {fileID: 2100000, guid: 8a3b584b64eea424d9c296a34fcae3c6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
