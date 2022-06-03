@@ -228,7 +228,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             if(totalHuman == maxHumanPerGame && totalGhost == maxGhostPerGame && isFindingGame){ // Only do this when we are finding game
                 if(PhotonNetwork.IsMasterClient){
                     PhotonNetwork.CurrentRoom.IsVisible = false; // Set Room IsVisible = false
-                    ChangeSceneAsync("TestMapGaban"); // Host load level async
+                    ChangeSceneAsync("Demo"); // Host load level async
                 }else{
                     // Popup Loading UI on non Host
                     var canvas = GameObject.FindGameObjectWithTag("MainCanvas");
