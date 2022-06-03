@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 333_windowF_4 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 225b779ffb6eb2a4f845cd04784d02ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225b779ffb6eb2a4f845cd04784d02ec, type: 3}
 --- !u!1 &2945224223576839977 stripped
@@ -62,22 +66,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 225b779ffb6eb2a4f845cd04784d02ec, type: 3}
   m_PrefabInstance: {fileID: 2602763935104985720}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2974427013505971686
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945224223576839977}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!65 &2875253933554812824
 BoxCollider:
   m_ObjectHideFlags: 0
