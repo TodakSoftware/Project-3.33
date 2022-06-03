@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager instance;
+    DefaultPool pool;
 
     [Header("Connection Related")]
     [SerializeField] bool autoConnect = true; // Connect automatically? If false you can set this to true later on or call ConnectUsingSettings in your own scripts.
@@ -21,7 +22,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     [Header("Find Game Related")]
     float findGameTimeoutDuration; // <- 213 = 3:33 [Controlled by SO_GameSettings]
-    int maxHumanPerGame, maxGhostPerGame; // [Controlled by SO_GameSettings]
+    [HideInInspector] public int maxHumanPerGame, maxGhostPerGame; // [Controlled by SO_GameSettings]
     byte maxPlayersPerRoom; // max player in a room (Addition of maxHumanPerGame & maxGhostPerGame)
     bool isFindingGame; // Active when we are searching for games.
 
@@ -39,6 +40,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     void Start(){
+        pool = PhotonNetwork.PrefabPool as DefaultPool;
         InitPrefabPooling(); // Start object pooling for photon gameobjects
 
         // Linking data via Game Settings Scriptable Objects
@@ -64,70 +66,57 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     // ----------------------- PREFABS POOLING RELATED START -------------------
     void InitPrefabPooling(){
-        // ------------------------- ADDED PREFABS TO POOL START ----------------------------------------
-        DefaultPool pool = PhotonNetwork.PrefabPool as DefaultPool;
-        
-        // Add Characters Prefabs Lists
-        if (pool != null && SOManager.instance.prefabs.characterPrefabs != null)
-        {
-            foreach (photonPrefabAttributes prefabAtt in SOManager.instance.prefabs.characterPrefabs)
-            {
-                if(!pool.ResourceCache.ContainsKey(prefabAtt.name))
-                pool.ResourceCache.Add(prefabAtt.name, prefabAtt.prefabs);
-            }
-        }
-
-        // Add Props Prefabs Lists
-        if (pool != null && SOManager.instance.prefabs.propsPrefabs != null)
-        {
-            foreach (photonPrefabAttributes prefabAtt in SOManager.instance.prefabs.propsPrefabs)
-            {
-                if(!pool.ResourceCache.ContainsKey(prefabAtt.name))
-                pool.ResourceCache.Add(prefabAtt.name, prefabAtt.prefabs);
-            }
-        }
-
-        // Add Particle Prefabs Lists
-        if (pool != null && SOManager.instance.prefabs.particlePrefabs != null)
-        {
-            foreach (photonPrefabAttributes prefabAtt in SOManager.instance.prefabs.particlePrefabs)
-            {
-                if(!pool.ResourceCache.ContainsKey(prefabAtt.name))
-                pool.ResourceCache.Add(prefabAtt.name, prefabAtt.prefabs);
-            }
-        }
-        // ------------------------- ADDED PREFABS TO POOL END ----------------------------------------
+        AddPrefabPool(SOManager.instance.prefabs.characterPrefabs); // Add Characters Prefabs Lists
+        AddPrefabPool(SOManager.instance.prefabs.propsPrefabs); // Add Characters Prefabs Lists
+        AddPrefabPool(SOManager.instance.prefabs.particlePrefabs); // Add Particle Prefabs Lists
     } // end InitPrefabPooling
 
-    public string GetCharactersName(string nama){
-        string pref = "";
-        foreach(photonPrefabAttributes go in SOManager.instance.prefabs.characterPrefabs){
-            if(go.name == nama){
-                return go.name;
+    public void AddPrefabPool(List<photonPrefabAttributes> prefabAttributes)
+    {
+        if (pool != null && prefabAttributes != null)
+        {
+            foreach (photonPrefabAttributes prefabAtt in prefabAttributes)
+            {
+                if (!pool.ResourceCache.ContainsKey(prefabAtt.name))
+                    pool.ResourceCache.Add(prefabAtt.name, prefabAtt.prefabs);
             }
         }
-        return pref;
-    } // end GetCharactersName
+    } // end AddPrefabPool
 
-    public string GetPropsName(string nama){
+    public static string GetPhotonPrefab(string category, string prefabName){
         string pref = "";
-        foreach(photonPrefabAttributes go in SOManager.instance.prefabs.propsPrefabs){
-            if(go.name == nama){
-                pref = go.name;
-            }
-        }
-        return pref;
-    } // end GetPropsName
+        List<photonPrefabAttributes> photonPrefabsList = new List<photonPrefabAttributes>();
+        photonPrefabsList.Clear(); // clear if not empty
 
-    public string GetParticlesName(string nama){
-        string pref = "";
-        foreach(photonPrefabAttributes go in SOManager.instance.prefabs.particlePrefabs){
-            if(go.name == nama){
-                pref = go.name;
+        switch(category){
+            case "Characters":
+                photonPrefabsList = SOManager.instance.prefabs.characterPrefabs;
+            break;
+
+            case "Props":
+                photonPrefabsList = SOManager.instance.prefabs.propsPrefabs;
+            break;
+
+            case "Particles":
+                photonPrefabsList = SOManager.instance.prefabs.particlePrefabs;
+            break;
+
+            default:
+                photonPrefabsList = null;
+            break;
+        }
+
+        // Search for matching prefabs in the lists
+        foreach(photonPrefabAttributes go in photonPrefabsList){
+            if(go.name == prefabName){
+                return go.name; // return this value if found
             }
         }
-        return pref;
-    } // end GetParticlesName
+
+        return pref; // return default pref if not found
+        
+    } // end GetPhotonPrefab
+
     // ----------------------- PREFABS POOLING RELATED END -------------------
 
 
@@ -166,12 +155,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom(){ // Create default room properties on 1st created room
         if(PhotonNetwork.IsMasterClient){
             Hashtable roomProperties = new Hashtable();
-            roomProperties.Add("networkTotalHuman", 0);
-            roomProperties.Add("networkTotalGhost", 0);
+            roomProperties.Add("roomFullHuman", false);
+            roomProperties.Add("roomFullGhost", false);
             roomProperties.Add("CurrentItemContributed", 0);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
 
-            string[] exposedPropertiesInLobby = { "networkTotalHuman", "networkTotalGhost" }; // can set map here aswell
+            string[] exposedPropertiesInLobby = { "roomFullHuman", "roomFullGhost" }; // can set map here aswell
             PhotonNetwork.CurrentRoom.SetPropertiesListedInLobby(exposedPropertiesInLobby);
         }
         print("Create room : " + PhotonNetwork.CurrentRoom.Name);
@@ -218,8 +207,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             // Update room properties when someone joined a room
             if(PhotonNetwork.IsMasterClient){
                 Hashtable roomProperties = new Hashtable();
-                roomProperties.Add("networkTotalHuman", totalHuman);
-                roomProperties.Add("networkTotalGhost", totalGhost);
+                // Human
+                if(totalHuman >= maxHumanPerGame){
+                    roomProperties.Add("roomFullHuman", true);
+                }else{
+                    roomProperties.Add("roomFullHuman", false);
+                }
+
+                // Ghost
+                if(totalGhost >= maxGhostPerGame){
+                    roomProperties.Add("roomFullGhost", true);
+                }else{
+                    roomProperties.Add("roomFullGhost", false);
+                }
+
                 PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
             }
 
@@ -259,8 +260,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                     playerProperties.Add("Team", "Human");
                     PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
 
-                    // ExpectedCustomRoom properties. Example, Human search room with totalGhost = 1
-                    expectedRoomProperties["networkTotalGhost"] = maxGhostPerGame;
+                    // ExpectedCustomRoom properties. Example, Human search room that where human is not full
+                    expectedRoomProperties["roomFullHuman"] = false;
                 break;
 
                 case "Ghost":
@@ -270,8 +271,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                     playerProperties.Add("Team", "Ghost");
                     PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
 
-                    // ExpectedCustomRoom properties. Example, Ghost search room with totalHuman = 3
-                    expectedRoomProperties["networkTotalHuman"] = maxHumanPerGame;
+                    // ExpectedCustomRoom properties. Example, Ghost search room that where ghost is not full
+                    expectedRoomProperties["roomFullGhost"] = false;
                 break;
 
                 default:
