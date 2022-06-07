@@ -9,10 +9,11 @@ public class Fan_Rotate : MonoBehaviour
     //public GameObject playerHere;
     //public float speedHere;
     public Animation fanHere;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
