@@ -3108,6 +3108,7 @@ GameObject:
   - component: {fileID: 6477736984881128220}
   - component: {fileID: 1317572564}
   - component: {fileID: 7222290607758356838}
+  - component: {fileID: 1317572565}
   m_Layer: 0
   m_Name: Free Camera
   m_TagString: MainCamera
@@ -3323,6 +3324,19 @@ MonoBehaviour:
   weight: 1
   sharedProfile: {fileID: 11400000, guid: e60fe30e9d6055e4dbe7a40bbbd0ff56, type: 2}
 --- !u!65 &7222290607758356838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477736984881128221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &1317572565
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
