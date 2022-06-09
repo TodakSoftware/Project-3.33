@@ -19,6 +19,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [Header("Connection Related")]
     [SerializeField] bool autoConnect = true; // Connect automatically? If false you can set this to true later on or call ConnectUsingSettings in your own scripts.
     bool connectInUpdate = true; // if we don't want to connect in Start(), we have to "remember" if we called ConnectUsingSettings()
+    public bool isDisconnectedWhileGame; // status for checking if player disconnected while in game. Can be used for reconnecting & rejoin game. (Destroy Reconnect UI when successfully reconnect)
 
     [Header("Find Game Related")]
     float findGameTimeoutDuration; // <- 213 = 3:33 [Controlled by SO_GameSettings]
@@ -29,6 +30,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [Header("Ingame Related")]
     [Tooltip("0 : Hunt (Normal Mode)")]
     public int gameModeIndex = 0; // default = 0
+    public string gameMapName = "Demo";
 
     void Awake(){
         if(instance == null){
@@ -54,13 +56,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // Reason putting in Update() & not Start() because to make sure we keep checking if we are not connected
         if(connectInUpdate && autoConnect && !PhotonNetwork.IsConnected){
             connectInUpdate = false; // run only once
-            MenuManager.instance.loadingPanel.SetActive(true); // Display loading screen if not connected
-            MenuManager.instance.connectionInfoText.text = "Connecting to server..."; // just to notify we are connection
+            UIManager.instance.PopupLoadingNormal("Loading", "Connecting to server..."); // Popup Loading UI
             PhotonNetwork.ConnectUsingSettings(); // Connect to master server using settings | Noted: ConnectUsingSettings("v0.0.1") <-- Also can
         }
 
         if(Input.GetKeyDown(KeyCode.H)){ // Temporary, just for debugging
-            
+            UIManager.instance.PopupReconnectGame();
         }
     } // end Update
 
@@ -122,23 +123,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     // ----------------------- CONNECTION RELATED START -------------------
     public override void OnConnectedToMaster(){
-        MenuManager.instance.connectionInfoText.text = "Successfully Connected!";
+        UIManager.instance.UpdateLoadingNormal("Loading", "Successfully Connected!"); // Popup Loading
         PhotonNetwork.JoinLobby(TypedLobby.Default);
         connectInUpdate = true;
     } // end OnConnectedToMaster
 
     public override void OnJoinedLobby(){
-        // Close loading popup
-        StartCoroutine(MenuManager.instance.CloseLoadingScreen(1f));
-        // Enable AutoSyncScene
-        PhotonNetwork.AutomaticallySyncScene = true;
+        StartCoroutine(UIManager.instance.CloseNormalLoading(1f)); // Close loading popup
+        PhotonNetwork.AutomaticallySyncScene = true; // Enable AutoSyncScene
     } // end OnJoinedLobby
     
     public override void OnJoinedRoom(){ // Only host affected by this
         print("Successfully join a room. Waiting for others to fill in");
+
         UpdateTotalFindGame(); // Update total players in room
-        MenuManager.instance.cancelFindGameBtn.interactable = true; // Enable cancel find game button when joined
-        MenuManager.instance.coroutinefindRoomTimeout = StartCoroutine(MenuManager.instance.UpdateUI_FindgameTimeout(findGameTimeoutDuration)); // Timeout duration updates
+        UIManager.instance.activeFindgameCancel(true); // Enable cancel find game button when joined
+        UIManager.instance.modalFindGame.coroutinefindRoomTimeout = StartCoroutine(UIManager.instance.UpdateUI_FindgameTimeout(findGameTimeoutDuration)); // Timeout duration updates
     } // end OnJoinedRoom
 
     public override void OnJoinRandomFailed(short returnCode, string message){ // we create new room with this
@@ -146,23 +146,27 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.PlayerTtl = -1; // -1 sec for infinite : Duration for player to reconnect before kicked / timeout
         roomOptions.MaxPlayers = maxPlayersPerRoom;
-        // put map here also
 
         // #Critical: we failed to join a random room, maybe none exists or they are all full. We create a new room.
         PhotonNetwork.CreateRoom(null, roomOptions);
     } // end OnJoinRandomFailed
 
     public override void OnCreatedRoom(){ // Create default room properties on 1st created room
-        if(PhotonNetwork.IsMasterClient){
+        if(PhotonNetwork.IsMasterClient){ // Set room properties after we are in a room
             Hashtable roomProperties = new Hashtable();
-            roomProperties.Add("roomFullHuman", false);
-            roomProperties.Add("roomFullGhost", false);
-            roomProperties.Add("CurrentItemContributed", 0);
+            roomProperties.Add("RoomTotalMaxHuman", maxHumanPerGame);
+            roomProperties.Add("RoomTotalMaxGhost", maxGhostPerGame);
+            roomProperties.Add("RoomGamemodeIndex", gameModeIndex);
+            roomProperties.Add("RoomMapName", gameMapName); // Random map
+            roomProperties.Add("RoomFullHuman", false);
+            roomProperties.Add("RoomFullGhost", false);
+            roomProperties.Add("GameItemContributed", 0);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
 
-            string[] exposedPropertiesInLobby = { "roomFullHuman", "roomFullGhost" }; // can set map here aswell
+            string[] exposedPropertiesInLobby = { "RoomTotalMaxHuman", "RoomTotalMaxGhost", "RoomGamemodeIndex", "RoomMapName", "RoomFullHuman", "RoomFullGhost" }; 
             PhotonNetwork.CurrentRoom.SetPropertiesListedInLobby(exposedPropertiesInLobby);
         }
+        
         print("Create room : " + PhotonNetwork.CurrentRoom.Name);
     } // end OnCreatedRoom
 
@@ -176,9 +180,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     } // end OnPlayerLeftRoom
 
     public override void OnLeftRoom(){ // When player successfully left the room
-        // Reset find game timeout timer
-        MenuManager.instance.findRoomTimeoutText.text = "0:00";
-        StopCoroutine(MenuManager.instance.coroutinefindRoomTimeout);
+        StopCoroutine(UIManager.instance.modalFindGame.coroutinefindRoomTimeout); // Stop running courotine
     } // end OnLeftRoom
 
     public override void OnDisconnected(DisconnectCause cause){
@@ -194,13 +196,31 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // ----------------------- FIND GAME RELATED START -------------------
     void UpdateTotalFindGame(){ // Update room properties when player enters | Start the game here
         if(PhotonNetwork.InRoom){
-            int totalHuman = 0;
-            int totalGhost = 0;
+            // Cache Network Room Variable
+            int _roomTotalMaxHuman = 0;
+            int _roomTotalMaxGhost = 0;
+            string _roomMapName = "";
+
+            if(PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"] != null && PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"] != null){
+                _roomTotalMaxHuman = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"];
+                _roomTotalMaxGhost = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"];
+            }else{
+                _roomTotalMaxHuman = maxHumanPerGame;
+                _roomTotalMaxGhost = maxGhostPerGame;
+            }
+            
+            if(PhotonNetwork.CurrentRoom.CustomProperties["RoomMapName"] != null){
+                _roomMapName = PhotonNetwork.CurrentRoom.CustomProperties["RoomMapName"].ToString();
+            }
+            
+            // Local variable for room count
+            int _totalHuman = 0;
+            int _totalGhost = 0;
             foreach(var player in PhotonNetwork.CurrentRoom.Players){
                 if(player.Value.CustomProperties["Team"].ToString() == "Human"){
-                    totalHuman += 1;
+                    _totalHuman += 1;
                 }else{
-                    totalGhost += 1;
+                    _totalGhost += 1;
                 }
             }
 
@@ -208,40 +228,38 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             if(PhotonNetwork.IsMasterClient){
                 Hashtable roomProperties = new Hashtable();
                 // Human
-                if(totalHuman >= maxHumanPerGame){
-                    roomProperties.Add("roomFullHuman", true);
+                if(_totalHuman >= _roomTotalMaxHuman){
+                    roomProperties.Add("RoomFullHuman", true);
                 }else{
-                    roomProperties.Add("roomFullHuman", false);
+                    roomProperties.Add("RoomFullHuman", false);
                 }
 
                 // Ghost
-                if(totalGhost >= maxGhostPerGame){
-                    roomProperties.Add("roomFullGhost", true);
+                if(_totalGhost >= _roomTotalMaxGhost){
+                    roomProperties.Add("RoomFullGhost", true);
                 }else{
-                    roomProperties.Add("roomFullGhost", false);
+                    roomProperties.Add("RoomFullGhost", false);
                 }
 
                 PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
-            }
+            } // IsMasterClient
 
             // If a room match all requirement, Host responsible to change the scene
-            if(totalHuman == maxHumanPerGame && totalGhost == maxGhostPerGame && isFindingGame){ // Only do this when we are finding game
+            if(_totalHuman == _roomTotalMaxHuman && _totalGhost == _roomTotalMaxGhost && isFindingGame){ // Only do this when we are finding game
+                UIManager.instance.PopupLoadingScene(); // Popup Loading Scene UI
+
                 if(PhotonNetwork.IsMasterClient){
                     PhotonNetwork.CurrentRoom.IsVisible = false; // Set Room IsVisible = false
-                    ChangeSceneAsync("Demo"); // Host load level async
-                }else{
-                    // Popup Loading UI on non Host
-                    var canvas = GameObject.FindGameObjectWithTag("MainCanvas");
-                    var loading = Instantiate(SOManager.instance.prefabs.modalLoadingScene);
-                    loading.transform.SetParent(canvas.transform, false);
+                    ChangeScene(_roomMapName); // Host load level async
                 }
 
                 isFindingGame = false; // Set status to isFindingGame
-            }
+            } // end _totalHuman == roomTotalMaxHuman
 
             if(isFindingGame){ // Only do this when we are finding game
-                MenuManager.instance.UpdateUI_FindgameTotal(totalHuman, totalGhost);
-            }
+                UIManager.instance.UpdateUI_FindgameTotal(_totalHuman, _roomTotalMaxHuman, _totalGhost, _roomTotalMaxGhost);
+            } // end isFindingGame
+
         } // end PhotonNetwork.InRoom
 
     } // end UpdateTotalFindGame
@@ -249,7 +267,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void JoinTeam(string team){ // Used by buttons in ChooseRole Screen
         Hashtable playerProperties = new Hashtable();
         Hashtable expectedRoomProperties = new Hashtable();
-        MenuManager.instance.findGamePanel.SetActive(true); // Popup findgame UI
+        UIManager.instance.PopupFindGame();
         isFindingGame = true; // Set status to isFindingGame
 
             switch(team){
@@ -261,7 +279,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                     PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
 
                     // ExpectedCustomRoom properties. Example, Human search room that where human is not full
-                    expectedRoomProperties["roomFullHuman"] = false;
+                    expectedRoomProperties["RoomFullHuman"] = false;
                 break;
 
                 case "Ghost":
@@ -272,7 +290,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                     PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
 
                     // ExpectedCustomRoom properties. Example, Ghost search room that where ghost is not full
-                    expectedRoomProperties["roomFullGhost"] = false;
+                    expectedRoomProperties["RoomFullGhost"] = false;
                 break;
 
                 default:
@@ -283,7 +301,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // Join Random Room With expected properties
         if(!PhotonNetwork.InRoom){
             PhotonNetwork.JoinRandomRoom(expectedRoomProperties, maxPlayersPerRoom);
-            MenuManager.instance.cancelFindGameBtn.interactable = false;
+            UIManager.instance.activeFindgameCancel(false);
         }else{
             print("You are still in room. Please wait.");
         }
@@ -293,6 +311,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void CancelFindGameOrLeaveRoom(){ // Cancel while finding game or Leave Room. Used by cancel button in Modal_Findgame
         // Makesure we are in a room
         if(PhotonNetwork.IsConnectedAndReady && PhotonNetwork.InRoom){
+            print("Player cancelling find game / leave room");
             isFindingGame = false; // Set status to isFindingGame
             PhotonNetwork.LeaveRoom();
         }else{
@@ -317,39 +336,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel(sceneName);
         }
     } // end ChangeScene
-
-    public void ChangeSceneAsync(string sceneName){ // Load level using async with loading screen
-        foreach(var map in SOManager.instance.maps.mapsList){
-            if(map.sceneName == sceneName){
-                StartCoroutine(LoadSceneAsync(map.buildIndex));
-            }else{
-                print("Invalid Scene Name");
-            }
-        }
-    } // end ChangeSceneAsync
-
-    IEnumerator LoadSceneAsync(int sceneId){ // Handles the async load level
-        float timer = 0;
-        float delay = 3f; // Wait 3 seconds before proceed
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
-        operation.allowSceneActivation = false;
-        // Load prefab : Modal_LoadingScene | Can add a bar to check for progress, etc.
-        var canvas = GameObject.FindGameObjectWithTag("MainCanvas");
-        var loading = Instantiate(SOManager.instance.prefabs.modalLoadingScene);
-        loading.transform.SetParent(canvas.transform, false);
-
-        while(!operation.isDone){
-            float progressValue = Mathf.Clamp01(operation.progress / 0.9f);
-            timer += Time.deltaTime;
-
-            if(timer >= delay && progressValue >= 1){
-                timer = delay;
-                operation.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
-    } // end LoadSceneAsync
 
     // ----------------------- INGAME RELATED END -------------------
 }

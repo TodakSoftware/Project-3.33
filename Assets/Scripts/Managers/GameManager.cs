@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool gameEnded;
     // Game Rules
     int clockStartTime, clockEndTime; // [Controlled by SO_GameSettings]
-    public int currentItemContributed; // Will link with Photon Customproperties ["CurrentItemContributed"]
+    public int currentItemContributed; // Will replaced with Photon Customproperties ["GameItemContributed"]
     int totalRitualItems; // [Controlled by SO_GameSettings]
 
     // Starting Game Related 
@@ -90,16 +90,16 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject player = null;
 
         if(isHuman){
-            if(humanSpawnedPosition.Count > 0){
+            if(humanSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[humanSpawnedPosition[playerIndex]].position, Quaternion.identity);
             }else{
-                print("Not ready human");
+                print("Missing spawnpoints : Human");
             }
         }else{
-            if(ghostSpawnedPosition.Count > 0){
+            if(ghostSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[ghostSpawnedPosition[playerIndex]].position, Quaternion.identity);
             }else{
-                 print("Not ready ghost");
+                 print("Missing spawnpoints : Ghost");
             }
         }
 

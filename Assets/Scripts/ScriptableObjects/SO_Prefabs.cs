@@ -9,6 +9,8 @@ public class SO_Prefabs : ScriptableObject
     [Header("UI Prefab")]
     public GameObject modalReconnectGame;
     public GameObject modalLoadingScene;
+    public GameObject modalLoadingNormal;
+    public GameObject modalFindGame;
 
     [Header("Photon Prefab Pooling")]
     public List<photonPrefabAttributes> characterPrefabs = new List<photonPrefabAttributes>();

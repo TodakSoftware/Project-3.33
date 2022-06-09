@@ -3,12 +3,10 @@ using UnityEngine;
 // MAPS DETAILS used in SO_Maps
 [System.Serializable]
 public struct MapDetails{
-    public string name;
-    [TextArea] public string description;
     [Tooltip("Must correctly matched with scene file name")]
-    public string sceneName; 
-    [Tooltip("Must correctly matched with build index settings")]
-    public int buildIndex;
+    public string name;
+    public string displayName;
+    [TextArea] public string description;
 }
 /* --------------------------------------------------------------------------------- */
 
