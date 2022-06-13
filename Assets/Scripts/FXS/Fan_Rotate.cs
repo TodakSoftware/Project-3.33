@@ -15,13 +15,13 @@ public class Fan_Rotate : MonoBehaviour
     void Start()
     {
       fanHere["Rotating_Fan"].speed=fanSpeed;
+      Rotating();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.RotateAround(kipasHere.transform.position, Vector3.up, speedHere * Time.deltaTime);
-        //Rotating();
+    
        
     }
 
@@ -29,7 +29,7 @@ public class Fan_Rotate : MonoBehaviour
      
     {
 
-        if (playerHere.tag=="Player")
+        //if (playerHere.tag=="Player")
         {
             Debug.Log("it worked");
             Rotating();
@@ -44,7 +44,7 @@ public class Fan_Rotate : MonoBehaviour
      
     {
 
-        if (playerHere.tag=="Player")
+        //if (playerHere.tag=="Player")
             {
                 Debug.Log("bye-bye");
                 StopRotating();
@@ -71,7 +71,7 @@ public class Fan_Rotate : MonoBehaviour
 
 void StopRotating()
 {
-    fanHere.Stop();
+    //fanHere.Stop();
 }
 
 }
