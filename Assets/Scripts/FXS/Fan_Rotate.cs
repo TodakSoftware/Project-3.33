@@ -31,7 +31,7 @@ public class Fan_Rotate : MonoBehaviour
 
         //if (playerHere.tag=="Player")
         {
-            Debug.Log("it worked");
+            //Debug.Log("it worked");
             Rotating();
         }
         
@@ -46,7 +46,7 @@ public class Fan_Rotate : MonoBehaviour
 
         //if (playerHere.tag=="Player")
             {
-                Debug.Log("bye-bye");
+                //Debug.Log("bye-bye");
                 StopRotating();
 
             }

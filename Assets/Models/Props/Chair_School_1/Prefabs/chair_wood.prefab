@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 6318620280537639870}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: 5708368846294434301}
-  - component: {fileID: 6379608850576185198}
-  - component: {fileID: 7722237780083933997}
+  - component: {fileID: 7691419381566917713}
   m_Layer: 0
   m_Name: chair_wood
   m_TagString: Untagged
@@ -86,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5708368846294434301
+--- !u!65 &7691419381566917713
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,34 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5250437, y: 0.46224174, z: 0.43873513}
-  m_Center: {x: 0, y: 0.23360164, z: 0.033337414}
---- !u!65 &6379608850576185198
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504570139189980924}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5250437, y: 0.4910053, z: 0.1292961}
-  m_Center: {x: 0, y: 0.6872845, z: -0.21724026}
---- !u!54 &7722237780083933997
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504570139189980924}
-  serializedVersion: 2
-  m_Mass: 4
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
+  m_Size: {x: 0.5250437, y: 0.89652926, z: 0.50540996}
+  m_Center: {x: 0, y: 0.44826463, z: 0}
