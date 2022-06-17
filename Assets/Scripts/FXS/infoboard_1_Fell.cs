@@ -6,6 +6,7 @@ public class infoboard_1_Fell : MonoBehaviour
 {
 
     Rigidbody boardHere;
+    public AudioSource audioboardfellHere;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,9 @@ public class infoboard_1_Fell : MonoBehaviour
                   boardHere.isKinematic=false;
                   
                   }       
+
+                   if(Input.GetKey(KeyCode.E))
+            audioboardfellHere.Play();
 
         }
 
