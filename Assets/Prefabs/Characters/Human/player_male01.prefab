@@ -2539,12 +2539,14 @@ GameObject:
   - component: {fileID: 5678942669568780796}
   - component: {fileID: 5678942669568780797}
   - component: {fileID: 5678942669568780798}
+  - component: {fileID: 6386868609831202765}
   - component: {fileID: 5480958302001815595}
   - component: {fileID: 4102378477892189611}
   - component: {fileID: -6604162445573430329}
   - component: {fileID: 4019112439853096887}
   - component: {fileID: 8703571124338829723}
   - component: {fileID: 4163947306249342787}
+  - component: {fileID: 664494324}
   m_Layer: 0
   m_Name: player_male01
   m_TagString: Player
@@ -2626,6 +2628,18 @@ MonoBehaviour:
   jumpSpeed: 0.8
   runMultiplier: 1.2
   camController: {fileID: 5678942671583981570}
+--- !u!114 &6386868609831202765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678942669568780787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401e151bb672be744a5421f8f9121eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5480958302001815595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2638,12 +2652,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10f436908ee4b4499dbf00ca837f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canInteractPhone: 0
+  canInteractPhone: 1
   itemHolderRight: {fileID: 5678942670028896176}
   itemHolderLeft: {fileID: 7471666668753206780}
   phonePrefab: {fileID: 9186054425494017810, guid: 6435da37c7e5f8b4eaa8d69ac40104ef, type: 3}
   isInteractPhone: 0
   interactAnimEnd: 0
+  cameraGO: {fileID: 6477736984881128221}
+  zoomInFOV: 35
+  zoomInNearClipping: 0.01
+  zoomInCamPosition: {x: -0.055, y: 0.56, z: 0.15}
 --- !u!114 &4102378477892189611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2788,6 +2806,18 @@ MonoBehaviour:
   maxPositionDifferenceForVelocitySyncing: 10
   ownerChangeIndicator: 1
   receivedStatesCounter: 0
+--- !u!114 &664494324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678942669568780787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401e151bb672be744a5421f8f9121eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5678942670028896177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,7 +3154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6477736984881128221}
   m_LocalRotation: {x: -0.06540306, y: 0, z: 0, w: 0.99785894}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0.15}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3154,7 +3184,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.08
+  near clip plane: 0.1
   far clip plane: 400
   field of view: 72
   orthographic: 0

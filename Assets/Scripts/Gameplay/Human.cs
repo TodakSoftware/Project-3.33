@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Human : MonoBehaviour
 {
     PlayerController playerController;
+
     [Header("ENABLER")]
     public bool canInteractPhone;
     // PHONE RELATED 
@@ -17,6 +19,14 @@ public class Human : MonoBehaviour
     bool phoneSwitchedPlaces;
     [HideInInspector] public bool interactAnimEnd;
     // ----------------------------------------------------------------------------------
+    // CAMERA RELATED 
+    [Header("CAMERA")]
+    public GameObject cameraGO;
+    float defaultFOV, defaultNearClipping;
+    Vector3 defaultCamPosition;
+    public float zoomInFOV;
+    public float zoomInNearClipping;
+    public Vector3 zoomInCamPosition;
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -40,6 +50,11 @@ public class Human : MonoBehaviour
         // Spawn Phone (Will replace with photon prefab)
         instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
+
+        // Store Transform Default Values
+        defaultCamPosition = cameraGO.transform.localPosition;
+        defaultNearClipping = cameraGO.GetComponent<Camera>().nearClipPlane;
+        defaultFOV = cameraGO.GetComponent<Camera>().fieldOfView;
     }
 
     /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
@@ -52,7 +67,9 @@ public class Human : MonoBehaviour
             isInteractPhone = true;
             // Play interact phone animation
             playerController.anim.SetBool("InteractPhone", isInteractPhone);
-            // Zoom In
+            
+            InteractZoomEffect(true); // Zoom In
+
         }else if(isInteractPhone && interactAnimEnd){
             // Enable Mouselook
             playerController.camController.isEnable = true;
@@ -60,7 +77,7 @@ public class Human : MonoBehaviour
             isInteractPhone = false;
             // Play closed interact phone animation
             playerController.anim.SetBool("InteractPhone", isInteractPhone);
-            // Zoom out
+           
         }
     } // end HandleInteractPhone
 
@@ -68,9 +85,24 @@ public class Human : MonoBehaviour
         if(!phoneSwitchedPlaces){
             phoneSwitchedPlaces = true;
             instantiatedPhone.transform.SetParent(itemHolderLeft, false);
+            
         }else{
             phoneSwitchedPlaces = false;
             instantiatedPhone.transform.SetParent(itemHolderRight, false);
+            
+            InteractZoomEffect(false);  // Zoom out
+        }
+    }
+
+    public void InteractZoomEffect(bool zoomIn){
+        if(zoomIn){
+            cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, 1f);
+            cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
+            cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
+        }else{
+            cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .8f);
+            cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.5f);
+            cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
         }
     }
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
