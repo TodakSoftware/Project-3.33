@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Map File", menuName = "Database/Maps")]
 public class SO_Maps : ScriptableObject
 {
-    public List<MapDetails> mapsList = new List<MapDetails>();
+    public List<S_MapDetails> mapsList = new List<S_MapDetails>();
 }

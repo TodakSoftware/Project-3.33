@@ -72,11 +72,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         AddPrefabPool(SOManager.instance.prefabs.particlePrefabs); // Add Particle Prefabs Lists
     } // end InitPrefabPooling
 
-    public void AddPrefabPool(List<photonPrefabAttributes> prefabAttributes)
+    public void AddPrefabPool(List<C_PhotonPrefabAttributes> prefabAttributes)
     {
         if (pool != null && prefabAttributes != null)
         {
-            foreach (photonPrefabAttributes prefabAtt in prefabAttributes)
+            foreach (C_PhotonPrefabAttributes prefabAtt in prefabAttributes)
             {
                 if (!pool.ResourceCache.ContainsKey(prefabAtt.name))
                     pool.ResourceCache.Add(prefabAtt.name, prefabAtt.prefabs);
@@ -86,7 +86,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public static string GetPhotonPrefab(string category, string prefabName){
         string pref = "";
-        List<photonPrefabAttributes> photonPrefabsList = new List<photonPrefabAttributes>();
+        List<C_PhotonPrefabAttributes> photonPrefabsList = new List<C_PhotonPrefabAttributes>();
         photonPrefabsList.Clear(); // clear if not empty
 
         switch(category){
@@ -108,7 +108,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
 
         // Search for matching prefabs in the lists
-        foreach(photonPrefabAttributes go in photonPrefabsList){
+        foreach(C_PhotonPrefabAttributes go in photonPrefabsList){
             if(go.name == prefabName){
                 return go.name; // return this value if found
             }

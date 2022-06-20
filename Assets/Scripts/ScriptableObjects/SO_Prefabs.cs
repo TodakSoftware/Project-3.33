@@ -13,7 +13,7 @@ public class SO_Prefabs : ScriptableObject
     public GameObject modalFindGame;
 
     [Header("Photon Prefab Pooling")]
-    public List<photonPrefabAttributes> characterPrefabs = new List<photonPrefabAttributes>();
-    public List<photonPrefabAttributes> propsPrefabs = new List<photonPrefabAttributes>();
-    public List<photonPrefabAttributes> particlePrefabs = new List<photonPrefabAttributes>();
+    public List<C_PhotonPrefabAttributes> characterPrefabs = new List<C_PhotonPrefabAttributes>();
+    public List<C_PhotonPrefabAttributes> propsPrefabs = new List<C_PhotonPrefabAttributes>();
+    public List<C_PhotonPrefabAttributes> particlePrefabs = new List<C_PhotonPrefabAttributes>();
 }
