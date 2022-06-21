@@ -96,12 +96,12 @@ public class Human : MonoBehaviour
 
     public void InteractZoomEffect(bool zoomIn){
         if(zoomIn){
-            cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, 0.8f);
+            cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
             cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
         }else{
-            cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .8f);
-            cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.5f);
+            cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
+            cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
         }
     }
