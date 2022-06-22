@@ -1594,6 +1594,7 @@ GameObject:
   - component: {fileID: 2211080841760328744}
   - component: {fileID: 4128570532249155810}
   - component: {fileID: 1914885688223134837}
+  - component: {fileID: 1019167333397804559}
   m_Layer: 3
   m_Name: mobile_phone
   m_TagString: Untagged
@@ -1610,7 +1611,7 @@ Transform:
   m_GameObject: {fileID: 2471171583313746231}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4506591696466012765}
@@ -1690,6 +1691,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1019167333397804559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471171583313746231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2041472784c9b4aa35a7f8c0ffb0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableDrain: 0
+  currentApps: []
+  soldApps: []
+  batteryPercentText: {fileID: 2087023009179881435}
+  imageBatteryCase: {fileID: 3859531285395264448}
+  imageBatteryBar: {fileID: 2064909612166026898}
+  spriteBatCaseOK: {fileID: 21300000, guid: cdb19cd23278e48428191f56b835c74b, type: 3}
+  spriteBatCaseEmpty: {fileID: 21300000, guid: 010d67703ae55af4cb455bbab037c7bd, type: 3}
+  currentBattery: 0
+  drainRateTotal: 0
+  shopPanel: {fileID: 7694308002622269409}
+  quickslotPanel: {fileID: 3682817167497666258}
+  shopBtnPrefab: {fileID: 0}
+  shopAppsContent: {fileID: 5604480593570155096}
+  shopCreditsText: {fileID: 1927080436469528624}
+  hpClockText: {fileID: 9057467708380698574}
+  phoneIsDead: 0
+  phoneCanvas: {fileID: 3416691614517414154}
+  phoneLight: {fileID: 4034243469148201492}
+  appsPrefab: {fileID: 0}
+  menuAppsContent: {fileID: 4155001703169836961}
 --- !u!1 &2471438403626859166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2300,7 @@ GameObject:
   - component: {fileID: 2801053772841841279}
   - component: {fileID: 6828677945550062657}
   m_Layer: 3
-  m_Name: QuickslotPanel
+  m_Name: P_Quickslot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2359,7 +2393,7 @@ GameObject:
   - component: {fileID: 5944645674685151662}
   - component: {fileID: 4651424560844941692}
   m_Layer: 3
-  m_Name: Canvas
+  m_Name: PhoneCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2385,7 +2419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: -160.56}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.0114}
+  m_AnchoredPosition: {x: 0, y: -0.012}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3416691614517414154
@@ -3314,8 +3348,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7878558687053161948}
   m_HandleRect: {fileID: 855920625249297584}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999996
+  m_Value: 1
+  m_Size: 0.99999964
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3607,7 +3641,7 @@ GameObject:
   - component: {fileID: 5604480593570155096}
   - component: {fileID: 4787953915283326377}
   m_Layer: 3
-  m_Name: ShopContent
+  m_Name: ShopAppsContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3858,7 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3925,7 +3959,7 @@ GameObject:
   - component: {fileID: 1308586187620221966}
   - component: {fileID: 1927080436469528624}
   m_Layer: 3
-  m_Name: CreditText
+  m_Name: CurrencyCreditText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4218,7 +4252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4506591696466012765
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4794,7 +4828,7 @@ GameObject:
   - component: {fileID: 1773148525804985118}
   - component: {fileID: 3859531285395264448}
   m_Layer: 3
-  m_Name: Battery_Image
+  m_Name: Battery_Case
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4917,7 +4951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6730773953602866986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5092,7 +5126,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1519912092439571290}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9999997
+  m_Size: 0.99999976
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5454,7 +5488,7 @@ GameObject:
   - component: {fileID: 4155001703169836961}
   - component: {fileID: 3908028366665916736}
   m_Layer: 3
-  m_Name: Content
+  m_Name: MenuAppsContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5477,7 +5511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.000244, y: 0}
+  m_AnchoredPosition: {x: -16.999866, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3908028366665916736
@@ -5882,7 +5916,7 @@ GameObject:
   - component: {fileID: 4524465212853793290}
   - component: {fileID: 1875667282324618}
   m_Layer: 3
-  m_Name: ShopPanel
+  m_Name: P_Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
