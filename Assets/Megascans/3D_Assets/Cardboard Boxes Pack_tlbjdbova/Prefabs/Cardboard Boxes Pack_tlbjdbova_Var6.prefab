@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 334383975126177358}
   - component: {fileID: 4673747754895405803}
   - component: {fileID: 1669370147301844736}
+  - component: {fileID: 152036798874453933}
   m_Layer: 0
   m_Name: Aset_paper_cardboard_S_tlbjdbova_05_LOD4
   m_TagString: Untagged
@@ -115,6 +116,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &152036798874453933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448236245864054773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08720051, y: 0.06513555, z: 0.0792553}
+  m_Center: {x: 0.0005179122, y: -0.00004984066, z: -0.000032527372}
 --- !u!1 &4568121338686821063
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,8 +155,8 @@ Transform:
   m_GameObject: {fileID: 4568121338686821063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2068470591712891147}
   - {fileID: 8390189648261203733}
@@ -193,6 +207,7 @@ GameObject:
   - component: {fileID: 182189272318854919}
   - component: {fileID: 2441344356654144527}
   - component: {fileID: 5249165364067530229}
+  - component: {fileID: 4105872086181267714}
   m_Layer: 0
   m_Name: Aset_paper_cardboard_S_tlbjdbova_05_LOD2
   m_TagString: Untagged
@@ -265,6 +280,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4105872086181267714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858568718817104809}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08802997, y: 0.06506303, z: 0.079078354}
+  m_Center: {x: 0, y: -0.0000000018626451, z: -0.0000000037252903}
 --- !u!1 &5154560728925853980
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +368,7 @@ GameObject:
   - component: {fileID: 2844135059783117516}
   - component: {fileID: 2057346147687472465}
   - component: {fileID: 3196456006587635072}
+  - component: {fileID: 5963242336391478476}
   m_Layer: 0
   m_Name: Aset_paper_cardboard_S_tlbjdbova_05_LOD6
   m_TagString: Untagged
@@ -412,6 +441,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5963242336391478476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520423782200297659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.087201506, y: 0.064832546, z: 0.078793496}
+  m_Center: {x: 0.0004953537, y: 0.000414636, z: 0.00004208833}
 --- !u!1 &7702346608233555010
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +465,7 @@ GameObject:
   - component: {fileID: 5280208503155145282}
   - component: {fileID: 2412595925668787055}
   - component: {fileID: 3580749380979724745}
+  - component: {fileID: 2415795386989646708}
   m_Layer: 0
   m_Name: Aset_paper_cardboard_S_tlbjdbova_05_LOD0
   m_TagString: Untagged
@@ -495,6 +538,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2415795386989646708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7702346608233555010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08802997, y: 0.06506304, z: 0.07907836}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8566652197931499582
 GameObject:
   m_ObjectHideFlags: 0

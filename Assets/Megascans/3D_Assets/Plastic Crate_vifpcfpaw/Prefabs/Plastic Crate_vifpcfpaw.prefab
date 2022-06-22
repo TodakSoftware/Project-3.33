@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5685343510209868934}
   - component: {fileID: 2957108967768520613}
   - component: {fileID: 3189446093094728920}
+  - component: {fileID: 2081456241866714021}
   m_Layer: 0
   m_Name: Plastic Crate_LOD0__vifpcfpaw
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2081456241866714021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268340287161876307}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38045716, y: 0.25263384, z: 0.29296336}
+  m_Center: {x: -0.0014573857, y: 0.12379302, z: 0}
 --- !u!1 &2797421806384832751
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: 8470031828627947151}
   - component: {fileID: 6375878246121885699}
   - component: {fileID: 5680735675820204844}
+  - component: {fileID: 180626128764489703}
   m_Layer: 0
   m_Name: Plastic Crate_LOD2__vifpcfpaw
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &180626128764489703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2797421806384832751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.38035175, y: 0.25315872, z: 0.2929634}
+  m_Center: {x: -0.0011814088, y: 0.12360643, z: -0.00003338605}
 --- !u!1 &4674515872779784462
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +267,7 @@ GameObject:
   - component: {fileID: 3072934191818209446}
   - component: {fileID: 424215238439181800}
   - component: {fileID: 276579345444433767}
+  - component: {fileID: 6362053003411535056}
   m_Layer: 0
   m_Name: Plastic Crate_LOD4__vifpcfpaw
   m_TagString: Untagged
@@ -311,3 +340,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6362053003411535056
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5837697149742761163}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3804462, y: 0.25344577, z: 0.29127347}
+  m_Center: {x: -0.0011071488, y: 0.12381919, z: -0.00019339472}

@@ -3,7 +3,22 @@ guid: a74f554238675fe42a0bf4669844d441
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_ceiling
+    second: {fileID: 2100000, guid: 2f922ffb628e7da4fbaef9db58df5dcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_floor
+    second: {fileID: 2100000, guid: 26aaed454ddab2c4e9df802ff2fe03d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 333_corridor_wall
+    second: {fileID: 2100000, guid: 0b2885c20d9b34a44be8ed6b5d105817, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
