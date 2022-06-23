@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6157386131627550542}
   - component: {fileID: 4437425927009435670}
   - component: {fileID: 1066356921196878520}
-  - component: {fileID: 3830783080460189738}
+  - component: {fileID: 7931401566808728720}
   m_Layer: 0
   m_Name: Bricks Rubble_LOD0__rirxx
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3830783080460189738
-BoxCollider:
+--- !u!64 &7931401566808728720
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,9 +94,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.82000005, y: 1.1692876, z: 0.3702218}
-  m_Center: {x: 0.08991675, y: -0.048160017, z: 0.20019975}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4615932892074054511, guid: 0f492550188e98840bbc3648783a7234, type: 3}
 --- !u!1 &462378413893503650
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +109,7 @@ GameObject:
   - component: {fileID: 309772418297212990}
   - component: {fileID: 6520460989568364046}
   - component: {fileID: 9182228043227843666}
-  - component: {fileID: 1180121534675257662}
+  - component: {fileID: 6589562551859249952}
   m_Layer: 0
   m_Name: Bricks Rubble_LOD4__rirxx
   m_TagString: Untagged
@@ -181,8 +182,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1180121534675257662
-BoxCollider:
+--- !u!64 &6589562551859249952
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -191,9 +192,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.81999993, y: 1.161462, z: 0.36296114}
-  m_Center: {x: 0.08951001, y: -0.049055934, z: 0.2053972}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7518747966448956301, guid: 1ac5f0700c87f224bb8ed214535b943e, type: 3}
 --- !u!1 &5263768459715613057
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +207,7 @@ GameObject:
   - component: {fileID: 7552491928834632991}
   - component: {fileID: 6295376310220711189}
   - component: {fileID: 5512385900301396160}
-  - component: {fileID: 2256474651122605380}
+  - component: {fileID: 7440505309111474353}
   m_Layer: 0
   m_Name: Bricks Rubble_LOD2__rirxx
   m_TagString: Untagged
@@ -278,8 +280,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2256474651122605380
-BoxCollider:
+--- !u!64 &7440505309111474353
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -288,9 +290,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.81999993, y: 1.1682947, z: 0.37023902}
-  m_Center: {x: 0.08990185, y: -0.047638685, z: 0.20020905}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2906064656067191803, guid: 56c540ebffc60994d902e214ff4a3481, type: 3}
 --- !u!1 &8342095745805704196
 GameObject:
   m_ObjectHideFlags: 0

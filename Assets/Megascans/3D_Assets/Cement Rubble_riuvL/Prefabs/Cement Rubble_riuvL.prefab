@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 827474078479571808}
   - component: {fileID: 4461016107795419417}
   - component: {fileID: 8027051203351204701}
-  - component: {fileID: 602863245669865014}
+  - component: {fileID: 3927991501308998413}
   m_Layer: 0
   m_Name: Cement Rubble_LOD2__riuvL
   m_TagString: Untagged
@@ -146,8 +146,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &602863245669865014
-BoxCollider:
+--- !u!64 &3927991501308998413
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,9 +156,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0300001, y: 0.107679084, z: 0.80139184}
-  m_Center: {x: 0.008061528, y: 0.039997764, z: 0.005065784}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4922878510902880484, guid: 78f76a96beb02da42beb3458e2e5d4cd, type: 3}
 --- !u!1 &2970734473583337124
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ GameObject:
   - component: {fileID: 6544131378407168236}
   - component: {fileID: 390146525226679813}
   - component: {fileID: 5123820900193530561}
-  - component: {fileID: 5105373038614230920}
+  - component: {fileID: 2295099762934240276}
   m_Layer: 0
   m_Name: Cement Rubble_LOD4__riuvL
   m_TagString: Untagged
@@ -243,8 +244,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5105373038614230920
-BoxCollider:
+--- !u!64 &2295099762934240276
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,9 +254,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.03, y: 0.10795153, z: 0.8066108}
-  m_Center: {x: 0.0066393614, y: 0.039234247, z: 0.006480947}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2002463462783407588, guid: 678821de7ba8d144496955418281fd67, type: 3}
 --- !u!1 &5082848641701042690
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +269,7 @@ GameObject:
   - component: {fileID: 78155048981464950}
   - component: {fileID: 5930850691113625542}
   - component: {fileID: 9205389881350422506}
-  - component: {fileID: 5102807616349109373}
+  - component: {fileID: 2672836232064208610}
   m_Layer: 0
   m_Name: Cement Rubble_LOD0__riuvL
   m_TagString: Untagged
@@ -340,8 +342,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5102807616349109373
-BoxCollider:
+--- !u!64 &2672836232064208610
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -350,6 +352,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0300001, y: 0.107679084, z: 0.80164474}
-  m_Center: {x: 0.008061528, y: 0.039997764, z: 0.00519222}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8922534297928301722, guid: 1db059696a639da48898bbbdd81e7b47, type: 3}

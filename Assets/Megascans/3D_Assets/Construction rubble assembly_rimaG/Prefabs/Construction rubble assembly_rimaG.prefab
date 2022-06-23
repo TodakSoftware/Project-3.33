@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2512396934838465144}
   - component: {fileID: 4053022066719975700}
   - component: {fileID: 4982656678966839671}
-  - component: {fileID: 3942318210642417291}
+  - component: {fileID: 8929322673018994440}
   m_Layer: 0
   m_Name: Construction Rubble Assembly_LOD0__rimaG
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3942318210642417291
-BoxCollider:
+--- !u!64 &8929322673018994440
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,9 +94,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.71999997, y: 0.26441872, z: 0.6957301}
-  m_Center: {x: 0.015429616, y: 0.11101983, z: 0.056223825}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8046976647734735604, guid: 8aa20bdee4b49a149bae9601dfa9326b, type: 3}
 --- !u!1 &3165583388427616565
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ GameObject:
   - component: {fileID: 8595354300779244210}
   - component: {fileID: 1248831070945743631}
   - component: {fileID: 2441432030026353866}
-  - component: {fileID: 2948966720746018867}
+  - component: {fileID: 8543100718687188928}
   m_Layer: 0
   m_Name: Construction Rubble Assembly_LOD2__rimaG
   m_TagString: Untagged
@@ -243,8 +244,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2948966720746018867
-BoxCollider:
+--- !u!64 &8543100718687188928
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,9 +254,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.71999997, y: 0.26441872, z: 0.6957301}
-  m_Center: {x: 0.015429616, y: 0.11101983, z: 0.056223825}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -390585293179517068, guid: 013d0ee74abee3e4fa425807a343be20, type: 3}
 --- !u!1 &8945694220776043309
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +269,7 @@ GameObject:
   - component: {fileID: 551691827512777066}
   - component: {fileID: 2016446174542775509}
   - component: {fileID: 8194480446043183640}
-  - component: {fileID: 3297702520775954565}
+  - component: {fileID: 30573319928834687}
   m_Layer: 0
   m_Name: Construction Rubble Assembly_LOD4__rimaG
   m_TagString: Untagged
@@ -340,8 +342,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3297702520775954565
-BoxCollider:
+--- !u!64 &30573319928834687
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -350,6 +352,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7199999, y: 0.2641638, z: 0.6951702}
-  m_Center: {x: 0.015328497, y: 0.111158304, z: 0.056022435}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4731803552035049587, guid: 21f65d75414ffd44fabe665a6f1bd29c, type: 3}

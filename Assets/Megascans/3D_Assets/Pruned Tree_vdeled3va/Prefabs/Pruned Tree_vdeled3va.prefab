@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5878615215288001617}
   - component: {fileID: 2464217713641617416}
   - component: {fileID: 2878508932096715804}
-  - component: {fileID: 7372030617975456140}
+  - component: {fileID: 723655265295470542}
   m_Layer: 0
   m_Name: Pruned Tree_LOD4__vdeled3va
   m_TagString: Untagged
@@ -146,8 +146,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7372030617975456140
-BoxCollider:
+--- !u!64 &723655265295470542
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,9 +156,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.413487, y: 4.4100018, z: 2.571151}
-  m_Center: {x: -0.12300491, y: 2.1951976, z: 0.8879121}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1784863564674511019, guid: 15202c10d76d91247988d644344c78bf, type: 3}
 --- !u!1 &6768638264045547553
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ GameObject:
   - component: {fileID: 2926989132075344035}
   - component: {fileID: 3731241950506924712}
   - component: {fileID: 2974815890377397368}
-  - component: {fileID: 3267376709645451749}
+  - component: {fileID: 3183215435300551348}
   m_Layer: 0
   m_Name: Pruned Tree_LOD0__vdeled3va
   m_TagString: Untagged
@@ -243,8 +244,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3267376709645451749
-BoxCollider:
+--- !u!64 &3183215435300551348
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -253,9 +254,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.4329042, y: 4.453688, z: 2.617478}
-  m_Center: {x: -0.115049005, y: 2.2138326, z: 0.9084602}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5271001854947460205, guid: 67410b89ee02fb5478c06f0bab735124, type: 3}
 --- !u!1 &7746571909949538567
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +269,7 @@ GameObject:
   - component: {fileID: 8527555621078734380}
   - component: {fileID: 7924158504236365677}
   - component: {fileID: 4417325279089583516}
-  - component: {fileID: 1155765578449153048}
+  - component: {fileID: 1436210294569248127}
   m_Layer: 0
   m_Name: Pruned Tree_LOD2__vdeled3va
   m_TagString: Untagged
@@ -340,8 +342,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1155765578449153048
-BoxCollider:
+--- !u!64 &1436210294569248127
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -350,6 +352,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.430714, y: 4.453846, z: 2.6158478}
-  m_Center: {x: -0.11673522, y: 2.2160187, z: 0.9093734}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 767651734283144684, guid: 19422aef1f6ae5346813c0ca07be748b, type: 3}
