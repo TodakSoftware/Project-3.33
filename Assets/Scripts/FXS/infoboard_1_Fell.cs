@@ -22,7 +22,8 @@ public class infoboard_1_Fell : MonoBehaviour
     void OnTriggerStay(Collider ghostHere)
      
     {
-    if (ghostHere.tag=="Ghost")
+
+        if (ghostHere.tag=="Ghost")
         
         {
             if(Input.GetKey(KeyCode.E))

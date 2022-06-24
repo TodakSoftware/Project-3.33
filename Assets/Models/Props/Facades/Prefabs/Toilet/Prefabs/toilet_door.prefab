@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1736025653424826990}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: 150467827302745214}
   - component: {fileID: 1796560500}
+  - component: {fileID: 5606936276136346891}
+  - component: {fileID: 2354787028525026341}
   m_Layer: 0
   m_Name: toilet_door
   m_TagString: Untagged
@@ -85,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &150467827302745214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8601728626850980656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1343147, y: 0.19109908, z: 2.138996}
-  m_Center: {x: 0.57066566, y: 0.0068704253, z: 0.00000047824653}
 --- !u!114 &1796560500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +100,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorHere: {fileID: 0}
   soundhere: {fileID: 0}
+  doorStatus: 0
+--- !u!65 &5606936276136346891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601728626850980656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.651564, y: 2.2814028, z: 2.138996}
+  m_Center: {x: 0.6058737, y: -0.0042973757, z: 5.5582434e-18}
+--- !u!64 &2354787028525026341
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601728626850980656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5519829207531254465, guid: c1f4870f80de7514cbcfd52b8c87baa9, type: 3}
