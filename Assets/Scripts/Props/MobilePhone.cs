@@ -10,6 +10,7 @@ public class MobilePhone : MonoBehaviour
     public bool enableDrain;
 
     [Header("Apps Related")]
+    public SO_Apps appsSO;
     public List<string> currentApps = new List<string>();
     public List<string> soldApps = new List<string>();
 
@@ -38,4 +39,56 @@ public class MobilePhone : MonoBehaviour
     public GameObject phoneLight;
     public GameObject appsPrefab;
     public Transform menuAppsContent;
+    public bool isLandscape;
+    public Human humanRef; // who own the mobile phone?
+
+    void Start(){
+        phoneCanvas.worldCamera = humanRef.cameraGO.GetComponent<Camera>(); // Set phoneCanvas with current world camera
+
+        // Add Preinstalled apps
+        if(appsSO.appLists.Count > 0){
+            foreach(var app in appsSO.appLists){
+                if(app.isSystemApp){
+                    currentApps.Add(app.code);
+                }
+            }
+        }
+
+        // Refresh main screen
+        RefreshMainScreen();
+    }
+
+    public void SwitchPhoneView(bool toLandscape){
+        if(toLandscape){
+            isLandscape = true;
+        }else{
+            isLandscape = false;
+        }
+        GetComponent<Animator>().SetBool("Landscape", toLandscape);
+    } // end SwitchPhoneView()
+
+    public void RefreshMainScreen(){ // Refresh main screen apps
+        // Clear any existing content + currentAppList
+        if(menuAppsContent.childCount > 0){
+            foreach(Transform c in menuAppsContent){
+                Destroy(c.gameObject);
+            }
+        }
+
+        // Shown on phone
+        if(currentApps.Count > 0){
+            foreach(var code in currentApps){
+                foreach(var apps in appsSO.appLists){
+                    if(code == apps.code){
+                        var ap = Instantiate(appsPrefab);
+                        ap.GetComponent<UI_Apps>().appCode = apps.code;
+                        ap.GetComponent<UI_Apps>().appIcon.sprite = apps.appIcon;
+                        ap.GetComponent<UI_Apps>().appName.text = apps.name;
+                        ap.transform.SetParent(menuAppsContent, false);
+                    }
+                } // end foreach appSO
+            } // end foreach currentApps
+        } // end count > 0
+
+    } // end RefreshMainScreen()
 }

@@ -49,6 +49,7 @@ public class Human : MonoBehaviour
 
         // Spawn Phone (Will replace with photon prefab)
         instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        instantiatedPhone.GetComponent<MobilePhone>().humanRef = this;
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
 
         // Store Transform Default Values
@@ -96,6 +97,7 @@ public class Human : MonoBehaviour
 
     public void InteractZoomEffect(bool zoomIn){
         if(zoomIn){
+            instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(true);
             cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
             cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
@@ -103,6 +105,7 @@ public class Human : MonoBehaviour
             cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
+            instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
         }
     }
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
