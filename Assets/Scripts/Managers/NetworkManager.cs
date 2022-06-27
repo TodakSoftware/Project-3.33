@@ -211,7 +211,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             
             if(PhotonNetwork.CurrentRoom.CustomProperties["RoomMapName"] != null){
                 _roomMapName = PhotonNetwork.CurrentRoom.CustomProperties["RoomMapName"].ToString();
+            } else {
+
+                _roomMapName=gameMapName;
             }
+
             
             // Local variable for room count
             int _totalHuman = 0;
@@ -334,6 +338,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ChangeScene(string sceneName){ // Load level instantly without loading screen
         if(PhotonNetwork.IsMasterClient){
             PhotonNetwork.LoadLevel(sceneName);
+            print(sceneName);
         }
     } // end ChangeScene
 
