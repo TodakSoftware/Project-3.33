@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5565252881108935056}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
+  - component: {fileID: 3916508965078823186}
   m_Layer: 0
   m_Name: stairwell_mesh
   m_TagString: Untagged
@@ -88,3 +89,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3916508965078823186
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4397598145989227451}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1541169454656990746, guid: 55282180d3c92ab479a96830ff16e078, type: 3}
