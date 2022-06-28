@@ -8,5 +8,6 @@ public struct S_AppDetails{
     [TextArea] public string description;
     public int price;
     public bool isSystemApp; // build in app (non-purchased)
+    public bool hideInShop; // Hide from appearing in shop
     [Tooltip("Amount drain per second")] public float drainRate; // ex. 2, 3, 5, 2.5 light intensity @ battery life -= Time.deltaTime * (drainRate / 1000)
 }

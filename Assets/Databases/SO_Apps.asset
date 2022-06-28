@@ -16,14 +16,48 @@ MonoBehaviour:
   - name: Flashlight
     code: A001
     appIcon: {fileID: 21300000, guid: 44f231548e346144b9a00e6325497ecd, type: 3}
-    description: 
+    description: Brief Info
     price: 0
     isSystemApp: 1
-    drainRate: 0
-  - name: Message
+    hideInShop: 0
+    drainRate: 0.01
+  - name: Shop
     code: A002
-    appIcon: {fileID: 21300000, guid: f073267e49a9cc647835fc0172fbdb92, type: 3}
-    description: 
+    appIcon: {fileID: 21300000, guid: 815260c5fc257294e999dda19cd0faeb, type: 3}
+    description: Brief Info
     price: 0
     isSystemApp: 1
+    hideInShop: 0
+    drainRate: 0
+  - name: Thermal Camera
+    code: A004
+    appIcon: {fileID: 21300000, guid: 8b082034134d39e42b91d1594fbffb4e, type: 3}
+    description: Brief Info
+    price: 100
+    isSystemApp: 0
+    hideInShop: 0
+    drainRate: 0.5
+  - name: Night Vision
+    code: A005
+    appIcon: {fileID: 21300000, guid: 4ff657b76aac226408aa9ca6ce20c494, type: 3}
+    description: Brief Info
+    price: 100
+    isSystemApp: 0
+    hideInShop: 0
+    drainRate: 0.5
+  - name: Map
+    code: A006
+    appIcon: {fileID: 21300000, guid: 6f7feea64879dc8459b620c873647c2e, type: 3}
+    description: Brief Info
+    price: 100
+    isSystemApp: 0
+    hideInShop: 0
+    drainRate: 0
+  - name: MP3 Player
+    code: A007
+    appIcon: {fileID: 21300000, guid: f092ae3d73438734db2a8a4200b73dca, type: 3}
+    description: 
+    price: 100
+    isSystemApp: 0
+    hideInShop: 0
     drainRate: 0

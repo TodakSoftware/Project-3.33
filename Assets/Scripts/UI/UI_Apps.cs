@@ -11,6 +11,7 @@ public class UI_Apps : MonoBehaviour
     public string appCode;
     public Image appIcon;
     public TextMeshProUGUI appName;
+    [HideInInspector] public MobilePhone phoneRef;
 
     public void AppClicked(){
         print("Run Apps: " + appName.text);
@@ -20,26 +21,26 @@ public class UI_Apps : MonoBehaviour
     void RunApps(string code){
         switch(code){
             case "A001": // Flashlight
-                //PlayerAbilities.instance.ToggleFlashlight();
-                //PlayerMovement.instance.HandleSelectApp();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight();
+                phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
 
             case "A002": // Shop
-                //MobilePhone.instance.OpenShopApp(true);
+                phoneRef.GetComponent<MobilePhone>().OpenShopApp(true);
             break;
 
             case "A003": // Quickslot
-                //MobilePhone.instance.OpenQuickslotApp(true);
+                phoneRef.GetComponent<MobilePhone>().OpenQuickslotApp(true);
             break;
 
             case "A004": // Thermal Camera
-                //PlayerAbilities.instance.ToggleThermalVision();
-                //PlayerMovement.instance.HandleSelectApp();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleThermalVision();
+                phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
 
             case "A005": // Night Vision
-                //PlayerAbilities.instance.ToggleNightVision();
-                //PlayerMovement.instance.HandleSelectApp();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleNightVision();
+                phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
         }
     }

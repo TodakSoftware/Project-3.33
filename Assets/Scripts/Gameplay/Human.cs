@@ -11,10 +11,11 @@ public class Human : MonoBehaviour
     public bool canInteractPhone;
     // PHONE RELATED 
     [Header("PHONE")]
+    public int playerMoney;
     [SerializeField] Transform itemHolderRight;
     [SerializeField] Transform itemHolderLeft;
     [SerializeField] GameObject phonePrefab; // <--- Will replaced by photon
-    GameObject instantiatedPhone; // <--- For references
+    [HideInInspector] public GameObject instantiatedPhone; // <--- For references
     public bool isInteractPhone;
     bool phoneSwitchedPlaces;
     [HideInInspector] public bool interactAnimEnd;
@@ -42,6 +43,10 @@ public class Human : MonoBehaviour
                 HandleInteractPhone();
             }
         }
+
+        if(Input.GetButtonDown("Flashlight")){ // Tab key
+            GetComponent<PlayerAbilities>().ToggleFlashlight();
+        }
     }
 
     void SetupPhone(){
@@ -49,7 +54,7 @@ public class Human : MonoBehaviour
 
         // Spawn Phone (Will replace with photon prefab)
         instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
-        instantiatedPhone.GetComponent<MobilePhone>().humanRef = this;
+        instantiatedPhone.GetComponent<MobilePhone>().phoneOwner = this.gameObject;
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
 
         // Store Transform Default Values
@@ -59,7 +64,7 @@ public class Human : MonoBehaviour
     }
 
     /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
-    void HandleInteractPhone()
+    public void HandleInteractPhone()
     {
         if(!isInteractPhone && !interactAnimEnd){
             // Disable mouse look & enable cursor
