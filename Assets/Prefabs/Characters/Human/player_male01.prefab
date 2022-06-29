@@ -2951,7 +2951,6 @@ MonoBehaviour:
   zoomInFOV: 34
   zoomInNearClipping: 0.01
   zoomInCamPosition: {x: -0.056, y: 0.56, z: 0.15}
-  heartRateUI: {fileID: 0}
   fearLevel: 0
 --- !u!114 &5678942669568780798
 MonoBehaviour:
@@ -3415,7 +3414,7 @@ MonoBehaviour:
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 1
   SMAAQuality: 2
@@ -3445,7 +3444,7 @@ MonoBehaviour:
   invertFaceCulling: 0
   probeLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   hasPersistentHistory: 0
   allowDeepLearningSuperSampling: 1
   deepLearningSuperSamplingUseCustomQualitySettings: 0

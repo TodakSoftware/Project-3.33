@@ -43,7 +43,7 @@ public class MobilePhone : MonoBehaviour
     public TextMeshProUGUI hpClockText;
 
     [Header("Main Phone Related")]
-    [SerializeField]bool phoneIsDead;
+    public bool phoneIsDead;
     public Canvas phoneCanvas;
     public Canvas offScreenCanvas;
     public GameObject phoneLight;
@@ -112,6 +112,7 @@ public class MobilePhone : MonoBehaviour
             if(currentBattery < 0){
                 currentBattery = 0;
                 phoneIsDead = true;
+                phoneOwner.GetComponent<PlayerAbilities>().TerminateAllApps();
 
                 phoneCanvas.gameObject.SetActive(false); // Close main apps
                 offScreenCanvas.gameObject.SetActive(true); // Open phone off canvas

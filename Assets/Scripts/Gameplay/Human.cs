@@ -51,7 +51,7 @@ public class Human : MonoBehaviour
             }
         }
 
-        if(Input.GetButtonDown("Flashlight")){ // Tab key
+        if(Input.GetButtonDown("Flashlight") && !instantiatedPhone.GetComponent<MobilePhone>().phoneIsDead){ // Tab key & phone is not dead
             GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
         }
     }

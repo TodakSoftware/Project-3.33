@@ -11,6 +11,22 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject nightCamGO;
     public bool nightVisionOn = false;
 
+    public void TerminateAllApps(){ // Terminate all apps if phone is dead
+        if(GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().phoneIsDead){
+            if(flashlightOn){
+                ToggleFlashlight("A001");
+            }
+
+            if(thermalVisionOn){
+                ToggleThermalVision("A004");
+            }
+
+            if(nightVisionOn){
+                ToggleNightVision("A005");
+            }
+        } // end phone is Dead
+    } // end TerminateAllApps()
+
     public void ToggleFlashlight(string appCode){
         if(!flashlightOn){
             flashlightOn = true;
