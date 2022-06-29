@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class MobilePhone : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MobilePhone : MonoBehaviour
     public GameObject shopPanel;
     public GameObject quickslotPanel;
 
+    [Header("Always On Display")]
+    public GameObject heartrateUI;
+    public GameObject alwaysOnDisplayPanel;
+
     [Header("Shop Related")]
     public GameObject shopBtnPrefab;
     public Transform shopAppsContent;
@@ -40,6 +45,7 @@ public class MobilePhone : MonoBehaviour
     [Header("Main Phone Related")]
     [SerializeField]bool phoneIsDead;
     public Canvas phoneCanvas;
+    public Canvas offScreenCanvas;
     public GameObject phoneLight;
     public GameObject appsPrefab;
     public Transform menuAppsContent;
@@ -106,6 +112,9 @@ public class MobilePhone : MonoBehaviour
             if(currentBattery < 0){
                 currentBattery = 0;
                 phoneIsDead = true;
+
+                phoneCanvas.gameObject.SetActive(false); // Close main apps
+                offScreenCanvas.gameObject.SetActive(true); // Open phone off canvas
             }
         }
     } // end HandleDrainCalculation()

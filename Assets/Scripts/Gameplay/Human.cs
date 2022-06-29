@@ -31,7 +31,6 @@ public class Human : MonoBehaviour
     [Header("FEAR LEVEL")]
     // ----------------------------------------------------------------------------------
     // FEAR LEVEL
-    public GameObject heartRateUI;
     [Range(0,100)] public int fearLevel;
     bool hpGreen, hpYellow, hpRed;
 
@@ -140,21 +139,21 @@ public class Human : MonoBehaviour
     private void UpdateHeartUI(){
         if(fearLevel < 50){
             if(!hpGreen){
-                heartRateUI.GetComponent<Animator>().SetTrigger("Healthy");
+                instantiatedPhone.GetComponent<MobilePhone>().heartrateUI.GetComponent<Animator>().SetTrigger("Healthy");
                 hpGreen = true;
                 hpYellow = false;
                 hpRed = false;
             }
         }else if(fearLevel >= 50 && fearLevel < 80){
             if(!hpYellow){
-                heartRateUI.GetComponent<Animator>().SetTrigger("Panic");
+                instantiatedPhone.GetComponent<MobilePhone>().heartrateUI.GetComponent<Animator>().SetTrigger("Panic");
                 hpGreen = false;
                 hpYellow = true;
                 hpRed = false;
             }
         }else if(fearLevel >= 80 && fearLevel <= 100){
             if(!hpRed){
-                heartRateUI.GetComponent<Animator>().SetTrigger("Dying");
+                instantiatedPhone.GetComponent<MobilePhone>().heartrateUI.GetComponent<Animator>().SetTrigger("Dying");
                 hpGreen = false;
                 hpYellow = false;
                 hpRed = true;
