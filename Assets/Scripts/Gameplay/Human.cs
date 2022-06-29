@@ -28,6 +28,13 @@ public class Human : MonoBehaviour
     public float zoomInFOV;
     public float zoomInNearClipping;
     public Vector3 zoomInCamPosition;
+    [Header("FEAR LEVEL")]
+    // ----------------------------------------------------------------------------------
+    // FEAR LEVEL
+    public GameObject heartRateUI;
+    [Range(0,100)] public int fearLevel;
+    bool hpGreen, hpYellow, hpRed;
+
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -35,6 +42,7 @@ public class Human : MonoBehaviour
 
     void Start(){
         SetupPhone();
+        StartCoroutine(UpdateHeartRate());
     }
 
     void Update(){
@@ -45,10 +53,11 @@ public class Human : MonoBehaviour
         }
 
         if(Input.GetButtonDown("Flashlight")){ // Tab key
-            GetComponent<PlayerAbilities>().ToggleFlashlight();
+            GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
         }
     }
 
+/* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
     void SetupPhone(){
         // Setup player custom skin / early game ability / etc.
 
@@ -57,13 +66,16 @@ public class Human : MonoBehaviour
         instantiatedPhone.GetComponent<MobilePhone>().phoneOwner = this.gameObject;
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
 
+        if(GetComponent<PlayerAbilities>().flashlightOn){
+            instantiatedPhone.GetComponent<MobilePhone>().drainBattery(true, "A001"); // Drain battery for flashlight
+        }
+
         // Store Transform Default Values
         defaultCamPosition = cameraGO.transform.localPosition;
         defaultNearClipping = cameraGO.GetComponent<Camera>().nearClipPlane;
         defaultFOV = cameraGO.GetComponent<Camera>().fieldOfView;
-    }
+    } // end SetupPhone()
 
-    /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
     public void HandleInteractPhone()
     {
         if(!isInteractPhone && !interactAnimEnd){
@@ -98,7 +110,7 @@ public class Human : MonoBehaviour
             
             InteractZoomEffect(false);  // Zoom out
         }
-    }
+    } // end SwitchPhonePosition()
 
     public void InteractZoomEffect(bool zoomIn){
         if(zoomIn){
@@ -112,6 +124,57 @@ public class Human : MonoBehaviour
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
         }
-    }
+    } // end InteractZoomEffect()
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
+
+
+// --------------------------------- HEART RATE FUNCTION START ----------------------------------
+    private IEnumerator UpdateHeartRate(){
+        while(fearLevel >= 0 && fearLevel <= 100){ 
+            UpdateHeartUI();
+            yield return new WaitForSeconds(1f);
+        }
+        EndHeartRate();
+    } // end UpdateHeartRate()
+
+    private void UpdateHeartUI(){
+        if(fearLevel < 50){
+            if(!hpGreen){
+                heartRateUI.GetComponent<Animator>().SetTrigger("Healthy");
+                hpGreen = true;
+                hpYellow = false;
+                hpRed = false;
+            }
+        }else if(fearLevel >= 50 && fearLevel < 80){
+            if(!hpYellow){
+                heartRateUI.GetComponent<Animator>().SetTrigger("Panic");
+                hpGreen = false;
+                hpYellow = true;
+                hpRed = false;
+            }
+        }else if(fearLevel >= 80 && fearLevel <= 100){
+            if(!hpRed){
+                heartRateUI.GetComponent<Animator>().SetTrigger("Dying");
+                hpGreen = false;
+                hpYellow = false;
+                hpRed = true;
+            }
+        }
+    } // end UpdateHeartUI()
+
+    public void EndHeartRate(){
+       
+    } // end EndHeartRate()
+
+    public void AdjustFearLevel(int amount){
+        fearLevel += amount;
+
+        if(fearLevel <= 0){
+            fearLevel = 0;
+        }else if(fearLevel >= 100){
+            fearLevel = 100;
+        }
+    } // end AdjustFearLevel()
+// --------------------------------- HEART RATE FUNCTION END ----------------------------------
+
 }

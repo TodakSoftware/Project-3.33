@@ -21,7 +21,7 @@ public class UI_Apps : MonoBehaviour
     void RunApps(string code){
         switch(code){
             case "A001": // Flashlight
-                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight(appCode);
                 phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
 
@@ -34,12 +34,12 @@ public class UI_Apps : MonoBehaviour
             break;
 
             case "A004": // Thermal Camera
-                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleThermalVision();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleThermalVision(appCode);
                 phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
 
             case "A005": // Night Vision
-                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleNightVision();
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleNightVision(appCode);
                 phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
         }

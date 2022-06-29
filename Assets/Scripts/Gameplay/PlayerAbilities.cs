@@ -11,7 +11,7 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject nightCamGO;
     public bool nightVisionOn = false;
 
-    public void ToggleFlashlight(){
+    public void ToggleFlashlight(string appCode){
         if(!flashlightOn){
             flashlightOn = true;
             GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().phoneLight.SetActive(true);
@@ -19,26 +19,32 @@ public class PlayerAbilities : MonoBehaviour
             flashlightOn = false;
             GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().phoneLight.SetActive(false);
         }
+
+        GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(flashlightOn, appCode); // Drain battery
     } // end ToggleFlashlight()
 
-    public void ToggleThermalVision(){
+    public void ToggleThermalVision(string appCode){
         if(!thermalVisionOn){
             thermalVisionOn = true;
-            thermalCamGO.SetActive(true);
+            //thermalCamGO.SetActive(true);
         }else{
             thermalVisionOn = false;
-            thermalCamGO.SetActive(false);
+            //thermalCamGO.SetActive(false);
         }
+
+        GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(thermalVisionOn, appCode); // Drain battery
     } // end ToggleThermalVision()
 
-    public void ToggleNightVision(){
+    public void ToggleNightVision(string appCode){
         if(!nightVisionOn){
             nightVisionOn = true;
-            nightCamGO.SetActive(true);
+            //nightCamGO.SetActive(true);
         }else{
             nightVisionOn = false;
-            nightCamGO.SetActive(false);
+            //nightCamGO.SetActive(false);
         }
+
+        GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(nightVisionOn, appCode); // Drain battery
     } // end ToggleNightVision()
 
 

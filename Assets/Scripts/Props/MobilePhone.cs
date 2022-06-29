@@ -60,6 +60,12 @@ public class MobilePhone : MonoBehaviour
 
         // Refresh main screen
         RefreshMainScreen();
+
+        // Full up the battery percentage (Just to make sure)
+        currentBattery = 103f;
+
+        // Add passive drain
+        drainRateTotal += 0.01f;
     } // end Start()
 
     void Update(){
@@ -103,6 +109,26 @@ public class MobilePhone : MonoBehaviour
             }
         }
     } // end HandleDrainCalculation()
+
+    public void drainBattery(bool isDrain, string appCode){
+        if(isDrain){
+            foreach(var app in appsSO.appLists){
+                if(appCode.ToUpper() == app.code){
+                    drainRateTotal += app.drainRate;
+                }
+            }
+        }else{
+            foreach(var app in appsSO.appLists){
+                if(appCode.ToUpper() == app.code){
+                    if(drainRateTotal <= 0){
+                        drainRateTotal = 0;
+                    }else{
+                        drainRateTotal -= app.drainRate;
+                    }
+                }
+            }
+        } // else end
+    } // end drainBattery()
 
 #endregion // End Drain Calculation
 
