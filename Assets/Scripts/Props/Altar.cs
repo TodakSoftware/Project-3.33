@@ -46,7 +46,7 @@ public class Altar : MonoBehaviour
                     itemSpawnpoints[itemIndex].SetActive(true);
                     // Instantiate ritual item
                     if(ritual.itemMesh != null){
-                        var mesh = Instantiate(ritual.itemMesh, Vector3.zero, Quaternion.identity); //Quaternion.Euler(0, -90, 0)
+                        var mesh = Instantiate(ritual.itemMesh, Vector3.zero, ritual.itemMesh.transform.rotation); //Quaternion.Euler(0, -90, 0)
                         mesh.transform.SetParent(meshSpawnpoints[itemIndex],false);
                     }
                     itemIndex += 1;
