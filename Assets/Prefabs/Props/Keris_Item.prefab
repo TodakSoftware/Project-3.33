@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1765026165871400039}
   - component: {fileID: 1765026165871400036}
   - component: {fileID: 1765026165871400037}
+  - component: {fileID: 4675492488739875530}
   m_Layer: 7
   m_Name: Keris_Item
   m_TagString: Untagged
@@ -28,15 +29,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765026165871400045}
-  m_LocalRotation: {x: 0, y: 0, z: -0.051072326, w: 0.998695}
-  m_LocalPosition: {x: 4.64, y: 10.8, z: -2.52}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1904738386260937420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.855}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1765026165871400040
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -145,6 +146,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ritualItemSO: {fileID: 11400000, guid: 104af262ff7ba0348ba45168d464a751, type: 2}
   code: R006
+--- !u!54 &4675492488739875530
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765026165871400045}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &188159285233853008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170,35 +187,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4489947
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.4973917
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.5510082
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.4973883
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.824
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -95.886
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 89.4
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145860468010796228, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4284042091925327689, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
       propertyPath: m_Name
       value: keris
+      objectReference: {fileID: 0}
+    - target: {fileID: 4284042091925327689, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396174946664747148, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
