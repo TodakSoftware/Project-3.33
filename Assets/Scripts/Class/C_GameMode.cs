@@ -14,7 +14,7 @@ public class C_GameMode{ // gameModeIndex : 0 = Normal Hunt 3 v 1
     public float findGameTimeoutDuration; // <- 213 = 3:33
 
     [Header("Ingame Settings")]
-    public int clockStartTime; // Clock time when the game START in integer. START : 3.26 = 206 (Hunt Mode)
-    public int clockEndTime; // Clock time when the game END in integer. END : 3.33 = 213 (Hunt Mode)
+    public int minuteStartTime; // Clock time when the game START in integer. START : 3.[26] = Minutes Only (Hunt Mode)
+    public int minuteEndTime; // Clock time when the game END in integer. END : 3.[33] = Minutes Only (Hunt Mode)
     public int totalRitualItems; // Total ritual items suppose to spawn in the game
 }

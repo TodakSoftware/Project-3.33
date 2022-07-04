@@ -161,6 +161,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             roomProperties.Add("RoomFullHuman", false);
             roomProperties.Add("RoomFullGhost", false);
             roomProperties.Add("GameItemContributed", 0);
+            roomProperties.Add("GameTotalRitualItem", SOManager.instance.gameSettings.gameMode[gameModeIndex].totalRitualItems);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
 
             string[] exposedPropertiesInLobby = { "RoomTotalMaxHuman", "RoomTotalMaxGhost", "RoomGamemodeIndex", "RoomMapName", "RoomFullHuman", "RoomFullGhost" }; 

@@ -56,19 +56,7 @@ public class Altar : MonoBehaviour
 
         if(itemLists.Count >= 5){
             print("Human WIN!");
-            List<GameObject> humans = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-            List<GameObject> ghosts = new List<GameObject>(GameObject.FindGameObjectsWithTag("Ghost"));
-
-            foreach(var h in humans){
-                h.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
-                h.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-            }
-
-            foreach(var g in ghosts){
-                g.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
-                g.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-            }
-
+            GameManager.instance.HumanWin(true);
         }
     } // end DisplayItemOnAltar
 }

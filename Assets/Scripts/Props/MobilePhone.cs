@@ -51,6 +51,7 @@ public class MobilePhone : MonoBehaviour
     public Transform menuAppsContent;
     public bool isLandscape;
     [HideInInspector] public GameObject phoneOwner; // who own the mobile phone?
+    GameManager cacheGM;
 
     void Start(){
         phoneCanvas.worldCamera = phoneOwner.GetComponent<Human>().cameraGO.GetComponent<Camera>(); // Set phoneCanvas with current world camera
@@ -72,6 +73,9 @@ public class MobilePhone : MonoBehaviour
 
         // Add passive drain
         drainRateTotal += 0.01f;
+
+        // Caching Game Manager
+        cacheGM = GameManager.instance;
     } // end Start()
 
     void Update(){
@@ -102,6 +106,10 @@ public class MobilePhone : MonoBehaviour
         if(enableDrain && !phoneIsDead){
             HandleDrainCalculation();
         }
+
+        // TimerUI
+        hpClockText.text = cacheGM.timerRef;
+
     } // end Update()
 
 #region Drain Calculation

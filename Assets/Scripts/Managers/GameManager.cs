@@ -14,9 +14,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool gameStart;
     public bool gameEnded;
     // Game Rules
-    int clockStartTime, clockEndTime; // [Controlled by SO_GameSettings]
     public int currentItemContributed; // Will replaced with Photon Customproperties ["GameItemContributed"]
-    int totalRitualItems; // [Controlled by SO_GameSettings]
+    [HideInInspector] public int totalRitualItems; // [Controlled by SO_GameSettings]
 
     // Starting Game Related 
     public List<Transform> spawnpoints_Human = new List<Transform>();
@@ -24,10 +23,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<Transform> spawnpoints_RitualItems = new List<Transform>();
     public List<Transform> spawnpoints_CapturedRoom = new List<Transform>();
     [HideInInspector] public List<int> humanSpawnedPosition, ghostSpawnedPosition; 
+
+    [Header("Timer Related")]
+    public bool timeOut;
+    int remainingDuration;
+    [HideInInspector] public string timerRef;
     
     // Ingame Related
     int playersInRoom; // Number of players successfully enter the room. For comparing with total of network player list
-    public PlayerController[] playerControllerArray; // List of PlayerController[Array] for all players in the game
+    [HideInInspector] public PlayerController[] playerControllerArray; // List of PlayerController[Array] for all players in the game
 
     void Awake(){
         if(instance == null){
@@ -41,8 +45,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerControllerArray = new PlayerController[PhotonNetwork.PlayerList.Length];
 
         // Linking data via Game Settings Scriptable Objects
-        clockStartTime = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].clockStartTime;
-        clockEndTime = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].clockEndTime;
         totalRitualItems = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].totalRitualItems;
 
          // Set Spawnpoints
@@ -53,7 +55,40 @@ public class GameManager : MonoBehaviourPunCallbacks
         // Spawn Player
         photonView.RPC("PlayerInGame", RpcTarget.AllBuffered);
 
+        remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m
+        StartCoroutine(UpdateTimer());
+
     } // end Start
+
+    // --------------------------------- CLOCK TIMER FUNCTION START ----------------------------------
+    private void ResetTimer(){
+        remainingDuration = 0;
+    }
+
+    private IEnumerator UpdateTimer(){
+        while(remainingDuration > 0 && remainingDuration <= (SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteEndTime * 60)){ // 1980 = 33m
+            UpdateTimerUI(remainingDuration);
+            remainingDuration++;
+            yield return new WaitForSeconds(1f);
+        }
+        EndTimer();
+    }
+
+    private void UpdateTimerUI(int seconds){
+        //print(string.Format("3:{0:D2}:{1:D2}", seconds/60, seconds % 60));
+        timerRef = "3<color=red>:</color>" + string.Format("{0:D2}", seconds/60) + "<size=30><color=red>:</color>" + string.Format("{0:D2}", seconds % 60) + "</size>";
+    }
+
+    public void EndTimer(){
+        timeOut = true;
+        HumanWin(false);
+        ResetTimer();
+    }
+
+    private void OnDestroy(){
+        StopAllCoroutines();
+    }
+    // --------------------------------- CLOCK TIMER FUNCTION START ----------------------------------
 
     [PunRPC]
     public void SetSpawnpoints(){ // Host set spawnpoints for human n ghost
@@ -118,5 +153,41 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         return random;
     } // end RandomExcept
+
+
+// ---------------------------------------------------- WIN LOSE CONDITION START ----------------------------------------
+    public void HumanWin(bool humanWin){
+        gameEnded = true;
+        
+        List<GameObject> humans = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        List<GameObject> ghosts = new List<GameObject>(GameObject.FindGameObjectsWithTag("Ghost"));
+
+        if(humanWin){ // display all victory UI saying HUMAN WIN
+            foreach(var h in humans){
+                h.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
+                h.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
+                
+            }
+
+            foreach(var g in ghosts){
+                g.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
+                g.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
+                
+            }
+        }else{ // // display all victory UI saying GHOST WIN
+            foreach(var h in humans){
+                h.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
+                h.GetComponent<PlayerUI>().uiVictoryResult.GhostWin();
+                
+            }
+
+            foreach(var g in ghosts){
+                g.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
+                g.GetComponent<PlayerUI>().uiVictoryResult.GhostWin();
+                
+            }
+        }
+    } // end HumanWin
+// ---------------------------------------------------- WIN LOSE CONDITION END ----------------------------------------
 
 }
