@@ -20,7 +20,7 @@ MonoBehaviour:
     price: 0
     isSystemApp: 1
     hideInShop: 0
-    drainRate: 0.01
+    drainRate: 0.1
   - name: Shop
     code: A002
     appIcon: {fileID: 21300000, guid: 815260c5fc257294e999dda19cd0faeb, type: 3}
@@ -36,7 +36,7 @@ MonoBehaviour:
     price: 100
     isSystemApp: 0
     hideInShop: 0
-    drainRate: 0.5
+    drainRate: 0.3
   - name: Night Vision
     code: A005
     appIcon: {fileID: 21300000, guid: 4ff657b76aac226408aa9ca6ce20c494, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
     price: 100
     isSystemApp: 0
     hideInShop: 0
-    drainRate: 0.5
+    drainRate: 0.2
   - name: Map
     code: A006
     appIcon: {fileID: 21300000, guid: 6f7feea64879dc8459b620c873647c2e, type: 3}
