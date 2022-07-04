@@ -188,6 +188,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     } // end HumanWin
+
+    public void LeaveRoom(){
+        if(PhotonNetwork.InRoom){
+            PhotonNetwork.LeaveRoom();
+        }
+    }
 // ---------------------------------------------------- WIN LOSE CONDITION END ----------------------------------------
 
 }

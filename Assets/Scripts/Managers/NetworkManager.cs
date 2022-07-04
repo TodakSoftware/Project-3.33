@@ -184,6 +184,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         if(UIManager.instance.modalFindGame.coroutinefindRoomTimeout != null){
             StopCoroutine(UIManager.instance.modalFindGame.coroutinefindRoomTimeout); // Stop running courotine
         }
+
+        if(!isFindingGame){
+            //PhotonNetwork.Disconnect();
+            // load back to mainmenu
+            SceneManager.LoadScene("MainMenu");
+        }
     } // end OnLeftRoom
 
     public override void OnDisconnected(DisconnectCause cause){

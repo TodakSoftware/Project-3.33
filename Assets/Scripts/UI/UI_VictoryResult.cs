@@ -35,9 +35,7 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
         if(redirectDuration <= 0){
             //PhotonNetwork.LeaveRoom();
             if(photonView.IsMine){
-                PhotonNetwork.LeaveRoom();
-                //NetworkManager.instance.CancelFindGameOrLeaveRoom();
-                PhotonNetwork.LoadLevel("MainMenu");
+                GameManager.instance.LeaveRoom();
             }
         }
     }
