@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class UI_VictoryResult : MonoBehaviourPunCallbacks
 {
@@ -13,11 +14,13 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
 
     public void HumanWin(){
         teamText.text = "Human Victory!";
+        if(gameObject.activeSelf)
         StartCoroutine(RedirectAfterEndGame());
     }
 
     public void GhostWin(){
         teamText.text = "Ghost Victory!";
+        if(gameObject.activeSelf)
         StartCoroutine(RedirectAfterEndGame());
     }
 
@@ -30,8 +33,12 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
         }
 
         if(redirectDuration <= 0){
-            PhotonNetwork.LeaveRoom();
-            NetworkManager.instance.ChangeScene("MainMenu");
+            //PhotonNetwork.LeaveRoom();
+            if(photonView.IsMine){
+                PhotonNetwork.LeaveRoom();
+                //NetworkManager.instance.CancelFindGameOrLeaveRoom();
+                PhotonNetwork.LoadLevel("MainMenu");
+            }
         }
     }
 }

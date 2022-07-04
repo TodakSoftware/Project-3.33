@@ -7,7 +7,7 @@ using Photon.Pun;
 public class PlayerNetworking : MonoBehaviourPunCallbacks
 {
     public List<MonoBehaviour> scriptsToIgnore = new List<MonoBehaviour>();
-    public Camera mainCam;
+    public List<GameObject> gameObjectToDisable = new List<GameObject>();
 
     void Start()
     {
@@ -15,7 +15,10 @@ public class PlayerNetworking : MonoBehaviourPunCallbacks
             foreach(var script in scriptsToIgnore){
                 script.enabled = false;
             }
-            mainCam.gameObject.SetActive(false);
+
+            foreach(var go in gameObjectToDisable){
+                go.SetActive(false);
+            }
         }
     }
 }

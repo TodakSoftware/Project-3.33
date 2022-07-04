@@ -137,7 +137,10 @@ public class UIManager : MonoBehaviour
             int seconds = Mathf.FloorToInt(timeoutTimer - minutes * 60f);
             string formattedTimer = string.Format("{0:0}:{1:00}", minutes, seconds);
 
-            modalFindGame.findRoomTimeoutText.text = formattedTimer;
+            if(modalFindGame != null){
+                modalFindGame.findRoomTimeoutText.text = formattedTimer;
+            }
+            
             yield return null;
         }
 

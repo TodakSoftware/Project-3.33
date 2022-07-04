@@ -181,7 +181,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     } // end OnPlayerLeftRoom
 
     public override void OnLeftRoom(){ // When player successfully left the room
-        StopCoroutine(UIManager.instance.modalFindGame.coroutinefindRoomTimeout); // Stop running courotine
+        if(UIManager.instance.modalFindGame.coroutinefindRoomTimeout != null){
+            StopCoroutine(UIManager.instance.modalFindGame.coroutinefindRoomTimeout); // Stop running courotine
+        }
     } // end OnLeftRoom
 
     public override void OnDisconnected(DisconnectCause cause){
@@ -338,8 +340,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void ChangeScene(string sceneName){ // Load level instantly without loading screen
         if(PhotonNetwork.IsMasterClient){
-            PhotonNetwork.LoadLevel(sceneName);
-            print(sceneName);
+            if(sceneName == "MainMenu"){
+                if(PhotonNetwork.IsConnectedAndReady){
+                    PhotonNetwork.LeaveRoom();
+                }
+                PhotonNetwork.LoadLevel(sceneName);
+            }else{
+                PhotonNetwork.LoadLevel(sceneName);
+            }
+            //print(sceneName);
         }
     } // end ChangeScene
 

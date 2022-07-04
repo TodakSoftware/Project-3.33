@@ -3237,7 +3237,9 @@ MonoBehaviour:
   - {fileID: -6604162445573430329}
   - {fileID: 5279645071448470874}
   - {fileID: 5678942671583981570}
-  mainCam: {fileID: 6477736984881128209}
+  gameObjectToDisable:
+  - {fileID: 477427309}
+  - {fileID: 6477736984881128221}
 --- !u!114 &4019112439853096887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3455,6 +3457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiVictoryResult: {fileID: 207715374289362753}
+  canvasTimerUI: {fileID: 0}
 --- !u!1 &5678942670028896177
 GameObject:
   m_ObjectHideFlags: 0

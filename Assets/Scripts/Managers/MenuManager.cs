@@ -18,6 +18,9 @@ public class MenuManager : MonoBehaviour
     public Button joinGhostBtn; 
     
     void Awake(){
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if(instance == null){
             instance = this;
         }else{
@@ -44,4 +47,5 @@ public class MenuManager : MonoBehaviour
     } // end UpdateTotalPartyMember
     
     // ----------------------- INVITE FRIENDS RELATED END -------------------
+
 }
