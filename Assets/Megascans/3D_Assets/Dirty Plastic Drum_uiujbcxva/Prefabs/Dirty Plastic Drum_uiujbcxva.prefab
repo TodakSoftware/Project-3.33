@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1601337194332544630}
   - component: {fileID: 4664904781687677708}
   - component: {fileID: 4168614524698669553}
+  - component: {fileID: 530521110730481333}
   m_Layer: 0
   m_Name: Dirty Plastic Drum_LOD2__uiujbcxva
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &530521110730481333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292009657648011461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56, y: 0.8968637, z: 0.57276696}
+  m_Center: {x: -0.0063914955, y: 0.44422263, z: 0}
 --- !u!1 &5059480250352001586
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: 5214163821607449501}
   - component: {fileID: 4814060682626192566}
   - component: {fileID: 8655476570803960976}
+  - component: {fileID: 6204727412373183962}
   m_Layer: 0
   m_Name: Dirty Plastic Drum_LOD4__uiujbcxva
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6204727412373183962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059480250352001586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56, y: 0.8976512, z: 0.5727086}
+  m_Center: {x: -0.0063914955, y: 0.44438154, z: 0.000039875507}
 --- !u!1 &5606339026059436000
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +267,7 @@ GameObject:
   - component: {fileID: 8623893243069015164}
   - component: {fileID: 7310790560907107913}
   - component: {fileID: 7801481067191177858}
+  - component: {fileID: 7620717033858663191}
   m_Layer: 0
   m_Name: Dirty Plastic Drum_LOD0__uiujbcxva
   m_TagString: Untagged
@@ -311,3 +340,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7620717033858663191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855885593512065112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56, y: 0.8969747, z: 0.57276696}
+  m_Center: {x: -0.0063914955, y: 0.44427812, z: 0}
