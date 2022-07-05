@@ -54,8 +54,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        HandleGravity();
-
         if(!photonView.IsMine){ // If this script is not ours to control, end it
             return;
         }
@@ -63,6 +61,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if(photonView.Owner != photonView.Controller){ // if player disconnect, prevent host from controlling
             return;
         }
+
+        HandleGravity();
 
         if(canJump){
             if(Input.GetButtonDown("Jump") && characterController.isGrounded){
@@ -122,8 +122,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         
         // Handle Gravity
-        velocity.y += gravity * Time.fixedDeltaTime;
-        characterController.Move(velocity * Time.fixedDeltaTime);
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime);
     } // end HandleGravity
 
     void SmoothAnimation(){ // Smoothing animation movement value by inc/dec value by 0.09f per second instead snap
@@ -233,15 +233,4 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
 /* -------------------------------------------- BASIC MOVEMENT HANDLER FUNCTIONS END -------------------------------------------------*/
 
-
-/* --------------------------------------------  PHOTON RELATED FUNCTIONS START -------------------------------------------------*/
-    [PunRPC]
-    public void InitializePhotonPlayer(Player player){ // Called by GamaManager (SpawnPlayers())
-        photonPlayer = player;
-        playerID = player.ActorNumber;
-
-        // Register self into playerControllerArray in GameManager
-        GameManager.instance.playerControllerArray[playerID - 1] = this;
-    }
-/* --------------------------------------------  PHOTON RELATED FUNCTIONS END -------------------------------------------------*/
 } // end monobehaviour

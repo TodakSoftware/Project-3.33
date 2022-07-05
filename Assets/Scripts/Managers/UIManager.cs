@@ -176,4 +176,16 @@ public class UIManager : MonoBehaviour
 #endregion
 /* ------------------------------------------------  INGAME RECONNECT RELATED END ---------------------------------------------------------*/
 
+
+/* ------------------------------------------------  INGAME RELATED START ---------------------------------------------------------*/
+    public void VictoryUI(bool humanWin){
+        var endUI = Instantiate(SOManager.instance.prefabs.uiVictory);
+        if(humanWin){
+            endUI.GetComponent<UI_VictoryResult>().HumanWin();
+        }else{
+            endUI.GetComponent<UI_VictoryResult>().GhostWin();
+        }
+        endUI.transform.SetParent(mainCanvas.transform, false);
+    }
+/* ------------------------------------------------  INGAME RELATED END ---------------------------------------------------------*/
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Altar : MonoBehaviour
+public class Altar : MonoBehaviourPunCallbacks
 {
     public SO_RitualItem ritualItemSO;
     public List<GameObject> itemSpawnpoints = new List<GameObject>();
@@ -54,9 +55,13 @@ public class Altar : MonoBehaviour
             }
         } // end foreach
 
-        if(itemLists.Count >= 5){
+        // Save ItemContributed in CustomProperties Here
+        //
+
+        if(itemLists.Count >= (int)PhotonNetwork.CurrentRoom.CustomProperties["GameTotalRitualItem"]){
             print("Human WIN!");
-            GameManager.instance.HumanWin(true);
+            //GameManager.instance.HumanWin(true);
+            GameManager.instance.photonView.RPC("HumanWin", RpcTarget.All, true);
         }
     } // end DisplayItemOnAltar
 }

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Photon.Pun;
 
-public class Human : MonoBehaviour
+public class Human : MonoBehaviourPunCallbacks
 {
     PlayerController playerController;
 
@@ -41,10 +42,19 @@ public class Human : MonoBehaviour
 
     void Start(){
         SetupPhone();
+        if(!photonView.IsMine){ // If this script is not ours to control, end it
+            return;
+        }
+
+        
         StartCoroutine(UpdateHeartRate());
     }
 
     void Update(){
+        if(!photonView.IsMine){ // If this script is not ours to control, end it
+            return;
+        }
+
         if(canInteractPhone){
             if(Input.GetButtonDown("Interact Phone")){ // Tab key
                 HandleInteractPhone();

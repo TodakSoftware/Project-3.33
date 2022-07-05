@@ -154,12 +154,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom(){ // Create default room properties on 1st created room
         if(PhotonNetwork.IsMasterClient){ // Set room properties after we are in a room
             Hashtable roomProperties = new Hashtable();
-            roomProperties.Add("RoomTotalMaxHuman", maxHumanPerGame);
-            roomProperties.Add("RoomTotalMaxGhost", maxGhostPerGame);
+            roomProperties.Add("RoomTotalMaxHuman", SOManager.instance.gameSettings.gameMode[gameModeIndex].maxHumanPerGame);
+            roomProperties.Add("RoomTotalMaxGhost", SOManager.instance.gameSettings.gameMode[gameModeIndex].maxGhostPerGame);
             roomProperties.Add("RoomGamemodeIndex", gameModeIndex);
             roomProperties.Add("RoomMapName", gameMapName); // Random map
             roomProperties.Add("RoomFullHuman", false);
             roomProperties.Add("RoomFullGhost", false);
+            roomProperties.Add("GameMinuteStart", SOManager.instance.gameSettings.gameMode[gameModeIndex].minuteStartTime);
+            roomProperties.Add("GameMinuteEnd", SOManager.instance.gameSettings.gameMode[gameModeIndex].minuteEndTime);
             roomProperties.Add("GameItemContributed", 0);
             roomProperties.Add("GameTotalRitualItem", SOManager.instance.gameSettings.gameMode[gameModeIndex].totalRitualItems);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);

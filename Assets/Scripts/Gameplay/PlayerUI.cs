@@ -6,7 +6,6 @@ using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-    public UI_VictoryResult uiVictoryResult;
     public TextMeshProUGUI canvasTimerUI; // just for ghost
 
     void Start(){

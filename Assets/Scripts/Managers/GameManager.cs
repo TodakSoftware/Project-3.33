@@ -11,11 +11,9 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
-    public bool gameStart;
-    public bool gameEnded;
+    [HideInInspector] public bool gameStart;
+    [HideInInspector] public bool gameEnded;
     // Game Rules
-    public int currentItemContributed; // Will replaced with Photon Customproperties ["GameItemContributed"]
-    [HideInInspector] public int totalRitualItems; // [Controlled by SO_GameSettings]
 
     // Starting Game Related 
     public List<Transform> spawnpoints_Human = new List<Transform>();
@@ -31,7 +29,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     // Ingame Related
     int playersInRoom; // Number of players successfully enter the room. For comparing with total of network player list
-    [HideInInspector] public PlayerController[] playerControllerArray; // List of PlayerController[Array] for all players in the game
 
     void Awake(){
         if(instance == null){
@@ -42,12 +39,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     } // end Awake
 
     void Start(){
-        playerControllerArray = new PlayerController[PhotonNetwork.PlayerList.Length];
 
         // Linking data via Game Settings Scriptable Objects
-        totalRitualItems = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].totalRitualItems;
 
-         // Set Spawnpoints
+        // Set Spawnpoints
         if(PhotonNetwork.IsMasterClient){
             photonView.RPC("SetSpawnpoints", RpcTarget.AllBuffered);
         }
@@ -55,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         // Spawn Player
         photonView.RPC("PlayerInGame", RpcTarget.AllBuffered);
 
-        remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m
+        remainingDuration = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
         StartCoroutine(UpdateTimer());
 
     } // end Start
@@ -66,7 +61,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     private IEnumerator UpdateTimer(){
-        while(remainingDuration > 0 && remainingDuration <= (SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteEndTime * 60)){ // 1980 = 33m
+        while(remainingDuration > 0 && remainingDuration <= ((int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteEnd"] * 60)){ // 1980 = 33m
             UpdateTimerUI(remainingDuration);
             remainingDuration++;
             yield return new WaitForSeconds(1f);
@@ -81,7 +76,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void EndTimer(){
         timeOut = true;
-        HumanWin(false);
+        photonView.RPC("HumanWin", RpcTarget.All, false); //HumanWin(false);
         ResetTimer();
     }
 
@@ -92,13 +87,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void SetSpawnpoints(){ // Host set spawnpoints for human n ghost
+        int maxHuman = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"];
+        int maxGhost = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"];
         // Set each players spawnPoints
-        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - NetworkManager.instance.maxGhostPerGame); i++){
+        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxGhost); i++){
             int posValue = RandomExcept(0, spawnpoints_Human.Count, humanSpawnedPosition);
             humanSpawnedPosition.Add(posValue);
         }
 
-        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - NetworkManager.instance.maxHumanPerGame); i++){
+        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxHuman); i++){
             int posValue2 = RandomExcept(0, spawnpoints_Ghost.Count, ghostSpawnedPosition);
             ghostSpawnedPosition.Add(posValue2);
         }
@@ -139,7 +136,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         PlayerController playerController = player.GetComponent<PlayerController>();
-        playerController.photonView.RPC("InitializePhotonPlayer", RpcTarget.All, PhotonNetwork.LocalPlayer);
     } // end SpawnPlayers
 
     int RandomExcept(int min, int max, List<int> except)
@@ -156,36 +152,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 // ---------------------------------------------------- WIN LOSE CONDITION START ----------------------------------------
+    [PunRPC]
     public void HumanWin(bool humanWin){
         gameEnded = true;
         
-        List<GameObject> humans = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-        List<GameObject> ghosts = new List<GameObject>(GameObject.FindGameObjectsWithTag("Ghost"));
-
         if(humanWin){ // display all victory UI saying HUMAN WIN
-            foreach(var h in humans){
-                h.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-                h.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
-                
-            }
-
-            foreach(var g in ghosts){
-                g.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-                g.GetComponent<PlayerUI>().uiVictoryResult.HumanWin();
-                
-            }
+            UIManager.instance.VictoryUI(true);
         }else{ // // display all victory UI saying GHOST WIN
-            foreach(var h in humans){
-                h.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-                h.GetComponent<PlayerUI>().uiVictoryResult.GhostWin();
-                
-            }
-
-            foreach(var g in ghosts){
-                g.GetComponent<PlayerUI>().uiVictoryResult.gameObject.SetActive(true);
-                g.GetComponent<PlayerUI>().uiVictoryResult.GhostWin();
-                
-            }
+            UIManager.instance.VictoryUI(false);
         }
     } // end HumanWin
 
@@ -195,5 +169,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 // ---------------------------------------------------- WIN LOSE CONDITION END ----------------------------------------
+
+
+// ---------------------------------------------------- NETWORK RELATED START ----------------------------------------
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
+        base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
+
+    } // end OnPlayerPropertiesUpdate
+// ---------------------------------------------------- NETWORK RELATED END ----------------------------------------
 
 }

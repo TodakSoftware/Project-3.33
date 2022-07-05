@@ -14,18 +14,19 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
 
     public void HumanWin(){
         teamText.text = "Human Victory!";
-        if(gameObject.activeSelf)
-        StartCoroutine(RedirectAfterEndGame());
+        Invoke("DelayRedirect",.3f);
     }
 
     public void GhostWin(){
         teamText.text = "Ghost Victory!";
-        if(gameObject.activeSelf)
+        Invoke("DelayRedirect",.3f);
+    }
+
+    void DelayRedirect(){
         StartCoroutine(RedirectAfterEndGame());
     }
 
     IEnumerator RedirectAfterEndGame(){
-
         while(redirectDuration > 0){
             redirectText.text = "Redirect to main menu in "+redirectDuration;
             yield return new WaitForSeconds(1f);
@@ -38,5 +39,5 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
                 GameManager.instance.LeaveRoom();
             }
         }
-    }
+    } // end RedirectAfterEndGame
 }
