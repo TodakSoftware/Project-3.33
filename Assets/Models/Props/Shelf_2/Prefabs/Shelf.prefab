@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 2171251076348134067}
   - component: {fileID: 6124318214771875837}
   - component: {fileID: 7577038195407203824}
-  - component: {fileID: 6186321379026621122}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Untagged
@@ -295,20 +294,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.493704, y: 1.1580315, z: 2.5081298}
   m_Center: {x: 1.5936689, y: 0.57901573, z: 1.0224584}
---- !u!114 &6186321379026621122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: -3225959511443494117}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c63aa3694c650499c62d048511b264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorShelfHere: {fileID: 2749203779850858961}
-  audioShelfHere: {fileID: 6599776915603221258}
 --- !u!1 &2735651196818970962
 GameObject:
   m_ObjectHideFlags: 0
