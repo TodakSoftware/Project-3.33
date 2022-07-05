@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     Vector3 velocity; 
     CharacterController characterController;
     [HideInInspector] public Animator anim;
-    [SerializeField] GameObject playerMesh; // player mesh reference
+    public GameObject playerMesh; // player mesh reference
     public E_Team team;
     // ----------------------------------------------------------------------------------
     // ENABLER RELATED
