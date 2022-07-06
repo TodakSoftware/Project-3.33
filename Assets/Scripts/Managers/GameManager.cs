@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool timeOut;
     int remainingDuration;
     [HideInInspector] public string timerRef;
+    public GameObject playerOwned;
     
     // Ingame Related
     int playersInRoom; // Number of players successfully enter the room. For comparing with total of network player list
@@ -87,17 +88,33 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void SetSpawnpoints(){ // Host set spawnpoints for human n ghost
-        int maxHuman = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"];
-        int maxGhost = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"];
-        // Set each players spawnPoints
-        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxGhost); i++){
-            int posValue = RandomExcept(0, spawnpoints_Human.Count, humanSpawnedPosition);
-            humanSpawnedPosition.Add(posValue);
+        int maxHuman = 0;
+        int maxGhost = 0;
+        if(PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"] != null){
+            maxHuman = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxHuman"];
+        }else{
+            maxHuman = NetworkManager.instance.maxHumanPerGame;
         }
+        
+        if(PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"] != null){
+            maxGhost = (int)PhotonNetwork.CurrentRoom.CustomProperties["RoomTotalMaxGhost"];
+        }else{
+            maxGhost = NetworkManager.instance.maxGhostPerGame;
+        }
+        // Set each players spawnPoints
 
-        for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxHuman); i++){
-            int posValue2 = RandomExcept(0, spawnpoints_Ghost.Count, ghostSpawnedPosition);
-            ghostSpawnedPosition.Add(posValue2);
+        if(maxHuman > 0){
+            for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxGhost); i++){
+                int posValue = RandomExcept(0, spawnpoints_Human.Count, humanSpawnedPosition);
+                humanSpawnedPosition.Add(posValue);
+            }
+        }
+        
+        if(maxGhost > 0){
+            for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxHuman); i++){
+                int posValue2 = RandomExcept(0, spawnpoints_Ghost.Count, ghostSpawnedPosition);
+                ghostSpawnedPosition.Add(posValue2);
+            }
         }
     } // end SetSpawnpoints
 
@@ -124,12 +141,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(isHuman){
             if(humanSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[humanSpawnedPosition[playerIndex]].position, Quaternion.identity);
+
+                if(photonView.IsMine){
+                    playerOwned = player;
+                }
             }else{
                 print("Missing spawnpoints : Human");
             }
         }else{
             if(ghostSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[ghostSpawnedPosition[playerIndex]].position, Quaternion.identity);
+                if(photonView.IsMine){
+                    playerOwned = player;
+                }
             }else{
                  print("Missing spawnpoints : Ghost");
             }

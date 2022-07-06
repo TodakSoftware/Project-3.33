@@ -34,9 +34,13 @@ public class PlayerInteraction : MonoBehaviour
                     }else{
                         holdTimer = holdDur;
                         // Added to inventory
-                        if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
-                            GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code); // Add ritual items to player slot
-                            interactable.onInteract.Invoke();
+                        if(interactable.onInteract != null){
+                            if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
+                                GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code); // Add ritual items to player slot
+                                interactable.onInteract.Invoke();
+                            }else{
+                                interactable.onInteract.Invoke();
+                            }
                             ClearInteraction();
                         }else{
                             print("Cannot proceed");
@@ -49,9 +53,14 @@ public class PlayerInteraction : MonoBehaviour
             }else{
                 if(Input.GetButtonDown("Interact")){
                     // Added to inventory
-                    if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
-                        GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code);
-                        interactable.onInteract.Invoke();
+                    if(interactable.onInteract != null){
+                        if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
+                            GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code);
+                            interactable.onInteract.Invoke();
+                        }else{
+                            interactable.onInteract.Invoke();
+                        }
+                        ClearInteraction();
                     }else{
                         print("Cannot proceed");
                     }
@@ -166,6 +175,14 @@ public class PlayerInteraction : MonoBehaviour
                         interactText.text = "Hold to transfer";
                     }else{
                         interactText.text = "To transfer";
+                    }
+                break;
+
+                case E_InteractType.SCAN:
+                    if(interactable.buttonType == E_ButtonType.HOLD){
+                        interactText.text = "Hold to scan";
+                    }else{
+                        interactText.text = "To scan";
                     }
                 break;
 

@@ -8,8 +8,9 @@ using UnityEngine;
 public class CameraControlledIK : MonoBehaviourPunCallbacks
 {
     public Transform spineToOrientate;
-
     // Update is called once per frame
+
+
     void LateUpdate()
     {
         spineToOrientate.rotation = transform.rotation;

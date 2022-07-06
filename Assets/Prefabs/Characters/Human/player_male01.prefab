@@ -3233,13 +3233,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptsToIgnore:
   - {fileID: -6604162445573430329}
-  - {fileID: 5279645071448470874}
   - {fileID: 5678942671583981570}
   - {fileID: 8497895866318120365}
   - {fileID: 1825789136294535482}
   - {fileID: 194686048}
   - {fileID: 8911722347468827385}
   - {fileID: 5678942669568780798}
+  - {fileID: 5279645071448470874}
   gameObjectToDisable:
   - {fileID: 477427309}
   - {fileID: 6477736984881128221}
@@ -3284,6 +3284,8 @@ MonoBehaviour:
   zoomInNearClipping: 0.01
   zoomInCamPosition: {x: -0.056, y: 0.56, z: 0.15}
   fearLevel: 0
+  isScared: 0
+  captured: 0
 --- !u!114 &5678942669568780798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,6 +3309,7 @@ MonoBehaviour:
   jumpSpeed: 0.8
   runMultiplier: 1
   camController: {fileID: 5678942671583981570}
+  camControllerIK: {fileID: 5678942671583981581}
 --- !u!114 &8497895866318120365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3338,7 +3341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableLayerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   cam: {fileID: 6477736984881128208}
   interactMaxDistance: 2
   interactionUI: {fileID: 8017201056149449782}
@@ -3485,9 +3488,8 @@ GameObject:
   - component: {fileID: 5678942671583981571}
   - component: {fileID: 5678942671583981581}
   - component: {fileID: 5678942671583981570}
-  - component: {fileID: 5072419101502019689}
-  - component: {fileID: 7181043965433098804}
-  - component: {fileID: 735897192924081480}
+  - component: {fileID: 6291039890234543641}
+  - component: {fileID: 8028120578834843308}
   m_Layer: 0
   m_Name: CameraControl
   m_TagString: Untagged
@@ -3545,7 +3547,23 @@ MonoBehaviour:
   boneParent: {fileID: 6291688078248904746}
   yaw: 0
   relativeYaw: 0
---- !u!114 &5072419101502019689
+--- !u!114 &6291039890234543641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678942671583981568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &8028120578834843308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3564,78 +3582,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7181043965433098804}
-  - {fileID: 735897192924081480}
+  - {fileID: 6291039890234543641}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7181043965433098804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678942671583981568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 0
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &735897192924081480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678942671583981568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8069ffa6ab7df7340ad5ce0c3da47526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationBackTime: 0.12
-  extrapolationMode: 1
-  useExtrapolationTimeLimit: 1
-  extrapolationTimeLimit: 5
-  useExtrapolationDistanceLimit: 0
-  extrapolationDistanceLimit: 20
-  sendPositionThreshold: 0
-  sendRotationThreshold: 0
-  sendScaleThreshold: 0
-  sendVelocityThreshold: 0
-  sendAngularVelocityThreshold: 0
-  receivedPositionThreshold: 0
-  receivedRotationThreshold: 0
-  snapPositionThreshold: 0
-  snapRotationThreshold: 0
-  snapScaleThreshold: 0
-  positionLerpSpeed: 0.85
-  rotationLerpSpeed: 0.85
-  scaleLerpSpeed: 0.85
-  timeCorrectionSpeed: 0.1
-  snapTimeThreshold: 0.3
-  syncPosition: 7
-  syncRotation: 0
-  syncScale: 7
-  syncVelocity: 7
-  syncAngularVelocity: 7
-  isPositionCompressed: 0
-  isRotationCompressed: 1
-  isScaleCompressed: 0
-  isVelocityCompressed: 0
-  isAngularVelocityCompressed: 0
-  automaticallyResetTime: 1
-  isSmoothingAuthorityChanges: 0
-  whenToUpdateTransform: 0
-  setVelocityInsteadOfPositionOnNonOwners: 0
-  useLocalTransformOnly: 0
-  maxPositionDifferenceForVelocitySyncing: 10
-  ownerChangeIndicator: 1
-  receivedStatesCounter: 0
 --- !u!1 &6130102284958356114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,8 +4647,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8131783797726243856}
-  m_LocalRotation: {x: 0.1140983, y: 0.0004076658, z: 0.0026229764, w: 0.9934659}
-  m_LocalPosition: {x: 0.00000066110306, y: 0.08237277, z: 0.012645167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:

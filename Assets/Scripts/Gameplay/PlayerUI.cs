@@ -19,4 +19,8 @@ public class PlayerUI : MonoBehaviour
             canvasTimerUI.text = GameManager.instance.timerRef;
         }
     } // end Update()
+
+    void PopupJumpscare(){
+        
+    }
 }

@@ -24,4 +24,12 @@ public class MeshEvent : MonoBehaviourPunCallbacks
     public void NotifyInteractReset(){ // ANIMATION HUMAN INTERACT PHONE (FRAME START)
         meshOwner.GetComponent<Human>().interactAnimEnd = false;
     }
+
+    public void NotifyGhostCaughtColliderStart(){
+        meshOwner.GetComponent<Ghost>().EnableCaughtCollider();
+    }
+
+    public void NotifyGhostCaughtColliderEnd(){
+        meshOwner.GetComponent<Ghost>().DisableCaughtCollider();
+    }
 }

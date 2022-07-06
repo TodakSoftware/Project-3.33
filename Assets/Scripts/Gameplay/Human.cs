@@ -34,6 +34,8 @@ public class Human : MonoBehaviourPunCallbacks
     // FEAR LEVEL
     [Range(0,100)] public int fearLevel;
     bool hpGreen, hpYellow, hpRed;
+    public bool isScared;
+    public bool captured;
 
 
     void Awake(){
@@ -46,7 +48,6 @@ public class Human : MonoBehaviourPunCallbacks
             return;
         }
 
-        
         StartCoroutine(UpdateHeartRate());
     }
 
@@ -63,6 +64,13 @@ public class Human : MonoBehaviourPunCallbacks
 
         if(Input.GetButtonDown("Flashlight") && !instantiatedPhone.GetComponent<MobilePhone>().phoneIsDead){ // Tab key & phone is not dead
             GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
+        }
+
+        if(Input.GetKeyDown(KeyCode.J)){ // Tab key
+        }
+
+        if(Input.GetKeyDown(KeyCode.K)){ // Tab key
+            
         }
     }
 
@@ -182,8 +190,20 @@ public class Human : MonoBehaviourPunCallbacks
             fearLevel = 0;
         }else if(fearLevel >= 100){
             fearLevel = 100;
+
+            print("Transfer player to jail");
         }
     } // end AdjustFearLevel()
 // --------------------------------- HEART RATE FUNCTION END ----------------------------------
+    public IEnumerator Scared(float duration){
+        if(photonView.IsMine){
+            isScared = true;
+            print("Popup UI");
+            UIManager.instance.PopupJumpscareUI();
+            StartCoroutine(playerController.StopMovement(duration));
+            yield return new WaitForSeconds(duration);
+            isScared = false;
+        }
+    }
 
 }

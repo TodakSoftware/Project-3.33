@@ -17,7 +17,8 @@ public class PlayerNetworking : MonoBehaviourPunCallbacks
             }
 
             foreach(var go in gameObjectToDisable){
-                go.SetActive(false);
+                //go.SetActive(false);
+                Destroy(go);
             }
         }
     }

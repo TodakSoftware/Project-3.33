@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
     // ----------------------------------------------------------------------------------
     // CAMERA RELATED
-    [HideInInspector] public CameraController camController;
+    public CameraController camController;
+    public CameraControlledIK camControllerIK;
     // ----------------------------------------------------------------------------------
     // PHOTON RELATED
     int playerID; 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
 
         HandleGravity();
+        
 
         if(canJump){
             if(Input.GetButtonDown("Jump") && characterController.isGrounded){
@@ -81,7 +83,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         } // end canMouseLook
 
         // CAN ONLY DO SPRINTING WHEN WALK FORWARD (Do it in Update function because of Input processing)
-        if(canRun && walkForward && inputHorizontal == 0){ //  && !isInteractPhone
+        if(canMove && canRun && walkForward && inputHorizontal == 0){ //  && !isInteractPhone
             if(Input.GetButton("Sprint")){
                 characterController.Move(movementDir * Time.fixedDeltaTime * tempRunMultiplier);
                 //anim.speed = runMultiplier + 0.3f; // additional 0.3f to match with walk anim (speedup)
@@ -92,14 +94,36 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 anim.SetBool("Running", false);
                 isRunning = false;
             }
-        }else if(canRun && walkForward && inputHorizontal != 0){
+        }else if(canMove && canRun && walkForward && inputHorizontal != 0){
             anim.SetBool("Running", false);
             walkForward = false;
             isRunning = false;
         } // end canRun && walkForward && inputHorizontal == 0 
 
+        // ANIMATION RELATED
+        SmoothAnimation();
         
+        anim.SetFloat("Vertical", smoothVer);
+        anim.SetFloat("Horizontal", smoothHor);
     } // end Update
+
+    public IEnumerator StopMovement(float duration){
+        inputHorizontal = 0f;
+        inputVertical = 0f;
+        anim.SetFloat("Vertical", 0);
+        anim.SetFloat("Horizontal", 0);
+        anim.SetBool("Running", false);
+
+        canMove = false;
+        canMouselook = false;
+        canRun = false;
+
+        yield return new WaitForSeconds(duration);
+
+        canMove = true;
+        canMouselook = true;
+        canRun = true;
+    }
 
     void FixedUpdate() {
         if(!photonView.IsMine){ // If this script is not ours to control, end it
@@ -219,12 +243,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
 
         characterController.Move(movementDir * currentSpeed * Time.fixedDeltaTime); // keeps gravity fall
-
-        // ANIMATION RELATED
-        SmoothAnimation();
-        
-        anim.SetFloat("Vertical", smoothVer);
-        anim.SetFloat("Horizontal", smoothHor);
     } // end HandleMovement
 
     void HandleJumping(){

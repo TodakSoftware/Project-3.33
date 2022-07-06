@@ -31,8 +31,8 @@ using Photon.Pun;
 
         void LateUpdate()
         {
-            transform.position = boneParent.position;
             if(isEnable){
+                transform.position = boneParent.position;
                 CameraRotate();
             }
         }

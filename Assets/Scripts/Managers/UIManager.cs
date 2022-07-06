@@ -8,9 +8,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject mainCanvas; // Ref for mainCanvas
-    public GameObject cacheLoadingDuration, cacheLoadingScene, cacheFindGame, cacheReconnectGame;
+    public GameObject cacheLoadingDuration, cacheLoadingScene, cacheFindGame, cacheReconnectGame, cacheJumpscare;
     public Modal_FindGame modalFindGame;
     public Modal_ReconnectGame modalReconnectGame;
+
+    [Header("Audio")]
+    public AudioClip jumpscareSFX;
     
     void Awake()
     {
@@ -186,6 +189,27 @@ public class UIManager : MonoBehaviour
             endUI.GetComponent<UI_VictoryResult>().GhostWin();
         }
         endUI.transform.SetParent(mainCanvas.transform, false);
+    }
+
+    //public void PopupJumpscareUI(int ghostIndex){
+    public void PopupJumpscareUI(){
+        if(cacheJumpscare == null){
+            var jumpscare = Instantiate(SOManager.instance.prefabs.jumpscareList[0].gameObject);
+            jumpscare.transform.SetParent(mainCanvas.transform, false);
+            cacheJumpscare = jumpscare;
+        }else{
+            cacheJumpscare.SetActive(true); 
+        }
+
+        GetComponent<AudioSource>().PlayOneShot(jumpscareSFX);
+        StartCoroutine(CloseJumpscareUI(2f));
+    }
+
+    public IEnumerator CloseJumpscareUI(float duration){
+        if(cacheJumpscare != null){
+            yield return new WaitForSeconds(duration);
+            cacheJumpscare.SetActive(false);
+        }
     }
 /* ------------------------------------------------  INGAME RELATED END ---------------------------------------------------------*/
 }
