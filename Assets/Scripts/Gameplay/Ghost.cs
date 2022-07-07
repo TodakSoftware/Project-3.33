@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Photon.Pun;
 using UnityEngine;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Ghost : MonoBehaviourPunCallbacks
 {
@@ -14,6 +15,10 @@ public class Ghost : MonoBehaviourPunCallbacks
     float attackTimer;
     [SerializeField] bool isInvisible;
     public GameObject caughtCollider;
+    [Header("Capture Human")]
+    public Collider[] humanInRadiusList;
+    [SerializeField] float nearbyDetectDistance = 2f;
+    public LayerMask humanLayermask;
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -60,6 +65,33 @@ public class Ghost : MonoBehaviourPunCallbacks
             attackTimer = 0;
             canAttacking = true;
         }
+
+        // ------------------------------------- DETECT HUMAN IN RANGE UPDATE START -----------------------------------------
+        humanInRadiusList = Physics.OverlapSphere(this.transform.position, nearbyDetectDistance, humanLayermask);
+        if(humanInRadiusList.Length > 0 && !GameManager.instance.gameEnded){
+            if(humanInRadiusList[0].gameObject.GetComponent<Human>().fearLevel >= 100){
+                if(!GetComponent<PlayerUI>().captureTextUI.activeSelf){
+                    GetComponent<PlayerUI>().captureTextUI.SetActive(true);
+                }
+                
+                if(Input.GetButtonDown("Interact")){
+                    humanInRadiusList[0].gameObject.GetComponent<Human>().photonView.RPC("Captured", humanInRadiusList[0].gameObject.GetPhotonView().Owner);
+
+                    if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
+                        GetComponent<PlayerUI>().captureTextUI.SetActive(false);
+                    }
+                }
+            }
+        }else{
+            if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
+                GetComponent<PlayerUI>().captureTextUI.SetActive(false);
+            }
+        }
+        // ------------------------------------- DETECT HUMAN IN RANGE UPDATE END -----------------------------------------
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(this.transform.position, nearbyDetectDistance);
     }
 
     IEnumerator Attack(){

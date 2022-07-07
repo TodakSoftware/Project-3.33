@@ -3136,7 +3136,7 @@ GameObject:
   - component: {fileID: 194686048}
   - component: {fileID: 8911722347468827385}
   - component: {fileID: 1179457958022461012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: player_male01
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3288,7 +3288,7 @@ MonoBehaviour:
   isScared: 0
   isCaptured: 0
   ghostNearby: 0
-  ghostNearbyIncreaseAmount: 5
+  ghostNearbyIncreaseAmount: 2
   nearbyDetectDistance: 2
   ghostLayermask:
     serializedVersion: 2
@@ -3390,6 +3390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasTimerUI: {fileID: 0}
+  captureTextUI: {fileID: 0}
 --- !u!114 &1179457958022461012
 MonoBehaviour:
   m_ObjectHideFlags: 0

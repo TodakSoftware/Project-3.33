@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     public TextMeshProUGUI canvasTimerUI; // just for ghost
+    public GameObject captureTextUI; // just for ghost
 
     void Start(){
         if(canvasTimerUI != null){
@@ -19,8 +20,4 @@ public class PlayerUI : MonoBehaviour
             canvasTimerUI.text = GameManager.instance.timerRef;
         }
     } // end Update()
-
-    void PopupJumpscare(){
-        
-    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Human : MonoBehaviourPunCallbacks
 {
@@ -73,7 +74,7 @@ public class Human : MonoBehaviourPunCallbacks
             GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
         }
 
-        // ---------------------------------------- NEARBY GHOST RELATED START ---------------------------------------
+        // ---------------------------------------- NEARBY GHOST UPDATE RELATED START ---------------------------------------
         ghostInRadiusList = Physics.OverlapSphere(this.transform.position, nearbyDetectDistance, ghostLayermask);
         foreach(var filter in ghostInRadiusList){ // If Ghost inRange, true fear increase
             ghostNearby = true;
@@ -90,21 +91,23 @@ public class Human : MonoBehaviourPunCallbacks
                 fearIsIncrease = false;
             }
         }
-        
-        // ---------------------------------------- NEARBY GHOST RELATED END ---------------------------------------
+        // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
     }
 
+    // ---------------------------------------- NEARBY GHOST FUNCTION RELATED START ---------------------------------------
     IEnumerator GhostNearbyDrain(){
         fearIsIncrease = true;
         while(fearLevel < 100 && ghostNearby){
             yield return new WaitForSeconds(1f);
-            fearLevel += ghostNearbyIncreaseAmount;
+            photonView.RPC("AdjustFearLevel", RpcTarget.All, ghostNearbyIncreaseAmount);// AdjustFearLevel(fearAmount);
         }
     }
 
     void OnDrawGizmos() {
         Gizmos.DrawWireSphere(this.transform.position, nearbyDetectDistance);
     }
+    // ---------------------------------------- NEARBY GHOST FUNCTION RELATED START ---------------------------------------
+
 
 /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
     void SetupPhone(){
@@ -128,9 +131,8 @@ public class Human : MonoBehaviourPunCallbacks
     public void HandleInteractPhone()
     {
         if(!isInteractPhone && !interactAnimEnd){
-            // Disable mouse look & enable cursor
-            playerController.camController.isEnable = false;
-            playerController.camController.LockCursor(false);
+            playerController.StopMovement();
+            playerController.Invoke("UnstopMovement", 1.5f); // value same as EnterUIMode delay
             isInteractPhone = true;
             // Play interact phone animation
             playerController.anim.SetBool("InteractPhone", isInteractPhone);
@@ -138,15 +140,22 @@ public class Human : MonoBehaviourPunCallbacks
             InteractZoomEffect(true); // Zoom In
 
         }else if(isInteractPhone && interactAnimEnd){
-            // Enable Mouselook
-            playerController.camController.isEnable = true;
-            playerController.camController.LockCursor(true);
             isInteractPhone = false;
             // Play closed interact phone animation
             playerController.anim.SetBool("InteractPhone", isInteractPhone);
            
         }
     } // end HandleInteractPhone
+
+    public void EnterUIMode(){
+        playerController.camController.LockCursor(false);
+        playerController.canMouselook = false;
+    }
+
+    public void ExitUIMode(){
+        playerController.camController.LockCursor(true);
+        playerController.canMouselook = true;
+    }
 
     public void SwitchPhonePosition(){
         if(!phoneSwitchedPlaces){
@@ -167,11 +176,13 @@ public class Human : MonoBehaviourPunCallbacks
             cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
             cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
+            Invoke("EnterUIMode", 1.5f);
         }else{
             cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
+            Invoke("ExitUIMode", .5f);
         }
     } // end InteractZoomEffect()
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
@@ -218,21 +229,11 @@ public class Human : MonoBehaviourPunCallbacks
     [PunRPC]
     public void AdjustFearLevel(int amount){
         fearLevel += amount;
-
+        
         if(fearLevel <= 0){
             fearLevel = 0;
         }else if(fearLevel >= 100){
             fearLevel = 100;
-
-            print("Transfer player to jail");
-            StartCoroutine(Captured());
-        }
-
-        if(fearLevel < 100){
-            UIManager.instance.PopupJumpscareUI();
-        }else{
-            //UIManager.instance.PopupCapturedUI();
-            // Play Caught Animation
         }
     } // end AdjustFearLevel()
 
@@ -241,31 +242,53 @@ public class Human : MonoBehaviourPunCallbacks
     public IEnumerator Scared(float duration, int fearAmount){
         if(photonView.IsMine){
             isScared = true;
-            
+            UIManager.instance.PopupJumpscareUI();
+
             photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
             playerController.StopMovement();
+            playerController.canMouselook = false;
             yield return new WaitForSeconds(duration);
 
             if(!isCaptured){
                 playerController.UnstopMovement();
+                playerController.canMouselook = true;
             }
 
             isScared = false;
         }
     } // end Scared
 
-    IEnumerator Captured(){
-        isCaptured = true; // link with custom props
-        UIManager.instance.PopupCapturedUI();
-        
-        yield return new WaitForSeconds(2f);
-        // Transfer to prison
-        int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
-        playerController.canMove = false; // false to make player move to new position
-        transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
+    [PunRPC]
+    public IEnumerator Captured(){
+        if(photonView.IsMine){
+            //isCaptured = true; // link with custom props
+            photonView.RPC("SetIsCaptured", RpcTarget.All, true);
 
-        yield return new WaitForSeconds(1f);
-        playerController.UnstopMovement();
+            UIManager.instance.PopupCapturedUI();
+            
+            yield return new WaitForSeconds(2f);
+            // Transfer to prison
+            int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
+            playerController.canMove = false; // false to make player move to new position
+            transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
+
+            yield return new WaitForSeconds(1f);
+            playerController.UnstopMovement();
+            
+            // Update Properties
+            Hashtable playerProps = new Hashtable();
+            playerProps.Add("PlayerCaptured", true);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+        }
+    }
+
+    [PunRPC]
+    public void SetIsCaptured(bool captured){
+        if(captured){
+            isCaptured = true;
+        }else{
+            isCaptured = false;
+        }
     }
 
 }

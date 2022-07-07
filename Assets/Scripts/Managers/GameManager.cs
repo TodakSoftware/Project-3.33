@@ -159,7 +159,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
 
-        PlayerController playerController = player.GetComponent<PlayerController>();
+        if(player != null && photonView.IsMine){
+            Hashtable playerProps = new Hashtable();
+            playerProps.Add("PlayerCaptured", false);
+            playerProps.Add("PlayerIsDead", false);
+            player.GetPhotonView().Owner.SetCustomProperties(playerProps);
+        }
+
+        //PlayerController playerController = player.GetComponent<PlayerController>();
     } // end SpawnPlayers
 
     int RandomExcept(int min, int max, List<int> except)
@@ -199,7 +206,50 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
+        if(!gameEnded){
+            CheckWinningCondition();
+        }
     } // end OnPlayerPropertiesUpdate
+
+    public void CheckWinningCondition(){
+        if(!gameEnded){
+            // if total human ingame <= 0, Ghost WINS
+            if(GetAllPlayersHuman().Count <= 0){
+                HumanWin(false);
+            }
+            // if total ghost ingame <= 0, Human WINS
+            if(GetAllPlayersGhost().Count <= 0){
+                HumanWin(true);
+            }
+
+            // if players captured = total human in game, Ghost WIN
+            if(NumberOfCapturedPlayer() >= GetAllPlayersHuman().Count){
+                HumanWin(false);
+            }
+        } // if !gameEnded
+    } // end CheckWinningCondition()
+
+    public static List<GameObject> GetAllPlayersGhost(){ // Return list of players GAMEOBJECT
+        List<GameObject> ghosts = new List<GameObject>(GameObject.FindGameObjectsWithTag("Ghost"));
+
+        return ghosts;
+    } // end GetAllPlayersRobber
+
+    public static List<GameObject> GetAllPlayersHuman(){ // Return list of players GAMEOBJECT
+        List<GameObject> humans = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+
+        return humans;
+    } // end GetAllPlayersRobber
+
+    public int NumberOfCapturedPlayer(){
+        int capturedCount = 0;
+        foreach(GameObject p in GetAllPlayersHuman()){
+            if(p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"] != null && (bool)p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"]){
+                capturedCount += 1;
+            }
+        } // end foreach
+        return capturedCount;
+    }
 // ---------------------------------------------------- NETWORK RELATED END ----------------------------------------
 
 }

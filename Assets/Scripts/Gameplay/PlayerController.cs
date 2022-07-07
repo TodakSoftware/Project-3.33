@@ -152,13 +152,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         anim.SetBool("Running", false);
 
         canMove = false;
-        canMouselook = false;
         canRun = false;
     }
 
     public void UnstopMovement(){
         canMove = true;
-        canMouselook = true;
         canRun = true;
     }
 
