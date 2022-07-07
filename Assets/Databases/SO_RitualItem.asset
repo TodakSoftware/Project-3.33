@@ -13,59 +13,19 @@ MonoBehaviour:
   m_Name: SO_RitualItem
   m_EditorClassIdentifier: 
   ritualItemLists:
-  - name: Bone
+  - name: Rambut
     code: R001
-    displayName: Tulang Babi
+    displayName: Rambut Cik Ponti
     description: 
     icon: {fileID: 21300000, guid: 1f141ec47ec40f247853e750e5fcd526, type: 3}
     itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 0}
-    interactType: 0
-    buttonType: 0
-    holdDuration: 0
-  - name: Cats Eye
-    code: R002
-    displayName: Mata Kucing
-    description: 
-    icon: {fileID: 21300000, guid: e31e475a385618348a1d8f3ed11f55b7, type: 3}
-    itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 0}
-    interactType: 0
-    buttonType: 0
-    holdDuration: 0
-  - name: Marble
-    code: R003
-    displayName: Guli
-    description: 
-    icon: {fileID: 21300000, guid: 7176e39e05557144f85ca7e24e67b7db, type: 3}
-    itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 0}
-    interactType: 0
-    buttonType: 0
-    holdDuration: 0
-  - name: Hair
-    code: R004
-    displayName: Rambut
-    description: 
-    icon: {fileID: 21300000, guid: 8f7a3d4cb50c312448405a92ed6c81a5, type: 3}
-    itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 0}
-    interactType: 0
-    buttonType: 0
-    holdDuration: 0
-  - name: Key
-    code: R005
-    displayName: Kunci
-    description: 
-    icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
-    itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 0}
+    itemMesh: {fileID: 6270619307192272070, guid: 23f41e4a2b486f543894d4f941128ccc, type: 3}
     interactType: 0
     buttonType: 0
     holdDuration: 0
   - name: Keris
-    code: R006
-    displayName: Keris
+    code: R002
+    displayName: Keris Keliwon
     description: 
     icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
     itemPrefab: {fileID: 0}
@@ -73,43 +33,33 @@ MonoBehaviour:
     interactType: 0
     buttonType: 0
     holdDuration: 0
-  - name: Bear
-    code: R007
-    displayName: Bear
+  - name: Botol
+    code: R003
+    displayName: Botol Khurafat
     description: 
-    icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
+    icon: {fileID: 21300000, guid: 7176e39e05557144f85ca7e24e67b7db, type: 3}
     itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 2651517520320264929, guid: d409070afd6b74c46973eab97dc2414d, type: 3}
+    itemMesh: {fileID: 2374418765807994422, guid: 50fab40cbc57b7b4e993b773d9f70fc6, type: 3}
     interactType: 0
     buttonType: 0
     holdDuration: 0
-  - name: Toy Car
-    code: R008
-    displayName: Toy Car
+  - name: Paku
+    code: R004
+    displayName: Paku Karat
     description: 
-    icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
+    icon: {fileID: 21300000, guid: 8f7a3d4cb50c312448405a92ed6c81a5, type: 3}
     itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 2940438834623346904, guid: 61c9cba9c0d6953449beb2f37f4ec852, type: 3}
+    itemMesh: {fileID: 4345013871759232902, guid: 7d1696bf51cdbc64193e4846d5a04eaa, type: 3}
     interactType: 0
     buttonType: 0
     holdDuration: 0
-  - name: Horse
-    code: R009
-    displayName: Horse
+  - name: Jenglot
+    code: R005
+    displayName: Jenglot Bungkus
     description: 
     icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
     itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 3861367040449315622, guid: 52972c2dfe3a9ac43af0f421d074fa8d, type: 3}
-    interactType: 0
-    buttonType: 0
-    holdDuration: 0
-  - name: Zebra
-    code: R010
-    displayName: Zebra
-    description: 
-    icon: {fileID: 21300000, guid: 207b51ee5d7f41f4d9df8715f6770ff2, type: 3}
-    itemPrefab: {fileID: 0}
-    itemMesh: {fileID: 6408498504898270108, guid: 3a996e68ca3b8b045846433c144e2cfd, type: 3}
+    itemMesh: {fileID: 4345013871759232902, guid: 5daaa09a861ddcd4380dfe90ef755053, type: 3}
     interactType: 0
     buttonType: 0
     holdDuration: 0
