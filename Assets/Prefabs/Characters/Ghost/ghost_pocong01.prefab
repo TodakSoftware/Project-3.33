@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 5228083862895946214}
   - component: {fileID: 8696863325576554826}
   - component: {fileID: -6303977556914463706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ghost_pocong01
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -1892,12 +1892,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.25
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0.05}
 --- !u!114 &4278387773790340062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1917,6 +1917,8 @@ MonoBehaviour:
   - {fileID: 7036666404566762934}
   - {fileID: 3117341331577075365}
   - {fileID: 7949723617811986649}
+  canAttacking: 0
+  attackCooldown: 5
   isInvisible: 0
   caughtCollider: {fileID: 1336345449782476420}
 --- !u!114 &3568130390959185839
@@ -1941,6 +1943,10 @@ MonoBehaviour:
   movementSpeed: 2
   jumpSpeed: 0.8
   runMultiplier: 1.2
+  enableStaminaDrain: 1
+  staminaAmount: 100
+  staminaDrainPerSecond: 20
+  staminaRegenPerSecond: 10
   camController: {fileID: 3568130392437507667}
   camControllerIK: {fileID: 3568130392437507676}
 --- !u!114 &5162726710754003962

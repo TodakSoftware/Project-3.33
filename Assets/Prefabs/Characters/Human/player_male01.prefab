@@ -3133,7 +3133,6 @@ GameObject:
   - component: {fileID: 194686048}
   - component: {fileID: 8911722347468827385}
   - component: {fileID: 1179457958022461012}
-  - component: {fileID: 5384812257471422589}
   m_Layer: 0
   m_Name: player_male01
   m_TagString: Player
@@ -3174,7 +3173,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!143 &5678942669568780797
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3187,12 +3186,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.25
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0.05}
 --- !u!114 &4102378477892189611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3214,7 +3213,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4019112439853096887}
   - {fileID: 1179457958022461012}
-  - {fileID: 5384812257471422589}
   - {fileID: 7966242606632975667}
   sceneViewId: 0
   InstantiationId: 0
@@ -3256,8 +3254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &5480958302001815595
 MonoBehaviour:
@@ -3285,7 +3283,13 @@ MonoBehaviour:
   zoomInCamPosition: {x: -0.056, y: 0.56, z: 0.15}
   fearLevel: 0
   isScared: 0
-  captured: 0
+  isCaptured: 0
+  ghostNearby: 0
+  ghostNearbyIncreaseAmount: 5
+  nearbyDetectDistance: 2
+  ghostLayermask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &5678942669568780798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3308,6 +3312,10 @@ MonoBehaviour:
   movementSpeed: 1.5
   jumpSpeed: 0.8
   runMultiplier: 1
+  enableStaminaDrain: 1
+  staminaAmount: 100
+  staminaDrainPerSecond: 20
+  staminaRegenPerSecond: 10
   camController: {fileID: 5678942671583981570}
   camControllerIK: {fileID: 5678942671583981581}
 --- !u!114 &8497895866318120365
@@ -3395,57 +3403,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5384812257471422589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678942669568780787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8069ffa6ab7df7340ad5ce0c3da47526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationBackTime: 0.12
-  extrapolationMode: 1
-  useExtrapolationTimeLimit: 1
-  extrapolationTimeLimit: 5
-  useExtrapolationDistanceLimit: 0
-  extrapolationDistanceLimit: 20
-  sendPositionThreshold: 0
-  sendRotationThreshold: 0
-  sendScaleThreshold: 0
-  sendVelocityThreshold: 0
-  sendAngularVelocityThreshold: 0
-  receivedPositionThreshold: 0
-  receivedRotationThreshold: 0
-  snapPositionThreshold: 0
-  snapRotationThreshold: 0
-  snapScaleThreshold: 0
-  positionLerpSpeed: 0.85
-  rotationLerpSpeed: 0.85
-  scaleLerpSpeed: 0.85
-  timeCorrectionSpeed: 0.1
-  snapTimeThreshold: 0.3
-  syncPosition: 0
-  syncRotation: 0
-  syncScale: 7
-  syncVelocity: 0
-  syncAngularVelocity: 7
-  isPositionCompressed: 1
-  isRotationCompressed: 1
-  isScaleCompressed: 0
-  isVelocityCompressed: 1
-  isAngularVelocityCompressed: 0
-  automaticallyResetTime: 1
-  isSmoothingAuthorityChanges: 0
-  whenToUpdateTransform: 1
-  setVelocityInsteadOfPositionOnNonOwners: 0
-  useLocalTransformOnly: 0
-  maxPositionDifferenceForVelocitySyncing: 10
-  ownerChangeIndicator: 1
-  receivedStatesCounter: 0
 --- !u!1 &5678942670028896177
 GameObject:
   m_ObjectHideFlags: 0

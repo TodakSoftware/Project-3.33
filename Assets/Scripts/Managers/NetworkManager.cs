@@ -60,9 +60,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings(); // Connect to master server using settings | Noted: ConnectUsingSettings("v0.0.1") <-- Also can
         }
 
-        if(Input.GetKeyDown(KeyCode.H)){ // Temporary, just for debugging
-            UIManager.instance.PopupReconnectGame();
-        }
+        //if(Input.GetKeyDown(KeyCode.H)){ // Temporary, just for debugging
+        //    UIManager.instance.PopupReconnectGame();
+        //}
     } // end Update
 
     // ----------------------- PREFABS POOLING RELATED START -------------------

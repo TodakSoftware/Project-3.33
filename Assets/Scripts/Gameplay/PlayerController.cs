@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] float runMultiplier = 1; // Multiplier for running
     float tempRunMultiplier, runAnim = 0.3f; // Smooth multiplier for running (+animation)
     bool isRunning, walkForward;
+    [SerializeField] bool enableStaminaDrain = true;
+    [SerializeField] float staminaAmount = 100f;
+    [SerializeField] float staminaDrainPerSecond = 20f;
+    [SerializeField] float staminaRegenPerSecond = 10f;
     // ----------------------------------------------------------------------------------
     // ANIMATION RELATED
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
@@ -64,7 +68,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
 
         HandleGravity();
-        
 
         if(canJump){
             if(Input.GetButtonDown("Jump") && characterController.isGrounded){
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         // CAN ONLY DO SPRINTING WHEN WALK FORWARD (Do it in Update function because of Input processing)
         if(canMove && canRun && walkForward && inputHorizontal == 0){ //  && !isInteractPhone
             if(Input.GetButton("Sprint")){
-                characterController.Move(movementDir * Time.fixedDeltaTime * tempRunMultiplier);
+                characterController.Move(movementDir * Time.deltaTime * tempRunMultiplier);
                 //anim.speed = runMultiplier + 0.3f; // additional 0.3f to match with walk anim (speedup)
                 anim.SetBool("Running", true);
                 isRunning = true;
@@ -100,14 +103,48 @@ public class PlayerController : MonoBehaviourPunCallbacks
             isRunning = false;
         } // end canRun && walkForward && inputHorizontal == 0 
 
+        if(isRunning){
+            if(enableStaminaDrain && isRunning && staminaAmount > 0){ // Handle Stamina Drain
+                staminaAmount -= staminaDrainPerSecond * Time.deltaTime;
+
+                if(staminaAmount <= 0){
+                    staminaAmount = 0;
+                    canRun = false;
+
+                    anim.SetBool("Running", false);
+                    walkForward = false;
+                    isRunning = false;
+                }
+            }
+        }else{
+            if(enableStaminaDrain && !isRunning && staminaAmount < 100f){ // Handle Stamina Regen
+                staminaAmount += staminaRegenPerSecond * Time.deltaTime;
+
+                if(staminaAmount > 50f){ // Minimum value for player can run again
+                    canRun = true;
+                }
+            }
+        }
+
         // ANIMATION RELATED
         SmoothAnimation();
         
         anim.SetFloat("Vertical", smoothVer);
         anim.SetFloat("Horizontal", smoothHor);
+
+        if(canMove){
+            inputHorizontal = Input.GetAxis("Horizontal");
+            inputVertical = Input.GetAxis("Vertical");
+
+            movementDir = transform.right * inputHorizontal + transform.forward * inputVertical;
+            movementDir = Vector3.ClampMagnitude(movementDir, 1f);
+
+            characterController.Move(movementDir * currentSpeed * Time.deltaTime); // keeps gravity fall
+        }
+
     } // end Update
 
-    public IEnumerator StopMovement(float duration){
+    public void StopMovement(){
         inputHorizontal = 0f;
         inputVertical = 0f;
         anim.SetFloat("Vertical", 0);
@@ -117,9 +154,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         canMove = false;
         canMouselook = false;
         canRun = false;
+    }
 
-        yield return new WaitForSeconds(duration);
-
+    public void UnstopMovement(){
         canMove = true;
         canMouselook = true;
         canRun = true;
@@ -223,12 +260,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     } // end smooth animation
 
     void HandleMovement(){
-        inputHorizontal = Input.GetAxis("Horizontal");
-        inputVertical = Input.GetAxis("Vertical");
-
-        movementDir = transform.right * inputHorizontal + transform.forward * inputVertical;
-        movementDir = Vector3.ClampMagnitude(movementDir, 1f);
-
         if(inputVertical < -0.5f){  // if walk backward
             currentSpeed = movementSpeed / 1.4f;
             walkForward = false;
@@ -241,8 +272,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
             currentSpeed = movementSpeed / 1.4f;
             walkForward = false;
         }
-
-        characterController.Move(movementDir * currentSpeed * Time.fixedDeltaTime); // keeps gravity fall
     } // end HandleMovement
 
     void HandleJumping(){

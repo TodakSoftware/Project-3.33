@@ -35,8 +35,15 @@ public class Human : MonoBehaviourPunCallbacks
     [Range(0,100)] public int fearLevel;
     bool hpGreen, hpYellow, hpRed;
     public bool isScared;
-    public bool captured;
+    public bool isCaptured;
 
+    [Header("Nearby Ghost Fear")]
+    public bool ghostNearby;
+    Collider[] ghostInRadiusList;
+    bool fearIsIncrease;
+    [SerializeField] int ghostNearbyIncreaseAmount = 1;
+    [SerializeField] float nearbyDetectDistance = 2f;
+    public LayerMask ghostLayermask;
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -67,11 +74,46 @@ public class Human : MonoBehaviourPunCallbacks
         }
 
         if(Input.GetKeyDown(KeyCode.J)){ // Tab key
-        }
-
-        if(Input.GetKeyDown(KeyCode.K)){ // Tab key
             
         }
+
+        // ---------------------------------------- NEARBY GHOST RELATED START ---------------------------------------
+        ghostInRadiusList = Physics.OverlapSphere(this.transform.position, nearbyDetectDistance, ghostLayermask);
+        foreach(var filter in ghostInRadiusList){ // If Ghost inRange, true fear increase
+            ghostNearby = true;
+
+            if(!fearIsIncrease){
+                StartCoroutine(GhostNearbyDrain());
+            }
+        }
+
+        if(ghostInRadiusList.Length == 0 && ghostNearby){ // If Ghost !inRange, false fear increase
+            ghostNearby = false;
+
+            if(fearIsIncrease){
+                fearIsIncrease = false;
+            }
+        }
+        
+        // ---------------------------------------- NEARBY GHOST RELATED END ---------------------------------------
+    }
+
+    IEnumerator GhostNearbyDrain(){
+        fearIsIncrease = true;
+        while(fearLevel < 100 && ghostNearby){
+            yield return new WaitForSeconds(1f);
+            fearLevel += ghostNearbyIncreaseAmount;
+        }
+
+        if(fearLevel >= 100){
+            fearLevel = 100;
+            print("Transfer player to jail");
+            StartCoroutine(Captured());
+        }
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(this.transform.position, nearbyDetectDistance);
     }
 
 /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
@@ -183,6 +225,7 @@ public class Human : MonoBehaviourPunCallbacks
        
     } // end EndHeartRate()
 
+    [PunRPC]
     public void AdjustFearLevel(int amount){
         fearLevel += amount;
 
@@ -192,18 +235,36 @@ public class Human : MonoBehaviourPunCallbacks
             fearLevel = 100;
 
             print("Transfer player to jail");
+            StartCoroutine(Captured());
         }
     } // end AdjustFearLevel()
+
 // --------------------------------- HEART RATE FUNCTION END ----------------------------------
-    public IEnumerator Scared(float duration){
-        if(photonView.IsMine){
-            isScared = true;
-            print("Popup UI");
-            UIManager.instance.PopupJumpscareUI();
-            StartCoroutine(playerController.StopMovement(duration));
-            yield return new WaitForSeconds(duration);
-            isScared = false;
+    [PunRPC]
+    public IEnumerator Scared(float duration, int fearAmount){
+        isScared = true;
+        UIManager.instance.PopupJumpscareUI();
+        photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
+        playerController.StopMovement();
+        yield return new WaitForSeconds(duration);
+
+        if(!isCaptured){
+            playerController.UnstopMovement();
         }
+
+        isScared = false;
+    } // end Scared
+
+    IEnumerator Captured(){
+        isCaptured = true; // link with custom props
+        yield return new WaitForSeconds(2f);
+        // Transfer to prison
+        int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
+        playerController.canMove = false; // false to make player move to new position
+        transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
+
+        yield return new WaitForSeconds(1f);
+        playerController.UnstopMovement();
     }
 
 }
