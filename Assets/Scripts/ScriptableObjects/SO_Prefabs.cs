@@ -12,6 +12,7 @@ public class SO_Prefabs : ScriptableObject
     public GameObject modalLoadingNormal;
     public GameObject modalFindGame;
     public GameObject uiVictory;
+    public GameObject uiCaptured;
     public List<GameObject> jumpscareList = new List<GameObject>();
 
     [Header("Photon Prefab Pooling")]

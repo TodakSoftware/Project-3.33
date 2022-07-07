@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public GameObject mainCanvas; // Ref for mainCanvas
-    public GameObject cacheLoadingDuration, cacheLoadingScene, cacheFindGame, cacheReconnectGame, cacheJumpscare;
+    public GameObject cacheLoadingDuration, cacheLoadingScene, cacheFindGame, cacheReconnectGame, cacheJumpscare, cacheBeenCaptured;
     public Modal_FindGame modalFindGame;
     public Modal_ReconnectGame modalReconnectGame;
 
@@ -209,6 +209,24 @@ public class UIManager : MonoBehaviour
         if(cacheJumpscare != null){
             yield return new WaitForSeconds(duration);
             cacheJumpscare.SetActive(false);
+        }
+    }
+
+    public void PopupCapturedUI(){
+        if(cacheBeenCaptured == null){
+            var captured = Instantiate(SOManager.instance.prefabs.uiCaptured);
+            captured.transform.SetParent(mainCanvas.transform, false);
+            cacheBeenCaptured = captured;
+        }else{
+            cacheBeenCaptured.SetActive(true); 
+        }
+        StartCoroutine(CloseCapturedUI(2f));
+    }
+
+    public IEnumerator CloseCapturedUI(float duration){
+        if(cacheBeenCaptured != null){
+            yield return new WaitForSeconds(duration);
+            cacheBeenCaptured.SetActive(false);
         }
     }
 /* ------------------------------------------------  INGAME RELATED END ---------------------------------------------------------*/

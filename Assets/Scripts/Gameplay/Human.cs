@@ -73,10 +73,6 @@ public class Human : MonoBehaviourPunCallbacks
             GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
         }
 
-        if(Input.GetKeyDown(KeyCode.J)){ // Tab key
-            
-        }
-
         // ---------------------------------------- NEARBY GHOST RELATED START ---------------------------------------
         ghostInRadiusList = Physics.OverlapSphere(this.transform.position, nearbyDetectDistance, ghostLayermask);
         foreach(var filter in ghostInRadiusList){ // If Ghost inRange, true fear increase
@@ -103,12 +99,6 @@ public class Human : MonoBehaviourPunCallbacks
         while(fearLevel < 100 && ghostNearby){
             yield return new WaitForSeconds(1f);
             fearLevel += ghostNearbyIncreaseAmount;
-        }
-
-        if(fearLevel >= 100){
-            fearLevel = 100;
-            print("Transfer player to jail");
-            StartCoroutine(Captured());
         }
     }
 
@@ -237,26 +227,37 @@ public class Human : MonoBehaviourPunCallbacks
             print("Transfer player to jail");
             StartCoroutine(Captured());
         }
+
+        if(fearLevel < 100){
+            UIManager.instance.PopupJumpscareUI();
+        }else{
+            //UIManager.instance.PopupCapturedUI();
+            // Play Caught Animation
+        }
     } // end AdjustFearLevel()
 
 // --------------------------------- HEART RATE FUNCTION END ----------------------------------
     [PunRPC]
     public IEnumerator Scared(float duration, int fearAmount){
-        isScared = true;
-        UIManager.instance.PopupJumpscareUI();
-        photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
-        playerController.StopMovement();
-        yield return new WaitForSeconds(duration);
+        if(photonView.IsMine){
+            isScared = true;
+            
+            photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
+            playerController.StopMovement();
+            yield return new WaitForSeconds(duration);
 
-        if(!isCaptured){
-            playerController.UnstopMovement();
+            if(!isCaptured){
+                playerController.UnstopMovement();
+            }
+
+            isScared = false;
         }
-
-        isScared = false;
     } // end Scared
 
     IEnumerator Captured(){
         isCaptured = true; // link with custom props
+        UIManager.instance.PopupCapturedUI();
+        
         yield return new WaitForSeconds(2f);
         // Transfer to prison
         int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);

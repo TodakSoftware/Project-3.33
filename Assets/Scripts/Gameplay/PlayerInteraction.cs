@@ -38,7 +38,7 @@ public class PlayerInteraction : MonoBehaviour
                             if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
                                 GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code); // Add ritual items to player slot
                                 interactable.onInteract.Invoke();
-                            }else{
+                            }else if(interactable.gameObject.GetComponent<RitualItem>() == null && interactable.gameObject.GetComponent<TopupCredits>() != null){
                                 interactable.onInteract.Invoke();
                             }
                             ClearInteraction();
@@ -57,7 +57,7 @@ public class PlayerInteraction : MonoBehaviour
                         if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
                             GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code);
                             interactable.onInteract.Invoke();
-                        }else{
+                        }else if(interactable.gameObject.GetComponent<RitualItem>() == null && interactable.gameObject.GetComponent<TopupCredits>() != null){
                             interactable.onInteract.Invoke();
                         }
                         ClearInteraction();
