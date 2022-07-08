@@ -10,14 +10,14 @@ public class Interact_Door : MonoBehaviourPunCallbacks
     List<GameObject> capturedHumanList = new List<GameObject>();
     public bool openOutward;
     bool isOpened;
-    public bool offline;
+    public bool humanInside;
     // Button Related
     E_ButtonType originalBtnType;
     float originalHoldDuration;
 
 
     public void OpenDoor(){
-        if(!offline){
+        if(NetworkManager.instance != null){
             photonView.RPC("HandleDoor", RpcTarget.All);
         }else{
             HandleDoor();
@@ -27,6 +27,10 @@ public class Interact_Door : MonoBehaviourPunCallbacks
     [PunRPC]
     void HandleDoor(){
         if(!isOpened){
+            if(GetComponent<AudioSource>().clip != null){
+                GetComponent<AudioSource>().Play();
+            }
+
             if(!openOutward){
                 transform.DORotateQuaternion(new Quaternion(-0.5f,-0.5f,-0.5f,0.5f), 1f).OnComplete(() => { isOpened = true; } );
             }else{
@@ -41,6 +45,10 @@ public class Interact_Door : MonoBehaviourPunCallbacks
 
                 GetComponent<Interactable>().buttonType = originalBtnType;
                 GetComponent<Interactable>().holdDuration = originalHoldDuration;
+
+                if(humanInside){
+                    humanInside = false;
+                }
             }
         }else{
             transform.DORotateQuaternion(new Quaternion(-0.707106829f,0,0,0.707106829f), 1f).OnComplete(() => { isOpened = false; } );
@@ -63,6 +71,10 @@ public class Interact_Door : MonoBehaviourPunCallbacks
         if(isOpened){
             isOpened = false;
             transform.DORotateQuaternion(new Quaternion(-0.707106829f,0,0,0.707106829f), 1f);
+        }
+
+        if(!humanInside){
+            humanInside = true;
         }
     }
 

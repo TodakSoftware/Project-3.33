@@ -245,7 +245,7 @@ public class Human : MonoBehaviourPunCallbacks
     [PunRPC]
     public IEnumerator Scared(float duration, int fearAmount){
         if(photonView.IsMine){
-            isScared = true;
+            photonView.RPC("isScared", RpcTarget.All, true);
             UIManager.instance.PopupJumpscareUI();
 
             photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
@@ -258,7 +258,7 @@ public class Human : MonoBehaviourPunCallbacks
                 playerController.canMouselook = true;
             }
 
-            isScared = false;
+            photonView.RPC("isScared", RpcTarget.All, true);
         }
     } // end Scared
 
@@ -308,6 +308,15 @@ public class Human : MonoBehaviourPunCallbacks
         }else{
             isCaptured = false;
             GetComponent<PlayerInteraction>().enableInteract = true;
+        }
+    } // end SetIsCaptured
+
+    [PunRPC]
+    public void SetIsScared(bool scared){
+        if(scared){
+            isScared = true;
+        }else{
+            isScared = false;
         }
     } // end SetIsCaptured
 

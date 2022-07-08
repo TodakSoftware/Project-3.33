@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     float holdDur, holdTimer;
     public Image holdSliderImage;
 
-    [Header("Altar Related")]
+    [Header("Human / Altar Related")]
     public bool canContributeItem;
     public Altar altarRef;
 
@@ -103,19 +103,22 @@ public class PlayerInteraction : MonoBehaviour
                 if(hit.collider.GetComponent<Interactable>() != false){
                     
                     if(interactable == null || interactable.id != hit.collider.GetComponent<Interactable>().id){
-                        interactable = hit.collider.GetComponent<Interactable>();
+                        if(gameObject.CompareTag("Ghost") && hit.collider.gameObject.GetComponent<Interact_Door>().humanInside){ // if we are ghost & hitted object is door with human inside, do nothing
+                            print("Cannot open, human inside");
+                        }else{
+                            interactable = hit.collider.GetComponent<Interactable>();
 
-                        holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
+                            holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
                         
-                        if(!interactionUI.activeSelf){
-                            interactionUI.SetActive(true);
+                            if(!interactionUI.activeSelf){
+                                interactionUI.SetActive(true);
+                            }
+                            PopupInteractInfo();
                         }
-                        PopupInteractInfo();
                     } // end interactable null
                 }
             }else{
                 interactable = null;
-
                 ClearInteraction();
             }
         } // end enableInteract

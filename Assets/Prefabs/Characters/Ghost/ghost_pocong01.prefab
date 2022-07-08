@@ -1974,6 +1974,7 @@ GameObject:
   - component: {fileID: 5228083862895946214}
   - component: {fileID: 8696863325576554826}
   - component: {fileID: -6303977556914463706}
+  - component: {fileID: 276390770003617267}
   m_Layer: 10
   m_Name: ghost_pocong01
   m_TagString: Ghost
@@ -2183,6 +2184,31 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &276390770003617267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568130390959185826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 401e151bb672be744a5421f8f9121eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableInteract: 1
+  interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  cam: {fileID: 2787350611823072577}
+  interactMaxDistance: 2
+  interactionUI: {fileID: 8971220453666228573}
+  keyImage: {fileID: 2723075222406999874}
+  keyCodeText: {fileID: 7198784806498192894}
+  interactText: {fileID: 456599065649708392}
+  holdSliderImage: {fileID: 1423978172720743017}
+  canContributeItem: 0
+  altarRef: {fileID: 0}
 --- !u!1 &3568130392437507665
 GameObject:
   m_ObjectHideFlags: 0
