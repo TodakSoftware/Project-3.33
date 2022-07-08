@@ -141,9 +141,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(isHuman){
             if(humanSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[humanSpawnedPosition[playerIndex]].position, Quaternion.identity);
-
+                
                 if(photonView.IsMine){
                     playerOwned = player;
+                }else{
+
                 }
             }else{
                 print("Missing spawnpoints : Human");
@@ -151,6 +153,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }else{
             if(ghostSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[ghostSpawnedPosition[playerIndex]].position, Quaternion.identity);
+                
                 if(photonView.IsMine){
                     playerOwned = player;
                 }

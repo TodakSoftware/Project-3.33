@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public bool enableInteract = true;
     public LayerMask interactableLayerMask;
     public Transform cam;
     public float interactMaxDistance;
@@ -24,51 +25,42 @@ public class PlayerInteraction : MonoBehaviour
     public Altar altarRef;
 
     void Update(){
-        if(interactable != null){
+        if(enableInteract){
+            if(interactable != null){
 
-            if(interactable.GetComponent<Interactable>().buttonType == E_ButtonType.HOLD){
-                if(Input.GetButton("Interact")){
-                    if(holdTimer < holdDur){
-                        holdTimer += Time.deltaTime;
-                        holdSliderImage.fillAmount = holdTimer / holdDur;
+                if(interactable.GetComponent<Interactable>().buttonType == E_ButtonType.HOLD){
+                    if(Input.GetButton("Interact")){
+                        if(holdTimer < holdDur){
+                            holdTimer += Time.deltaTime;
+                            holdSliderImage.fillAmount = holdTimer / holdDur;
+                        }else{
+                            holdTimer = holdDur;
+                            // Added to inventory
+                            if(interactable.onInteract != null){
+                                interactable.onInteract.Invoke();
+                                ClearInteraction();
+                            }else{
+                                print("Cannot proceed");
+                            } // end if ritualitem != null
+                        }
                     }else{
-                        holdTimer = holdDur;
+                        holdTimer = 0;
+                        holdSliderImage.fillAmount = 0;
+                    } // end input getbutton
+                }else{
+                    if(Input.GetButtonDown("Interact")){
                         // Added to inventory
                         if(interactable.onInteract != null){
-                            if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
-                                GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code); // Add ritual items to player slot
-                                interactable.onInteract.Invoke();
-                            }else if(interactable.gameObject.GetComponent<RitualItem>() == null && interactable.gameObject.GetComponent<TopupCredits>() != null){
-                                interactable.onInteract.Invoke();
-                            }
+                            interactable.onInteract.Invoke();
                             ClearInteraction();
                         }else{
                             print("Cannot proceed");
-                        } // end if ritualitem != null
-                    }
-                }else{
-                    holdTimer = 0;
-                    holdSliderImage.fillAmount = 0;
-                } // end input getbutton
-            }else{
-                if(Input.GetButtonDown("Interact")){
-                    // Added to inventory
-                    if(interactable.onInteract != null){
-                        if(interactable.gameObject.GetComponent<RitualItem>() != null && !GetComponent<PlayerInventory>().IsInventoryFull()){
-                            GetComponent<PlayerInventory>().AddRitualItem(interactable.gameObject.GetComponent<RitualItem>().code);
-                            interactable.onInteract.Invoke();
-                        }else if(interactable.gameObject.GetComponent<RitualItem>() == null && interactable.gameObject.GetComponent<TopupCredits>() != null){
-                            interactable.onInteract.Invoke();
                         }
-                        ClearInteraction();
-                    }else{
-                        print("Cannot proceed");
-                    }
-                    
-                } // end input getbutton
-            }
+                        
+                    } // end input getbutton
+                }
 
-        } // end interacble
+            } // end interacble != null
 
 // ----------------------------------- RITUAL ALTAR RELATED START -------------------------------------------
         if(canContributeItem && GetComponent<PlayerInventory>().ritualItemLists.Count > 0){
@@ -98,31 +90,35 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
-// ----------------------------------- RITUAL ALTAR RELATED END -------------------------------------------            
+// ----------------------------------- RITUAL ALTAR RELATED END -------------------------------------------    
+
+        } // end enableInteract
     } // end Update()
 
     void FixedUpdate(){
-        RaycastHit hit;
-       
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactMaxDistance, interactableLayerMask)){
-            if(hit.collider.GetComponent<Interactable>() != false){
-                
-                if(interactable == null || interactable.id != hit.collider.GetComponent<Interactable>().id){
-                    interactable = hit.collider.GetComponent<Interactable>();
-
-                    holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
+        if(enableInteract){
+            RaycastHit hit;
+        
+            if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactMaxDistance, interactableLayerMask)){
+                if(hit.collider.GetComponent<Interactable>() != false){
                     
-                    if(!interactionUI.activeSelf){
-                        interactionUI.SetActive(true);
-                    }
-                    PopupInteractInfo();
-                } // end interactable null
-            }
-        }else{
-            interactable = null;
+                    if(interactable == null || interactable.id != hit.collider.GetComponent<Interactable>().id){
+                        interactable = hit.collider.GetComponent<Interactable>();
 
-            ClearInteraction();
-        }
+                        holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
+                        
+                        if(!interactionUI.activeSelf){
+                            interactionUI.SetActive(true);
+                        }
+                        PopupInteractInfo();
+                    } // end interactable null
+                }
+            }else{
+                interactable = null;
+
+                ClearInteraction();
+            }
+        } // end enableInteract
     } // end update()
 
     void ClearInteraction(){
@@ -156,9 +152,9 @@ public class PlayerInteraction : MonoBehaviour
 
                 case E_InteractType.OPENDOOR:
                     if(interactable.buttonType == E_ButtonType.HOLD){
-                        interactText.text = "Hold to open door";
+                        interactText.text = "Hold to open/close door";
                     }else{
-                        interactText.text = "To open door";
+                        interactText.text = "To open/close door";
                     }
                 break;
 

@@ -27,7 +27,9 @@ public class RitualItem : MonoBehaviour
     }// end Start
 
     public void PickupRitualItem(){
-        // Popup notification..
-        Destroy(gameObject);
+        if(!GameManager.instance.playerOwned.GetComponent<PlayerInventory>().IsInventoryFull()){
+            GameManager.instance.playerOwned.GetComponent<PlayerInventory>().AddRitualItem(code);
+            Destroy(gameObject);
+        }
     }
 }

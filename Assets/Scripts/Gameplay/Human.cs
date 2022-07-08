@@ -92,6 +92,10 @@ public class Human : MonoBehaviourPunCallbacks
             }
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
+
+        if(Input.GetKeyDown(KeyCode.P)){
+            photonView.RPC("Captured", RpcTarget.All);
+        }
     }
 
     // ---------------------------------------- NEARBY GHOST FUNCTION RELATED START ---------------------------------------
@@ -271,6 +275,7 @@ public class Human : MonoBehaviourPunCallbacks
             int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
             playerController.canMove = false; // false to make player move to new position
             transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
+            GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
 
             yield return new WaitForSeconds(1f);
             playerController.UnstopMovement();
@@ -280,15 +285,30 @@ public class Human : MonoBehaviourPunCallbacks
             playerProps.Add("PlayerCaptured", true);
             PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
         }
-    }
+    } // end Captured
+
+    [PunRPC]
+    public void Released(){
+        if(photonView.IsMine){
+            //isCaptured = true; // link with custom props
+            photonView.RPC("SetIsCaptured", RpcTarget.All, false);
+            
+            // Update Properties
+            Hashtable playerProps = new Hashtable();
+            playerProps.Add("PlayerCaptured", false);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+        }
+    } // end Released
 
     [PunRPC]
     public void SetIsCaptured(bool captured){
         if(captured){
             isCaptured = true;
+            GetComponent<PlayerInteraction>().enableInteract = false;
         }else{
             isCaptured = false;
+            GetComponent<PlayerInteraction>().enableInteract = true;
         }
-    }
+    } // end SetIsCaptured
 
 }
