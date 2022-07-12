@@ -80,7 +80,8 @@ public class Human : MonoBehaviourPunCallbacks
             ghostNearby = true;
 
             if(!fearIsIncrease){
-                StartCoroutine(GhostNearbyDrain());
+                //StartCoroutine(GhostNearbyIncrease());
+                photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, true);
             }
         }
 
@@ -88,22 +89,51 @@ public class Human : MonoBehaviourPunCallbacks
             ghostNearby = false;
 
             if(fearIsIncrease){
-                fearIsIncrease = false;
+                //fearIsIncrease = false;
+                photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, false);
             }
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
 
-        if(Input.GetKeyDown(KeyCode.P)){
-            photonView.RPC("Captured", RpcTarget.All);
+        if(Input.GetKeyDown(KeyCode.L)){
+            //photonView.RPC("Captured", RpcTarget.All);
+            //photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.M)){
+            //photonView.RPC("Captured", RpcTarget.All);
+           // photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, false);
         }
     }
 
     // ---------------------------------------- NEARBY GHOST FUNCTION RELATED START ---------------------------------------
-    IEnumerator GhostNearbyDrain(){
+    IEnumerator GhostNearbyIncrease(){
         fearIsIncrease = true;
         while(fearLevel < 100 && ghostNearby){
             yield return new WaitForSeconds(1f);
             photonView.RPC("AdjustFearLevel", RpcTarget.All, ghostNearbyIncreaseAmount);// AdjustFearLevel(fearAmount);
+        }
+    }
+
+    [PunRPC]
+    public void EnableGhostNearbyIncrease(bool increase){
+        if(photonView.IsMine){
+            if(increase){
+                photonView.RPC("SetGhostNearby", RpcTarget.All, true);
+                StartCoroutine(GhostNearbyIncrease());
+            }else{
+                photonView.RPC("SetGhostNearby", RpcTarget.All, false);
+                fearIsIncrease = false;
+            }
+        }
+    }
+
+    [PunRPC]
+    public void SetGhostNearby(bool isNear){
+        if(isNear){
+            ghostNearby = true;
+        }else{
+            ghostNearby = false;
         }
     }
 
@@ -245,7 +275,7 @@ public class Human : MonoBehaviourPunCallbacks
     [PunRPC]
     public IEnumerator Scared(float duration, int fearAmount){
         if(photonView.IsMine){
-            photonView.RPC("isScared", RpcTarget.All, true);
+            photonView.RPC("SetIsScared", RpcTarget.All, true);
             UIManager.instance.PopupJumpscareUI();
 
             photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
@@ -258,7 +288,7 @@ public class Human : MonoBehaviourPunCallbacks
                 playerController.canMouselook = true;
             }
 
-            photonView.RPC("isScared", RpcTarget.All, true);
+            photonView.RPC("SetIsScared", RpcTarget.All, false);
         }
     } // end Scared
 

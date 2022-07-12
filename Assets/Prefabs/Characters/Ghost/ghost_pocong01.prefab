@@ -1975,6 +1975,7 @@ GameObject:
   - component: {fileID: 8696863325576554826}
   - component: {fileID: -6303977556914463706}
   - component: {fileID: 276390770003617267}
+  - component: {fileID: 8145329434280960585}
   m_Layer: 10
   m_Name: ghost_pocong01
   m_TagString: Ghost
@@ -2063,6 +2064,8 @@ MonoBehaviour:
   humanLayermask:
     serializedVersion: 2
     m_Bits: 2048
+  hp: 100
+  isDead: 0
 --- !u!114 &3568130390959185839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2112,6 +2115,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 5228083862895946214}
   - {fileID: -6303977556914463706}
+  - {fileID: 8145329434280960585}
   - {fileID: 378287279214756895}
   sceneViewId: 0
   InstantiationId: 0
@@ -2135,6 +2139,7 @@ MonoBehaviour:
   - {fileID: 2635399275663906288}
   - {fileID: 8696863325576554826}
   - {fileID: 3568130390959185839}
+  - {fileID: 276390770003617267}
   gameObjectToDisable:
   - {fileID: 1423978173756265222}
   - {fileID: 2787350611823072588}
@@ -2209,6 +2214,57 @@ MonoBehaviour:
   holdSliderImage: {fileID: 1423978172720743017}
   canContributeItem: 0
   altarRef: {fileID: 0}
+--- !u!114 &8145329434280960585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568130390959185826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8069ffa6ab7df7340ad5ce0c3da47526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationBackTime: 0.12
+  extrapolationMode: 1
+  useExtrapolationTimeLimit: 1
+  extrapolationTimeLimit: 5
+  useExtrapolationDistanceLimit: 0
+  extrapolationDistanceLimit: 20
+  sendPositionThreshold: 0
+  sendRotationThreshold: 0
+  sendScaleThreshold: 0
+  sendVelocityThreshold: 0
+  sendAngularVelocityThreshold: 0
+  receivedPositionThreshold: 0
+  receivedRotationThreshold: 0
+  snapPositionThreshold: 0
+  snapRotationThreshold: 0
+  snapScaleThreshold: 0
+  positionLerpSpeed: 0.85
+  rotationLerpSpeed: 0.85
+  scaleLerpSpeed: 0.85
+  timeCorrectionSpeed: 0.1
+  snapTimeThreshold: 0.3
+  syncPosition: 0
+  syncRotation: 0
+  syncScale: 7
+  syncVelocity: 0
+  syncAngularVelocity: 7
+  isPositionCompressed: 1
+  isRotationCompressed: 1
+  isScaleCompressed: 0
+  isVelocityCompressed: 1
+  isAngularVelocityCompressed: 0
+  automaticallyResetTime: 1
+  isSmoothingAuthorityChanges: 0
+  whenToUpdateTransform: 0
+  setVelocityInsteadOfPositionOnNonOwners: 0
+  useLocalTransformOnly: 0
+  maxPositionDifferenceForVelocitySyncing: 10
+  ownerChangeIndicator: 1
+  receivedStatesCounter: 0
 --- !u!1 &3568130392437507665
 GameObject:
   m_ObjectHideFlags: 0

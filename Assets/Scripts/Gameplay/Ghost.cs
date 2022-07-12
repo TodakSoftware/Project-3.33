@@ -19,6 +19,12 @@ public class Ghost : MonoBehaviourPunCallbacks
     public Collider[] humanInRadiusList;
     [SerializeField] float nearbyDetectDistance = 2f;
     public LayerMask humanLayermask;
+    [Header("Health Related")]
+    [SerializeField] int hp = 100;
+    public bool isDead;
+    bool hpIsDecreasing, isHearSound;
+
+
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -88,6 +94,45 @@ public class Ghost : MonoBehaviourPunCallbacks
             }
         }
         // ------------------------------------- DETECT HUMAN IN RANGE UPDATE END -----------------------------------------
+
+        // ------------------------------------- HP DRAIN UPDATE START -----------------------------------------
+        //if(isHearSound && !hpIsDecreasing){
+        //    StartCoroutine(HPDrainedOvertime());
+        //}
+        // On other human, just set ghost's isHearSound = true\
+        // If not human not collided with ghost, called below DisableHpDrained()
+        // isHearSound = false;
+        // hpIsDecreasing = false;
+        // ------------------------------------- HP DRAIN UPDATE END -----------------------------------------
+
+        if(Input.GetKeyDown(KeyCode.L)){
+            //photonView.RPC("EnableHpDrained", RpcTarget.All, true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.M)){
+            //photonView.RPC("EnableHpDrained", RpcTarget.All, false);
+        }
+        
+    }
+
+    IEnumerator HPDrainedOvertime(){
+        hpIsDecreasing = true;
+        while(hp <= 100 && hpIsDecreasing){
+            yield return new WaitForSeconds(1f);
+            photonView.RPC("AdjustHp", RpcTarget.All, -1);
+        }
+    }
+
+    [PunRPC]
+    public void EnableHpDrained(bool drain){
+        if(drain){
+            isHearSound = true;
+            StartCoroutine(HPDrainedOvertime());
+        }else{
+            isHearSound = false;
+            hpIsDecreasing = false;
+        }
+        
     }
 
     void OnDrawGizmos() {
@@ -117,4 +162,37 @@ public class Ghost : MonoBehaviourPunCallbacks
     public void DisableCaughtCollider(){
         caughtCollider.SetActive(false);
     }
+
+    // ---------------------------------------------- GHOST HP RELATED START ---------------------
+    [PunRPC]
+    public void AdjustHp(int amount){
+        hp += amount;
+
+        if(hp <= 0){
+            hp = 0;
+            isDead = true;
+            // Respawned
+            photonView.RPC("Respawned", RpcTarget.All);
+        }else if(hp >= 100){
+            hp = 100;
+        }
+    } // end AdjustHp()
+
+    [PunRPC]
+    public IEnumerator Respawned(){
+        if(photonView.IsMine){
+            yield return new WaitForSeconds(1f);
+            // Transfer to prison
+            int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_Ghost.Count);
+            playerController.canMove = false; // false to make player move to new position
+            playerController.StopMovement(); // Stop Completely
+            //transform.position = GameManager.instance.spawnpoints_Ghost[randomNmbr].position;
+            transform.position = Vector3.zero;
+            yield return new WaitForSeconds(3f);
+            playerController.UnstopMovement();
+            isDead = false;
+            photonView.RPC("AdjustHp", RpcTarget.All, 100); // Reset HP to 100
+        }
+    }
+    // ---------------------------------------------- GHOST HP RELATED END ---------------------
 }
