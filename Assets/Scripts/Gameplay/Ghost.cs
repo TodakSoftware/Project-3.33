@@ -22,7 +22,7 @@ public class Ghost : MonoBehaviourPunCallbacks
     [Header("Health Related")]
     [SerializeField] int hp = 100;
     public bool isDead;
-    bool hpIsDecreasing, isHearSound;
+    bool hpIsDecreasing, isHearMusic;
 
 
 
@@ -75,12 +75,14 @@ public class Ghost : MonoBehaviourPunCallbacks
         // ------------------------------------- DETECT HUMAN IN RANGE UPDATE START -----------------------------------------
         humanInRadiusList = Physics.OverlapSphere(this.transform.position, nearbyDetectDistance, humanLayermask);
         if(humanInRadiusList.Length > 0 && !GameManager.instance.gameEnded){
+
+            // IF HUMAN FEAR LVL > 100, READY TO CAPTURE
             if(humanInRadiusList[0].gameObject.GetComponent<Human>().fearLevel >= 100){
                 if(!GetComponent<PlayerUI>().captureTextUI.activeSelf){
                     GetComponent<PlayerUI>().captureTextUI.SetActive(true);
                 }
                 
-                if(Input.GetButtonDown("Interact")){
+                if(Input.GetButtonDown("Interact")){ // press E if human fearlevel 100, caught the 1st on list
                     humanInRadiusList[0].gameObject.GetComponent<Human>().photonView.RPC("Captured", humanInRadiusList[0].gameObject.GetPhotonView().Owner);
 
                     if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
@@ -88,30 +90,13 @@ public class Ghost : MonoBehaviourPunCallbacks
                     }
                 }
             }
+
         }else{
             if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
                 GetComponent<PlayerUI>().captureTextUI.SetActive(false);
             }
         }
         // ------------------------------------- DETECT HUMAN IN RANGE UPDATE END -----------------------------------------
-
-        // ------------------------------------- HP DRAIN UPDATE START -----------------------------------------
-        //if(isHearSound && !hpIsDecreasing){
-        //    StartCoroutine(HPDrainedOvertime());
-        //}
-        // On other human, just set ghost's isHearSound = true\
-        // If not human not collided with ghost, called below DisableHpDrained()
-        // isHearSound = false;
-        // hpIsDecreasing = false;
-        // ------------------------------------- HP DRAIN UPDATE END -----------------------------------------
-
-        if(Input.GetKeyDown(KeyCode.L)){
-            //photonView.RPC("EnableHpDrained", RpcTarget.All, true);
-        }
-
-        if(Input.GetKeyDown(KeyCode.M)){
-            //photonView.RPC("EnableHpDrained", RpcTarget.All, false);
-        }
         
     }
 
@@ -126,10 +111,10 @@ public class Ghost : MonoBehaviourPunCallbacks
     [PunRPC]
     public void EnableHpDrained(bool drain){
         if(drain){
-            isHearSound = true;
+            isHearMusic = true;
             StartCoroutine(HPDrainedOvertime());
         }else{
-            isHearSound = false;
+            isHearMusic = false;
             hpIsDecreasing = false;
         }
         

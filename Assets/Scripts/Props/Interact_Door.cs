@@ -40,7 +40,9 @@ public class Interact_Door : MonoBehaviourPunCallbacks
             if(capturedHumanList.Count > 0){
                 // Set captured human to Uncaptured
                 foreach(var human in capturedHumanList){
-                    human.GetComponent<Human>().photonView.RPC("Released", human.GetPhotonView().Owner);
+                    if(!human.GetComponent<Human>().isDead){
+                        human.GetComponent<Human>().photonView.RPC("Released", human.GetPhotonView().Owner);
+                    }
                 }
 
                 GetComponent<Interactable>().buttonType = originalBtnType;

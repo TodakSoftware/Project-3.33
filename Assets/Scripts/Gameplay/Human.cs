@@ -37,6 +37,9 @@ public class Human : MonoBehaviourPunCallbacks
     bool hpGreen, hpYellow, hpRed;
     public bool isScared;
     public bool isCaptured;
+    public int currentDeadTimeout, deadTimeout = 60; // in seconds
+    public bool isDead;
+    Coroutine deadtimeoutCoroutine;
 
     [Header("Nearby Ghost Fear")]
     public bool ghostNearby;
@@ -80,7 +83,6 @@ public class Human : MonoBehaviourPunCallbacks
             ghostNearby = true;
 
             if(!fearIsIncrease){
-                //StartCoroutine(GhostNearbyIncrease());
                 photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, true);
             }
         }
@@ -89,20 +91,21 @@ public class Human : MonoBehaviourPunCallbacks
             ghostNearby = false;
 
             if(fearIsIncrease){
-                //fearIsIncrease = false;
                 photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, false);
             }
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
-
-        if(Input.GetKeyDown(KeyCode.L)){
-            //photonView.RPC("Captured", RpcTarget.All);
-            //photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, true);
+        if(Input.GetKeyDown(KeyCode.N)){
+            deadtimeoutCoroutine = StartCoroutine(DeadCountdown());
+            
         }
 
         if(Input.GetKeyDown(KeyCode.M)){
-            //photonView.RPC("Captured", RpcTarget.All);
-           // photonView.RPC("EnableGhostNearbyIncrease", RpcTarget.All, false);
+            if(deadtimeoutCoroutine != null){
+                StopCoroutine(deadtimeoutCoroutine);
+                
+                print("Stopped");
+            }
         }
     }
 
@@ -273,7 +276,7 @@ public class Human : MonoBehaviourPunCallbacks
 
 // --------------------------------- HEART RATE FUNCTION END ----------------------------------
     [PunRPC]
-    public IEnumerator Scared(float duration, int fearAmount){
+    public IEnumerator Scared(float duration, int fearAmount){ // Used by CaughtCollider.cs
         if(photonView.IsMine){
             photonView.RPC("SetIsScared", RpcTarget.All, true);
             UIManager.instance.PopupJumpscareUI();
@@ -318,8 +321,8 @@ public class Human : MonoBehaviourPunCallbacks
     } // end Captured
 
     [PunRPC]
-    public void Released(){
-        if(photonView.IsMine){
+    public void Released(){ // Used by Interact_Door.cs
+        if(photonView.IsMine && !isDead){
             //isCaptured = true; // link with custom props
             photonView.RPC("SetIsCaptured", RpcTarget.All, false);
             
@@ -335,6 +338,7 @@ public class Human : MonoBehaviourPunCallbacks
         if(captured){
             isCaptured = true;
             GetComponent<PlayerInteraction>().enableInteract = false;
+            StartCoroutine(DeadCountdown());
         }else{
             isCaptured = false;
             GetComponent<PlayerInteraction>().enableInteract = true;
@@ -347,6 +351,30 @@ public class Human : MonoBehaviourPunCallbacks
             isScared = true;
         }else{
             isScared = false;
+        }
+    } // end SetIsCaptured
+
+    IEnumerator DeadCountdown(){
+        currentDeadTimeout = 0;
+
+        while(currentDeadTimeout < deadTimeout && isCaptured){ // add  && isCaptured
+            yield return new WaitForSeconds(1f);
+            currentDeadTimeout += 1;
+        }
+
+        if(currentDeadTimeout >= deadTimeout && !isDead){
+            currentDeadTimeout = deadTimeout;
+            photonView.RPC("SetIsDead", RpcTarget.All, true);
+        }
+    }
+
+    [PunRPC]
+    public void SetIsDead(bool dead){
+        if(dead){
+            isDead = true;
+            // Play Animation
+        }else{
+            isDead = false;
         }
     } // end SetIsCaptured
 

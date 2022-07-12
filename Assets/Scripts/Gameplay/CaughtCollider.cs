@@ -8,7 +8,7 @@ using Photon.Pun;
 public class CaughtCollider : MonoBehaviourPunCallbacks
 {
     public GameObject ghostGO;
-    float scareDuration = 5f;
+    float scareDuration = 2f;
 
     void OnTriggerEnter(Collider other) {
         if(!GameManager.instance.gameEnded && other.CompareTag("Player") && !other.gameObject.GetComponent<Human>().isScared && !other.gameObject.GetComponent<Human>().isCaptured){
