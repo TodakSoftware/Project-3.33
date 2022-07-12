@@ -132,7 +132,10 @@ public class GameManager : MonoBehaviourPunCallbacks
                 SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
                 ghostCount++;
             }
+
+            gameStart = true;
         }
+        
     } // end PlayerInGame
     
     void SpawnPlayers(bool isHuman, int playerIndex){
@@ -209,7 +212,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if(!gameEnded){
+        if(gameStart && !gameEnded){
             CheckWinningCondition();
         }
     } // end OnPlayerPropertiesUpdate
