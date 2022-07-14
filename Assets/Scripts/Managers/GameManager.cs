@@ -132,8 +132,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
                 ghostCount++;
             }
-
-            gameStart = true;
         }
         
     } // end PlayerInGame
@@ -212,7 +210,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if(gameStart && !gameEnded){
+        if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
             CheckWinningCondition();
         }
     } // end OnPlayerPropertiesUpdate

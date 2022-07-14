@@ -2055,6 +2055,14 @@ MonoBehaviour:
   - {fileID: 7036666404566762934}
   - {fileID: 3117341331577075365}
   - {fileID: 7949723617811986649}
+  skinMeshMatToControl:
+  - {fileID: 2122099793238130399}
+  - {fileID: 7343608670433091731}
+  - {fileID: 156129810939522971}
+  meshMatToControl:
+  - {fileID: 76721277855752058}
+  - {fileID: 9147743499128219645}
+  - {fileID: 1601442387579131820}
   canAttacking: 0
   attackCooldown: 5
   isInvisible: 0
@@ -3708,7 +3716,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4943075383490931211, guid: e6271ee0c8db27c4e93761c13caa9724, type: 3}
   m_Bones:

@@ -4,11 +4,14 @@ using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using DG.Tweening;
 
 public class Ghost : MonoBehaviourPunCallbacks
 {
     PlayerController playerController;
     public List<GameObject> meshToHide = new List<GameObject>();
+    public List<SkinnedMeshRenderer> skinMeshMatToControl = new List<SkinnedMeshRenderer>();
+    public List<MeshRenderer> meshMatToControl = new List<MeshRenderer>();
     bool isAttacking = false;
     [SerializeField] bool canAttacking;
     [SerializeField] float attackCooldown = 5f;
@@ -34,7 +37,7 @@ public class Ghost : MonoBehaviourPunCallbacks
     {
         if(photonView.IsMine){
             foreach(var mesh in meshToHide){
-                mesh.SetActive(false);
+                mesh.SetActive(false); // local
             }
 
             if(!isInvisible){
@@ -47,10 +50,44 @@ public class Ghost : MonoBehaviourPunCallbacks
     public void SetInvisible(bool invisible){
         if(invisible){
             isInvisible = true;
-            playerController.playerMesh.SetActive(false);
+            //playerController.playerMesh.SetActive(false);
+            
+            foreach(var mesh in skinMeshMatToControl){  // Skinned Mesh Material
+                if(mesh.GetComponent<SkinnedMeshRenderer>() != null){
+                    foreach(var mat in mesh.GetComponent<SkinnedMeshRenderer>().materials){
+                        mat.DOFloat(1f, "_SliderDissolve", 1f);
+                    }
+                }
+            }
+
+            foreach(var mesh2 in meshMatToControl){ // Mesh Material
+                if(mesh2.GetComponent<MeshRenderer>() != null){
+                    foreach(var mat in mesh2.GetComponent<MeshRenderer>().materials){
+                        mat.DOFloat(1f, "_SliderDissolve", 1f);
+                    }
+                }
+            }
+
         }else{
             isInvisible = false;
-            playerController.playerMesh.SetActive(true);
+            //playerController.playerMesh.SetActive(true);
+
+            foreach(var mesh in skinMeshMatToControl){ // Skinned Mesh Material
+                if(mesh.GetComponent<SkinnedMeshRenderer>() != null){
+                    foreach(var mat in mesh.GetComponent<SkinnedMeshRenderer>().materials){
+                        mat.DOFloat(0f, "_SliderDissolve", 1f);
+                    }
+                }
+            }
+
+            foreach(var mesh2 in meshMatToControl){ // Mesh Material
+                if(mesh2.GetComponent<MeshRenderer>() != null){
+                    foreach(var mat in mesh2.GetComponent<MeshRenderer>().materials){
+                        mat.DOFloat(0f, "_SliderDissolve", 1f);
+                    }
+                }
+            }
+
         }
     }
 
@@ -77,7 +114,7 @@ public class Ghost : MonoBehaviourPunCallbacks
         if(humanInRadiusList.Length > 0 && !GameManager.instance.gameEnded){
 
             // IF HUMAN FEAR LVL > 100, READY TO CAPTURE
-            if(humanInRadiusList[0].gameObject.GetComponent<Human>().fearLevel >= 100){
+            if(humanInRadiusList[0].gameObject.GetComponent<Human>().fearLevel >= 100 && !humanInRadiusList[0].gameObject.GetComponent<Human>().isCaptured){
                 if(!GetComponent<PlayerUI>().captureTextUI.activeSelf){
                     GetComponent<PlayerUI>().captureTextUI.SetActive(true);
                 }
@@ -97,7 +134,13 @@ public class Ghost : MonoBehaviourPunCallbacks
             }
         }
         // ------------------------------------- DETECT HUMAN IN RANGE UPDATE END -----------------------------------------
-        
+        if(Input.GetKeyDown(KeyCode.K)){
+            SetInvisible(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.L)){
+            SetInvisible(false);
+        }
     }
 
     IEnumerator HPDrainedOvertime(){
