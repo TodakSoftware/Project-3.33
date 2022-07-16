@@ -54,11 +54,13 @@ public class Human : MonoBehaviourPunCallbacks
     }
 
     void Start(){
-        SetupPhone();
+        
         if(!photonView.IsMine){ // If this script is not ours to control, end it
+            
             return;
         }
-
+        //SetupPhone();
+        photonView.RPC("SetupPhone", RpcTarget.All);
         StartCoroutine(UpdateHeartRate());
     }
 
@@ -74,7 +76,8 @@ public class Human : MonoBehaviourPunCallbacks
         }
 
         if(Input.GetButtonDown("Flashlight") && !instantiatedPhone.GetComponent<MobilePhone>().phoneIsDead){ // Tab key & phone is not dead
-            GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
+            //GetComponent<PlayerAbilities>().ToggleFlashlight("A001");
+            GetComponent<PlayerAbilities>().photonView.RPC("ToggleFlashlight", RpcTarget.All, "A001");
         }
 
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED START ---------------------------------------
@@ -96,16 +99,11 @@ public class Human : MonoBehaviourPunCallbacks
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
         if(Input.GetKeyDown(KeyCode.N)){
-            deadtimeoutCoroutine = StartCoroutine(DeadCountdown());
             
         }
 
         if(Input.GetKeyDown(KeyCode.M)){
-            if(deadtimeoutCoroutine != null){
-                StopCoroutine(deadtimeoutCoroutine);
-                
-                print("Stopped");
-            }
+           
         }
     }
 
@@ -147,11 +145,13 @@ public class Human : MonoBehaviourPunCallbacks
 
 
 /* --------------------------------------------  PHONE RELATED FUNCTIONS START -------------------------------------------------*/
+    [PunRPC]
     void SetupPhone(){
         // Setup player custom skin / early game ability / etc.
 
         // Spawn Phone (Will replace with photon prefab)
-        instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        //instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        instantiatedPhone = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Props", "MobilePhone"), new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
         instantiatedPhone.GetComponent<MobilePhone>().phoneOwner = this.gameObject;
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
 

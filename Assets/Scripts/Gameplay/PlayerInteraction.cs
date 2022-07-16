@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerInteraction : MonoBehaviour
+public class PlayerInteraction : MonoBehaviourPunCallbacks
 {
     public bool enableInteract = true;
     public LayerMask interactableLayerMask;
@@ -20,10 +22,6 @@ public class PlayerInteraction : MonoBehaviour
     float holdDur, holdTimer;
     public Image holdSliderImage;
 
-    [Header("Human / Altar Related")]
-    public bool canContributeItem;
-    public Altar altarRef;
-
     void Update(){
         if(enableInteract){
             if(interactable != null){
@@ -37,6 +35,9 @@ public class PlayerInteraction : MonoBehaviour
                             holdTimer = holdDur;
                             // Added to inventory
                             if(interactable.onInteract != null){
+                                photonView.RPC("AddRitualToInventory", RpcTarget.All);
+                                photonView.RPC("PutRitualOnAltar", RpcTarget.All);
+
                                 interactable.onInteract.Invoke();
                                 ClearInteraction();
                             }else{
@@ -51,49 +52,47 @@ public class PlayerInteraction : MonoBehaviour
                     if(Input.GetButtonDown("Interact")){
                         // Added to inventory
                         if(interactable.onInteract != null){
+                            photonView.RPC("AddRitualToInventory", RpcTarget.All);
+                            photonView.RPC("PutRitualOnAltar", RpcTarget.All);
+
                             interactable.onInteract.Invoke();
                             ClearInteraction();
                         }else{
                             print("Cannot proceed");
                         }
+
+                        
                         
                     } // end input getbutton
                 }
 
             } // end interacble != null
 
-// ----------------------------------- RITUAL ALTAR RELATED START -------------------------------------------
-        if(canContributeItem && GetComponent<PlayerInventory>().ritualItemLists.Count > 0){
-            if(!interactionUI.activeSelf){
-                interactionUI.SetActive(true);
-            }
-
-            if(altarRef.gameObject.GetComponent<Interactable>().buttonType == E_ButtonType.HOLD){
-                interactText.text = "Hold to transfer";
-                if(Input.GetButton("Interact")){
-                    if(holdTimer < altarRef.gameObject.GetComponent<Interactable>().holdDuration){
-                        holdTimer += Time.deltaTime;
-                        holdSliderImage.fillAmount = holdTimer / altarRef.gameObject.GetComponent<Interactable>().holdDuration;
-                    }else{
-                        holdTimer = altarRef.gameObject.GetComponent<Interactable>().holdDuration;
-                        TransferRitualItems();
-                    }
-                }else{
-                    holdTimer = 0;
-                    holdSliderImage.fillAmount = 0;
-                } // end input getbutton
-            }else{
-                interactText.text = "To transfer";
-
-                if(Input.GetButtonDown("Interact")){
-                    TransferRitualItems();
-                }
-            }
-        }
-// ----------------------------------- RITUAL ALTAR RELATED END -------------------------------------------    
-
         } // end enableInteract
     } // end Update()
+
+    [PunRPC]
+    void AddRitualToInventory(){
+        if(interactable != null && interactable.CompareTag("RitualItem") && !GetComponent<PlayerInventory>().IsInventoryFull()){
+            print("Added ritual item " + interactable.GetComponent<RitualItem>().code);
+            GetComponent<PlayerInventory>().photonView.RPC("AddRitualItem", RpcTarget.All, interactable.GetComponent<RitualItem>().code);
+            interactable.GetComponent<RitualItem>().photonView.RPC("DestroyItem", RpcTarget.All); // Destroy item
+        }
+    }
+
+    [PunRPC]
+    void PutRitualOnAltar(){
+        if(interactable != null && interactable.CompareTag("Altar") && GetComponent<PlayerInventory>().ritualItemLists.Count > 0){
+            foreach(var item in GetComponent<PlayerInventory>().ritualItemLists){
+                if(interactable.GetComponent<Altar>().itemLists.Count < 5){
+                    interactable.GetComponent<Altar>().photonView.RPC("addRitualItems", RpcTarget.All, item);
+                }
+            } // end foreach
+
+            GetComponent<PlayerInventory>().photonView.RPC("ClearRitualItems", RpcTarget.All);
+            interactionUI.SetActive(false);
+        }
+    }
 
     void FixedUpdate(){
         if(enableInteract){
@@ -109,11 +108,20 @@ public class PlayerInteraction : MonoBehaviour
                             interactable = hit.collider.GetComponent<Interactable>();
 
                             holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
-                        
+
+                            // UI Related
                             if(!interactionUI.activeSelf){
                                 interactionUI.SetActive(true);
                             }
                             PopupInteractInfo();
+
+                            // Altar Interaction start
+                            if(interactable.CompareTag("Altar") && GetComponent<PlayerInventory>().ritualItemLists.Count <= 0 && photonView.IsMine){
+                                // UI Related
+                                if(interactionUI.activeSelf){
+                                    interactionUI.SetActive(false);
+                                }
+                            }// Altar Interaction end
                         }
                     } // end interactable null
                 }
@@ -124,8 +132,8 @@ public class PlayerInteraction : MonoBehaviour
         } // end enableInteract
     } // end update()
 
-    void ClearInteraction(){
-        if(altarRef == null && !canContributeItem && interactable == null && interactionUI.activeSelf){
+    public void ClearInteraction(){
+        if(interactable == null && interactionUI.activeSelf){
             holdTimer = 0;
             holdDur = 0;
             holdSliderImage.fillAmount = 0;
@@ -190,19 +198,4 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     } // end PopupInfo
-
-    public void TransferRitualItems(){
-        if(altarRef != null){
-            altarRef.ContributeRitualItem(GetComponent<PlayerInventory>().ritualItemLists);
-            GetComponent<PlayerInventory>().ritualItemLists.Clear();
-
-            // Clear UI Interaction
-            holdTimer = 0;
-            holdDur = 0;
-            holdSliderImage.fillAmount = 0;
-            if(interactionUI.activeSelf){
-                interactionUI.SetActive(false);
-            }
-        }
-    }
 }

@@ -54,7 +54,11 @@ public class MobilePhone : MonoBehaviour
     GameManager cacheGM;
 
     void Start(){
-        phoneCanvas.worldCamera = phoneOwner.GetComponent<Human>().cameraGO.GetComponent<Camera>(); // Set phoneCanvas with current world camera
+        if(phoneOwner != null){
+            phoneCanvas.worldCamera = phoneOwner.GetComponent<Human>().cameraGO.GetComponent<Camera>(); // Set phoneCanvas with current world camera
+        }else{
+            Destroy(this.gameObject);
+        }
 
         // Add Preinstalled apps
         if(appsSO.appLists.Count > 0){
@@ -108,6 +112,7 @@ public class MobilePhone : MonoBehaviour
         }
 
         // TimerUI
+        if(cacheGM.timerRef != null)
         hpClockText.text = cacheGM.timerRef;
 
     } // end Update()

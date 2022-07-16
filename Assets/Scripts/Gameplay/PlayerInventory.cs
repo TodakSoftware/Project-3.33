@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviourPunCallbacks
 {
     public int maxSlot = 2;
     public List<string> ritualItemLists = new List<string>();
     public List<string> propItems = new List<string>();
 
+    [PunRPC]
     public void AddRitualItem(string code){
         if(ritualItemLists.Count < maxSlot){
             ritualItemLists.Add(code);
@@ -31,5 +33,12 @@ public class PlayerInventory : MonoBehaviour
             return true;
         }
         return false;
-    }
+    } // end IsInventoryFull
+
+    [PunRPC]
+    public void ClearRitualItems(){
+        if(ritualItemLists.Count > 0){
+            ritualItemLists.Clear();
+        }
+    } // end ClearRitualItems
 }

@@ -9,37 +9,18 @@ public class Altar : MonoBehaviourPunCallbacks
     public List<GameObject> itemSpawnpoints = new List<GameObject>();
     public List<Transform> meshSpawnpoints = new List<Transform>(); // for displaying mesh on cup
     public List<string> itemLists = new List<string>(); // Link with SO Game Settings total ritual item
-    [SerializeField] bool inRange;
-    void OnTriggerEnter(Collider other) {
-        if(other.CompareTag("Player")){
-            inRange = true;
-            other.GetComponent<PlayerInteraction>().canContributeItem = true;
-            other.GetComponent<PlayerInteraction>().altarRef = this;
-        }
-    } // end OnTriggerEnter
 
-    void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Player")){
-            inRange = false;
-            other.GetComponent<PlayerInteraction>().canContributeItem = false;
-            other.GetComponent<PlayerInteraction>().altarRef = null;
-        }
-    } // end OnTriggerExit
 
-    public void ContributeRitualItem(List<string> itemCodes){
-        if(inRange){
-            foreach(var item in itemCodes){
-                if(itemLists.Count < 5){
-                    // Add to list
-                    itemLists.Add(item);
-                }
-            }
-
+    [PunRPC]
+    public void addRitualItems(string code){
+        if(!itemLists.Contains(code)){
+            itemLists.Add(code);
             DisplayItemOnAltar();
-        } // end inRange
-    } // end ContributeRitualItem
+        }
+    }
 
-    void DisplayItemOnAltar(){
+    //[PunRPC]
+    public void DisplayItemOnAltar(){
         int itemIndex = 0;
         foreach(var item in itemLists){
             foreach(var ritual in ritualItemSO.ritualItemLists){
@@ -60,7 +41,6 @@ public class Altar : MonoBehaviourPunCallbacks
 
         if(itemLists.Count >= (int)PhotonNetwork.CurrentRoom.CustomProperties["GameTotalRitualItem"]){
             print("Human WIN!");
-            //GameManager.instance.HumanWin(true);
             GameManager.instance.photonView.RPC("HumanWin", RpcTarget.All, true);
         }
     } // end DisplayItemOnAltar

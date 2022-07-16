@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerAbilities : MonoBehaviour
+public class PlayerAbilities : MonoBehaviourPunCallbacks
 {
     [Header("Apps Status")]
     public bool flashlightOn = true;
@@ -11,6 +12,7 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject nightCamGO;
     public bool nightVisionOn = false;
 
+    [PunRPC]
     public void TerminateAllApps(){ // Terminate all apps if phone is dead
         if(GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().phoneIsDead){
             if(flashlightOn){
@@ -27,6 +29,7 @@ public class PlayerAbilities : MonoBehaviour
         } // end phone is Dead
     } // end TerminateAllApps()
 
+    [PunRPC]
     public void ToggleFlashlight(string appCode){
         if(!flashlightOn){
             flashlightOn = true;
@@ -39,6 +42,7 @@ public class PlayerAbilities : MonoBehaviour
         GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(flashlightOn, appCode); // Drain battery
     } // end ToggleFlashlight()
 
+    [PunRPC]
     public void ToggleThermalVision(string appCode){
         if(!thermalVisionOn){
             thermalVisionOn = true;
@@ -51,6 +55,7 @@ public class PlayerAbilities : MonoBehaviour
         GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(thermalVisionOn, appCode); // Drain battery
     } // end ToggleThermalVision()
 
+    [PunRPC]
     public void ToggleNightVision(string appCode){
         if(!nightVisionOn){
             nightVisionOn = true;

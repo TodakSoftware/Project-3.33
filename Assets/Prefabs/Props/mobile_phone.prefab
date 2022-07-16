@@ -2036,6 +2036,8 @@ GameObject:
   - component: {fileID: 4128570532249155810}
   - component: {fileID: 1914885688223134837}
   - component: {fileID: 1019167333397804559}
+  - component: {fileID: -9046584370044294222}
+  - component: {fileID: 5255061255097806177}
   m_Layer: 5
   m_Name: mobile_phone
   m_TagString: Untagged
@@ -2171,6 +2173,43 @@ MonoBehaviour:
   menuAppsContent: {fileID: 4155001703169836961}
   isLandscape: 0
   phoneOwner: {fileID: 0}
+--- !u!114 &-9046584370044294222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471171583313746231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &5255061255097806177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471171583313746231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6461a01d8448454184cd311580b3004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptsToIgnore:
+  - {fileID: 1019167333397804559}
+  gameObjectToDisable: []
 --- !u!1 &2471438403626859166
 GameObject:
   m_ObjectHideFlags: 0

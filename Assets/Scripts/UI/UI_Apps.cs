@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Photon.Pun;
 
-public class UI_Apps : MonoBehaviour
+public class UI_Apps : MonoBehaviourPunCallbacks
 {
     [Header("Apps Details")]
     public string appCode;
@@ -21,7 +22,8 @@ public class UI_Apps : MonoBehaviour
     void RunApps(string code){
         switch(code){
             case "A001": // Flashlight
-                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight(appCode);
+                //phoneRef.phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight(appCode);
+                phoneRef.phoneOwner.GetComponent<PlayerAbilities>().photonView.RPC("ToggleFlashlight", RpcTarget.All, appCode);
                 phoneRef.phoneOwner.GetComponent<Human>().HandleInteractPhone(); // Auto Close
             break;
 

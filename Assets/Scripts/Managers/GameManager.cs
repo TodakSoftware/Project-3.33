@@ -51,7 +51,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         // Spawn Player
         photonView.RPC("PlayerInGame", RpcTarget.AllBuffered);
 
-        remainingDuration = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
+        if(PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] != null){
+            remainingDuration = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] * 60;
+        }else{
+            remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
+        }
+        
         StartCoroutine(UpdateTimer());
 
     } // end Start
@@ -62,7 +67,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     private IEnumerator UpdateTimer(){
-        while(remainingDuration > 0 && remainingDuration <= ((int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteEnd"] * 60)){ // 1980 = 33m
+        int _endMinute = 0;
+        if(PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteEnd"] != null){
+            _endMinute = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteEnd"];
+        }else{
+             _endMinute = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteEndTime;
+        }
+
+        while(remainingDuration > 0 && remainingDuration <= (_endMinute * 60)){ // 1980 = 33m
             UpdateTimerUI(remainingDuration);
             remainingDuration++;
             yield return new WaitForSeconds(1f);
@@ -142,24 +154,16 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(isHuman){
             if(humanSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[humanSpawnedPosition[playerIndex]].position, Quaternion.identity);
-                
-                if(photonView.IsMine){
-                    playerOwned = player;
-                }else{
-
-                }
+                playerOwned = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }else{
                 print("Missing spawnpoints : Human");
             }
         }else{
             if(ghostSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[ghostSpawnedPosition[playerIndex]].position, Quaternion.identity);
-                
-                if(photonView.IsMine){
-                    playerOwned = player;
-                }
+                playerOwned = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }else{
-                 print("Missing spawnpoints : Ghost");
+                print("Missing spawnpoints : Ghost");
             }
         }
 
@@ -169,8 +173,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             playerProps.Add("PlayerIsDead", false);
             player.GetPhotonView().Owner.SetCustomProperties(playerProps);
         }
-
-        //PlayerController playerController = player.GetComponent<PlayerController>();
     } // end SpawnPlayers
 
     int RandomExcept(int min, int max, List<int> except)
@@ -211,7 +213,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
         if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
-            CheckWinningCondition();
+            //CheckWinningCondition();
         }
     } // end OnPlayerPropertiesUpdate
 

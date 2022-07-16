@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 [RequireComponent(typeof(Interactable))]
-public class RitualItem : MonoBehaviour
+public class RitualItem : MonoBehaviourPunCallbacks
 {
     
     [Header("Item Info")]
@@ -26,10 +28,10 @@ public class RitualItem : MonoBehaviour
         } // end foreach
     }// end Start
 
-    public void PickupRitualItem(){
-        if(!GameManager.instance.playerOwned.GetComponent<PlayerInventory>().IsInventoryFull()){
-            GameManager.instance.playerOwned.GetComponent<PlayerInventory>().AddRitualItem(code);
-            Destroy(gameObject);
+    [PunRPC]
+    void DestroyItem(){
+        if(photonView.IsMine){
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

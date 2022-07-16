@@ -46,10 +46,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public CameraController camController;
     public CameraControlledIK camControllerIK;
     // ----------------------------------------------------------------------------------
-    // PHOTON RELATED
-    int playerID; 
-    Player photonPlayer;
-    // ----------------------------------------------------------------------------------
 
     void Awake()
     {
