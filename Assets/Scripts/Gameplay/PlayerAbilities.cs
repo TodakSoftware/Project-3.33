@@ -9,7 +9,7 @@ public class PlayerAbilities : MonoBehaviourPunCallbacks
     public bool flashlightOn = true;
     public GameObject thermalCamGO;
     public bool thermalVisionOn = false;
-    public GameObject nightCamGO;
+    public GameObject nightVisionEffect;
     public bool nightVisionOn = false;
 
     [PunRPC]
@@ -46,10 +46,10 @@ public class PlayerAbilities : MonoBehaviourPunCallbacks
     public void ToggleThermalVision(string appCode){
         if(!thermalVisionOn){
             thermalVisionOn = true;
-            //thermalCamGO.SetActive(true);
+            thermalCamGO.SetActive(true);
         }else{
             thermalVisionOn = false;
-            //thermalCamGO.SetActive(false);
+            thermalCamGO.SetActive(false);
         }
 
         GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(thermalVisionOn, appCode); // Drain battery
@@ -57,12 +57,14 @@ public class PlayerAbilities : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void ToggleNightVision(string appCode){
-        if(!nightVisionOn){
+        nightVisionOn = !nightVisionOn;
+        
+        if(nightVisionOn){
             nightVisionOn = true;
-            //nightCamGO.SetActive(true);
+            nightVisionEffect.SetActive(true);
         }else{
             nightVisionOn = false;
-            //nightCamGO.SetActive(false);
+            nightVisionEffect.SetActive(false);
         }
 
         GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().drainBattery(nightVisionOn, appCode); // Drain battery

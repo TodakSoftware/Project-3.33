@@ -3,30 +3,18 @@ using UnityEngine.Rendering;
 
 public class NightController : MonoBehaviour
 {
-    private float defaultAmbientVal;
-    [SerializeField] float highAmbientVal = 8f;
+    public Color defaultLightColor;
+    public Color boostedLightColor;
     Volume volume;
+    bool isEnabled;
 
-
-    void OnEnable(){
+    void Start(){
         if(volume == null){
             volume = GetComponent<Volume>();
+            volume.weight = 0;
+
+            RenderSettings.ambientLight = defaultLightColor;
         }
-        defaultAmbientVal = RenderSettings.ambientIntensity;
-        EnableHighAmbient();
     }
 
-    void OnDisable(){
-        ResetHighAmbient();
-    }
-
-    private void EnableHighAmbient()
-    {
-        RenderSettings.ambientIntensity = highAmbientVal;
-    }
-
-    private void ResetHighAmbient()
-    {
-        RenderSettings.ambientIntensity = defaultAmbientVal;
-    }
 }

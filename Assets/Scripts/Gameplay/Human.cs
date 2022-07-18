@@ -25,6 +25,7 @@ public class Human : MonoBehaviourPunCallbacks
     // CAMERA RELATED 
     [Header("CAMERA")]
     public GameObject cameraGO;
+    public GameObject thermalCameraGO;
     float defaultFOV, defaultNearClipping;
     Vector3 defaultCamPosition;
     public float zoomInFOV;
@@ -211,13 +212,19 @@ public class Human : MonoBehaviourPunCallbacks
         if(zoomIn){
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(true);
             cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
+            thermalCameraGO.GetComponent<Camera>().fieldOfView = zoomInFOV;
             cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
+            thermalCameraGO.GetComponent<Camera>().nearClipPlane = zoomInNearClipping;
             cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
-            Invoke("EnterUIMode", 1.5f);
+            thermalCameraGO.transform.DOLocalMove(zoomInCamPosition, .1f);
+            Invoke("EnterUIMode", .9f);
         }else{
             cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
+            thermalCameraGO.GetComponent<Camera>().fieldOfView = defaultFOV;
             cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
+            thermalCameraGO.GetComponent<Camera>().nearClipPlane = defaultNearClipping;
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
+            thermalCameraGO.transform.DOLocalMove(defaultCamPosition, .1f);
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
             Invoke("ExitUIMode", .5f);
         }
