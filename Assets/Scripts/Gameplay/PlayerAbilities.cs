@@ -44,9 +44,15 @@ public class PlayerAbilities : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void ToggleThermalVision(string appCode){
-        if(!thermalVisionOn){
+        thermalVisionOn = !thermalVisionOn;
+
+        if(thermalVisionOn){
             thermalVisionOn = true;
             thermalCamGO.SetActive(true);
+
+            if(nightVisionOn){
+                ToggleNightVision("A005");
+            }
         }else{
             thermalVisionOn = false;
             thermalCamGO.SetActive(false);
@@ -62,6 +68,10 @@ public class PlayerAbilities : MonoBehaviourPunCallbacks
         if(nightVisionOn){
             nightVisionOn = true;
             nightVisionEffect.SetActive(true);
+
+            if(thermalVisionOn){
+                ToggleThermalVision("A004");
+            }
         }else{
             nightVisionOn = false;
             nightVisionEffect.SetActive(false);

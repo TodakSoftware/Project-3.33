@@ -60,8 +60,12 @@ public class Human : MonoBehaviourPunCallbacks
             
             return;
         }
-        //SetupPhone();
-        photonView.RPC("SetupPhone", RpcTarget.All);
+        if(PhotonNetwork.IsConnected){
+            photonView.RPC("SetupPhone", RpcTarget.All);
+        }else{
+            SetupPhone();
+        }
+        
         StartCoroutine(UpdateHeartRate());
     }
 
@@ -152,7 +156,12 @@ public class Human : MonoBehaviourPunCallbacks
 
         // Spawn Phone (Will replace with photon prefab)
         //instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
-        instantiatedPhone = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Props", "MobilePhone"), new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        if(PhotonNetwork.IsConnected){
+            instantiatedPhone = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Props", "MobilePhone"), new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        }else{
+            // If not online
+            instantiatedPhone = Instantiate(phonePrefab, new Vector3(0,0,0), Quaternion.Euler(new Vector3(0, 0, 90f)));
+        }
         instantiatedPhone.GetComponent<MobilePhone>().phoneOwner = this.gameObject;
         instantiatedPhone.transform.SetParent(itemHolderRight, false);
 
@@ -212,19 +221,19 @@ public class Human : MonoBehaviourPunCallbacks
         if(zoomIn){
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(true);
             cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
-            thermalCameraGO.GetComponent<Camera>().fieldOfView = zoomInFOV;
+            thermalCameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .7f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
-            thermalCameraGO.GetComponent<Camera>().nearClipPlane = zoomInNearClipping;
+            thermalCameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .5f);
             cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
-            thermalCameraGO.transform.DOLocalMove(zoomInCamPosition, .1f);
+            thermalCameraGO.transform.DOLocalMove(zoomInCamPosition, .7f);
             Invoke("EnterUIMode", .9f);
         }else{
             cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
-            thermalCameraGO.GetComponent<Camera>().fieldOfView = defaultFOV;
+            thermalCameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .5f);
             cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
-            thermalCameraGO.GetComponent<Camera>().nearClipPlane = defaultNearClipping;
+            thermalCameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.2f);
             cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
-            thermalCameraGO.transform.DOLocalMove(defaultCamPosition, .1f);
+            thermalCameraGO.transform.DOLocalMove(defaultCamPosition, .7f);
             instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
             Invoke("ExitUIMode", .5f);
         }
