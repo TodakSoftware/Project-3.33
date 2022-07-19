@@ -134,8 +134,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   skyIntensityMode:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
   exposure:
     m_OverrideState: 1
     m_Value: 11
@@ -144,13 +144,13 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.9353421
+    m_Value: 0.4660715
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.18104538, y: 0.27842334, z: 0.5}
+    m_Value: {x: 0.18750614, y: 0.29181972, z: 0.5}
   desiredLuxValue:
-    m_OverrideState: 1
-    m_Value: 0.05
+    m_OverrideState: 0
+    m_Value: 20000
   updateMode:
     m_OverrideState: 0
     m_Value: 0
@@ -162,9 +162,9 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: e71fc492f440446b99875b8e1df890ba, type: 3}
+    m_Value: {fileID: 8900000, guid: 8253d41e6e8b11a4cbe77a4f8f82934d, type: 3}
   distortionMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   flowmap:
     m_OverrideState: 0
@@ -299,12 +299,12 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   cloudType:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   skyAmbientMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   windOrientation:
     m_OverrideState: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   meteringMode:
     m_OverrideState: 0
     m_Value: 2
@@ -338,8 +338,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   fixedExposure:
-    m_OverrideState: 1
-    m_Value: 2.0093021
+    m_OverrideState: 0
+    m_Value: 0
   compensation:
     m_OverrideState: 0
     m_Value: 0
@@ -556,10 +556,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f086a068d4c5889438831b3ae9afc11c, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 2
   toeStrength:
     m_OverrideState: 0
     m_Value: 0
