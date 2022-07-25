@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: -4961749418321120172}
   - component: {fileID: 1871527165676873029}
   - component: {fileID: -8236962136560754963}
-  - component: {fileID: 2749203779850858961}
-  - component: {fileID: 6599776915603221258}
+  - component: {fileID: 5898093549563046150}
   m_Layer: 0
   m_Name: Sliding_door
   m_TagString: Untagged
@@ -85,118 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!111 &2749203779850858961
-Animation:
+--- !u!65 &5898093549563046150
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: -6898715303568421769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: f26a8b514cc1bc142b13047b46a4ae41, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: f26a8b514cc1bc142b13047b46a4ae41, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!82 &6599776915603221258
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: -6898715303568421769}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 241a3d53c0a4ae0468fddb33eaca0739, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 2.2221947
-  MaxDistance: 4.0541973
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.548122
-      value: 0.2
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -2.2129867
-      outSlope: -2.2129867
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  serializedVersion: 2
+  m_Size: {x: 0.56906414, y: 1.0446599, z: 0.018546358}
+  m_Center: {x: -0.035408035, y: 0.60313237, z: 0.19016537}
 --- !u!1 &-3225959511443494117
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +108,7 @@ GameObject:
   - component: {fileID: 6628768608542611922}
   - component: {fileID: 2171251076348134067}
   - component: {fileID: 6124318214771875837}
-  - component: {fileID: 7577038195407203824}
+  - component: {fileID: 6828790343239738657}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Untagged
@@ -281,7 +181,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7577038195407203824
+--- !u!65 &6828790343239738657
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,11 +189,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: -3225959511443494117}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.493704, y: 1.1580315, z: 2.5081298}
-  m_Center: {x: 1.5936689, y: 0.57901573, z: 1.0224584}
+  m_Size: {x: 1.1580313, y: 1.1580315, z: 0.46321258}
+  m_Center: {x: 0, y: 0.57901573, z: 0}
 --- !u!1 &2735651196818970962
 GameObject:
   m_ObjectHideFlags: 0
