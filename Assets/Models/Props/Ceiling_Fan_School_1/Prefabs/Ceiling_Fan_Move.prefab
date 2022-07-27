@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &6707467004558025123
 Transform:
@@ -97,13 +97,12 @@ GameObject:
   - component: {fileID: 6476379325117420912}
   - component: {fileID: 4475098208923624332}
   - component: {fileID: 5187012616878567268}
-  - component: {fileID: 5851363706100929971}
   m_Layer: 0
   m_Name: kipas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8376987766647082553
 Transform:
@@ -200,16 +199,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fanHere: {fileID: 4475098208923624332}
   fanSpeed: 0.2
---- !u!65 &5851363706100929971
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5805354586570540045}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.881706, y: 2.6137428, z: 10.922642}
-  m_Center: {x: -0.8822756, y: -1.3036213, z: 0.014435768}

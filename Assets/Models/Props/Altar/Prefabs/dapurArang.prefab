@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2026628694561888626
 Transform:
@@ -91,9 +91,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2026628694561888626}
     m_Modifications:
+    - target: {fileID: 108464, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115424, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 117696, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
       propertyPath: m_Name
       value: Liberate_02.1.1 Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 117696, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132954, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 439706, guid: 046853cc0b2b7a7429cfdec1915e1640, type: 3}
       propertyPath: m_RootOrder

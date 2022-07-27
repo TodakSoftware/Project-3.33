@@ -28,6 +28,7 @@ Material:
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _MATERIAL_FEATURE_CLEAR_COAT
   - _NORMALMAP_TANGENT_SPACE
   m_InvalidKeywords: []
   m_LightmapFlags: 1
@@ -191,7 +192,7 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _BumpScale: 0.25
-    - _CoatMask: 0
+    - _CoatMask: 0.2
     - _CullMode: 0
     - _CullModeForward: 0
     - _Cutoff: 0.5
@@ -235,12 +236,12 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 0
     - _MaterialID: 1
-    - _Metallic: 0.4225545
+    - _Metallic: 1
     - _MetallicRemapMax: 0.4225545
     - _MetallicRemapMin: 0
     - _Mode: 0
     - _NormalMapSpace: 0
-    - _NormalScale: 0.25
+    - _NormalScale: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
@@ -253,7 +254,7 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _Smoothness: 0.188
+    - _Smoothness: 0.5
     - _SmoothnessRemapMax: 0.188
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
