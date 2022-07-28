@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: -2750460050142946002}
   - component: {fileID: 1322937516895866871}
   - component: {fileID: 5292862281775926018}
+  - component: {fileID: 1712386816079701871}
   m_Layer: 0
   m_Name: SM_Workdesk_Locker_01_LOD1
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1712386816079701871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -1289216998596833749}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3501137, y: 0.52959806, z: 0.64992756}
+  m_Center: {x: -0.000010855496, y: -0.014368895, z: 0.32517812}
 --- !u!1 &1246197943460043209
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   - component: {fileID: -6219103174119084641}
   - component: {fileID: -1191481853819047951}
   - component: {fileID: 6424997462803629321}
+  - component: {fileID: 4780617361712653820}
   m_Layer: 0
   m_Name: SM_Workdesk_Locker_01_LOD0
   m_TagString: Untagged
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4780617361712653820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246197943460043209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35, y: 0.5290102, z: 0.65000015}
+  m_Center: {x: 0, y: -0.014505763, z: 0.32500008}
 --- !u!1 &3648872814414610495
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +205,7 @@ GameObject:
   - component: {fileID: -4532641455344879805}
   - component: {fileID: 8357652309427446664}
   - component: {fileID: -7495094269876641236}
+  - component: {fileID: 4346309799110291411}
   m_Layer: 0
   m_Name: SM_Workdesk_Locker_01_LOD2
   m_TagString: Untagged
@@ -249,6 +278,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4346309799110291411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648872814414610495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35051888, y: 0.5331429, z: 0.65095824}
+  m_Center: {x: -0.00011134893, y: -0.016670842, z: 0.32569346}
 --- !u!1 &7989392122092030441
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +302,7 @@ GameObject:
   - component: {fileID: 4095492146311397355}
   - component: {fileID: 6446507043510536914}
   - component: {fileID: -5751516805276127463}
+  - component: {fileID: 34311814642658390}
   m_Layer: 0
   m_Name: SM_Workdesk_Locker_01_LOD3
   m_TagString: Untagged
@@ -332,6 +375,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &34311814642658390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989392122092030441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35051888, y: 0.53626025, z: 0.6522974}
+  m_Center: {x: -0.00011134893, y: -0.00892988, z: 0.3250239}
 --- !u!1 &9042376000541135747
 GameObject:
   m_ObjectHideFlags: 0
