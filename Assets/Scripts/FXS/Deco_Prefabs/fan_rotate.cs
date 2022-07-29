@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fan_Rotate : MonoBehaviour
+public class fan_rotate : MonoBehaviour
 
 {
 

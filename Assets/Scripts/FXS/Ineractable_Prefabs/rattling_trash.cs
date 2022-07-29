@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rattling_container : MonoBehaviour
-
+public class rattling_trash : MonoBehaviour
 {
-     public Animation rattlingHere;
+     public Animation rattlingtrashHere;
+     public AudioSource rattlingSFXHere;
   
     void OnTriggerStay (Collider ghostHere)
     {
@@ -15,10 +15,15 @@ public class rattling_container : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             
             {
-                rattlingHere.Play();
+                rattlingtrashHere.Play();
                 {
 
                     Debug.Log("rattled");
+                }
+                {
+
+                    rattlingSFXHere.Play();
+
                 }
 
             }
