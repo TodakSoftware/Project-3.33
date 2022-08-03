@@ -45,7 +45,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 2001
   stringTagMap: {}
   disabledShaderPasses:
   - DistortionVectors
@@ -212,7 +212,7 @@ Material:
     - _CullMode: 0
     - _CullModeForward: 0
     - _Cutoff: 0.33
-    - _DecalBlend: 0.5
+    - _DecalBlend: 1
     - _DecalColorMask0: 15
     - _DecalColorMask1: 15
     - _DecalColorMask2: 11
@@ -236,7 +236,7 @@ Material:
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
-    - _DrawOrder: 0
+    - _DrawOrder: 1
     - _DstBlend: 10
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
