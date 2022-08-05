@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
         }
         
-        StartCoroutine(UpdateTimer());
+        
 
     } // end Start
 
@@ -213,7 +213,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
         if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
-            //CheckWinningCondition();
+            CheckWinningCondition();
+            if(!gameStart){
+                gameStart = true;
+                // Start Timer
+                StartCoroutine(UpdateTimer());
+                print("Timer Start!");
+            }
+
         }
     } // end OnPlayerPropertiesUpdate
 
