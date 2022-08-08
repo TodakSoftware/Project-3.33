@@ -9,7 +9,7 @@ public class Interact_Door : MonoBehaviourPunCallbacks
 {
     List<GameObject> capturedHumanList = new List<GameObject>();
     public bool openOutward;
-    bool isOpened;
+    public bool isOpened;
     public bool humanInside;
     // Button Related
     E_ButtonType originalBtnType;
@@ -18,7 +18,7 @@ public class Interact_Door : MonoBehaviourPunCallbacks
 
     public void OpenDoor(){
         if(NetworkManager.instance != null){
-            photonView.RPC("HandleDoor", RpcTarget.All);
+            photonView.RPC("HandleDoor", RpcTarget.AllBuffered);
         }else{
             HandleDoor();
         }

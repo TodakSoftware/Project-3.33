@@ -25,7 +25,7 @@ public class Ghost : MonoBehaviourPunCallbacks
     [Header("Health Related")]
     [SerializeField] int hp = 100;
     public bool isDead;
-    bool hpIsDecreasing, isHearMusic;
+    bool hpIsDecreasing, isHearMusic, doneCaptureAction;
 
 
 
@@ -115,7 +115,7 @@ public class Ghost : MonoBehaviourPunCallbacks
 
             // IF HUMAN FEAR LVL > 100, READY TO CAPTURE
             if(humanInRadiusList[0].gameObject.GetComponent<Human>().fearLevel >= 100 && !humanInRadiusList[0].gameObject.GetComponent<Human>().isCaptured){
-                if(!GetComponent<PlayerUI>().captureTextUI.activeSelf){
+                if(!doneCaptureAction){
                     GetComponent<PlayerUI>().captureTextUI.SetActive(true);
                 }
                 
@@ -123,8 +123,11 @@ public class Ghost : MonoBehaviourPunCallbacks
                     humanInRadiusList[0].gameObject.GetComponent<Human>().photonView.RPC("Captured", humanInRadiusList[0].gameObject.GetPhotonView().Owner);
 
                     if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
+                        print("Close it");
                         GetComponent<PlayerUI>().captureTextUI.SetActive(false);
                     }
+
+                    StartCoroutine(DoneCaptureReset());
                 }
             }
 
@@ -133,14 +136,14 @@ public class Ghost : MonoBehaviourPunCallbacks
                 GetComponent<PlayerUI>().captureTextUI.SetActive(false);
             }
         }
+        
         // ------------------------------------- DETECT HUMAN IN RANGE UPDATE END -----------------------------------------
-        if(Input.GetKeyDown(KeyCode.K)){
-            SetInvisible(true);
-        }
+    }
 
-        if(Input.GetKeyDown(KeyCode.L)){
-            SetInvisible(false);
-        }
+    IEnumerator DoneCaptureReset(){
+        doneCaptureAction = true;
+        yield return new WaitForSeconds(1f);
+        doneCaptureAction = false;
     }
 
     IEnumerator HPDrainedOvertime(){

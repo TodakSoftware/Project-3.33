@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     } // end Awake
 
     void Start(){
-
+        
         // Linking data via Game Settings Scriptable Objects
 
         // Set Spawnpoints
@@ -144,6 +144,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
                 ghostCount++;
             }
+
+            if(!gameStart){
+                gameStart = true;
+                // Start Timer
+                StartCoroutine(UpdateTimer());
+                print("Timer Start!");
+            }
         }
         
     } // end PlayerInGame
@@ -214,12 +221,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
             CheckWinningCondition();
-            if(!gameStart){
-                gameStart = true;
-                // Start Timer
-                StartCoroutine(UpdateTimer());
-                print("Timer Start!");
-            }
+            
 
         }
     } // end OnPlayerPropertiesUpdate

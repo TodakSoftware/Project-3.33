@@ -205,38 +205,42 @@ public class Human : MonoBehaviourPunCallbacks
     }
 
     public void SwitchPhonePosition(){
-        if(!phoneSwitchedPlaces){
-            phoneSwitchedPlaces = true;
-            instantiatedPhone.transform.SetParent(itemHolderLeft, false);
-            
-        }else{
-            phoneSwitchedPlaces = false;
-            instantiatedPhone.transform.SetParent(itemHolderRight, false);
-            
-            InteractZoomEffect(false);  // Zoom out
+        if(instantiatedPhone != null){
+            if(!phoneSwitchedPlaces){
+                phoneSwitchedPlaces = true;
+                instantiatedPhone.transform.SetParent(itemHolderLeft, false);
+                
+            }else{
+                phoneSwitchedPlaces = false;
+                instantiatedPhone.transform.SetParent(itemHolderRight, false);
+                
+                InteractZoomEffect(false);  // Zoom out
+            }
         }
     } // end SwitchPhonePosition()
 
     public void InteractZoomEffect(bool zoomIn){
-        if(zoomIn){
-            instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(true);
-            cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
-            thermalCameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .7f);
-            cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
-            thermalCameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .5f);
-            cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
-            thermalCameraGO.transform.DOLocalMove(zoomInCamPosition, .7f);
-            Invoke("EnterUIMode", .9f);
-        }else{
-            cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
-            thermalCameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .5f);
-            cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
-            thermalCameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.2f);
-            cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
-            thermalCameraGO.transform.DOLocalMove(defaultCamPosition, .7f);
-            instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
-            Invoke("ExitUIMode", .5f);
-        }
+        if(cameraGO != null){
+            if(zoomIn){
+                instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(true);
+                cameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .8f);
+                thermalCameraGO.GetComponent<Camera>().DOFieldOfView(zoomInFOV, .7f);
+                cameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .6f);
+                thermalCameraGO.GetComponent<Camera>().DONearClipPlane(zoomInNearClipping, .5f);
+                cameraGO.transform.DOLocalMove(zoomInCamPosition, .8f);
+                thermalCameraGO.transform.DOLocalMove(zoomInCamPosition, .7f);
+                Invoke("EnterUIMode", .9f);
+            }else{
+                cameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .6f);
+                thermalCameraGO.GetComponent<Camera>().DOFieldOfView(defaultFOV, .5f);
+                cameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.3f);
+                thermalCameraGO.GetComponent<Camera>().DONearClipPlane(defaultNearClipping, .1f).SetDelay(.2f);
+                cameraGO.transform.DOLocalMove(defaultCamPosition, .8f);
+                thermalCameraGO.transform.DOLocalMove(defaultCamPosition, .7f);
+                instantiatedPhone.GetComponent<MobilePhone>().SwitchPhoneView(false);
+                Invoke("ExitUIMode", .5f);
+            }
+        } // end cameraGO
     } // end InteractZoomEffect()
 /* --------------------------------------------  PHONE RELATED FUNCTIONS END -------------------------------------------------*/
 
