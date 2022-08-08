@@ -221,25 +221,26 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
             CheckWinningCondition();
-            
-
         }
     } // end OnPlayerPropertiesUpdate
 
     public void CheckWinningCondition(){
-        if(!gameEnded){
+        if(gameStart && !gameEnded){
             // if total human ingame <= 0, Ghost WINS
             if(GetAllPlayersHuman().Count <= 0){
                 HumanWin(false);
+                print("Ghost win because All Human Rage QUit");
             }
             // if total ghost ingame <= 0, Human WINS
             if(GetAllPlayersGhost().Count <= 0){
                 HumanWin(true);
+                print("Human win because Ghost Rage QUit");
             }
 
             // if players captured = total human in game, Ghost WIN
             if(NumberOfCapturedPlayer() >= GetAllPlayersHuman().Count){
                 HumanWin(false);
+                print("Ghost win because captured human >= total human in game");
             }
         } // if !gameEnded
     } // end CheckWinningCondition()

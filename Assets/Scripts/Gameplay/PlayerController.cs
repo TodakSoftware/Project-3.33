@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 public class PlayerController : MonoBehaviourPunCallbacks
 {
@@ -46,11 +47,14 @@ public class PlayerController : MonoBehaviourPunCallbacks
     public CameraController camController;
     public CameraControlledIK camControllerIK;
     // ----------------------------------------------------------------------------------
+    public TextMeshProUGUI debugText;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         anim = playerMesh.GetComponent<Animator>();
+
+        StartCoroutine(UpdateDebugText());
     } // end Awake
 
     void Update()
@@ -138,7 +142,22 @@ public class PlayerController : MonoBehaviourPunCallbacks
             characterController.Move(movementDir * currentSpeed * Time.deltaTime); // keeps gravity fall
         }
 
+        // DEBUG
+        if(Input.GetKeyDown(KeyCode.K)){
+            movementSpeed += 1f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.L)){
+            movementSpeed -= 1f;
+        }
+
     } // end Update
+
+    IEnumerator UpdateDebugText(){
+        debugText.text = "Human " + GameManager.GetAllPlayersHuman().Count + " | Ghost " + GameManager.GetAllPlayersGhost().Count;
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(UpdateDebugText());
+    }
 
     public void StopMovement(){
         inputHorizontal = 0f;
