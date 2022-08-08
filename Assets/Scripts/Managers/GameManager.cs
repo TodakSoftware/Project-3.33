@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && !gameEnded){
+        if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && gameStart && !gameEnded){
             CheckWinningCondition();
         }
     } // end OnPlayerPropertiesUpdate
@@ -238,9 +238,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
 
             // if players captured = total human in game, Ghost WIN
-            if(NumberOfCapturedPlayer() >= GetAllPlayersHuman().Count){
+            if(NumberOfCapturedPlayer() >= GetAllPlayersHuman().Count && GetAllPlayersHuman().Count > 0){
                 HumanWin(false);
-                print("Ghost win because captured human >= total human in game");
+                print("Ghost win because captured human "+ NumberOfCapturedPlayer() +" >= total human("+GetAllPlayersHuman().Count+") in game");
             }
         } // if !gameEnded
     } // end CheckWinningCondition()
@@ -259,11 +259,13 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public int NumberOfCapturedPlayer(){
         int capturedCount = 0;
-        foreach(GameObject p in GetAllPlayersHuman()){
-            if(p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"] != null && (bool)p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"]){
-                capturedCount += 1;
-            }
-        } // end foreach
+        if(GetAllPlayersHuman().Count > 0){
+            foreach(GameObject p in GetAllPlayersHuman()){
+                if(p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"] != null && (bool)p.GetPhotonView().Owner.CustomProperties["PlayerCaptured"]){
+                    capturedCount += 1;
+                }
+            } // end foreach
+        }
         return capturedCount;
     }
 // ---------------------------------------------------- NETWORK RELATED END ----------------------------------------
