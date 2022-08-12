@@ -33,7 +33,7 @@ RectTransform:
   - {fileID: 5100483163692387091}
   - {fileID: 5570661010218800911}
   m_Father: {fileID: 4975238801715111337}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -97,7 +97,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4975238801715111337}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -201,6 +201,42 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3283849101972004937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431598406394156472}
+  m_Layer: 0
+  m_Name: HandImageParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &431598406394156472
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283849101972004937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4975238801715111337}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4255151019747188363
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +420,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4975238801715111337}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -500,7 +536,6 @@ GameObject:
   - component: {fileID: 7263477140504538282}
   - component: {fileID: 7621313610287477918}
   - component: {fileID: 5980845154811140679}
-  - component: {fileID: 3713800233251002516}
   m_Layer: 0
   m_Name: UI_VictoryResult
   m_TagString: Untagged
@@ -520,6 +555,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 431598406394156472}
   - {fileID: 4298924430155999726}
   - {fileID: 5048267973085773095}
   - {fileID: 3612954617649981398}
@@ -584,27 +620,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamText: {fileID: 2322300305579923534}
+  messageText: {fileID: 8366075774531862100}
   redirectText: {fileID: 6335983355295780003}
---- !u!114 &3713800233251002516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701657024942248507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b5cf65b0dc2cfd40810932931dc4a48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawningImage: {fileID: 0}
+  humanWinBG: {fileID: 6722196284095757660}
+  ghostWinBG: {fileID: 8382922929906044151}
+  SpawningImagePrefab: {fileID: 3272948472164207418, guid: bcac70bd740f7b44fb6cee0b44af5817, type: 3}
   SpawnOffset: 0
+  ParentObject: {fileID: 3283849101972004937}
+  SpawnCurrentNumber: 0
+  SpawnLimit: 100
   SpawnFrequencyXMin: 0
   SpawnFrequencyXMax: 0
   SpawnFrequencyYMin: 0
   SpawnFrequencyYMax: 0
-  SpawnRotationMin: 0
-  SpawnRotationMax: 0
+  SpawnRowNumber: 10
+  SpawnColumnNumber: 10
+  SpawnRotationMinRange: -45
+  SpawnRotationMaxRange: 45
+  SpawnDelay: 0.01
 --- !u!1 &6722196284095757660
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +651,7 @@ GameObject:
   - component: {fileID: 2593120468076953051}
   - component: {fileID: 8000929280802781794}
   m_Layer: 5
-  m_Name: HumanBackgroundWin
+  m_Name: HumanWinBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,7 +671,7 @@ RectTransform:
   m_Children:
   - {fileID: 6032723454096808784}
   m_Father: {fileID: 4975238801715111337}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -856,7 +889,7 @@ GameObject:
   - component: {fileID: 7624396395177396421}
   - component: {fileID: 8796779585541474177}
   m_Layer: 5
-  m_Name: HumanBackgroundLose
+  m_Name: GhostWinBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +908,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4975238801715111337}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -993,7 +1026,7 @@ GameObject:
   - component: {fileID: 6103864038937274108}
   - component: {fileID: 8366075774531862100}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: MessageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
