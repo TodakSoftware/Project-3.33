@@ -7,13 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2496443020842759365, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496443020842759365, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
+      propertyPath: ObservedComponents.Array.data[1]
+      value: 
+      objectReference: {fileID: 4981540740644897}
     - target: {fileID: 7463677618329897630, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
       propertyPath: m_Name
       value: infoboard_1_Fell
       objectReference: {fileID: 0}
     - target: {fileID: 7463677618329897630, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7619000163205069607, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
       propertyPath: m_Size.y
@@ -89,6 +97,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
+--- !u!114 &2598933464472871504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3588609004244187724, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
+  m_PrefabInstance: {fileID: 1575143689711900700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8234910984598164098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8234910984598164098 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7463677618329897630, guid: ecbccaec698f2dd4fb261bb187e1176b, type: 3}
@@ -170,6 +189,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 2598933464472871504}
   - {fileID: 4981540740644897}
   sceneViewId: 0
   InstantiationId: 0

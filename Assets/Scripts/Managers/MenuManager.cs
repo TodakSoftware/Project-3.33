@@ -32,7 +32,7 @@ public class MenuManager : MonoBehaviour
         versionText.text = "v"+Application.version;
 
         // Set fps Limit = 60fps
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
     }
 
     
