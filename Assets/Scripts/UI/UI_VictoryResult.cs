@@ -14,11 +14,14 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
     public TextMeshProUGUI messageText;
     public TextMeshProUGUI redirectText;
     float redirectDuration = 5f;
-
-    [Header("Backgrounds")]
+    
+    [Header("Backgrounds and images")]
     public GameObject humanWinBG;
     public GameObject ghostWinBG;
-
+    public GameObject logoImage;
+    
+    [Header("Animations")]
+    public Animator victoryResultAnimator;
 
     [Space(10)]
     
@@ -87,9 +90,17 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
         teamText.color = new Color32(0, 0, 0, 255);
         teamText.text = "Human Victory!";
         messageText.text = "Escaped, for now.";
-        Invoke("DelayRedirect",.3f);
+
+        redirectText.color = new Color32(0, 0, 0, 255);
+
+        //this is now called in animation
+        //Invoke("DelayRedirect",.3f);
+
         humanWinBG.SetActive(true);
         ghostWinBG.SetActive(false);
+        logoImage.GetComponent<Image>().color = new Color32(0, 0, 0, 255);
+        
+        victoryResultAnimator.Play("UI_VictoryResults_HumanWin");
     }
 
 
@@ -97,9 +108,19 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
         teamText.color = new Color32(255, 255, 255, 255);
         teamText.text = "Ghost Victory!";
         messageText.text = "There is no escape.";
-        Invoke("DelayRedirect",.3f);
+
+        redirectText.color = new Color32(255, 255, 255, 255);
+        
+        //this is now called in animation
+        //Invoke("DelayRedirect",.3f);
+        
         humanWinBG.SetActive(false);
         ghostWinBG.SetActive(true);
+        logoImage.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
+        //the hand spawner is called using animation event in the animation below
+        victoryResultAnimator.Play("UI_VictoryResults_GhostWin");
+
     }
 
     void DelayRedirect(){
@@ -120,9 +141,6 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
             }
         }
     } // end RedirectAfterEndGame
-
-
-
 
     //moved the code from hand thing here
     //simple mode first
@@ -165,4 +183,5 @@ public class UI_VictoryResult : MonoBehaviourPunCallbacks
 
     }
 
+    
 }

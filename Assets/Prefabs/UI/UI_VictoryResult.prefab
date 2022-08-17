@@ -99,11 +99,11 @@ RectTransform:
   m_Father: {fileID: 4975238801715111337}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -360}
   m_SizeDelta: {x: 526.86, y: 50}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7359657029897167555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 7263477140504538282}
   - component: {fileID: 7621313610287477918}
   - component: {fileID: 5980845154811140679}
+  - component: {fileID: 7189293345655917718}
   m_Layer: 0
   m_Name: UI_VictoryResult
   m_TagString: Untagged
@@ -624,6 +625,8 @@ MonoBehaviour:
   redirectText: {fileID: 6335983355295780003}
   humanWinBG: {fileID: 6722196284095757660}
   ghostWinBG: {fileID: 8382922929906044151}
+  logoImage: {fileID: 6095665589597156183}
+  victoryResultAnimator: {fileID: 7189293345655917718}
   SpawningImagePrefab: {fileID: 3272948472164207418, guid: bcac70bd740f7b44fb6cee0b44af5817, type: 3}
   SpawnOffset: 0
   ParentObject: {fileID: 3283849101972004937}
@@ -638,6 +641,26 @@ MonoBehaviour:
   SpawnRotationMinRange: -45
   SpawnRotationMaxRange: 45
   SpawnDelay: 0.01
+--- !u!95 &7189293345655917718
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701657024942248507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e0a2ccb06812a544a55f873ed8b98fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6722196284095757660
 GameObject:
   m_ObjectHideFlags: 0
