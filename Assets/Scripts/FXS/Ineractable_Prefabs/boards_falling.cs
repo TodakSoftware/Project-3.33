@@ -6,8 +6,14 @@ public class boards_falling : MonoBehaviour
 {
 
     Rigidbody boardHere;
+    public bool delayOn;
     //public AudioSource audioboardfellHere;
-    // Start is called before the first frame update
+IEnumerator Starting(){
+
+        yield return new WaitForSeconds(3f);
+        delayOn=true;
+     }
+         // Start is called before the first frame update
     void Start()
     {
         boardHere=GetComponent<Rigidbody>();
@@ -23,7 +29,7 @@ public class boards_falling : MonoBehaviour
      
     {
 
-        if (ghostHere.tag=="Ghost")
+        if (ghostHere.tag=="Ghost" && delayOn)
         
         {
             if(Input.GetKeyDown(KeyCode.E))

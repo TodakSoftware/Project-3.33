@@ -10,14 +10,15 @@ public class flickering_lights : MonoBehaviour
     public float Timer;
     public AudioSource soundSini;
     public AudioClip audioSini;
-
     public GameObject bulbSini;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         Timer=Random.Range(minTime,maxTime);
-      
+
         
     }
 

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1765026165871400041}
   - component: {fileID: 1765026165871400040}
   - component: {fileID: 1765026165871400043}
-  - component: {fileID: 1765026165871400039}
   - component: {fileID: 1765026165871400036}
   - component: {fileID: 1765026165871400037}
   - component: {fileID: 6485928540940400744}
   - component: {fileID: 5745508872502516278}
+  - component: {fileID: 1130070975992636032}
   m_Layer: 7
   m_Name: hair_ritual_item
   m_TagString: RitualItem
@@ -89,19 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1765026165871400039
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765026165871400045}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15, z: 0.15}
-  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &1765026165871400036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +160,19 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!65 &1130070975992636032
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765026165871400045}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.15, z: 0.15}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1001 &5676839375192228013
 PrefabInstance:
   m_ObjectHideFlags: 0

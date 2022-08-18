@@ -6,10 +6,17 @@ public class rattling_trash : MonoBehaviour
 {
      public Animation rattlingtrashHere;
      public AudioSource rattlingSFXHere;
+     public bool delayOn;
+
+      IEnumerator Start(){
+
+        yield return new WaitForSeconds(3f);
+        delayOn=true;
+     }
   
     void OnTriggerStay (Collider ghostHere)
     {
-        if (ghostHere.tag=="Ghost")
+        if (ghostHere.tag=="Ghost" && delayOn)
 
         {
             if(Input.GetKeyDown(KeyCode.E))
