@@ -39,6 +39,9 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                                 photonView.RPC("PutRitualOnAltar", RpcTarget.All);
 
                                 interactable.onInteract.Invoke();
+
+                                //UI_Simple_Notification_Spawner.instance.CreateNotification();
+
                                 ClearInteraction();
                             }else{
                                 print("Cannot proceed");
