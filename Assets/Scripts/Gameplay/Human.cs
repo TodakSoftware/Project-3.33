@@ -38,6 +38,7 @@ public class Human : MonoBehaviourPunCallbacks
     bool hpGreen, hpYellow, hpRed;
     public bool isScared;
     public bool isCaptured;
+    bool capturedAnimRun;
     public int currentDeadTimeout, deadTimeout = 60; // in seconds
     public bool isDead;
     Coroutine deadtimeoutCoroutine;
@@ -317,21 +318,26 @@ public class Human : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public IEnumerator Captured(){
-        if(photonView.IsMine){
+        if(photonView.IsMine && !capturedAnimRun){
+            capturedAnimRun = true;
             //isCaptured = true; // link with custom props
             photonView.RPC("SetIsCaptured", RpcTarget.All, true);
 
             UIManager.instance.PopupCapturedUI();
 
             playerController.anim.SetBool("Captured", true);
+            print("Play Captured Anim");
             
             yield return new WaitForSeconds(2f);
             // Transfer to prison
             int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
             playerController.canMove = false; // false to make player move to new position
             transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
-            playerController.anim.SetBool("Captured", false);
+            
             GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
+
+            playerController.anim.SetBool("Captured", false);
+            capturedAnimRun = false;
 
             yield return new WaitForSeconds(1f);
             playerController.UnstopMovement();
@@ -340,6 +346,8 @@ public class Human : MonoBehaviourPunCallbacks
             Hashtable playerProps = new Hashtable();
             playerProps.Add("PlayerCaptured", true);
             PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+
+            
         }
     } // end Captured
 
