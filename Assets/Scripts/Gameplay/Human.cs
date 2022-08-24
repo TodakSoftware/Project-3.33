@@ -103,8 +103,8 @@ public class Human : MonoBehaviourPunCallbacks
             }
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
-        if(Input.GetKeyDown(KeyCode.N)){
-            
+        if(Input.GetKeyDown(KeyCode.C)){
+            StartCoroutine(Captured());
         }
 
         if(Input.GetKeyDown(KeyCode.M)){
