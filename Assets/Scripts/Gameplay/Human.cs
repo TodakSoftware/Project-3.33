@@ -322,12 +322,15 @@ public class Human : MonoBehaviourPunCallbacks
             photonView.RPC("SetIsCaptured", RpcTarget.All, true);
 
             UIManager.instance.PopupCapturedUI();
+
+            playerController.anim.SetBool("Captured", true);
             
             yield return new WaitForSeconds(2f);
             // Transfer to prison
             int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
             playerController.canMove = false; // false to make player move to new position
             transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
+            playerController.anim.SetBool("Captured", false);
             GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
 
             yield return new WaitForSeconds(1f);
