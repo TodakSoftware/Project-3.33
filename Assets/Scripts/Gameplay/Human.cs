@@ -322,13 +322,14 @@ public class Human : MonoBehaviourPunCallbacks
             capturedAnimRun = true;
             //isCaptured = true; // link with custom props
             photonView.RPC("SetIsCaptured", RpcTarget.All, true);
+            PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Particles", "blackSmoke"), transform.position, Quaternion.Euler(-90, 0, 0));
 
-            UIManager.instance.PopupCapturedUI();
+            Invoke("DelayCapturedPopup", 1.2f);
 
             playerController.anim.SetBool("Captured", true);
             print("Play Captured Anim");
             
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2.7f);
             // Transfer to prison
             int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
             playerController.canMove = false; // false to make player move to new position
@@ -350,6 +351,11 @@ public class Human : MonoBehaviourPunCallbacks
             
         }
     } // end Captured
+
+    void DelayCapturedPopup()
+    {
+        UIManager.instance.PopupCapturedUI();
+    }
 
     [PunRPC]
     public void Released(){ // Used by Interact_Door.cs
