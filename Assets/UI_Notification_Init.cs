@@ -33,23 +33,23 @@ public class UI_Notification_Init : MonoBehaviour
         switch(CurrentNotificationType)
         {
             case NotificationType.PICKUPITEM:
-                appNameText.text = "<color=#000000>" + appNameString + "</color>" + "<color=#606060>- Now</color>";
-                itemNameText.text = itemNameString + "has been picked up";
+                appNameText.text = "<color=#000000>" + appNameString + "</color>" + "<color=#606060> - Now</color>";
+                itemNameText.text = itemNameString + " has been picked up";
                 break;
             case NotificationType.PICKUPCURRENCY:
-                appNameText.text = "<color=#000000>" + appNameString + "</color>" + "<color=#606060>- Now</color>";
-                itemNameText.text = itemNameString + "has been picked up";
+                appNameText.text = "<color=#000000>" + appNameString + "</color>" + "<color=#606060> - Now</color>";
+                itemNameText.text = itemNameString + " coin has been picked up";
                 break;
             case NotificationType.SLOTFULL:
-                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060>- Now</color>";
+                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060> - Now</color>";
                 itemNameText.text = "Item slot is full!";
                 break;
             case NotificationType.TESTTYPE:
-                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060>- Now</color>";
+                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060> - Now</color>";
                 itemNameText.text = "Testing Mode!";
                 break;
             default:
-                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060>- Now</color>";
+                appNameText.text = "<color=#FF1E00>" + appNameString + "</color>" + "<color=#606060> - Now</color>";
                 itemNameText.text = "Unknown notification type!";
                 break;
         }
@@ -67,7 +67,7 @@ public class UI_Notification_Init : MonoBehaviour
     }
 
     //this is called in animation event
-    public void DestroySelf()
+    public void DestroySelf_NotificationInit()
     {
         Destroy(this.gameObject);
     }

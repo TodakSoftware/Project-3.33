@@ -9,6 +9,7 @@ public class UI_Simple_Notification_Spawner : MonoBehaviour
     [Header("The basics")]
     public GameObject NotificationPrefab;
     public GameObject ParentObject;
+    //public image icon;
 
     //public NotificationType NotificationTypeHere;
 
@@ -22,6 +23,7 @@ public class UI_Simple_Notification_Spawner : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     // Update is called once per frame
@@ -35,16 +37,28 @@ public class UI_Simple_Notification_Spawner : MonoBehaviour
         Instantiate(NotificationPrefab, ParentObject.transform);
     }
 
-    public void CreateNotification(string AppName, string ItemName)
+    /// <summary>
+    /// Creates notification in the notification parent. Not for message notification however.
+    /// </summary>
+    /// <param name="notificationType">There's 4 types, PICKUPITEM, PICKUPCURRENCY, SLOTFULL and TESTTYPE</param>
+    /// <param name="appName">the name of the app related, i.e. inventory, wallet</param>
+    /// <param name="itemName">item name. for currency, just type in the number</param>
+    public void CreateNotification(NotificationType notificationType, string appName, string itemName)
     {
         GameObject instance = Instantiate(NotificationPrefab, ParentObject.transform);
-        instance.GetComponent<UI_Notification_Init>().appNameString = AppName;
+        instance.GetComponent<UI_Notification_Init>().CurrentNotificationType = notificationType; 
+        instance.GetComponent<UI_Notification_Init>().appNameString = appName;
+        instance.GetComponent<UI_Notification_Init>().itemNameString = itemName;
+
     }
 
-    public void CreateNotificationWithType(NotificationType NotificationTypeHere)
+
+
+    
+    public void CreateNotificationWithType(NotificationType notificationTypeHere)
     {
         GameObject instance = Instantiate(NotificationPrefab, ParentObject.transform);
-        instance.GetComponent<UI_Notification_Init>().CurrentNotificationType = NotificationTypeHere;
+        instance.GetComponent<UI_Notification_Init>().CurrentNotificationType = notificationTypeHere;
     }
 
 }

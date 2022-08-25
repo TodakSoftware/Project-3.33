@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class TestScript : MonoBehaviour
+public class UI_ChatBox_Handler : MonoBehaviour
 {
+
+    public GameObject ChatBoxInput;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +21,5 @@ public class TestScript : MonoBehaviour
         
     }
 
-    public void TestFuction()
-    {
-        //UI_Simple_Notification_Spawner.instance.CreateNotification("Instance Mode", "Item Name Here");
-    }
+
 }
