@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ritualItemSO: {fileID: 11400000, guid: 104af262ff7ba0348ba45168d464a751, type: 2}
   code: R004
+  meshRendererList:
+  - {fileID: 8607990200801488120}
 --- !u!54 &6485928540940400744
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -233,5 +235,10 @@ PrefabInstance:
 --- !u!4 &8058366334963489916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1108234767675255808, guid: 7d1696bf51cdbc64193e4846d5a04eaa, type: 3}
+  m_PrefabInstance: {fileID: 6968243841861316732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8607990200801488120 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7d1696bf51cdbc64193e4846d5a04eaa, type: 3}
   m_PrefabInstance: {fileID: 6968243841861316732}
   m_PrefabAsset: {fileID: 0}

@@ -122,6 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ritualItemSO: {fileID: 11400000, guid: 104af262ff7ba0348ba45168d464a751, type: 2}
   code: R002
+  meshRendererList:
+  - {fileID: 6041073901451014347}
+  - {fileID: 850707038923751528}
+  materialList: []
 --- !u!54 &4675492488739875530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,8 +275,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5522246050739848333, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+--- !u!23 &850707038923751528 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 671643636000596536, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+  m_PrefabInstance: {fileID: 188159285233853008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1904738386260937420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1797645054247725212, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
+  m_PrefabInstance: {fileID: 188159285233853008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6041073901451014347 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5857579390129459867, guid: 0b3a76f9a6569d5429b51213d715b62d, type: 3}
   m_PrefabInstance: {fileID: 188159285233853008}
   m_PrefabAsset: {fileID: 0}
