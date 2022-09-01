@@ -16,7 +16,7 @@ public class RitualItem : MonoBehaviourPunCallbacks
     [Header("Material Highlight")]
     public List<MeshRenderer> meshRendererList = new List<MeshRenderer>();
     List<Material> materialList = new List<Material>();
-    bool isHighlighted;
+    public bool isHighlighted;
 
     public void Start(){
         foreach(var item in ritualItemSO.ritualItemLists){
@@ -52,21 +52,28 @@ public class RitualItem : MonoBehaviourPunCallbacks
         }
     }
 
-    void HighlightItem(){
-        foreach(var a in materialList){
-            print(a.color);
-            
-            //a.SetColor("_EmissiveColor", Color.white * 12f);
-            //a.DOFloat(12,"_EmissiveColor",1f);
-            a.DOVector(Color.white * 12f, "_EmissiveColor", 1f).SetLoops(-1, LoopType.Yoyo);
+    public void HighlightItem(){
+        if(!isHighlighted){
+            foreach(var a in materialList){
+                a.DOVector(Color.white * 12f, "_EmissiveColor", .5f).SetLoops(-1, LoopType.Yoyo);
+            }
+            isHighlighted = true;
+            print("Item Highlighted");
+        }
+    }
+
+    public void UnhighlightItem(){
+        if(isHighlighted){
+            DOTween.KillAll();
+            foreach(var a in materialList){
+                a.SetColor("_EmissiveColor", Color.white * .5f);
+            }
+            isHighlighted = false;
+            print("Item Unhighlighted");
         }
     }
 
     private void OnApplicationQuit() {
-        foreach(var a in materialList){
-            print(a.color);
-            
-            a.SetColor("_EmissiveColor", Color.white * 1f);
-        }
+        UnhighlightItem();
     }
 }

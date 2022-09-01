@@ -21,6 +21,8 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     [Header("Hold Related")]
     float holdDur, holdTimer;
     public Image holdSliderImage;
+    [Header("Highlight Related")]
+    public bool isHighlighting;
 
     void Update(){
         if(enableInteract){
@@ -112,6 +114,12 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
 
                             holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
 
+                            // Highlight Ritual Item
+                            if(hit.collider.CompareTag("RitualItem") && hit.collider.GetComponent<RitualItem>() != null && !isHighlighting){
+                                hit.collider.GetComponent<RitualItem>().HighlightItem();
+                                isHighlighting = true;
+                            }
+
                             // UI Related
                             if(!interactionUI.activeSelf){
                                 interactionUI.SetActive(true);
@@ -129,6 +137,10 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                     } // end interactable null
                 }
             }else{
+                if(isHighlighting && interactable != null){
+                    interactable.gameObject.GetComponent<RitualItem>().UnhighlightItem();
+                    isHighlighting = false;
+                }
                 interactable = null;
                 ClearInteraction();
             }
