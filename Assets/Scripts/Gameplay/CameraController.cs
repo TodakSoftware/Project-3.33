@@ -18,9 +18,21 @@ using Photon.Pun;
         [HideInInspector] public float yaw = 0f;
         [HideInInspector] public float relativeYaw = 0f;
 
+        public GameObject headPointlight;
+
         new void OnEnable()
         {
             LockCursor(true);
+        }
+
+        void Start(){
+            if(headPointlight != null){
+                if(photonView.IsMine){
+                    headPointlight.SetActive(true);
+                }else{
+                    headPointlight.SetActive(false);
+                }
+            }
         }
 
         void Update(){
