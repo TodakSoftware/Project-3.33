@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // ----------------------------------------------------------------------------------
     // AUDIO RELATED
     [Header("AUDIO")]
-    [SerializeField] SO_AudioList footstepSO;
+    [SerializeField] SO_FootstepList footstepSO;
     [SerializeField] float baseStepSpeed = .6f;
     [SerializeField] float sprintStepMultiplier = .7f;
     AudioSource footStepAudioSource = default;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             }
         } // end canMouseLook
 
-        if(enableFootstep){
+        if(enableFootstep){ // Toggle if we want to enable footstep sound
             HandleFootstep();
         } // end enableFootstep
 
@@ -305,17 +305,17 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     } // end HandleMovement
 
-    void HandleFootstep(){
-        if(!characterController.isGrounded) return;
-        if(movementDir == Vector3.zero) return;
+    void HandleFootstep(){ // Footstep Audio function
+        if(!characterController.isGrounded) return; // if we are not grounded, return / prevent from proceed
+        if(movementDir == Vector3.zero) return; // same as we haven't received any input
 
-        footstepTimer -= Time.deltaTime;
+        footstepTimer -= Time.deltaTime; // always deduct footstep timer value > 0
 
         if(footstepTimer <= 0){
-            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f)){
+            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f)){ // Check raycast below our player
                 switch(hit.collider.tag){
                     case "Floor/Cement":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Cement"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     break;
 
                     case "Floor/Grass":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Grass"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     break;
 
                     case "Floor/Tiles":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Tiles"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     break;
 
                     case "Floor/Wood":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Wood"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -347,7 +347,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     break;
 
                     case "Floor/Broken Glass":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Broken Glass"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -355,7 +355,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     break;
 
                     case "Floor/Metal":
-                        foreach(var sound in footstepSO.list){
+                        foreach(var sound in footstepSO.list){ // filter out sound list
                             if(sound.name == "Metal"){ 
                                 footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
                             }
@@ -372,9 +372,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 } // end switch
             } // end if pyhsics
 
-            footstepTimer = GetCurrentOffset;
+            footstepTimer = GetCurrentOffset; // set footstepTimer > 0, to prevent audio playing instantly
         } // end if timer <= 0
-    }
+    } // end HandleFootstep
 
     void HandleJumping(){
         velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
