@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ae8a16292b28147b9bad3b4426a416, type: 3}
+  m_Name: SO_AudioPreset
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: UI_Btn_Hover
+    audioMixerGroup: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8ae3cc4609aef2745bc4778e5d9bf024, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: UI_Btn_Click
+    audioMixerGroup: {fileID: 0}
+    clip: {fileID: 8300000, guid: 518cdd508d673124da33c3a5cdd93f05, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0

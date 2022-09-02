@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     // ENABLER RELATED
     [Header("ENABLER")]
     public bool canMove;
-    public bool canRun, canJump, canMouselook;
+    public bool canRun, canJump, canMouselook, enableFootstep;
     // ----------------------------------------------------------------------------------
     // MOVEMENT RELATED
     [Header("MOVEMENT")]
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float gravity = -9.81f; // Ground check (For debugging) Do Not Change this
     // ----------------------------------------------------------------------------------
     // SPRINT/RUN RELATED
+    [Header("SPRINT / RUN")]
     [SerializeField] float runMultiplier = 1; // Multiplier for running
     float tempRunMultiplier, runAnim = 0.3f; // Smooth multiplier for running (+animation)
     bool isRunning, walkForward;
@@ -44,15 +45,28 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
     // ----------------------------------------------------------------------------------
     // CAMERA RELATED
+    [Header("CAMERA")]
     public CameraController camController;
     public CameraControlledIK camControllerIK;
     // ----------------------------------------------------------------------------------
     public TextMeshProUGUI debugText;
+    // ----------------------------------------------------------------------------------
+    // AUDIO RELATED
+    [Header("AUDIO")]
+    [SerializeField] SO_FootstepList footstepSO;
+    [SerializeField] float baseStepSpeed = .6f;
+    [SerializeField] float sprintStepMultiplier = .7f;
+    AudioSource footStepAudioSource = default;
+    float footstepTimer = 0;
+    public float GetCurrentOffset => isRunning ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         anim = playerMesh.GetComponent<Animator>();
+        if(footStepAudioSource == null){
+            footStepAudioSource = GetComponent<AudioSource>();
+        }
 
         StartCoroutine(UpdateDebugText());
     } // end Awake
@@ -84,6 +98,10 @@ public class PlayerController : MonoBehaviourPunCallbacks
                 camController.enabled = false;
             }
         } // end canMouseLook
+
+        if(enableFootstep){ // Toggle if we want to enable footstep sound
+            HandleFootstep();
+        } // end enableFootstep
 
         // CAN ONLY DO SPRINTING WHEN WALK FORWARD (Do it in Update function because of Input processing)
         if(canMove && canRun && walkForward && inputHorizontal == 0){ //  && !isInteractPhone
@@ -157,7 +175,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
         debugText.text = "Human " + GameManager.GetAllPlayersHuman().Count + " | Ghost " + GameManager.GetAllPlayersGhost().Count;
         yield return new WaitForSeconds(1f);
         StartCoroutine(UpdateDebugText());
-    }
+    } // end UpdateDebugText
 
     public void StopMovement(){
         inputHorizontal = 0f;
@@ -168,12 +186,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
         canMove = false;
         canRun = false;
-    }
+    } // end StopMovement
 
     public void UnstopMovement(){
         canMove = true;
         canRun = true;
-    }
+    } // UnstopMovement
 
     void FixedUpdate() {
         if(!photonView.IsMine){ // If this script is not ours to control, end it
@@ -286,6 +304,77 @@ public class PlayerController : MonoBehaviourPunCallbacks
             walkForward = false;
         }
     } // end HandleMovement
+
+    void HandleFootstep(){ // Footstep Audio function
+        if(!characterController.isGrounded) return; // if we are not grounded, return / prevent from proceed
+        if(movementDir == Vector3.zero) return; // same as we haven't received any input
+
+        footstepTimer -= Time.deltaTime; // always deduct footstep timer value > 0
+
+        if(footstepTimer <= 0){
+            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3f)){ // Check raycast below our player
+                switch(hit.collider.tag){
+                    case "Floor/Cement":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Cement"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    case "Floor/Grass":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Grass"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    case "Floor/Tiles":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Tiles"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    case "Floor/Wood":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Wood"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    case "Floor/Broken Glass":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Broken Glass"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    case "Floor/Metal":
+                        foreach(var sound in footstepSO.list){ // filter out sound list
+                            if(sound.name == "Metal"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+
+                    default:
+                        foreach(var sound in footstepSO.list){
+                            if(sound.name == "Cement"){ 
+                                footStepAudioSource.PlayOneShot(sound.audioClipLists[UnityEngine.Random.Range(0, sound.audioClipLists.Count)]);
+                            }
+                        } // end foreach
+                    break;
+                } // end switch
+            } // end if pyhsics
+
+            footstepTimer = GetCurrentOffset; // set footstepTimer > 0, to prevent audio playing instantly
+        } // end if timer <= 0
+    } // end HandleFootstep
 
     void HandleJumping(){
         velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
