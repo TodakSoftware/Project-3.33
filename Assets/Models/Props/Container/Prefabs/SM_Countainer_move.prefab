@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: -8313957203979610890}
   - component: {fileID: 8625648093126068278}
   - component: {fileID: 7581502157871924564}
-  - component: {fileID: 6393631733649322079}
   - component: {fileID: 878165463001927401}
+  - component: {fileID: 6393631733649322079}
   - component: {fileID: 4736460040918106855}
   - component: {fileID: 98280625091862907}
   m_Layer: 0
@@ -277,6 +277,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &878165463001927401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -4028077618747970370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.539749, y: 0.15495372, z: 0.3544616}
+  m_Center: {x: 0, y: 0.07803844, z: -0.00000047683716}
 --- !u!114 &6393631733649322079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,22 +310,10 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4736460040918106855}
+  - {fileID: 98280625091862907}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!65 &878165463001927401
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: -4028077618747970370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.539749, y: 0.15495372, z: 0.3544616}
-  m_Center: {x: 0, y: 0.07803844, z: -0.00000047683716}
 --- !u!114 &4736460040918106855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rattlingHere: {fileID: 7070976329679438070}
   rattlingSFXHere: {fileID: 4688018815617982847}
+  delayOn: 0
 --- !u!65 &5542273690247184264
 BoxCollider:
   m_ObjectHideFlags: 0
