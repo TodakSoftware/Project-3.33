@@ -21,12 +21,17 @@ public class UI_TesterPlus : MonoBehaviour
     public GameObject TesterPlusPlayerNameObject;
     public GameObject TesterPlusPlayerMessageObject;
 
-    [Header("Colors")]
+    [Header("Player Colors")]
     public Color PlayerColor00;
     public Color PlayerColor01;
     public Color PlayerColor02;
 
     public int ColorCyclerCounter;
+
+    [Space(10)]
+    [Header("Task Stuff------------------------------------")]
+    public GameObject[] TasksObjects;
+    public GameObject TesterPlusDropdownTaskNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -157,6 +162,63 @@ public class UI_TesterPlus : MonoBehaviour
             case 2:
                 UIMessageSpawnerScript.GetComponent<UI_ChatMessageSpawner>().CreateOutgoingMessage(TesterPlusPlayerNameObject.GetComponent<TMP_InputField>().text, TesterPlusPlayerMessageObject.GetComponent<TMP_InputField>().text, PlayerColor02);
                 ColorCyclerCounter = 0;
+                break;
+            default:
+                UIMessageSpawnerScript.GetComponent<UI_ChatMessageSpawner>().CreateOutgoingMessage("Error", "Error", PlayerColor00);
+                ColorCyclerCounter = 0;
+                break;
+        }
+
+    }
+
+
+    public void TesterPlusCompleteTask()
+    {
+
+        switch (TesterPlusDropdownTaskNumber.GetComponent<TMPro.TMP_Dropdown>().value)
+        {
+            case 0:
+                TasksObjects[0].GetComponent<UI_TaskPrefabStatus>().SetToComplete();
+                break;
+            case 1:
+                TasksObjects[1].GetComponent<UI_TaskPrefabStatus>().SetToComplete();
+                break;
+            case 2:
+                TasksObjects[2].GetComponent<UI_TaskPrefabStatus>().SetToComplete();
+                break;
+            case 3:
+                TasksObjects[3].GetComponent<UI_TaskPrefabStatus>().SetToComplete();
+                break;
+            case 4:
+                TasksObjects[4].GetComponent<UI_TaskPrefabStatus>().SetToComplete();
+                break;
+            default:
+                UIMessageSpawnerScript.GetComponent<UI_ChatMessageSpawner>().CreateOutgoingMessage("Error", "Error", PlayerColor00);
+                ColorCyclerCounter = 0;
+                break;
+        }
+
+    }
+
+    public void TesterPlusIncompleteTask()
+    {
+
+        switch (TesterPlusDropdownTaskNumber.GetComponent<TMPro.TMP_Dropdown>().value)
+        {
+            case 0:
+                TasksObjects[0].GetComponent<UI_TaskPrefabStatus>().SetToIncomplete();
+                break;
+            case 1:
+                TasksObjects[1].GetComponent<UI_TaskPrefabStatus>().SetToIncomplete();
+                break;
+            case 2:
+                TasksObjects[2].GetComponent<UI_TaskPrefabStatus>().SetToIncomplete();
+                break;
+            case 3:
+                TasksObjects[3].GetComponent<UI_TaskPrefabStatus>().SetToIncomplete();
+                break;
+            case 4:
+                TasksObjects[4].GetComponent<UI_TaskPrefabStatus>().SetToIncomplete();
                 break;
             default:
                 UIMessageSpawnerScript.GetComponent<UI_ChatMessageSpawner>().CreateOutgoingMessage("Error", "Error", PlayerColor00);

@@ -10,7 +10,7 @@ public class UI_SkillCooldown : MonoBehaviour
     public Image imageCooldown;
     public Image imageEdge;
     public TMP_Text textCooldown;
-    
+    public GameObject inputKeyImage;
 
     //cooldown stuff
     public bool isCooldown = false;
@@ -53,6 +53,7 @@ public class UI_SkillCooldown : MonoBehaviour
             isCooldown = false;
             textCooldown.gameObject.SetActive(false);
             imageEdge.gameObject.SetActive(false);
+            inputKeyImage.gameObject.SetActive(true);
             imageCooldown.fillAmount = 0.0f;
         }
         else
@@ -78,6 +79,7 @@ public class UI_SkillCooldown : MonoBehaviour
             isCooldown = true;
             textCooldown.gameObject.SetActive(true);
             imageEdge.gameObject.SetActive(true);
+            inputKeyImage.gameObject.SetActive(false);
             cooldownTimer = cooldownTime;
         }
 

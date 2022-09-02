@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Task_Popup : MonoBehaviour
+public class UI_TaskPopup : MonoBehaviour
 {
 
     public GameObject[] Tasks;
