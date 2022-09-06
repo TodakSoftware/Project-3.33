@@ -1,0 +1,3355 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e354c793db445da48ac3ee8e77a6603d, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Virtual Acoustics
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 50603a59ea44ef4498372b353427f746
+    ParentPath: Virtual Acoustics\Default Work Unit
+    guid: 50603a59ea44ef4498372b353427f746
+    GuidInternal: 
+    m_lastTime: -8585394080374775808
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Master-Mixer Hierarchy
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 968e2c1ed69f814d8423728b5c3ba4a7
+    ParentPath: Master-Mixer Hierarchy\Default Work Unit
+    guid: 968e2c1ed69f814d8423728b5c3ba4a7
+    GuidInternal: 
+    m_lastTime: -8585393194254775808
+    List:
+    - name: Amb_Map00_Rev_Horror_Aux
+      guid: 36abb6b2d33985449ec6a427d683b7c7
+      id: 3825685586
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Ambience
+        ObjectType: 2
+        guid: 3bb49b93cbbace4795f316fa115f5752
+      - ElementName: Amb_Map00_Rev_Horror_Aux
+        ObjectType: 1
+        guid: 36abb6b2d33985449ec6a427d683b7c7
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambience\Amb_Map00_Rev_Horror_Aux
+    - name: Amb_Map01_Rev_Outdoors_Aux
+      guid: 096e0ecbd8a1e542b89d6d5da6431ed6
+      id: 3543359782
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Ambience
+        ObjectType: 2
+        guid: 3bb49b93cbbace4795f316fa115f5752
+      - ElementName: Amb_Map01_Rev_Outdoors_Aux
+        ObjectType: 1
+        guid: 096e0ecbd8a1e542b89d6d5da6431ed6
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambience\Amb_Map01_Rev_Outdoors_Aux
+    - name: Ambience
+      guid: 3bb49b93cbbace4795f316fa115f5752
+      id: 85412153
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Ambience
+        ObjectType: 2
+        guid: 3bb49b93cbbace4795f316fa115f5752
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambience
+    - name: Events
+      guid: ccc15a4a7a9d7747a9073bb826e28afc
+      id: 1381315342
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: Events
+        ObjectType: 2
+        guid: ccc15a4a7a9d7747a9073bb826e28afc
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Events
+    - name: Interactables
+      guid: 4aa1364e27d88c4ba2f9ee8ebd1ef315
+      id: 181270742
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: Interactables
+        ObjectType: 2
+        guid: 4aa1364e27d88c4ba2f9ee8ebd1ef315
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Interactables
+    - name: Master Audio Bus
+      guid: d8a41415a61d2a41a17e75ca0c2149f3
+      id: 3803692087
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
+    - name: Music
+      guid: 30a78ab57d6cd2469048177e8a14708b
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 30a78ab57d6cd2469048177e8a14708b
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music
+    - name: Music_Rev_Aux
+      guid: 7e627da964ea37408b700288795c3f4d
+      id: 2219410019
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 30a78ab57d6cd2469048177e8a14708b
+      - ElementName: Music_Rev_Aux
+        ObjectType: 1
+        guid: 7e627da964ea37408b700288795c3f4d
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Music\Music_Rev_Aux
+    - name: Player_Ghost
+      guid: 1d3bf8fb2bfb244da40281a2de0b3a6a
+      id: 3625484602
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: Player_Ghost
+        ObjectType: 2
+        guid: 1d3bf8fb2bfb244da40281a2de0b3a6a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Player_Ghost
+    - name: Player_Human
+      guid: bb240a9d0f9c9d49b0db4598f5d1b940
+      id: 324183528
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: Player_Human
+        ObjectType: 2
+        guid: bb240a9d0f9c9d49b0db4598f5d1b940
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\Player_Human
+    - name: SFX
+      guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX
+    - name: SFX_Map01_Rev_Bathroom_Aux
+      guid: 7d5d88478ffc3f419788b8320e7cbff9
+      id: 4033457172
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Bathroom_Aux
+        ObjectType: 1
+        guid: 7d5d88478ffc3f419788b8320e7cbff9
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Bathroom_Aux
+    - name: SFX_Map01_Rev_CaptiveRoom_Aux
+      guid: 55c61d6b36d8af4788e4615374af1311
+      id: 3766186399
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_CaptiveRoom_Aux
+        ObjectType: 1
+        guid: 55c61d6b36d8af4788e4615374af1311
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_CaptiveRoom_Aux
+    - name: SFX_Map01_Rev_Corridor_Aux
+      guid: 3795afff6340234384d3a8020c416779
+      id: 748997848
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Corridor_Aux
+        ObjectType: 1
+        guid: 3795afff6340234384d3a8020c416779
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Corridor_Aux
+    - name: SFX_Map01_Rev_GhostPOV_Aux
+      guid: 40ef32079469554d9b4a097780e59f96
+      id: 2708944662
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_GhostPOV_Aux
+        ObjectType: 1
+        guid: 40ef32079469554d9b4a097780e59f96
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_GhostPOV_Aux
+    - name: SFX_Map01_Rev_Outdoors_Aux
+      guid: 3253d7dd3e67ae478114031eebbe21cf
+      id: 4185004937
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Outdoors_Aux
+        ObjectType: 1
+        guid: 3253d7dd3e67ae478114031eebbe21cf
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Outdoors_Aux
+    - name: SFX_Map01_Rev_Outdoors_Yard_Aux
+      guid: fa954caabfbae642b4b4bd09100694a7
+      id: 1931072070
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Outdoors_Yard_Aux
+        ObjectType: 1
+        guid: fa954caabfbae642b4b4bd09100694a7
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Outdoors_Yard_Aux
+    - name: SFX_Map01_Rev_Room_L_Aux
+      guid: afec2778bc6d434e84019a7281b3da75
+      id: 123601002
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Room_L_Aux
+        ObjectType: 1
+        guid: afec2778bc6d434e84019a7281b3da75
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Room_L_Aux
+    - name: SFX_Map01_Rev_Room_M_Aux
+      guid: 3a6dc27699743745b84730ed27c66c7e
+      id: 2215172111
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Room_M_Aux
+        ObjectType: 1
+        guid: 3a6dc27699743745b84730ed27c66c7e
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Room_M_Aux
+    - name: SFX_Map01_Rev_Room_S_Aux
+      guid: a0a3e41d999b854fab5cd8b1f6929be3
+      id: 953342769
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: d111514468c6704fb5b4ae7a2ed8ac2a
+      - ElementName: SFX_Map01_Rev_Room_S_Aux
+        ObjectType: 1
+        guid: a0a3e41d999b854fab5cd8b1f6929be3
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX\SFX_Map01_Rev_Room_S_Aux
+    - name: UI
+      guid: 9f3ca64620d82c45a7cf00e28c6e3938
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: UI
+        ObjectType: 2
+        guid: 9f3ca64620d82c45a7cf00e28c6e3938
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\UI
+    - name: UI_Rev_Aux
+      guid: 100bf1d70ad22942b67cccb7be505a29
+      id: 2048819434
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 968e2c1ed69f814d8423728b5c3ba4a7
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: UI
+        ObjectType: 2
+        guid: 9f3ca64620d82c45a7cf00e28c6e3938
+      - ElementName: UI_Rev_Aux
+        ObjectType: 1
+        guid: 100bf1d70ad22942b67cccb7be505a29
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\UI\UI_Rev_Aux
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: e31678139a258b418967ac916cea6d51
+    ParentPath: SoundBanks\Default Work Unit
+    guid: e31678139a258b418967ac916cea6d51
+    GuidInternal: 
+    m_lastTime: -8585393194254775808
+    List:
+    - name: Amb_Map00
+      guid: ab5cb8c0463121418fadc8f45330c448
+      id: 257729384
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: 13d882142d17874aae81d1b79981a550
+      - ElementName: Amb_Map00
+        ObjectType: 7
+        guid: ab5cb8c0463121418fadc8f45330c448
+      Path: SoundBanks\Default Work Unit\Ambience\Amb_Map00
+    - name: Amb_Map01
+      guid: dbcb13e25bfb044ba632cc57008387be
+      id: 257729385
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: 13d882142d17874aae81d1b79981a550
+      - ElementName: Amb_Map01
+        ObjectType: 7
+        guid: dbcb13e25bfb044ba632cc57008387be
+      Path: SoundBanks\Default Work Unit\Ambience\Amb_Map01
+    - name: Ambience
+      guid: 13d882142d17874aae81d1b79981a550
+      id: 85412153
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: 13d882142d17874aae81d1b79981a550
+      Path: SoundBanks\Default Work Unit\Ambience
+    - name: Events
+      guid: 4890000b64df69498ec0f5c29e152410
+      id: 1381315342
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Events
+        ObjectType: 7
+        guid: 4890000b64df69498ec0f5c29e152410
+      Path: SoundBanks\Default Work Unit\Events
+    - name: Ghost_General
+      guid: 6440b3f12be3eb46bd777141af4e07b7
+      id: 1917028471
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: e197889132975e4aab39ff83ffe30bc3
+      - ElementName: Ghost_General
+        ObjectType: 7
+        guid: 6440b3f12be3eb46bd777141af4e07b7
+      Path: SoundBanks\Default Work Unit\Player_Ghost\Ghost_General
+    - name: Ghost_Pocong
+      guid: c38f6568bfd5744fac86526b85f3d471
+      id: 582773645
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: e197889132975e4aab39ff83ffe30bc3
+      - ElementName: Ghost_Pocong
+        ObjectType: 7
+        guid: c38f6568bfd5744fac86526b85f3d471
+      Path: SoundBanks\Default Work Unit\Player_Ghost\Ghost_Pocong
+    - name: Interactables
+      guid: ee964f02bd2825419c2ade21f2362c78
+      id: 181270742
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Interactables
+        ObjectType: 7
+        guid: ee964f02bd2825419c2ade21f2362c78
+      Path: SoundBanks\Default Work Unit\Interactables
+    - name: Music
+      guid: 1e66ff72f0e5a34d801736199fd58500
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Music
+        ObjectType: 7
+        guid: 1e66ff72f0e5a34d801736199fd58500
+      Path: SoundBanks\Default Work Unit\Music
+    - name: Player_Ghost
+      guid: e197889132975e4aab39ff83ffe30bc3
+      id: 3625484602
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: e197889132975e4aab39ff83ffe30bc3
+      Path: SoundBanks\Default Work Unit\Player_Ghost
+    - name: Player_Human
+      guid: a767329baa83d9479a4db21befabb290
+      id: 324183528
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: Player_Human
+        ObjectType: 7
+        guid: a767329baa83d9479a4db21befabb290
+      Path: SoundBanks\Default Work Unit\Player_Human
+    - name: UI
+      guid: 7e0d5094a8c7d543baf041d5a36abfd4
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: e31678139a258b418967ac916cea6d51
+      - ElementName: UI
+        ObjectType: 7
+        guid: 7e0d5094a8c7d543baf041d5a36abfd4
+      Path: SoundBanks\Default Work Unit\UI
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: d57e113e7e6ad848aaf0de33dc86c086
+    ParentPath: Events\Default Work Unit
+    guid: d57e113e7e6ad848aaf0de33dc86c086
+    GuidInternal: 
+    m_lastTime: -8585393194254775808
+    List:
+    - name: Amb_Map00
+      guid: 7ec3e78fd694d041a98221138fe0a3e2
+      id: 257729384
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map00
+        ObjectType: 4
+        guid: 7ec3e78fd694d041a98221138fe0a3e2
+      Path: Events\Default Work Unit\Ambience\Amb_Map00
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Amb_Map00_Horror_SFX
+      guid: ed49a1da988fc145b97ee8684790c45b
+      id: 2928754311
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map00
+        ObjectType: 4
+        guid: 7ec3e78fd694d041a98221138fe0a3e2
+      - ElementName: Amb_Map00_Horror_SFX
+        ObjectType: 3
+        guid: ed49a1da988fc145b97ee8684790c45b
+      Path: Events\Default Work Unit\Ambience\Amb_Map00\Amb_Map00_Horror_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Amb_Map01
+      guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      id: 257729385
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      Path: Events\Default Work Unit\Ambience\Amb_Map01
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Amb_Map01_Bathroom_SFX
+      guid: 8cec3826f050034eadb9f8152a725c0b
+      id: 3254058206
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_Bathroom_SFX
+        ObjectType: 3
+        guid: 8cec3826f050034eadb9f8152a725c0b
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Bathroom_SFX
+      maxAttenuation: 0
+      maxDuration: 0.689622
+      minDuration: 0.492368
+    - name: Amb_Map01_Outdoors_SFX
+      guid: bb0781d6aeea934989cf8c980ac41172
+      id: 1171967767
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_Outdoors_SFX
+        ObjectType: 3
+        guid: bb0781d6aeea934989cf8c980ac41172
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Outdoors_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Amb_Map01_Outdoors_Yard_SFX
+      guid: 708e6ff34018e24d8e194503a05c450e
+      id: 4105687362
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_Outdoors_Yard_SFX
+        ObjectType: 3
+        guid: 708e6ff34018e24d8e194503a05c450e
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Outdoors_Yard_SFX
+      maxAttenuation: 0
+      maxDuration: 9.721943
+      minDuration: 6.556465
+    - name: Amb_Map01_SchoolBell_Ringing_SFX
+      guid: 6a52d4c7e9339f45bf7f2b42fb22f93a
+      id: 2981078140
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_SchoolBell_Ringing_SFX
+        ObjectType: 3
+        guid: 6a52d4c7e9339f45bf7f2b42fb22f93a
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_SchoolBell_Ringing_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Amb_Map01_Striplight_Off_SFX
+      guid: 6c98ab41ecbd7a46b21d5d9b19577057
+      id: 104948068
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_Striplight_Off_SFX
+        ObjectType: 3
+        guid: 6c98ab41ecbd7a46b21d5d9b19577057
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Striplight_Off_SFX
+      maxAttenuation: 0
+      maxDuration: 0.477884
+      minDuration: 0.234553
+    - name: Amb_Map01_Striplight_On_SFX
+      guid: 73c681d6cbffa3418a200704627e29d6
+      id: 1895323522
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_Striplight_On_SFX
+        ObjectType: 3
+        guid: 73c681d6cbffa3418a200704627e29d6
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Striplight_On_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Ambience
+      guid: cb9553ec84101a489fc2768fb5a74833
+      id: 85412153
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      Path: Events\Default Work Unit\Ambience
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Event_GameOver_PlayerTeam_Ghost_SFX
+      guid: 05b66e7157e67b4a8e564bbac4efd7b4
+      id: 813251553
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      - ElementName: Event_GameOver_PlayerTeam_Ghost_SFX
+        ObjectType: 3
+        guid: 05b66e7157e67b4a8e564bbac4efd7b4
+      Path: Events\Default Work Unit\Events\Event_GameOver_PlayerTeam_Ghost_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Event_GameOver_PlayerTeam_Human_SFX
+      guid: c50e29c8ec8c9448983f91ba72058bd2
+      id: 959596499
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      - ElementName: Event_GameOver_PlayerTeam_Human_SFX
+        ObjectType: 3
+        guid: c50e29c8ec8c9448983f91ba72058bd2
+      Path: Events\Default Work Unit\Events\Event_GameOver_PlayerTeam_Human_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Event_Human_Captured_SFX
+      guid: 43db2ca324704941a2b50256e11744ef
+      id: 2407384478
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      - ElementName: Event_Human_Captured_SFX
+        ObjectType: 3
+        guid: 43db2ca324704941a2b50256e11744ef
+      Path: Events\Default Work Unit\Events\Event_Human_Captured_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Event_Spawn_Ghost_SFX
+      guid: 86434916ba02184badf02c8b5a0384ab
+      id: 990149659
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      - ElementName: Event_Spawn_Ghost_SFX
+        ObjectType: 3
+        guid: 86434916ba02184badf02c8b5a0384ab
+      Path: Events\Default Work Unit\Events\Event_Spawn_Ghost_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Event_Spawn_Human_SFX
+      guid: 12bdc4aa9517e54a9cce51383dffcc97
+      id: 3651853877
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      - ElementName: Event_Spawn_Human_SFX
+        ObjectType: 3
+        guid: 12bdc4aa9517e54a9cce51383dffcc97
+      Path: Events\Default Work Unit\Events\Event_Spawn_Human_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Events
+      guid: bf4e439558d7a244aa2dbc12472f53dc
+      id: 1381315342
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Events
+        ObjectType: 4
+        guid: bf4e439558d7a244aa2dbc12472f53dc
+      Path: Events\Default Work Unit\Events
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Ghost_Pocong
+      guid: 242cd0607d509647aba993df913f181c
+      id: 582773645
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Ghost_Pocong_Ability01_SFX
+      guid: 1ea6645339b3d544a5f23d3cc76a2e83
+      id: 1511411391
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Ability01_SFX
+        ObjectType: 3
+        guid: 1ea6645339b3d544a5f23d3cc76a2e83
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Ability01_SFX
+      maxAttenuation: 50
+      maxDuration: 1.423708
+      minDuration: 1.423708
+    - name: Ghost_Pocong_Ability02_SFX
+      guid: 84e5e23804fa0a4d90a5c57c765993c9
+      id: 2422307316
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Ability02_SFX
+        ObjectType: 3
+        guid: 84e5e23804fa0a4d90a5c57c765993c9
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Ability02_SFX
+      maxAttenuation: 50
+      maxDuration: 2.3125
+      minDuration: 2.3125
+    - name: Ghost_Pocong_Attack_Idle_SFX
+      guid: 21c7a73a778e184894f9f244046c11fb
+      id: 2233437133
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Attack_Idle_SFX
+        ObjectType: 3
+        guid: 21c7a73a778e184894f9f244046c11fb
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Attack_Idle_SFX
+      maxAttenuation: 50
+      maxDuration: 1.176937
+      minDuration: 1.176937
+    - name: Ghost_Pocong_Capture_SFX
+      guid: 5b4475b7ef700645b95fb274ad35e8f5
+      id: 3349554094
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Capture_SFX
+        ObjectType: 3
+        guid: 5b4475b7ef700645b95fb274ad35e8f5
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Capture_SFX
+      maxAttenuation: 50
+      maxDuration: 0.855021
+      minDuration: 0.855021
+    - name: Ghost_Pocong_Death01_SFX
+      guid: f4194ce8f517db448cf6f48ec73f089d
+      id: 998953683
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Death01_SFX
+        ObjectType: 3
+        guid: f4194ce8f517db448cf6f48ec73f089d
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Death01_SFX
+      maxAttenuation: 50
+      maxDuration: 3.125
+      minDuration: 3.125
+    - name: Ghost_Pocong_Death02_SFX
+      guid: bdd8a3a98b850f47ba8ac6ec3d1360ff
+      id: 1612371976
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Death02_SFX
+        ObjectType: 3
+        guid: bdd8a3a98b850f47ba8ac6ec3d1360ff
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Death02_SFX
+      maxAttenuation: 50
+      maxDuration: 5
+      minDuration: 5
+    - name: Ghost_Pocong_FS_SFX
+      guid: 85b41a09b3426c4d98026cbf863ea813
+      id: 2289397113
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_FS_SFX
+        ObjectType: 3
+        guid: 85b41a09b3426c4d98026cbf863ea813
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_FS_SFX
+      maxAttenuation: 50
+      maxDuration: 1.483975
+      minDuration: 1.214415
+    - name: Ghost_Pocong_GetHit_SFX
+      guid: 3e9d163c618f634bbf11cafeb9add7a6
+      id: 2477065527
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_GetHit_SFX
+        ObjectType: 3
+        guid: 3e9d163c618f634bbf11cafeb9add7a6
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_GetHit_SFX
+      maxAttenuation: 50
+      maxDuration: 3
+      minDuration: 2.625
+    - name: Ghost_Pocong_Idle_SFX
+      guid: 3aa99959294bfc4a8733ee23012dd4a1
+      id: 379189358
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Idle_SFX
+        ObjectType: 3
+        guid: 3aa99959294bfc4a8733ee23012dd4a1
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Idle_SFX
+      maxAttenuation: 50
+      maxDuration: 1.693917
+      minDuration: 1.693917
+    - name: Ghost_Pocong_Jumpscare01_SFX
+      guid: df34a49f76c36449a1cfc8988b8beaab
+      id: 2066281013
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Jumpscare01_SFX
+        ObjectType: 3
+        guid: df34a49f76c36449a1cfc8988b8beaab
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Jumpscare01_SFX
+      maxAttenuation: 50
+      maxDuration: 5.147812
+      minDuration: 3.622062
+    - name: Ghost_Pocong_Jumpscare02_SFX
+      guid: 92e20d28e2b38f47b748393c6be28b15
+      id: 1134793206
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Jumpscare02_SFX
+        ObjectType: 3
+        guid: 92e20d28e2b38f47b748393c6be28b15
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Jumpscare02_SFX
+      maxAttenuation: 50
+      maxDuration: 5.147812
+      minDuration: 3.622062
+    - name: Ghost_Pocong_Spawn_SFX
+      guid: f3fe76cf527f9744a49b6275c4854885
+      id: 2017936093
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      - ElementName: Ghost_Pocong
+        ObjectType: 4
+        guid: 242cd0607d509647aba993df913f181c
+      - ElementName: Ghost_Pocong_Spawn_SFX
+        ObjectType: 3
+        guid: f3fe76cf527f9744a49b6275c4854885
+      Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Spawn_SFX
+      maxAttenuation: 50
+      maxDuration: 1.8635
+      minDuration: 1.8635
+    - name: Human_Breathing_SFX
+      guid: e386dc72fa73be489f16508628db9262
+      id: 1479456331
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Human
+        ObjectType: 4
+        guid: cbb903c034389c4bb27e246cbfc640e2
+      - ElementName: Human_Breathing_SFX
+        ObjectType: 3
+        guid: e386dc72fa73be489f16508628db9262
+      Path: Events\Default Work Unit\Player_Human\Human_Breathing_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Human_FearLvl_SFX
+      guid: 752cd109b32d8f4aae7d7b0c3f127a34
+      id: 4184964525
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Human
+        ObjectType: 4
+        guid: cbb903c034389c4bb27e246cbfc640e2
+      - ElementName: Human_FearLvl_SFX
+        ObjectType: 3
+        guid: 752cd109b32d8f4aae7d7b0c3f127a34
+      Path: Events\Default Work Unit\Player_Human\Human_FearLvl_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Human_FS_SFX
+      guid: 3afd02e8a8f8c44abce3de7060e70e59
+      id: 1998738838
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Human
+        ObjectType: 4
+        guid: cbb903c034389c4bb27e246cbfc640e2
+      - ElementName: Human_FS_SFX
+        ObjectType: 3
+        guid: 3afd02e8a8f8c44abce3de7060e70e59
+      Path: Events\Default Work Unit\Player_Human\Human_FS_SFX
+      maxAttenuation: 50
+      maxDuration: 1.059463
+      minDuration: 0.471937
+    - name: Human_Struggle_SFX
+      guid: da43adc35ed5904f9016cc5da400f1d1
+      id: 285049130
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Human
+        ObjectType: 4
+        guid: cbb903c034389c4bb27e246cbfc640e2
+      - ElementName: Human_Struggle_SFX
+        ObjectType: 3
+        guid: da43adc35ed5904f9016cc5da400f1d1
+      Path: Events\Default Work Unit\Player_Human\Human_Struggle_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables
+      guid: 75ea953799fa00489306f97c0ec09ab8
+      id: 181270742
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      Path: Events\Default Work Unit\Interactables
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Interactables_Altar_Activate_SFX
+      guid: 6054a76f683a8345b560e3e91a074292
+      id: 641380417
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Altar_Activate_SFX
+        ObjectType: 3
+        guid: 6054a76f683a8345b560e3e91a074292
+      Path: Events\Default Work Unit\Interactables\Interactables_Altar_Activate_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_ChargingStation_PlugIn_SFX
+      guid: d9f022992dc5d24cb475738d336c9706
+      id: 1493043946
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_ChargingStation_PlugIn_SFX
+        ObjectType: 3
+        guid: d9f022992dc5d24cb475738d336c9706
+      Path: Events\Default Work Unit\Interactables\Interactables_ChargingStation_PlugIn_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Door_Close_SFX
+      guid: 1bd1318593f3464fa24a238de7b6d1a3
+      id: 2859918952
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Door_Close_SFX
+        ObjectType: 3
+        guid: 1bd1318593f3464fa24a238de7b6d1a3
+      Path: Events\Default Work Unit\Interactables\Interactables_Door_Close_SFX
+      maxAttenuation: 50
+      maxDuration: 4.635151
+      minDuration: 1.887748
+    - name: Interactables_Door_Knock_SFX
+      guid: ff3041809b7c54468e26aa95d31da129
+      id: 2386535088
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Door_Knock_SFX
+        ObjectType: 3
+        guid: ff3041809b7c54468e26aa95d31da129
+      Path: Events\Default Work Unit\Interactables\Interactables_Door_Knock_SFX
+      maxAttenuation: 50
+      maxDuration: 1.986493
+      minDuration: 1.179843
+    - name: Interactables_Door_Open_SFX
+      guid: 407929fab0f6bc4da799ee5d79c2a3ae
+      id: 2730755012
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Door_Open_SFX
+        ObjectType: 3
+        guid: 407929fab0f6bc4da799ee5d79c2a3ae
+      Path: Events\Default Work Unit\Interactables\Interactables_Door_Open_SFX
+      maxAttenuation: 50
+      maxDuration: 4.237853
+      minDuration: 1.887748
+    - name: Interactables_DoorKnob_Locked_SFX
+      guid: 4ad27e1b1ec5fd4586e372e41dfa386d
+      id: 2093557302
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_DoorKnob_Locked_SFX
+        ObjectType: 3
+        guid: 4ad27e1b1ec5fd4586e372e41dfa386d
+      Path: Events\Default Work Unit\Interactables\Interactables_DoorKnob_Locked_SFX
+      maxAttenuation: 50
+      maxDuration: 1.338676
+      minDuration: 1.192624
+    - name: Interactables_DoorKnob_Turn_SFX
+      guid: bac1a7db1c1b2f4ca99bc37cd0afa8b4
+      id: 3956755313
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_DoorKnob_Turn_SFX
+        ObjectType: 3
+        guid: bac1a7db1c1b2f4ca99bc37cd0afa8b4
+      Path: Events\Default Work Unit\Interactables\Interactables_DoorKnob_Turn_SFX
+      maxAttenuation: 50
+      maxDuration: 2.516225
+      minDuration: 1.65178
+    - name: Interactables_Item_PickUp_SFX
+      guid: af34e9e5b13d7c45abdc776518b16d7a
+      id: 2692010243
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Item_PickUp_SFX
+        ObjectType: 3
+        guid: af34e9e5b13d7c45abdc776518b16d7a
+      Path: Events\Default Work Unit\Interactables\Interactables_Item_PickUp_SFX
+      maxAttenuation: 50
+      maxDuration: 1.958903
+      minDuration: 1.612452
+    - name: Interactables_Props_Paper_Knock_SFX
+      guid: 96067c9c0510fb4798e6d17c615b44c8
+      id: 407699691
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Props_Paper_Knock_SFX
+        ObjectType: 3
+        guid: 96067c9c0510fb4798e6d17c615b44c8
+      Path: Events\Default Work Unit\Interactables\Interactables_Props_Paper_Knock_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Props_Plastic_Knock_SFX
+      guid: 248c877956588247bf05e8063680901a
+      id: 2928611993
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Props_Plastic_Knock_SFX
+        ObjectType: 3
+        guid: 248c877956588247bf05e8063680901a
+      Path: Events\Default Work Unit\Interactables\Interactables_Props_Plastic_Knock_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Props_Wood_Knock_SFX
+      guid: ba3424de530e45449402b0258b78f1f1
+      id: 533027802
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Props_Wood_Knock_SFX
+        ObjectType: 3
+        guid: ba3424de530e45449402b0258b78f1f1
+      Path: Events\Default Work Unit\Interactables\Interactables_Props_Wood_Knock_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Radio_LoadBattery_SFX
+      guid: df6a82c3730f1144a6036a4234a4a044
+      id: 2277424760
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Radio_LoadBattery_SFX
+        ObjectType: 3
+        guid: df6a82c3730f1144a6036a4234a4a044
+      Path: Events\Default Work Unit\Interactables\Interactables_Radio_LoadBattery_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Radio_Off_SFX
+      guid: e226d7464058a543af909f0f2152c2e2
+      id: 3850172824
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Radio_Off_SFX
+        ObjectType: 3
+        guid: e226d7464058a543af909f0f2152c2e2
+      Path: Events\Default Work Unit\Interactables\Interactables_Radio_Off_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_Radio_On_SFX
+      guid: a1c5c96f1878ec429921f5b9a9045656
+      id: 1527555318
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_Radio_On_SFX
+        ObjectType: 3
+        guid: a1c5c96f1878ec429921f5b9a9045656
+      Path: Events\Default Work Unit\Interactables\Interactables_Radio_On_SFX
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: Interactables_RitualItem_Place_SFX
+      guid: 2098d69c866110448ceaf044d82508a2
+      id: 2285621249
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Interactables
+        ObjectType: 4
+        guid: 75ea953799fa00489306f97c0ec09ab8
+      - ElementName: Interactables_RitualItem_Place_SFX
+        ObjectType: 3
+        guid: 2098d69c866110448ceaf044d82508a2
+      Path: Events\Default Work Unit\Interactables\Interactables_RitualItem_Place_SFX
+      maxAttenuation: 50
+      maxDuration: 1.262681
+      minDuration: 0.971011
+    - name: MainTheme_CaptiveRoom_Music
+      guid: 366c3f269c1a384aa0e834b01a2cb15c
+      id: 1984261451
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_CaptiveRoom_Music
+        ObjectType: 3
+        guid: 366c3f269c1a384aa0e834b01a2cb15c
+      Path: Events\Default Work Unit\Music\MainTheme_CaptiveRoom_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_Clean_Music
+      guid: d064c5ac0795a948a5825c5fd7f8023b
+      id: 2785197379
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Clean_Music
+        ObjectType: 3
+        guid: d064c5ac0795a948a5825c5fd7f8023b
+      Path: Events\Default Work Unit\Music\MainTheme_Clean_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_MainMenu_Music
+      guid: cbe7958931b338479f1b5191072e17ea
+      id: 1760109510
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_MainMenu_Music
+        ObjectType: 3
+        guid: cbe7958931b338479f1b5191072e17ea
+      Path: Events\Default Work Unit\Music\MainTheme_MainMenu_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_Mp3Player_Music
+      guid: 599f3b7d5846504c8f62568754359f56
+      id: 3125118917
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Mp3Player_Music
+        ObjectType: 3
+        guid: 599f3b7d5846504c8f62568754359f56
+      Path: Events\Default Work Unit\Music\MainTheme_Mp3Player_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_MusicBox_Music
+      guid: a953d6c6410c484292aa196fc6cf481c
+      id: 3431163152
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_MusicBox_Music
+        ObjectType: 3
+        guid: a953d6c6410c484292aa196fc6cf481c
+      Path: Events\Default Work Unit\Music\MainTheme_MusicBox_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_Radio_Music
+      guid: 8fbda618a6d5734aa4bc5a01d9ca96f1
+      id: 3047709917
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Radio_Music
+        ObjectType: 3
+        guid: 8fbda618a6d5734aa4bc5a01d9ca96f1
+      Path: Events\Default Work Unit\Music\MainTheme_Radio_Music
+      maxAttenuation: 50
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_Vinyl_Music
+      guid: 934413a48fca8c4093c0df8eca48f9b6
+      id: 895548668
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Vinyl_Music
+        ObjectType: 3
+        guid: 934413a48fca8c4093c0df8eca48f9b6
+      Path: Events\Default Work Unit\Music\MainTheme_Vinyl_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Music
+      guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      Path: Events\Default Work Unit\Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Ghost
+      guid: 0edb4e6f6975c040b7284cba4dfefa34
+      id: 3625484602
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Ghost
+        ObjectType: 4
+        guid: 0edb4e6f6975c040b7284cba4dfefa34
+      Path: Events\Default Work Unit\Player_Ghost
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Player_Human
+      guid: cbb903c034389c4bb27e246cbfc640e2
+      id: 324183528
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Player_Human
+        ObjectType: 4
+        guid: cbb903c034389c4bb27e246cbfc640e2
+      Path: Events\Default Work Unit\Player_Human
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI
+      guid: 3424fef527ae21459115c49885d66731
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      Path: Events\Default Work Unit\UI
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_MainMenu
+      guid: 94fe59875b33c34386faed6780e71754
+      id: 1563513432
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_MainMenu
+        ObjectType: 4
+        guid: 94fe59875b33c34386faed6780e71754
+      Path: Events\Default Work Unit\UI\UI_MainMenu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_MainMenu_Back_SFX
+      guid: b9db0a3eb87fcd4fa79b943e2adc984a
+      id: 1878868390
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_MainMenu
+        ObjectType: 4
+        guid: 94fe59875b33c34386faed6780e71754
+      - ElementName: UI_MainMenu_Back_SFX
+        ObjectType: 3
+        guid: b9db0a3eb87fcd4fa79b943e2adc984a
+      Path: Events\Default Work Unit\UI\UI_MainMenu\UI_MainMenu_Back_SFX
+      maxAttenuation: 0
+      maxDuration: 0.911225
+      minDuration: 0.911225
+    - name: UI_MainMenu_Hover_SFX
+      guid: 45787812d066fc44bac45e0f1efde8d1
+      id: 1739481043
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_MainMenu
+        ObjectType: 4
+        guid: 94fe59875b33c34386faed6780e71754
+      - ElementName: UI_MainMenu_Hover_SFX
+        ObjectType: 3
+        guid: 45787812d066fc44bac45e0f1efde8d1
+      Path: Events\Default Work Unit\UI\UI_MainMenu\UI_MainMenu_Hover_SFX
+      maxAttenuation: 0
+      maxDuration: 0.176777
+      minDuration: 0.176777
+    - name: UI_MainMenu_Select_SFX
+      guid: b1c5b21a2c184b4fb92dec390367de53
+      id: 2655605491
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_MainMenu
+        ObjectType: 4
+        guid: 94fe59875b33c34386faed6780e71754
+      - ElementName: UI_MainMenu_Select_SFX
+        ObjectType: 3
+        guid: b1c5b21a2c184b4fb92dec390367de53
+      Path: Events\Default Work Unit\UI\UI_MainMenu\UI_MainMenu_Select_SFX
+      maxAttenuation: 0
+      maxDuration: 0.906305
+      minDuration: 0.906305
+    - name: UI_PauseMenu
+      guid: faaed8820902f44593e7225ce10483c9
+      id: 3225448965
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_PauseMenu
+        ObjectType: 4
+        guid: faaed8820902f44593e7225ce10483c9
+      Path: Events\Default Work Unit\UI\UI_PauseMenu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_PauseMenu_Back_SFX
+      guid: d2779cddcb1a374bb1bded1bb7dd5ff4
+      id: 339589609
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_PauseMenu
+        ObjectType: 4
+        guid: faaed8820902f44593e7225ce10483c9
+      - ElementName: UI_PauseMenu_Back_SFX
+        ObjectType: 3
+        guid: d2779cddcb1a374bb1bded1bb7dd5ff4
+      Path: Events\Default Work Unit\UI\UI_PauseMenu\UI_PauseMenu_Back_SFX
+      maxAttenuation: 0
+      maxDuration: 0.911225
+      minDuration: 0.911225
+    - name: UI_PauseMenu_Hover_SFX
+      guid: 89def310a43fcd4db0d1e6dfe0247f5b
+      id: 888967270
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_PauseMenu
+        ObjectType: 4
+        guid: faaed8820902f44593e7225ce10483c9
+      - ElementName: UI_PauseMenu_Hover_SFX
+        ObjectType: 3
+        guid: 89def310a43fcd4db0d1e6dfe0247f5b
+      Path: Events\Default Work Unit\UI\UI_PauseMenu\UI_PauseMenu_Hover_SFX
+      maxAttenuation: 0
+      maxDuration: 0.176777
+      minDuration: 0.176777
+    - name: UI_PauseMenu_Select_SFX
+      guid: 17eb863f1b06d74dbfadef8572317a3e
+      id: 3525691172
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_PauseMenu
+        ObjectType: 4
+        guid: faaed8820902f44593e7225ce10483c9
+      - ElementName: UI_PauseMenu_Select_SFX
+        ObjectType: 3
+        guid: 17eb863f1b06d74dbfadef8572317a3e
+      Path: Events\Default Work Unit\UI\UI_PauseMenu\UI_PauseMenu_Select_SFX
+      maxAttenuation: 0
+      maxDuration: 0.906305
+      minDuration: 0.906305
+    - name: UI_Phone
+      guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      id: 3088547098
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      Path: Events\Default Work Unit\UI\UI_Phone
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_Phone_Back_SFX
+      guid: b518271fa0d0ef49a4535fd639aeec38
+      id: 3926846400
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Back_SFX
+        ObjectType: 3
+        guid: b518271fa0d0ef49a4535fd639aeec38
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Back_SFX
+      maxAttenuation: 0
+      maxDuration: 0.644333
+      minDuration: 0.644333
+    - name: UI_Phone_Battery_Charging_SFX
+      guid: 8986ccc0bf36f2429e62e23ed6590ff0
+      id: 114474406
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Battery_Charging_SFX
+        ObjectType: 3
+        guid: 8986ccc0bf36f2429e62e23ed6590ff0
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Battery_Charging_SFX
+      maxAttenuation: 0
+      maxDuration: 1.001479
+      minDuration: 1.001479
+    - name: UI_Phone_Chat_KeyPress_SFX
+      guid: e4b9f2e5cf3f02459634b08a2dda0f01
+      id: 1317742736
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Chat_KeyPress_SFX
+        ObjectType: 3
+        guid: e4b9f2e5cf3f02459634b08a2dda0f01
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Chat_KeyPress_SFX
+      maxAttenuation: 0
+      maxDuration: 0.125
+      minDuration: 0.125
+    - name: UI_Phone_Chat_NewMsg_SFX
+      guid: 849e551d5c3f9847be66df0b1181b192
+      id: 3194211407
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Chat_NewMsg_SFX
+        ObjectType: 3
+        guid: 849e551d5c3f9847be66df0b1181b192
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Chat_NewMsg_SFX
+      maxAttenuation: 0
+      maxDuration: 0.875
+      minDuration: 0.875
+    - name: UI_Phone_Clock_Countdown_SFX
+      guid: 12830173fac8824ba78b1e1bc6f06b95
+      id: 3697111313
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Clock_Countdown_SFX
+        ObjectType: 3
+        guid: 12830173fac8824ba78b1e1bc6f06b95
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Clock_Countdown_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_Phone_Clock_TimeOut_SFX
+      guid: 1d235374a1eda440bc73b65bd6221e1e
+      id: 3148389897
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Clock_TimeOut_SFX
+        ObjectType: 3
+        guid: 1d235374a1eda440bc73b65bd6221e1e
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Clock_TimeOut_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_Phone_Flashlight_Off_SFX
+      guid: ba4c0fdb0f71184da777bef8ced90f4b
+      id: 4176230457
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Flashlight_Off_SFX
+        ObjectType: 3
+        guid: ba4c0fdb0f71184da777bef8ced90f4b
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Flashlight_Off_SFX
+      maxAttenuation: 0
+      maxDuration: 1
+      minDuration: 1
+    - name: UI_Phone_Flashlight_On_SFX
+      guid: 162914d7340b0147a9a3b51fb83f4c71
+      id: 3125232829
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Flashlight_On_SFX
+        ObjectType: 3
+        guid: 162914d7340b0147a9a3b51fb83f4c71
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Flashlight_On_SFX
+      maxAttenuation: 0
+      maxDuration: 1
+      minDuration: 1
+    - name: UI_Phone_Heartrate_SFX
+      guid: 62b55549c0a5324684d4d12129297b90
+      id: 989956689
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Heartrate_SFX
+        ObjectType: 3
+        guid: 62b55549c0a5324684d4d12129297b90
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Heartrate_SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI_Phone_NightVisCam_Off_SFX
+      guid: cd182d6a9ff151419a8d2be133e3be64
+      id: 4004273608
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_NightVisCam_Off_SFX
+        ObjectType: 3
+        guid: cd182d6a9ff151419a8d2be133e3be64
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_NightVisCam_Off_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_Phone_NightVisCam_On_SFX
+      guid: 9e348f4cef0ebc4383cded8a3c0f7038
+      id: 3782538950
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_NightVisCam_On_SFX
+        ObjectType: 3
+        guid: 9e348f4cef0ebc4383cded8a3c0f7038
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_NightVisCam_On_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_Phone_Select_SFX
+      guid: ecf1c2de2417fa48af19564f48303b54
+      id: 3976441809
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Select_SFX
+        ObjectType: 3
+        guid: ecf1c2de2417fa48af19564f48303b54
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Select_SFX
+      maxAttenuation: 0
+      maxDuration: 0.640854
+      minDuration: 0.640854
+    - name: UI_Phone_Shop_Buy_SFX
+      guid: 1dae917e96f1034a9dce1289dcc5aa4a
+      id: 3054070572
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Shop_Buy_SFX
+        ObjectType: 3
+        guid: 1dae917e96f1034a9dce1289dcc5aa4a
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Shop_Buy_SFX
+      maxAttenuation: 0
+      maxDuration: 1
+      minDuration: 1
+    - name: UI_Phone_ThermalCam_Off_SFX
+      guid: 85f05a4d36cbfd4a8ea9c4dec319b123
+      id: 2237522929
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_ThermalCam_Off_SFX
+        ObjectType: 3
+        guid: 85f05a4d36cbfd4a8ea9c4dec319b123
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_ThermalCam_Off_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: UI_Phone_ThermalCam_On_SFX
+      guid: 59d2b7c7ed3ed847bec74989906abc93
+      id: 3514201493
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_ThermalCam_On_SFX
+        ObjectType: 3
+        guid: 59d2b7c7ed3ed847bec74989906abc93
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_ThermalCam_On_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Game Parameters
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: fc448a8f25af694da9c6a376b533e307
+    ParentPath: Game Parameters\Default Work Unit
+    guid: fc448a8f25af694da9c6a376b533e307
+    GuidInternal: 
+    m_lastTime: -8585394080394775808
+    List:
+    - name: Ghost_HP_RTPC
+      guid: d6fa1a7711322b46b70ef2c802b4ed21
+      id: 103152097
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fc448a8f25af694da9c6a376b533e307
+      - ElementName: Ghost_HP_RTPC
+        ObjectType: 13
+        guid: d6fa1a7711322b46b70ef2c802b4ed21
+      Path: Game Parameters\Default Work Unit\Ghost_HP_RTPC
+    - name: Human_FearLvl_RTPC
+      guid: 5abda31e95564743b131915b0ff3ae40
+      id: 4121312937
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fc448a8f25af694da9c6a376b533e307
+      - ElementName: Human_FearLvl_RTPC
+        ObjectType: 13
+        guid: 5abda31e95564743b131915b0ff3ae40
+      Path: Game Parameters\Default Work Unit\Human_FearLvl_RTPC
+    - name: Human_InsanityLvl_RTPC
+      guid: 01420bb934ca70488b203a325e443b12
+      id: 3085356816
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: fc448a8f25af694da9c6a376b533e307
+      - ElementName: Human_InsanityLvl_RTPC
+        ObjectType: 13
+        guid: 01420bb934ca70488b203a325e443b12
+      Path: Game Parameters\Default Work Unit\Human_InsanityLvl_RTPC
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: States
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 08d7eed4b0080149aed4ba7597093c80
+    ParentPath: States\Default Work Unit
+    guid: 08d7eed4b0080149aed4ba7597093c80
+    GuidInternal: 
+    m_lastTime: -8585393194254775808
+    List:
+    - name: FS_Mode_StG
+      guid: c64946b71d41f942ad44cf198079eb68
+      id: 4285829135
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      - ElementName: FS_Mode_StG
+        ObjectType: 9
+        guid: c64946b71d41f942ad44cf198079eb68
+      Path: States\Default Work Unit\SFX_StG\FS_Mode_StG
+      values:
+      - name: None
+        guid: 8ba7a11bfc439f4b8c280a3e9e3997a3
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: FS_Mode_StG
+          ObjectType: 9
+          guid: c64946b71d41f942ad44cf198079eb68
+        - ElementName: None
+          ObjectType: 8
+          guid: 8ba7a11bfc439f4b8c280a3e9e3997a3
+      - name: Run
+        guid: 78dcfce4ce7667468ddc00814886d38e
+        id: 712161704
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: FS_Mode_StG
+          ObjectType: 9
+          guid: c64946b71d41f942ad44cf198079eb68
+        - ElementName: Run
+          ObjectType: 8
+          guid: 78dcfce4ce7667468ddc00814886d38e
+      - name: Walk
+        guid: d262188e4eb933478004ee92106a513f
+        id: 2108779966
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: FS_Mode_StG
+          ObjectType: 9
+          guid: c64946b71d41f942ad44cf198079eb68
+        - ElementName: Walk
+          ObjectType: 8
+          guid: d262188e4eb933478004ee92106a513f
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Menu_StG
+      guid: b78a40cfcc7f6349b5603257d805fe9c
+      id: 3069844381
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      - ElementName: Menu_StG
+        ObjectType: 9
+        guid: b78a40cfcc7f6349b5603257d805fe9c
+      Path: States\Default Work Unit\SFX_StG\Menu_StG
+      values:
+      - name: MainMenu
+        guid: 8497338362ca034480f8129c2d577fe6
+        id: 3604647259
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Menu_StG
+          ObjectType: 9
+          guid: b78a40cfcc7f6349b5603257d805fe9c
+        - ElementName: MainMenu
+          ObjectType: 8
+          guid: 8497338362ca034480f8129c2d577fe6
+      - name: None
+        guid: 5bf8f6f92efe9441a2b2e91c156b238a
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Menu_StG
+          ObjectType: 9
+          guid: b78a40cfcc7f6349b5603257d805fe9c
+        - ElementName: None
+          ObjectType: 8
+          guid: 5bf8f6f92efe9441a2b2e91c156b238a
+      - name: PauseMenu
+        guid: 5727e275bbcb7746aab7bbdf008ca997
+        id: 3494343696
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Menu_StG
+          ObjectType: 9
+          guid: b78a40cfcc7f6349b5603257d805fe9c
+        - ElementName: PauseMenu
+          ObjectType: 8
+          guid: 5727e275bbcb7746aab7bbdf008ca997
+      - name: PhoneApps
+        guid: 744b2f7cc72e974dbc22326fe88186cd
+        id: 954490919
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Menu_StG
+          ObjectType: 9
+          guid: b78a40cfcc7f6349b5603257d805fe9c
+        - ElementName: PhoneApps
+          ObjectType: 8
+          guid: 744b2f7cc72e974dbc22326fe88186cd
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Music_StG
+      guid: ff416b180d875346a21ace6d1b54f70c
+      id: 2599484127
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: Music_StG
+        ObjectType: 4
+        guid: ff416b180d875346a21ace6d1b54f70c
+      Path: States\Default Work Unit\Music_StG
+      values: []
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Overlay_CaptiveRoom_StG
+      guid: e3e11bf182923944a1d3667470d9477e
+      id: 4061963624
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      - ElementName: Overlay_CaptiveRoom_StG
+        ObjectType: 9
+        guid: e3e11bf182923944a1d3667470d9477e
+      Path: States\Default Work Unit\SFX_StG\Overlay_CaptiveRoom_StG
+      values:
+      - name: Inside
+        guid: 647fdf7a01cede4489835157acb478d9
+        id: 3553349781
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Overlay_CaptiveRoom_StG
+          ObjectType: 9
+          guid: e3e11bf182923944a1d3667470d9477e
+        - ElementName: Inside
+          ObjectType: 8
+          guid: 647fdf7a01cede4489835157acb478d9
+      - name: None
+        guid: a1fa6adf430ab6428b784243cfa3841d
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Overlay_CaptiveRoom_StG
+          ObjectType: 9
+          guid: e3e11bf182923944a1d3667470d9477e
+        - ElementName: None
+          ObjectType: 8
+          guid: a1fa6adf430ab6428b784243cfa3841d
+      - name: Outside
+        guid: dfb19b047b640a419fa77e13f8f4ff68
+        id: 438105790
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Overlay_CaptiveRoom_StG
+          ObjectType: 9
+          guid: e3e11bf182923944a1d3667470d9477e
+        - ElementName: Outside
+          ObjectType: 8
+          guid: dfb19b047b640a419fa77e13f8f4ff68
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Phone_StG
+      guid: a4a08b2980d378428852c3913d616f1d
+      id: 3365443430
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      - ElementName: Phone_StG
+        ObjectType: 9
+        guid: a4a08b2980d378428852c3913d616f1d
+      Path: States\Default Work Unit\SFX_StG\Phone_StG
+      values:
+      - name: None
+        guid: 2d9dc049e9968e4c8e3856baf00ac496
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Phone_StG
+          ObjectType: 9
+          guid: a4a08b2980d378428852c3913d616f1d
+        - ElementName: None
+          ObjectType: 8
+          guid: 2d9dc049e9968e4c8e3856baf00ac496
+      - name: Off
+        guid: e9f9bc20f18bf0469da81f6c8f5c516e
+        id: 930712164
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Phone_StG
+          ObjectType: 9
+          guid: a4a08b2980d378428852c3913d616f1d
+        - ElementName: Off
+          ObjectType: 8
+          guid: e9f9bc20f18bf0469da81f6c8f5c516e
+      - name: On
+        guid: 9ef99aa3f068dd4f990167a281d65b59
+        id: 1651971902
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: Phone_StG
+          ObjectType: 9
+          guid: a4a08b2980d378428852c3913d616f1d
+        - ElementName: On
+          ObjectType: 8
+          guid: 9ef99aa3f068dd4f990167a281d65b59
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: PlayerTeam_StG
+      guid: d604caa412eb7141b2375d14eac29f7f
+      id: 3028787448
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      - ElementName: PlayerTeam_StG
+        ObjectType: 9
+        guid: d604caa412eb7141b2375d14eac29f7f
+      Path: States\Default Work Unit\SFX_StG\PlayerTeam_StG
+      values:
+      - name: Ghost
+        guid: b9e8daedbe084e4faa1ce20c860105df
+        id: 4023194814
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: PlayerTeam_StG
+          ObjectType: 9
+          guid: d604caa412eb7141b2375d14eac29f7f
+        - ElementName: Ghost
+          ObjectType: 8
+          guid: b9e8daedbe084e4faa1ce20c860105df
+      - name: Human
+        guid: adf99709b83e6f47b04f821d20fce02b
+        id: 3887404748
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: PlayerTeam_StG
+          ObjectType: 9
+          guid: d604caa412eb7141b2375d14eac29f7f
+        - ElementName: Human
+          ObjectType: 8
+          guid: adf99709b83e6f47b04f821d20fce02b
+      - name: None
+        guid: 86994674f61a9b48a49e3c13ce4d705e
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 08d7eed4b0080149aed4ba7597093c80
+        - ElementName: SFX_StG
+          ObjectType: 4
+          guid: f9b084f1252aea4a9bc3d16ea352639e
+        - ElementName: PlayerTeam_StG
+          ObjectType: 9
+          guid: d604caa412eb7141b2375d14eac29f7f
+        - ElementName: None
+          ObjectType: 8
+          guid: 86994674f61a9b48a49e3c13ce4d705e
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: SFX_StG
+      guid: f9b084f1252aea4a9bc3d16ea352639e
+      id: 126880823
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 08d7eed4b0080149aed4ba7597093c80
+      - ElementName: SFX_StG
+        ObjectType: 4
+        guid: f9b084f1252aea4a9bc3d16ea352639e
+      Path: States\Default Work Unit\SFX_StG
+      values: []
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Switches
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: d6723370f872d741ad15ab83155e713e
+    ParentPath: Switches\Default Work Unit
+    guid: d6723370f872d741ad15ab83155e713e
+    GuidInternal: 
+    m_lastTime: -8585393194254775808
+    List:
+    - name: Event_GameOver_PlayerTeam_Ghost_SwG
+      guid: 76f6cd245089514f84240ad1ff192f1b
+      id: 1064915793
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      - ElementName: Event_GameOver_PlayerTeam_Ghost_SwG
+        ObjectType: 11
+        guid: 76f6cd245089514f84240ad1ff192f1b
+      Path: Switches\Default Work Unit\SFX_SwG\Event_GameOver_PlayerTeam_Ghost_SwG
+      values:
+      - name: Ghost_Lose
+        guid: b9bf18bd464fa54cb7cb0b427300dcc1
+        id: 1056038870
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Event_GameOver_PlayerTeam_Ghost_SwG
+          ObjectType: 11
+          guid: 76f6cd245089514f84240ad1ff192f1b
+        - ElementName: Ghost_Lose
+          ObjectType: 10
+          guid: b9bf18bd464fa54cb7cb0b427300dcc1
+      - name: Ghost_Win
+        guid: 5d402ab0de32314ea6deaa57294c1c7e
+        id: 3587592173
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Event_GameOver_PlayerTeam_Ghost_SwG
+          ObjectType: 11
+          guid: 76f6cd245089514f84240ad1ff192f1b
+        - ElementName: Ghost_Win
+          ObjectType: 10
+          guid: 5d402ab0de32314ea6deaa57294c1c7e
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Event_GameOver_PlayerTeam_Human_SwG
+      guid: 5ec9f82d9b1c94439659b167845e10ca
+      id: 1211260719
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      - ElementName: Event_GameOver_PlayerTeam_Human_SwG
+        ObjectType: 11
+        guid: 5ec9f82d9b1c94439659b167845e10ca
+      Path: Switches\Default Work Unit\SFX_SwG\Event_GameOver_PlayerTeam_Human_SwG
+      values:
+      - name: Human_Lose
+        guid: 271dd200e89f774093dfaa0223cf3ff0
+        id: 3344543172
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Event_GameOver_PlayerTeam_Human_SwG
+          ObjectType: 11
+          guid: 5ec9f82d9b1c94439659b167845e10ca
+        - ElementName: Human_Lose
+          ObjectType: 10
+          guid: 271dd200e89f774093dfaa0223cf3ff0
+      - name: Human_Win
+        guid: affab3fc8ad83c4f93220a364bc1657e
+        id: 2258400447
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Event_GameOver_PlayerTeam_Human_SwG
+          ObjectType: 11
+          guid: 5ec9f82d9b1c94439659b167845e10ca
+        - ElementName: Human_Win
+          ObjectType: 10
+          guid: affab3fc8ad83c4f93220a364bc1657e
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: FS_Material_SwG
+      guid: 8b14847fde38314cba35a67d37b6e1b1
+      id: 2366409488
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      - ElementName: FS_Material_SwG
+        ObjectType: 11
+        guid: 8b14847fde38314cba35a67d37b6e1b1
+      Path: Switches\Default Work Unit\SFX_SwG\FS_Material_SwG
+      values:
+      - name: Concrete
+        guid: 8db3fa3d4d8bb640bf2dbb8304f69232
+        id: 841620460
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: FS_Material_SwG
+          ObjectType: 11
+          guid: 8b14847fde38314cba35a67d37b6e1b1
+        - ElementName: Concrete
+          ObjectType: 10
+          guid: 8db3fa3d4d8bb640bf2dbb8304f69232
+      - name: Grass
+        guid: 6abededce2764242a5ec87250a0d302c
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: FS_Material_SwG
+          ObjectType: 11
+          guid: 8b14847fde38314cba35a67d37b6e1b1
+        - ElementName: Grass
+          ObjectType: 10
+          guid: 6abededce2764242a5ec87250a0d302c
+      - name: Tile
+        guid: 2557c25e04c4a148be9bce431acd3eee
+        id: 2637588553
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: FS_Material_SwG
+          ObjectType: 11
+          guid: 8b14847fde38314cba35a67d37b6e1b1
+        - ElementName: Tile
+          ObjectType: 10
+          guid: 2557c25e04c4a148be9bce431acd3eee
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Human_FearLvl_SwG
+      guid: dc3dc60cb446fb48b286d9b079f8a853
+      id: 3899745141
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      - ElementName: Human_FearLvl_SwG
+        ObjectType: 11
+        guid: dc3dc60cb446fb48b286d9b079f8a853
+      Path: Switches\Default Work Unit\SFX_SwG\Human_FearLvl_SwG
+      values:
+      - name: High
+        guid: 5362dc039b966c4fbef2a1546318ef38
+        id: 3550808449
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Human_FearLvl_SwG
+          ObjectType: 11
+          guid: dc3dc60cb446fb48b286d9b079f8a853
+        - ElementName: High
+          ObjectType: 10
+          guid: 5362dc039b966c4fbef2a1546318ef38
+      - name: Low
+        guid: fbec31e992e6c349b7db7ef46964592d
+        id: 545371365
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Human_FearLvl_SwG
+          ObjectType: 11
+          guid: dc3dc60cb446fb48b286d9b079f8a853
+        - ElementName: Low
+          ObjectType: 10
+          guid: fbec31e992e6c349b7db7ef46964592d
+      - name: Medium
+        guid: e8390e679fa03a4b84ecb02a5433f9f1
+        id: 2849147824
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Human_FearLvl_SwG
+          ObjectType: 11
+          guid: dc3dc60cb446fb48b286d9b079f8a853
+        - ElementName: Medium
+          ObjectType: 10
+          guid: e8390e679fa03a4b84ecb02a5433f9f1
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Human_Gender_SwG
+      guid: c2c64e04d7094b4cb41c6c51e83280bf
+      id: 2888069828
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      - ElementName: Human_Gender_SwG
+        ObjectType: 11
+        guid: c2c64e04d7094b4cb41c6c51e83280bf
+      Path: Switches\Default Work Unit\SFX_SwG\Human_Gender_SwG
+      values:
+      - name: Female
+        guid: 6f4719eb288e5b49927f3b97c72ee7cf
+        id: 2204441813
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Human_Gender_SwG
+          ObjectType: 11
+          guid: c2c64e04d7094b4cb41c6c51e83280bf
+        - ElementName: Female
+          ObjectType: 10
+          guid: 6f4719eb288e5b49927f3b97c72ee7cf
+      - name: Male
+        guid: 10c3ad6f4dffc24ab563b13d995854c4
+        id: 3111576190
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: d6723370f872d741ad15ab83155e713e
+        - ElementName: SFX_SwG
+          ObjectType: 4
+          guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+        - ElementName: Human_Gender_SwG
+          ObjectType: 11
+          guid: c2c64e04d7094b4cb41c6c51e83280bf
+        - ElementName: Male
+          ObjectType: 10
+          guid: 10c3ad6f4dffc24ab563b13d995854c4
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Music_SwG
+      guid: 7da2ebfe69660246b372a9e4d5c59daa
+      id: 2649816854
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: Music_SwG
+        ObjectType: 4
+        guid: 7da2ebfe69660246b372a9e4d5c59daa
+      Path: Switches\Default Work Unit\Music_SwG
+      values: []
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: SFX_SwG
+      guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      id: 177213806
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d6723370f872d741ad15ab83155e713e
+      - ElementName: SFX_SwG
+        ObjectType: 4
+        guid: 51a758ac738f3842b5eba0b0a1b6e1d0
+      Path: Switches\Default Work Unit\SFX_SwG
+      values: []
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    PathAndIcons:
+    - ElementName: Triggers
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 93439ffcdd0b484892a6665e6375f719
+    ParentPath: Triggers\Default Work Unit
+    guid: 93439ffcdd0b484892a6665e6375f719
+    GuidInternal: 
+    m_lastTime: -8585394080374775808
+    List: []
+  ExpandedFileSystemItemIds: 
+  ExpandedWaapiItemIds: 
+  AutoSyncSelection: 1
+  autoPopulateEnabled: 1
+  currentDataSource: 0
+  CurrentPluginConfig: 
