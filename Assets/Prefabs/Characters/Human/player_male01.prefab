@@ -3562,6 +3562,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshOwner: {fileID: 5678942669568780787}
+  MyEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ca53105a8dace0b4c837efc37bf06a84, type: 2}
 --- !u!114 &7966242606632975667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4737,6 +4741,7 @@ GameObject:
   - component: {fileID: 471487825}
   - component: {fileID: 471487826}
   - component: {fileID: 471487831}
+  - component: {fileID: 76530091184199815}
   m_Layer: 7
   m_Name: Free Camera
   m_TagString: MainCamera
@@ -5185,6 +5190,23 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!114 &76530091184199815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477736984881128221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea35657143f0074dabfcec656d8384c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HumanFearLevelRTPC:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 51bec976352a96b45806fedbe5468884, type: 2}
+  humanInstance: {fileID: 5480958302001815595}
 --- !u!1 &6627069428823737101
 GameObject:
   m_ObjectHideFlags: 0

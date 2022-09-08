@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
     float footstepTimer = 0;
     public float GetCurrentOffset => isRunning ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
+    
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -305,8 +307,11 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
     } // end HandleMovement
 
+    
+    // Use this for initialization..
+    
     void HandleFootstep(){ // Footstep Audio function
-        if(!characterController.isGrounded) return; // if we are not grounded, return / prevent from proceed
+    /*    if(!characterController.isGrounded) return; // if we are not grounded, return / prevent from proceed
         if(movementDir == Vector3.zero) return; // same as we haven't received any input
 
         footstepTimer -= Time.deltaTime; // always deduct footstep timer value > 0
@@ -374,6 +379,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
             footstepTimer = GetCurrentOffset; // set footstepTimer > 0, to prevent audio playing instantly
         } // end if timer <= 0
+        */
     } // end HandleFootstep
 
     void HandleJumping(){
