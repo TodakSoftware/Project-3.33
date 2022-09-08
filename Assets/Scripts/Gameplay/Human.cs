@@ -51,6 +51,9 @@ public class Human : MonoBehaviourPunCallbacks
     [SerializeField] float nearbyDetectDistance = 2f;
     public LayerMask ghostLayermask;
 
+    [Header("Wwise Related")]
+    public SoundRTPC fearLevelRTPC;
+
     void Awake(){
         playerController = GetComponent<PlayerController>();
     }
@@ -250,6 +253,7 @@ public class Human : MonoBehaviourPunCallbacks
     private IEnumerator UpdateHeartRate(){
         while(fearLevel >= 0 && fearLevel <= 100){ 
             UpdateHeartUI();
+            fearLevelRTPC.PlayFearLevelSound();
             yield return new WaitForSeconds(1f);
         }
         EndHeartRate();

@@ -6,7 +6,7 @@ using Photon.Pun;
 public class MeshEvent : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject meshOwner;
-    public AK.Wwise.Event MyEvent;
+    public AK.Wwise.Event wwsieFootstepEvent;
 
     void Start(){
         if(meshOwner == null){
@@ -35,6 +35,7 @@ public class MeshEvent : MonoBehaviourPunCallbacks
     }
 
     public void PlayFootstepSound() {
-        MyEvent.Post(gameObject);
+        wwsieFootstepEvent.Post(meshOwner);
+        print("Footstep played");
     }
 }

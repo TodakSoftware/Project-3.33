@@ -7,20 +7,26 @@ using UnityEngine.UI;
 
 public class UI_ButtonSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-    public string hoverClipName = "UI_Btn_Hover";
-    public string clickClipName = "UI_Btn_Click";
+    public AK.Wwise.Event clickEventName = new AK.Wwise.Event();
+    public AK.Wwise.Event hoverEventName = new AK.Wwise.Event();
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(AudioManager.instance != null){
-            AudioManager.instance.PlaySound(clickClipName);
-        }
-    }
+        if(GetComponent<Button>().interactable){
+            if(clickEventName.Name != "")
+                AkSoundEngine.PostEvent(clickEventName.Name, gameObject);
+            else
+                print("clickEventName variable is empty" + this.gameObject);
+        }// end if interactable
+    }// end OnPointerEnter
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(AudioManager.instance != null){
-            AudioManager.instance.PlaySound(hoverClipName);
-        }
-    }
+        if(GetComponent<Button>().interactable){
+            if(hoverEventName.Name != "")
+                AkSoundEngine.PostEvent(hoverEventName.Name, gameObject);
+            else
+                print("hoverEventName variable is empty on " + this.gameObject);
+        } // end if interactable
+    } // end OnPointerEnter
 }
