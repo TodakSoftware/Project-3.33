@@ -53,6 +53,7 @@ public class Human : MonoBehaviourPunCallbacks
 
     [Header("Wwise Related")]
     public SoundRTPC fearLevelRTPC;
+    public AK.Wwise.State overlayCaptureRoomState;
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -339,8 +340,13 @@ public class Human : MonoBehaviourPunCallbacks
             playerController.canMove = false; // false to make player move to new position
             transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
             
+            // Transfer into random captured room
             GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
 
+            // Here
+             PlayCapturedWwiseSound();
+
+            // Update networking properties
             playerController.anim.SetBool("Captured", false);
             capturedAnimRun = false;
 
@@ -355,6 +361,11 @@ public class Human : MonoBehaviourPunCallbacks
             
         }
     } // end Captured
+
+    void PlayCapturedWwiseSound(){
+         overlayCaptureRoomState.SetValue();
+         print("Wwise called works");
+    }
 
     void DelayCapturedPopup()
     {

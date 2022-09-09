@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 50603a59ea44ef4498372b353427f746
     GuidInternal: 
-    m_lastTime: -8585394080374775808
+    m_lastTime: -8585393792373843684
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 968e2c1ed69f814d8423728b5c3ba4a7
     GuidInternal: 
-    m_lastTime: -8585393194254775808
+    m_lastTime: -8585388979517974825
     List:
     - name: Amb_Map00_Rev_Horror_Aux
       guid: 36abb6b2d33985449ec6a427d683b7c7
@@ -474,7 +474,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e31678139a258b418967ac916cea6d51
     GuidInternal: 
-    m_lastTime: -8585393194254775808
+    m_lastTime: -8585392906248447145
     List:
     - name: Amb_Map00
       guid: ab5cb8c0463121418fadc8f45330c448
@@ -654,7 +654,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: d57e113e7e6ad848aaf0de33dc86c086
     GuidInternal: 
-    m_lastTime: -8585393194254775808
+    m_lastTime: -8585388986046864890
     List:
     - name: Amb_Map00
       guid: 7ec3e78fd694d041a98221138fe0a3e2
@@ -739,7 +739,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 8cec3826f050034eadb9f8152a725c0b
       Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Bathroom_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0.689622
       minDuration: 0.492368
     - name: Amb_Map01_Outdoors_SFX
@@ -786,11 +786,11 @@ MonoBehaviour:
         guid: 708e6ff34018e24d8e194503a05c450e
       Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Outdoors_Yard_SFX
       maxAttenuation: 0
-      maxDuration: 9.721943
-      minDuration: 6.556465
-    - name: Amb_Map01_SchoolBell_Ringing_SFX
-      guid: 6a52d4c7e9339f45bf7f2b42fb22f93a
-      id: 2981078140
+      maxDuration: -1
+      minDuration: -1
+    - name: Amb_Map01_SchoolBell_Ringing_Off_SFX
+      guid: bb490b85578deb46b1f527a98cd9d913
+      id: 2246675286
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -804,11 +804,34 @@ MonoBehaviour:
       - ElementName: Amb_Map01
         ObjectType: 4
         guid: 4ce6d20c522f9447b9ddf6f452b4bec7
-      - ElementName: Amb_Map01_SchoolBell_Ringing_SFX
+      - ElementName: Amb_Map01_SchoolBell_Ringing_Off_SFX
+        ObjectType: 3
+        guid: bb490b85578deb46b1f527a98cd9d913
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_SchoolBell_Ringing_Off_SFX
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Amb_Map01_SchoolBell_Ringing_On_SFX
+      guid: 6a52d4c7e9339f45bf7f2b42fb22f93a
+      id: 2264275748
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Ambience
+        ObjectType: 4
+        guid: cb9553ec84101a489fc2768fb5a74833
+      - ElementName: Amb_Map01
+        ObjectType: 4
+        guid: 4ce6d20c522f9447b9ddf6f452b4bec7
+      - ElementName: Amb_Map01_SchoolBell_Ringing_On_SFX
         ObjectType: 3
         guid: 6a52d4c7e9339f45bf7f2b42fb22f93a
-      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_SchoolBell_Ringing_SFX
-      maxAttenuation: 0
+      Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_SchoolBell_Ringing_On_SFX
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
     - name: Amb_Map01_Striplight_Off_SFX
@@ -831,7 +854,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6c98ab41ecbd7a46b21d5d9b19577057
       Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Striplight_Off_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0.477884
       minDuration: 0.234553
     - name: Amb_Map01_Striplight_On_SFX
@@ -854,7 +877,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 73c681d6cbffa3418a200704627e29d6
       Path: Events\Default Work Unit\Ambience\Amb_Map01\Amb_Map01_Striplight_On_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: -1
       minDuration: -1
     - name: Ambience
@@ -892,7 +915,7 @@ MonoBehaviour:
         guid: 05b66e7157e67b4a8e564bbac4efd7b4
       Path: Events\Default Work Unit\Events\Event_GameOver_PlayerTeam_Ghost_SFX
       maxAttenuation: 0
-      maxDuration: 0
+      maxDuration: 6.620937
       minDuration: 0
     - name: Event_GameOver_PlayerTeam_Human_SFX
       guid: c50e29c8ec8c9448983f91ba72058bd2
@@ -912,7 +935,7 @@ MonoBehaviour:
         guid: c50e29c8ec8c9448983f91ba72058bd2
       Path: Events\Default Work Unit\Events\Event_GameOver_PlayerTeam_Human_SFX
       maxAttenuation: 0
-      maxDuration: 0
+      maxDuration: 5.567523
       minDuration: 0
     - name: Event_Human_Captured_SFX
       guid: 43db2ca324704941a2b50256e11744ef
@@ -932,8 +955,8 @@ MonoBehaviour:
         guid: 43db2ca324704941a2b50256e11744ef
       Path: Events\Default Work Unit\Events\Event_Human_Captured_SFX
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 4.475411
+      minDuration: 4.475411
     - name: Event_Spawn_Ghost_SFX
       guid: 86434916ba02184badf02c8b5a0384ab
       id: 990149659
@@ -1239,8 +1262,8 @@ MonoBehaviour:
         guid: df34a49f76c36449a1cfc8988b8beaab
       Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Jumpscare01_SFX
       maxAttenuation: 50
-      maxDuration: 5.147812
-      minDuration: 3.622062
+      maxDuration: 5.778224
+      minDuration: 3.226891
     - name: Ghost_Pocong_Jumpscare02_SFX
       guid: 92e20d28e2b38f47b748393c6be28b15
       id: 1134793206
@@ -1262,8 +1285,8 @@ MonoBehaviour:
         guid: 92e20d28e2b38f47b748393c6be28b15
       Path: Events\Default Work Unit\Player_Ghost\Ghost_Pocong\Ghost_Pocong_Jumpscare02_SFX
       maxAttenuation: 50
-      maxDuration: 5.147812
-      minDuration: 3.622062
+      maxDuration: 5.778224
+      minDuration: 3.226891
     - name: Ghost_Pocong_Spawn_SFX
       guid: f3fe76cf527f9744a49b6275c4854885
       id: 2017936093
@@ -1365,8 +1388,8 @@ MonoBehaviour:
         guid: da43adc35ed5904f9016cc5da400f1d1
       Path: Events\Default Work Unit\Player_Human\Human_Struggle_SFX
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 5.789825
+      minDuration: 4.979101
     - name: Interactables
       guid: 75ea953799fa00489306f97c0ec09ab8
       id: 181270742
@@ -1422,8 +1445,8 @@ MonoBehaviour:
         guid: d9f022992dc5d24cb475738d336c9706
       Path: Events\Default Work Unit\Interactables\Interactables_ChargingStation_PlugIn_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.252463
+      minDuration: 2.006716
     - name: Interactables_Door_Close_SFX
       guid: 1bd1318593f3464fa24a238de7b6d1a3
       id: 2859918952
@@ -1562,8 +1585,8 @@ MonoBehaviour:
         guid: 96067c9c0510fb4798e6d17c615b44c8
       Path: Events\Default Work Unit\Interactables\Interactables_Props_Paper_Knock_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.754604
+      minDuration: 1.161359
     - name: Interactables_Props_Plastic_Knock_SFX
       guid: 248c877956588247bf05e8063680901a
       id: 2928611993
@@ -1602,8 +1625,8 @@ MonoBehaviour:
         guid: ba3424de530e45449402b0258b78f1f1
       Path: Events\Default Work Unit\Interactables\Interactables_Props_Wood_Knock_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.754604
+      minDuration: 1.161359
     - name: Interactables_Radio_LoadBattery_SFX
       guid: df6a82c3730f1144a6036a4234a4a044
       id: 2277424760
@@ -1622,8 +1645,8 @@ MonoBehaviour:
         guid: df6a82c3730f1144a6036a4234a4a044
       Path: Events\Default Work Unit\Interactables\Interactables_Radio_LoadBattery_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.493255
+      minDuration: 0.43944
     - name: Interactables_Radio_Off_SFX
       guid: e226d7464058a543af909f0f2152c2e2
       id: 3850172824
@@ -1642,8 +1665,8 @@ MonoBehaviour:
         guid: e226d7464058a543af909f0f2152c2e2
       Path: Events\Default Work Unit\Interactables\Interactables_Radio_Off_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.452208
+      minDuration: 0.402871
     - name: Interactables_Radio_On_SFX
       guid: a1c5c96f1878ec429921f5b9a9045656
       id: 1527555318
@@ -1662,8 +1685,8 @@ MonoBehaviour:
         guid: a1c5c96f1878ec429921f5b9a9045656
       Path: Events\Default Work Unit\Interactables\Interactables_Radio_On_SFX
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Interactables_RitualItem_Place_SFX
       guid: 2098d69c866110448ceaf044d82508a2
       id: 2285621249
@@ -1684,9 +1707,9 @@ MonoBehaviour:
       maxAttenuation: 50
       maxDuration: 1.262681
       minDuration: 0.971011
-    - name: MainTheme_CaptiveRoom_Music
-      guid: 366c3f269c1a384aa0e834b01a2cb15c
-      id: 1984261451
+    - name: MainTheme_CaptiveRoom_Off_Music
+      guid: 6a57aa5466d5d448a92305723f1bdf4d
+      id: 1784660657
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1697,16 +1720,36 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_CaptiveRoom_Music
+      - ElementName: MainTheme_CaptiveRoom_Off_Music
+        ObjectType: 3
+        guid: 6a57aa5466d5d448a92305723f1bdf4d
+      Path: Events\Default Work Unit\Music\MainTheme_CaptiveRoom_Off_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_CaptiveRoom_On_Music
+      guid: 366c3f269c1a384aa0e834b01a2cb15c
+      id: 4050777901
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_CaptiveRoom_On_Music
         ObjectType: 3
         guid: 366c3f269c1a384aa0e834b01a2cb15c
-      Path: Events\Default Work Unit\Music\MainTheme_CaptiveRoom_Music
+      Path: Events\Default Work Unit\Music\MainTheme_CaptiveRoom_On_Music
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: MainTheme_Clean_Music
+      maxDuration: -1
+      minDuration: -1
+    - name: MainTheme_Clean_On_Music
       guid: d064c5ac0795a948a5825c5fd7f8023b
-      id: 2785197379
+      id: 333660325
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1717,16 +1760,16 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_Clean_Music
+      - ElementName: MainTheme_Clean_On_Music
         ObjectType: 3
         guid: d064c5ac0795a948a5825c5fd7f8023b
-      Path: Events\Default Work Unit\Music\MainTheme_Clean_Music
+      Path: Events\Default Work Unit\Music\MainTheme_Clean_On_Music
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: MainTheme_MainMenu_Music
-      guid: cbe7958931b338479f1b5191072e17ea
-      id: 1760109510
+    - name: MainTheme_MainMenu_Off_Music
+      guid: 006221ba71dfc345b97ee9e50a29112a
+      id: 647689648
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1737,16 +1780,36 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_MainMenu_Music
+      - ElementName: MainTheme_MainMenu_Off_Music
+        ObjectType: 3
+        guid: 006221ba71dfc345b97ee9e50a29112a
+      Path: Events\Default Work Unit\Music\MainTheme_MainMenu_Off_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_MainMenu_On_Music
+      guid: cbe7958931b338479f1b5191072e17ea
+      id: 2214483270
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_MainMenu_On_Music
         ObjectType: 3
         guid: cbe7958931b338479f1b5191072e17ea
-      Path: Events\Default Work Unit\Music\MainTheme_MainMenu_Music
+      Path: Events\Default Work Unit\Music\MainTheme_MainMenu_On_Music
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: MainTheme_Mp3Player_Music
-      guid: 599f3b7d5846504c8f62568754359f56
-      id: 3125118917
+      maxDuration: -1
+      minDuration: -1
+    - name: MainTheme_Mp3Player_Off_Music
+      guid: bc410d972d72fc46a3981a72ae4a69f5
+      id: 1657076683
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1757,16 +1820,36 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_Mp3Player_Music
+      - ElementName: MainTheme_Mp3Player_Off_Music
+        ObjectType: 3
+        guid: bc410d972d72fc46a3981a72ae4a69f5
+      Path: Events\Default Work Unit\Music\MainTheme_Mp3Player_Off_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: MainTheme_Mp3Player_On_Music
+      guid: 599f3b7d5846504c8f62568754359f56
+      id: 3252397215
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Mp3Player_On_Music
         ObjectType: 3
         guid: 599f3b7d5846504c8f62568754359f56
-      Path: Events\Default Work Unit\Music\MainTheme_Mp3Player_Music
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: MainTheme_MusicBox_Music
-      guid: a953d6c6410c484292aa196fc6cf481c
-      id: 3431163152
+      Path: Events\Default Work Unit\Music\MainTheme_Mp3Player_On_Music
+      maxAttenuation: 50
+      maxDuration: -1
+      minDuration: -1
+    - name: MainTheme_MusicBox_Off_Music
+      guid: 82ab4c7064d29f45ba0024bef251c059
+      id: 2356895610
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1777,13 +1860,33 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_MusicBox_Music
+      - ElementName: MainTheme_MusicBox_Off_Music
         ObjectType: 3
-        guid: a953d6c6410c484292aa196fc6cf481c
-      Path: Events\Default Work Unit\Music\MainTheme_MusicBox_Music
+        guid: 82ab4c7064d29f45ba0024bef251c059
+      Path: Events\Default Work Unit\Music\MainTheme_MusicBox_Off_Music
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: MainTheme_MusicBox_On_Music
+      guid: a953d6c6410c484292aa196fc6cf481c
+      id: 4272936216
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_MusicBox_On_Music
+        ObjectType: 3
+        guid: a953d6c6410c484292aa196fc6cf481c
+      Path: Events\Default Work Unit\Music\MainTheme_MusicBox_On_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: MainTheme_Radio_Music
       guid: 8fbda618a6d5734aa4bc5a01d9ca96f1
       id: 3047709917
@@ -1802,11 +1905,11 @@ MonoBehaviour:
         guid: 8fbda618a6d5734aa4bc5a01d9ca96f1
       Path: Events\Default Work Unit\Music\MainTheme_Radio_Music
       maxAttenuation: 50
-      maxDuration: 0
-      minDuration: 0
-    - name: MainTheme_Vinyl_Music
-      guid: 934413a48fca8c4093c0df8eca48f9b6
-      id: 895548668
+      maxDuration: -1
+      minDuration: -1
+    - name: MainTheme_Vinyl_Off_Music
+      guid: 977d49aee4c34a43a2eff8c3b0149e84
+      id: 2560872742
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -1817,13 +1920,33 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
         guid: cc14bbe1afedcf4dae1093e11a5a44cd
-      - ElementName: MainTheme_Vinyl_Music
+      - ElementName: MainTheme_Vinyl_Off_Music
         ObjectType: 3
-        guid: 934413a48fca8c4093c0df8eca48f9b6
-      Path: Events\Default Work Unit\Music\MainTheme_Vinyl_Music
+        guid: 977d49aee4c34a43a2eff8c3b0149e84
+      Path: Events\Default Work Unit\Music\MainTheme_Vinyl_Off_Music
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: MainTheme_Vinyl_On_Music
+      guid: 934413a48fca8c4093c0df8eca48f9b6
+      id: 3969582644
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: Music
+        ObjectType: 4
+        guid: cc14bbe1afedcf4dae1093e11a5a44cd
+      - ElementName: MainTheme_Vinyl_On_Music
+        ObjectType: 3
+        guid: 934413a48fca8c4093c0df8eca48f9b6
+      Path: Events\Default Work Unit\Music\MainTheme_Vinyl_On_Music
+      maxAttenuation: 0
+      maxDuration: 132.5
+      minDuration: 132.5
     - name: Music
       guid: cc14bbe1afedcf4dae1093e11a5a44cd
       id: 3991942870
@@ -1933,8 +2056,8 @@ MonoBehaviour:
         guid: b9db0a3eb87fcd4fa79b943e2adc984a
       Path: Events\Default Work Unit\UI\UI_MainMenu\UI_MainMenu_Back_SFX
       maxAttenuation: 0
-      maxDuration: 0.911225
-      minDuration: 0.911225
+      maxDuration: 0.981976
+      minDuration: 0.874841
     - name: UI_MainMenu_Hover_SFX
       guid: 45787812d066fc44bac45e0f1efde8d1
       id: 1739481043
@@ -1956,8 +2079,8 @@ MonoBehaviour:
         guid: 45787812d066fc44bac45e0f1efde8d1
       Path: Events\Default Work Unit\UI\UI_MainMenu\UI_MainMenu_Hover_SFX
       maxAttenuation: 0
-      maxDuration: 0.176777
-      minDuration: 0.176777
+      maxDuration: 0.552566
+      minDuration: 0.390723
     - name: UI_MainMenu_Select_SFX
       guid: b1c5b21a2c184b4fb92dec390367de53
       id: 2655605491
@@ -2133,9 +2256,32 @@ MonoBehaviour:
         ObjectType: 3
         guid: 8986ccc0bf36f2429e62e23ed6590ff0
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Battery_Charging_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 1.001479
       minDuration: 1.001479
+    - name: UI_Phone_Battery_Low_SFX
+      guid: be8e6ffd0d527743b0153548933b92e5
+      id: 1640344447
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: d57e113e7e6ad848aaf0de33dc86c086
+      - ElementName: UI
+        ObjectType: 4
+        guid: 3424fef527ae21459115c49885d66731
+      - ElementName: UI_Phone
+        ObjectType: 4
+        guid: 7791c7b1e1b1104aa9cc45d97d32997b
+      - ElementName: UI_Phone_Battery_Low_SFX
+        ObjectType: 3
+        guid: be8e6ffd0d527743b0153548933b92e5
+      Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Battery_Low_SFX
+      maxAttenuation: 50
+      maxDuration: 0.999896
+      minDuration: 0.999896
     - name: UI_Phone_Chat_KeyPress_SFX
       guid: e4b9f2e5cf3f02459634b08a2dda0f01
       id: 1317742736
@@ -2156,9 +2302,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: e4b9f2e5cf3f02459634b08a2dda0f01
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Chat_KeyPress_SFX
-      maxAttenuation: 0
-      maxDuration: 0.125
-      minDuration: 0.125
+      maxAttenuation: 50
+      maxDuration: 0.140308
+      minDuration: 0.111362
     - name: UI_Phone_Chat_NewMsg_SFX
       guid: 849e551d5c3f9847be66df0b1181b192
       id: 3194211407
@@ -2179,7 +2325,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 849e551d5c3f9847be66df0b1181b192
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Chat_NewMsg_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0.875
       minDuration: 0.875
     - name: UI_Phone_Clock_Countdown_SFX
@@ -2202,7 +2348,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 12830173fac8824ba78b1e1bc6f06b95
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Clock_Countdown_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
     - name: UI_Phone_Clock_TimeOut_SFX
@@ -2225,7 +2371,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 1d235374a1eda440bc73b65bd6221e1e
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Clock_TimeOut_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 0
       minDuration: 0
     - name: UI_Phone_Flashlight_Off_SFX
@@ -2248,7 +2394,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: ba4c0fdb0f71184da777bef8ced90f4b
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Flashlight_Off_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 1
       minDuration: 1
     - name: UI_Phone_Flashlight_On_SFX
@@ -2271,7 +2417,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 162914d7340b0147a9a3b51fb83f4c71
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Flashlight_On_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: 1
       minDuration: 1
     - name: UI_Phone_Heartrate_SFX
@@ -2294,7 +2440,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 62b55549c0a5324684d4d12129297b90
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_Heartrate_SFX
-      maxAttenuation: 0
+      maxAttenuation: 50
       maxDuration: -1
       minDuration: -1
     - name: UI_Phone_NightVisCam_Off_SFX
@@ -2317,9 +2463,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: cd182d6a9ff151419a8d2be133e3be64
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_NightVisCam_Off_SFX
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 50
+      maxDuration: 0.5
+      minDuration: 0.5
     - name: UI_Phone_NightVisCam_On_SFX
       guid: 9e348f4cef0ebc4383cded8a3c0f7038
       id: 3782538950
@@ -2340,9 +2486,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 9e348f4cef0ebc4383cded8a3c0f7038
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_NightVisCam_On_SFX
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 50
+      maxDuration: -1
+      minDuration: -1
     - name: UI_Phone_Select_SFX
       guid: ecf1c2de2417fa48af19564f48303b54
       id: 3976441809
@@ -2409,9 +2555,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 85f05a4d36cbfd4a8ea9c4dec319b123
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_ThermalCam_Off_SFX
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 50
+      maxDuration: 0.625
+      minDuration: 0.625
     - name: UI_Phone_ThermalCam_On_SFX
       guid: 59d2b7c7ed3ed847bec74989906abc93
       id: 3514201493
@@ -2432,9 +2578,9 @@ MonoBehaviour:
         ObjectType: 3
         guid: 59d2b7c7ed3ed847bec74989906abc93
       Path: Events\Default Work Unit\UI\UI_Phone\UI_Phone_ThermalCam_On_SFX
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxAttenuation: 50
+      maxDuration: 1.125
+      minDuration: 1.125
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -2447,7 +2593,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: fc448a8f25af694da9c6a376b533e307
     GuidInternal: 
-    m_lastTime: -8585394080394775808
+    m_lastTime: -8585388936659165455
     List:
     - name: Ghost_HP_RTPC
       guid: d6fa1a7711322b46b70ef2c802b4ed21
@@ -2503,7 +2649,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 08d7eed4b0080149aed4ba7597093c80
     GuidInternal: 
-    m_lastTime: -8585393194254775808
+    m_lastTime: -8585392906248557150
     List:
     - name: FS_Mode_StG
       guid: c64946b71d41f942ad44cf198079eb68
@@ -2962,7 +3108,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: d6723370f872d741ad15ab83155e713e
     GuidInternal: 
-    m_lastTime: -8585393194254775808
+    m_lastTime: -8585389648703451327
     List:
     - name: Event_GameOver_PlayerTeam_Ghost_SwG
       guid: 76f6cd245089514f84240ad1ff192f1b
@@ -3345,10 +3491,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 93439ffcdd0b484892a6665e6375f719
     GuidInternal: 
-    m_lastTime: -8585394080374775808
+    m_lastTime: -8585393792374495011
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000012000000130000001400000015000000190000001c0000001d0000001f00000020000000220000002300000028000000290000002a0000002b0000002c0000002d0000002e000000490000004e0000004f0000005000000055000000560000005700000058000000590000008800000094000000970000009a0000009e000000a2000000ab000000ac000000ad000000ae000000af000000
+  ExpandedWaapiItemIds: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000012000000130000001400000015000000190000001c0000001d0000001f000000200000002200000023000000280000002a0000002b0000002c0000002d0000002e000000490000004e0000004f0000005000000055000000560000005700000058000000590000008800000094000000970000009a0000009e000000a2000000ab000000ac000000ad000000ae000000af000000
   AutoSyncSelection: 1
   autoPopulateEnabled: 1
   currentDataSource: 0
