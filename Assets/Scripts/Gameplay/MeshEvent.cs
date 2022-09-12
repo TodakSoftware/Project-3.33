@@ -6,6 +6,7 @@ using Photon.Pun;
 public class MeshEvent : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject meshOwner;
+    public AK.Wwise.Event wwsieFootstepEvent;
 
     void Start(){
         if(meshOwner == null){
@@ -31,5 +32,10 @@ public class MeshEvent : MonoBehaviourPunCallbacks
 
     public void NotifyGhostCaughtColliderEnd(){
         meshOwner.GetComponent<Ghost>().DisableCaughtCollider();
+    }
+
+    public void PlayFootstepSound() {
+        wwsieFootstepEvent.Post(meshOwner);
+        print("Footstep played");
     }
 }

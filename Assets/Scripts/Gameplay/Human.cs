@@ -51,6 +51,10 @@ public class Human : MonoBehaviourPunCallbacks
     [SerializeField] float nearbyDetectDistance = 2f;
     public LayerMask ghostLayermask;
 
+    [Header("Wwise Related")]
+    public SoundRTPC fearLevelRTPC;
+    public AK.Wwise.State overlayCaptureRoomState;
+
     void Awake(){
         playerController = GetComponent<PlayerController>();
     }
@@ -250,6 +254,7 @@ public class Human : MonoBehaviourPunCallbacks
     private IEnumerator UpdateHeartRate(){
         while(fearLevel >= 0 && fearLevel <= 100){ 
             UpdateHeartUI();
+            fearLevelRTPC.PlayFearLevelSound();
             yield return new WaitForSeconds(1f);
         }
         EndHeartRate();
@@ -335,8 +340,13 @@ public class Human : MonoBehaviourPunCallbacks
             playerController.canMove = false; // false to make player move to new position
             transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
             
+            // Transfer into random captured room
             GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
 
+            // Here
+             PlayCapturedWwiseSound();
+
+            // Update networking properties
             playerController.anim.SetBool("Captured", false);
             capturedAnimRun = false;
 
@@ -351,6 +361,11 @@ public class Human : MonoBehaviourPunCallbacks
             
         }
     } // end Captured
+
+    void PlayCapturedWwiseSound(){
+         overlayCaptureRoomState.SetValue();
+         print("Wwise called works");
+    }
 
     void DelayCapturedPopup()
     {
