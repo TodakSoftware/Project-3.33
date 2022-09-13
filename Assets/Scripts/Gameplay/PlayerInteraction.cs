@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     Interactable interactable;
     
     [Header("Hold Related")]
-    float holdDur, holdTimer;
+    public float holdDur, holdTimer;
     public Image holdSliderImage;
     [Header("Highlight Related")]
     public bool isHighlighting;
@@ -30,25 +30,59 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
 
                 if(interactable.GetComponent<Interactable>().buttonType == E_ButtonType.HOLD){
                     if(Input.GetButton("Interact")){
-                        if(holdTimer < holdDur){
-                            holdTimer += Time.deltaTime;
-                            holdSliderImage.fillAmount = holdTimer / holdDur;
-                        }else{
-                            holdTimer = holdDur;
-                            // Added to inventory
-                            if(interactable.onInteract != null){
-                                photonView.RPC("AddRitualToInventory", RpcTarget.All);
-                                photonView.RPC("PutRitualOnAltar", RpcTarget.All);
+                        //wall charger related
+                        if(interactable != null && interactable.CompareTag("WallCharger")){
+                            
+                            print("WallCharger WORKS!!!!");
+                            //holdDur = interactable.GetComponent<WallCharger>().currentCharge/10f;
+                            holdDur = interactable.GetComponent<WallCharger>().keyhold;
+                            //if(holdTimer < (interactable.GetComponent<WallCharger>().currentCharge/10f)){
+                            if(holdTimer < holdDur){
+                                //holdTimer += Time.deltaTime;
+                                holdTimer += Time.deltaTime;
+                                
+                                holdSliderImage.fillAmount = holdTimer / holdDur;
+                                //holdSliderImage.fillAmount = holdDur / holdTimer;
+                                
+                                //WallCharger Decrease
+                                //interactable.GetComponent<WallCharger>().AdjustCurrentCharger(-0.5f);
+                                interactable.GetComponent<WallCharger>().AdjustCurrentCharger(interactable.GetComponent<WallCharger>().currentCharge/(holdDur*holdDur));
 
-                                interactable.onInteract.Invoke();
-
-                                //UI_Simple_Notification_Spawner.instance.CreateNotification();
-
-                                ClearInteraction();
                             }else{
-                                print("Cannot proceed");
-                            } // end if ritualitem != null
-                        }
+                                //holdTimer = interactable.GetComponent<WallCharger>().currentCharge/10f;
+                                holdTimer = holdDur;
+                                if (interactable.GetComponent<WallCharger>().currentCharge == 0.0f){
+
+                                    interactable.onInteract.Invoke();
+                                    ClearInteraction();
+                                }else{
+                                    print("Cannot Proceed");
+                                }
+                            }
+
+                        }else{//macam biasa
+
+                            if(holdTimer < holdDur){
+                                holdTimer += Time.deltaTime;
+                                holdSliderImage.fillAmount = holdTimer / holdDur;
+                            }else{
+                                holdTimer = holdDur;
+                                // Added to inventory
+                                if(interactable.onInteract != null){
+                                    photonView.RPC("AddRitualToInventory", RpcTarget.All);
+                                    photonView.RPC("PutRitualOnAltar", RpcTarget.All);
+
+                                    interactable.onInteract.Invoke();
+
+                                    //UI_Simple_Notification_Spawner.instance.CreateNotification();
+
+                                    ClearInteraction();
+                                }else{
+                                    print("Cannot proceed");
+                                } // end if ritualitem != null
+                            }// end holdtimer < holddur
+
+                        }//end mcm biasa
                     }else{
                         holdTimer = 0;
                         holdSliderImage.fillAmount = 0;

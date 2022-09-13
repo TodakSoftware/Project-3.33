@@ -6,37 +6,48 @@ using Photon.Pun;
 using Photon.Realtime;
 using DG.Tweening;
 
-
 public class WallCharger : MonoBehaviour
 {
-    Interactable interactable;
-    //[SerializeField] GameObject interactableScript;
-    
+    Interactable interact;
+
+    public float wallChargerPercent = 100f;
+    public float currentCharge;
+
     public bool isBatteryAvailable;
-    public int wallChargerPercent;
+
+    public float keyhold;
+   
     
-    void Awake()
+    
+    private void Awake()
     {
-       //interactable = interactableScript.GetComponent<Interactable>();
+       interact = GetComponent<Interactable>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        wallChargerPercent = Random.Range(0, 100);
+        keyhold = interact.GetComponent<Interactable>().holdDuration;
+
+        //wallChargerPercent = Random.Range(50, 100);
+        currentCharge = wallChargerPercent;
+        isBatteryAvailable = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    public void AdjustCurrentCharger (float amount)
     {
-         if(Input.GetKeyDown(KeyCode.F)){
-            ChargePhone();
-        }
+       currentCharge -= amount;
+       
+       Debug.Log(currentCharge + "% Left");
+
+       if(currentCharge < 0.1f)
+       {
+        currentCharge = 0.0f;
+        Debug.Log("Charger Empty");
+       }
     }
 
-    public void ChargePhone()
-    {
-        wallChargerPercent -= 10;
-        Debug.Log(wallChargerPercent + " Left");
-    }
+    
 }

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+
     public UnityEvent onInteract;
     public E_InteractType interactType;
     public E_ButtonType buttonType;
