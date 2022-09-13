@@ -14,38 +14,29 @@ public class WallCharger : MonoBehaviour
     public float currentCharge;
 
     public bool isBatteryAvailable;
-
-    public float keyhold;
-   
-    
-    
-    private void Awake()
-    {
-       interact = GetComponent<Interactable>();
-    }
+    public Vector2 maxChargeValue = new Vector2 (50, 100);
 
     // Start is called before the first frame update
     void Start()
     {
-        keyhold = interact.GetComponent<Interactable>().holdDuration;
-
-        //wallChargerPercent = Random.Range(50, 100);
-        currentCharge = wallChargerPercent;
+        wallChargerPercent = Random.Range(maxChargeValue.x, maxChargeValue.y);
+        currentCharge =  Mathf.Round(wallChargerPercent);
+        GetComponent<Interactable>().holdDuration = Mathf.Round(wallChargerPercent/10f);
         isBatteryAvailable = true;
     }
 
-    
-
     public void AdjustCurrentCharger (float amount)
     {
-       currentCharge -= amount;
        
        Debug.Log(currentCharge + "% Left");
 
-       if(currentCharge < 0.1f)
+       if(currentCharge <= 0.5f) //ngak tau sih ngapa jadi begini
        {
         currentCharge = 0.0f;
         Debug.Log("Charger Empty");
+        isBatteryAvailable = false;
+       } else {
+        currentCharge -= amount;
        }
     }
 

@@ -30,35 +30,29 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
 
                 if(interactable.GetComponent<Interactable>().buttonType == E_ButtonType.HOLD){
                     if(Input.GetButton("Interact")){
+
                         //wall charger related
                         if(interactable != null && interactable.CompareTag("WallCharger")){
                             
                             print("WallCharger WORKS!!!!");
-                            //holdDur = interactable.GetComponent<WallCharger>().currentCharge/10f;
-                            holdDur = interactable.GetComponent<WallCharger>().keyhold;
-                            //if(holdTimer < (interactable.GetComponent<WallCharger>().currentCharge/10f)){
-                            if(holdTimer < holdDur){
-                                //holdTimer += Time.deltaTime;
+                            holdDur = interactable.GetComponent<WallCharger>().wallChargerPercent/10f;
+                            
+                            interactable.GetComponent<Interactable>().holdDuration = holdDur;
+                            
+                            if(holdTimer < holdDur && interactable.GetComponent<WallCharger>().isBatteryAvailable){
+                                
                                 holdTimer += Time.deltaTime;
                                 
                                 holdSliderImage.fillAmount = holdTimer / holdDur;
-                                //holdSliderImage.fillAmount = holdDur / holdTimer;
-                                
-                                //WallCharger Decrease
-                                //interactable.GetComponent<WallCharger>().AdjustCurrentCharger(-0.5f);
+                            
                                 interactable.GetComponent<WallCharger>().AdjustCurrentCharger(interactable.GetComponent<WallCharger>().currentCharge/(holdDur*holdDur));
 
                             }else{
-                                //holdTimer = interactable.GetComponent<WallCharger>().currentCharge/10f;
                                 holdTimer = holdDur;
-                                if (interactable.GetComponent<WallCharger>().currentCharge == 0.0f){
-
-                                    interactable.onInteract.Invoke();
-                                    ClearInteraction();
-                                }else{
-                                    print("Cannot Proceed");
-                                }
-                            }
+                                ClearInteraction();
+                                print("Tutup UI & Habis Battery");
+                                interactionUI.SetActive(false);
+                            }//wall charger related END
 
                         }else{//macam biasa
 
@@ -158,7 +152,16 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                             if(!interactionUI.activeSelf){
                                 interactionUI.SetActive(true);
                             }
-                            PopupInteractInfo();
+
+                            if(interactable.CompareTag("WallCharger") && !interactable.GetComponent<WallCharger>().isBatteryAvailable){
+                                if(interactionUI.activeSelf){
+                                    interactionUI.SetActive(false);
+                                }
+                            }else{
+                                PopupInteractInfo();
+                            }
+
+                            
 
                             // Altar Interaction start
                             if(interactable.CompareTag("Altar") && GetComponent<PlayerInventory>().ritualItemLists.Count <= 0 && photonView.IsMine){
