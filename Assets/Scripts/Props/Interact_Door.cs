@@ -10,31 +10,38 @@ public class Interact_Door : MonoBehaviourPunCallbacks
     List<GameObject> capturedHumanList = new List<GameObject>();
     public bool openOutward;
     public bool isOpened;
+    bool actionInProgress;
     public bool humanInside;
     // Button Related
     E_ButtonType originalBtnType;
     float originalHoldDuration;
+    public AK.Wwise.Event openSound, closeSound;
 
 
     public void OpenDoor(){
-        if(NetworkManager.instance != null){
-            photonView.RPC("HandleDoor", RpcTarget.AllBuffered);
-        }else{
-            HandleDoor();
+        if(!actionInProgress){
+            if(NetworkManager.instance != null){
+                photonView.RPC("HandleDoor", RpcTarget.AllBuffered);
+            }else{
+                HandleDoor();
+            }
+            actionInProgress = true;
         }
     }
 
     [PunRPC]
     void HandleDoor(){
         if(!isOpened){
-            if(GetComponent<AudioSource>().clip != null){
+            // Play sound
+            openSound.Post(gameObject);
+            /*if(GetComponent<AudioSource>().clip != null){
                 GetComponent<AudioSource>().Play();
-            }
+            }*/
 
             if(!openOutward){
-                transform.DORotateQuaternion(new Quaternion(-0.5f,-0.5f,-0.5f,0.5f), 1f).OnComplete(() => { isOpened = true; } );
+                transform.DORotateQuaternion(new Quaternion(-0.5f,-0.5f,-0.5f,0.5f), 1.5f).OnComplete(() => { isOpened = true; actionInProgress = false; } );
             }else{
-                transform.DORotateQuaternion(new Quaternion(-0.5f,0.5f,0.5f,0.5f), 1f).OnComplete(() => { isOpened = true; } );
+                transform.DORotateQuaternion(new Quaternion(-0.5f,0.5f,0.5f,0.5f), 1.5f).OnComplete(() => { isOpened = true; actionInProgress = false;} );
             }
 
             if(capturedHumanList.Count > 0){
@@ -53,7 +60,8 @@ public class Interact_Door : MonoBehaviourPunCallbacks
                 }
             }
         }else{
-            transform.DORotateQuaternion(new Quaternion(-0.707106829f,0,0,0.707106829f), 1f).OnComplete(() => { isOpened = false; } );
+            closeSound.Post(gameObject);
+            transform.DORotateQuaternion(new Quaternion(-0.707106829f,0,0,0.707106829f), 1.5f).OnComplete(() => { isOpened = false; actionInProgress = false; } );
         }
     }
 

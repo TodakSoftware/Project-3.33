@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         characterController = GetComponent<CharacterController>();
         anim = playerMesh.GetComponent<Animator>();
-        if(footStepAudioSource == null){
-            footStepAudioSource = GetComponent<AudioSource>();
-        }
+        //if(footStepAudioSource == null){
+        //    footStepAudioSource = GetComponent<AudioSource>();
+        //}
 
         StartCoroutine(UpdateDebugText());
     } // end Awake

@@ -7,6 +7,7 @@ public class MeshEvent : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject meshOwner;
     public AK.Wwise.Event wwsieFootstepEvent;
+    public AK.Wwise.Event wwsieGhostAttackEvent;
 
     void Start(){
         if(meshOwner == null){
@@ -36,6 +37,10 @@ public class MeshEvent : MonoBehaviourPunCallbacks
 
     public void PlayFootstepSound() {
         wwsieFootstepEvent.Post(meshOwner);
-        print("Footstep played");
+        //print("Footstep played");
+    }
+
+    public void PlayFGhostAttackSound() {
+        wwsieGhostAttackEvent.Post(meshOwner);
     }
 }
