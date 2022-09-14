@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     int remainingDuration;
     [HideInInspector] public string timerRef;
     public GameObject playerOwned;
+    bool isDebugMode;
     
     // Ingame Related
     int playersInRoom; // Number of players successfully enter the room. For comparing with total of network player list
@@ -56,8 +57,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }else{
             remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
         }
-        
-        
+       
 
     } // end Start
 
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void EndTimer(){
         timeOut = true;
         photonView.RPC("HumanWin", RpcTarget.All, false); //HumanWin(false);
+        
         ResetTimer();
     }
 
@@ -128,6 +129,12 @@ public class GameManager : MonoBehaviourPunCallbacks
                 ghostSpawnedPosition.Add(posValue2);
             }
         }
+
+        if(maxHuman == 1 && maxGhost == 0){
+            isDebugMode = true;
+        }else if(maxHuman == 0 && maxGhost == 1){
+            isDebugMode = true;
+        }
     } // end SetSpawnpoints
 
     [PunRPC]
@@ -149,6 +156,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 gameStart = true;
                 // Start Timer
                 StartCoroutine(UpdateTimer());
+                
                 print("Timer Start!");
             }
         }
@@ -198,12 +206,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 // ---------------------------------------------------- WIN LOSE CONDITION START ----------------------------------------
     [PunRPC]
     public void HumanWin(bool humanWin){
-        gameEnded = true;
-        
-        if(humanWin){ // display all victory UI saying HUMAN WIN
-            UIManager.instance.VictoryUI(true);
-        }else{ // // display all victory UI saying GHOST WIN
-            UIManager.instance.VictoryUI(false);
+        if(!isDebugMode){
+            gameEnded = true;
+
+            if(humanWin){ // display all victory UI saying HUMAN WIN
+                UIManager.instance.VictoryUI(true);
+            }else{ // // display all victory UI saying GHOST WIN
+                UIManager.instance.VictoryUI(false);
+            }
         }
     } // end HumanWin
 
@@ -225,7 +235,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     } // end OnPlayerPropertiesUpdate
 
     public void CheckWinningCondition(){
-        if(gameStart && !gameEnded){
+        if(gameStart && !gameEnded && !isDebugMode){
             // if total human ingame <= 0, Ghost WINS
             if(GetAllPlayersHuman().Count <= 0){
                 HumanWin(false);
