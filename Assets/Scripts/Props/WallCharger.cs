@@ -30,14 +30,19 @@ public class WallCharger : MonoBehaviour
        
        Debug.Log(currentCharge + "% Left");
 
-       if(currentCharge <= 0.5f) //ngak tau sih ngapa jadi begini
+       if(currentCharge < 1f) //ngak tau sih ngapa jadi begini
        {
         currentCharge = 0.0f;
         Debug.Log("Charger Empty");
         isBatteryAvailable = false;
        } else {
-        currentCharge -= amount;
+        currentCharge += amount;
+        
        }
+    }
+
+    public void SetNewHoldDuration(){
+        GetComponent<Interactable>().holdDuration = Mathf.Round(currentCharge/10f); 
     }
 
     

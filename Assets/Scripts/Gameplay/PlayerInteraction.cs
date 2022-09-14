@@ -21,6 +21,7 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     [Header("Hold Related")]
     public float holdDur, holdTimer;
     public Image holdSliderImage;
+
     [Header("Highlight Related")]
     public bool isHighlighting;
 
@@ -34,24 +35,27 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                         //wall charger related
                         if(interactable != null && interactable.CompareTag("WallCharger")){
                             
-                            print("WallCharger WORKS!!!!");
-                            holdDur = interactable.GetComponent<WallCharger>().wallChargerPercent/10f;
-                            
-                            interactable.GetComponent<Interactable>().holdDuration = holdDur;
-                            
-                            if(holdTimer < holdDur && interactable.GetComponent<WallCharger>().isBatteryAvailable){
+                            holdDur = interactable.GetComponent<Interactable>().holdDuration;
+                           
+                            if(holdTimer < holdDur && interactable.GetComponent<WallCharger>().isBatteryAvailable && GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().currentBattery < 103f){
                                 
                                 holdTimer += Time.deltaTime;
                                 
                                 holdSliderImage.fillAmount = holdTimer / holdDur;
                             
-                                interactable.GetComponent<WallCharger>().AdjustCurrentCharger(interactable.GetComponent<WallCharger>().currentCharge/(holdDur*holdDur));
+                                interactable.GetComponent<WallCharger>().AdjustCurrentCharger(-interactable.GetComponent<WallCharger>().currentCharge/100f); //DEDUCT WALL CHARGER BATTERY (holdDur*holdDur)
+                                
+                                
+                                GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().chargeBattery(interactable.GetComponent<WallCharger>().currentCharge/100f); // Charge Battery
+
 
                             }else{
                                 holdTimer = holdDur;
+                                interactable.GetComponent<WallCharger>().SetNewHoldDuration();
                                 ClearInteraction();
                                 print("Tutup UI & Habis Battery");
                                 interactionUI.SetActive(false);
+                                GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().isCharging = false;
                             }//wall charger related END
 
                         }else{//macam biasa
@@ -77,6 +81,11 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                             }// end holdtimer < holddur
 
                         }//end mcm biasa
+                    }else if(Input.GetButtonUp("Interact")){
+                        if(interactable != null && interactable.CompareTag("WallCharger")){
+                             interactable.GetComponent<WallCharger>().SetNewHoldDuration();
+                             print("Reset");
+                        }
                     }else{
                         holdTimer = 0;
                         holdSliderImage.fillAmount = 0;
