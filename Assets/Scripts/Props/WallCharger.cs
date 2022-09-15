@@ -10,11 +10,11 @@ public class WallCharger : MonoBehaviour
 {
     Interactable interact;
 
-    public float wallChargerPercent = 100f;
+    public float wallChargerPercent = 103f;
     public float currentCharge;
 
     public bool isBatteryAvailable;
-    public Vector2 maxChargeValue = new Vector2 (50, 100);
+    public Vector2 maxChargeValue = new Vector2 (50, 103);
 
     // Start is called before the first frame update
     void Start()

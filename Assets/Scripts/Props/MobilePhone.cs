@@ -19,8 +19,10 @@ public class MobilePhone : MonoBehaviour
     public TextMeshProUGUI batteryPercentText;
     public Image imageBatteryCase, imageBatteryBar;
     [SerializeField] Sprite spriteBatCaseOK, spriteBatCaseEmpty;
-    [SerializeField][Range(0f,103f)] float currentBattery;
+    [Range(0f,103f)] public float currentBattery;
     [SerializeField]float drainRateTotal;
+    public bool isCharging;
+    
 
     [Header("Panel Related")]
     public GameObject shopPanel;
@@ -119,7 +121,7 @@ public class MobilePhone : MonoBehaviour
 
 #region Drain Calculation
     void HandleDrainCalculation(){
-        if(!phoneIsDead){
+        if(!phoneIsDead && !isCharging){
             currentBattery -= Time.deltaTime * drainRateTotal;
 
             if(currentBattery < 0){
@@ -130,6 +132,8 @@ public class MobilePhone : MonoBehaviour
                 phoneCanvas.gameObject.SetActive(false); // Close main apps
                 offScreenCanvas.gameObject.SetActive(true); // Open phone off canvas
             }
+        }else{
+            phoneOwner.GetComponent<PlayerAbilities>().TerminateAllApps();
         }
     } // end HandleDrainCalculation()
 
@@ -154,6 +158,19 @@ public class MobilePhone : MonoBehaviour
     } // end drainBattery()
 
 #endregion // End Drain Calculation
+
+#region Phone Charging
+
+    public void chargeBattery (float amount){
+        if(currentBattery < 103f){
+            currentBattery += amount;
+            isCharging = true;
+        }else{
+            isCharging = false;
+        }
+    }
+
+#endregion // End Phone Charging
 
 #region Phone View Related
     public void SwitchPhoneView(bool toLandscape){
