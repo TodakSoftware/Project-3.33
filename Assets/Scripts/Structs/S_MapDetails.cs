@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 // MAPS DETAILS used in SO_Maps

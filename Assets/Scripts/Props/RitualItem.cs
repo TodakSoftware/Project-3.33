@@ -37,12 +37,14 @@ public class RitualItem : MonoBehaviourPunCallbacks
                 materialList.Add(mat.sharedMaterial);
             }
         }
+
+        HighlightItem();
     }// end Start
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.H)){
+        /* if(Input.GetKeyDown(KeyCode.H)){
             HighlightItem();
-        }
+        } */
     }
 
     [PunRPC]
@@ -55,7 +57,7 @@ public class RitualItem : MonoBehaviourPunCallbacks
     public void HighlightItem(){
         if(!isHighlighted){
             foreach(var a in materialList){
-                a.DOVector(Color.white * 12f, "_EmissiveColor", .5f).SetLoops(-1, LoopType.Yoyo);
+                a.DOVector(Color.white * 12f, "_EmissiveColor", .8f).SetLoops(-1, LoopType.Yoyo);
             }
             isHighlighted = true;
             print("Item Highlighted");

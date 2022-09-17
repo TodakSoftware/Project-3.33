@@ -102,6 +102,10 @@ public class Ghost : MonoBehaviourPunCallbacks
             }
         }
 
+        if(Input.GetMouseButtonDown(1)){
+            playerController.anim.SetTrigger("Capture");
+        }
+
         if(attackTimer > 0){
             attackTimer -= Time.deltaTime;
         }else{
@@ -119,8 +123,10 @@ public class Ghost : MonoBehaviourPunCallbacks
                     GetComponent<PlayerUI>().captureTextUI.SetActive(true);
                 }
                 
-                if(Input.GetButtonDown("Interact")){ // press E if human fearlevel 100, caught the 1st on list
+                if(Input.GetButtonDown("Interact") && humanInRadiusList[0] != null && !humanInRadiusList[0].gameObject.GetComponent<Human>().isCaptured){ // press E if human fearlevel 100, caught the 1st on list
                     humanInRadiusList[0].gameObject.GetComponent<Human>().photonView.RPC("Captured", humanInRadiusList[0].gameObject.GetPhotonView().Owner);
+
+                    playerController.anim.SetTrigger("Capture");
 
                     if(GetComponent<PlayerUI>().captureTextUI.activeSelf){
                         print("Close it");
@@ -175,7 +181,7 @@ public class Ghost : MonoBehaviourPunCallbacks
         canAttacking = false;
         attackTimer = attackCooldown;
         photonView.RPC("SetInvisible", RpcTarget.Others, false);
-        playerController.anim.SetTrigger("Attack");
+        playerController.anim.SetTrigger("Attack/Jumpscare");
         yield return new WaitForSeconds(1f);
         isAttacking = false;
 

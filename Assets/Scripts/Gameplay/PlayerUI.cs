@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     public TextMeshProUGUI canvasTimerUI; // just for ghost
     public GameObject captureTextUI; // just for ghost
+    public GameObject staminaDeprecateUI; // Just for human when running out of stamina
 
     void Start(){
         if(canvasTimerUI != null){

@@ -21,9 +21,12 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     [Header("Hold Related")]
     public float holdDur, holdTimer;
     public Image holdSliderImage;
+    [Header("Wwise Related")]
+    public AK.Wwise.Event itemPickupWwiseSound;
+    public AK.Wwise.Event ritualItemPlaceWwiseSound;
 
-    [Header("Highlight Related")]
-    public bool isHighlighting;
+    //[Header("Highlight Related")]
+    //public bool isHighlighting;
 
     void Update(){
         if(enableInteract){
@@ -117,6 +120,7 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     void AddRitualToInventory(){
         if(interactable != null && interactable.CompareTag("RitualItem") && !GetComponent<PlayerInventory>().IsInventoryFull()){
             print("Added ritual item " + interactable.GetComponent<RitualItem>().code);
+            itemPickupWwiseSound.Post(gameObject);
             GetComponent<PlayerInventory>().photonView.RPC("AddRitualItem", RpcTarget.All, interactable.GetComponent<RitualItem>().code);
             interactable.GetComponent<RitualItem>().photonView.RPC("DestroyItem", RpcTarget.All); // Destroy item
         }
@@ -130,6 +134,7 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                     interactable.GetComponent<Altar>().photonView.RPC("addRitualItems", RpcTarget.All, item);
                 }
             } // end foreach
+            ritualItemPlaceWwiseSound.Post(gameObject);
 
             GetComponent<PlayerInventory>().photonView.RPC("ClearRitualItems", RpcTarget.All);
             interactionUI.SetActive(false);
@@ -152,10 +157,10 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                             holdDur = hit.collider.GetComponent<Interactable>().holdDuration;
 
                             // Highlight Ritual Item
-                            if(hit.collider.CompareTag("RitualItem") && hit.collider.GetComponent<RitualItem>() != null && !isHighlighting){
+                            /* if(hit.collider.CompareTag("RitualItem") && hit.collider.GetComponent<RitualItem>() != null && !isHighlighting){
                                 hit.collider.GetComponent<RitualItem>().HighlightItem();
                                 isHighlighting = true;
-                            }
+                            } */
 
                             // UI Related
                             if(!interactionUI.activeSelf){
@@ -183,10 +188,10 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                     } // end interactable null
                 }
             }else{
-                if(isHighlighting && interactable != null){
+                /* if(isHighlighting && interactable != null){
                     interactable.gameObject.GetComponent<RitualItem>().UnhighlightItem();
                     isHighlighting = false;
-                }
+                } */
                 interactable = null;
                 ClearInteraction();
             }

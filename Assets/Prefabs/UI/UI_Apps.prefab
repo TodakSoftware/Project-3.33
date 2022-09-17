@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3997282452847183703}
   - component: {fileID: 8116937190678771172}
   - component: {fileID: 5181551296072901095}
+  - component: {fileID: 8152210307751416979}
   m_Layer: 3
   m_Name: UI_Apps
   m_TagString: Untagged
@@ -286,3 +287,23 @@ MonoBehaviour:
   appIcon: {fileID: 3997282452847183703}
   appName: {fileID: 1137907516090856864}
   phoneRef: {fileID: 0}
+--- !u!114 &8152210307751416979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976126821766854737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d68eff77261804e9b69651b0982362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickEventName:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1566ddfcc08ca254fac0dd49987e1a6b, type: 2}
+  hoverEventName:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}

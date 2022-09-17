@@ -42,6 +42,7 @@ public class Human : MonoBehaviourPunCallbacks
     public int currentDeadTimeout, deadTimeout = 60; // in seconds
     public bool isDead;
     Coroutine deadtimeoutCoroutine;
+    int jailIndex; // store jail index if we are captured
 
     [Header("Nearby Ghost Fear")]
     public bool ghostNearby;
@@ -54,6 +55,7 @@ public class Human : MonoBehaviourPunCallbacks
     [Header("Wwise Related")]
     public SoundRTPC fearLevelRTPC;
     public AK.Wwise.State overlayCaptureRoomState;
+    public AK.Wwise.Event jumpScareWwiseState;
 
     void Awake(){
         playerController = GetComponent<PlayerController>();
@@ -109,7 +111,8 @@ public class Human : MonoBehaviourPunCallbacks
         }
         // ---------------------------------------- NEARBY GHOST UPDATE RELATED END ---------------------------------------
         if(Input.GetKeyDown(KeyCode.C)){
-            StartCoroutine(Captured());
+            //StartCoroutine(Captured());
+            StartCoroutine(Scared(3f, 10));
         }
 
         if(Input.GetKeyDown(KeyCode.M)){
@@ -306,6 +309,7 @@ public class Human : MonoBehaviourPunCallbacks
         if(photonView.IsMine){
             photonView.RPC("SetIsScared", RpcTarget.All, true);
             UIManager.instance.PopupJumpscareUI();
+            jumpScareWwiseState.Post(gameObject);
 
             photonView.RPC("AdjustFearLevel", RpcTarget.All, fearAmount);// AdjustFearLevel(fearAmount);
             playerController.StopMovement();
@@ -336,31 +340,49 @@ public class Human : MonoBehaviourPunCallbacks
             
             yield return new WaitForSeconds(2.7f);
             // Transfer to prison
-            int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
-            playerController.canMove = false; // false to make player move to new position
-            transform.position = GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].position;
-            
-            // Transfer into random captured room
-            GameManager.instance.spawnpoints_CapturedRoom[randomNmbr].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
+            //int randomNmbr = Random.Range(0, GameManager.instance.spawnpoints_CapturedRoom.Count);
+            if(DoneGetEmptyRoom()){
+                playerController.canMove = false; // false to make player move to new position
+                transform.position = GameManager.instance.spawnpoints_CapturedRoom[jailIndex].position;
 
-            // Here
-             PlayCapturedWwiseSound();
+                // Transfer into random captured room
+                GameManager.instance.spawnpoints_CapturedRoom[jailIndex].gameObject.GetComponent<CapturedSpawnpoints>().prisonDoor.GetComponent<Interact_Door>().photonView.RPC("HumanInsideRoom", RpcTarget.All, photonView.ViewID);
 
-            // Update networking properties
-            playerController.anim.SetBool("Captured", false);
-            capturedAnimRun = false;
+                // Here
+                PlayCapturedWwiseSound();
 
-            yield return new WaitForSeconds(1f);
-            playerController.UnstopMovement();
-            
-            // Update Properties
-            Hashtable playerProps = new Hashtable();
-            playerProps.Add("PlayerCaptured", true);
-            PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+                // Update networking properties
+                playerController.anim.SetBool("Captured", false);
+                capturedAnimRun = false;
 
-            
+                yield return new WaitForSeconds(1f);
+                playerController.UnstopMovement();
+                
+                // Update Properties
+                Hashtable playerProps = new Hashtable();
+                playerProps.Add("PlayerCaptured", true);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(playerProps);
+            } // end DoneGetEmptyRoom()
         }
     } // end Captured
+
+    bool DoneGetEmptyRoom(){
+        if(GetEmptyCapturedRoom() != 999){
+            return true;
+        }
+        return false;
+    }
+
+    int GetEmptyCapturedRoom(){
+        for(int i = 0; i < GameManager.instance.spawnpoints_CapturedRoom.Count; i++){
+            if(!GameManager.instance.spawnpoints_CapturedRoom[i].GetComponent<CapturedSpawnpoints>().prisonDoor.humanInside){
+                jailIndex = i;
+                return i;
+            }
+        }
+
+        return 999; // dummy value
+    }
 
     void PlayCapturedWwiseSound(){
          overlayCaptureRoomState.SetValue();

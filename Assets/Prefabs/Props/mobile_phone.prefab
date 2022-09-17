@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 1939291871701036183}
   - component: {fileID: 7258760874746963}
   - component: {fileID: 2355701312352460553}
+  - component: {fileID: 2283377065928931137}
   m_Layer: 5
   m_Name: BackBtn
   m_TagString: Untagged
@@ -616,6 +617,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2283377065928931137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533829364119906661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d68eff77261804e9b69651b0982362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickEventName:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0eb555ec48054f14eb0941e26c5319a0, type: 2}
+  hoverEventName:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
 --- !u!1 &678714754646811487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,9 +2064,6 @@ GameObject:
   - component: {fileID: 8914430108953705875}
   - component: {fileID: 5000859967701877386}
   - component: {fileID: 5944376566516646599}
-  - component: {fileID: 888240535845170933}
-  - component: {fileID: 2231101106673666491}
-  - component: {fileID: 4888605273697329305}
   - component: {fileID: 5194116449721980452}
   - component: {fileID: 1122384489959603385}
   m_Layer: 15
@@ -2167,6 +2185,7 @@ MonoBehaviour:
   spriteBatCaseEmpty: {fileID: 21300000, guid: 010d67703ae55af4cb455bbab037c7bd, type: 3}
   currentBattery: 103
   drainRateTotal: 0
+  isCharging: 0
   shopPanel: {fileID: 7694308002622269409}
   quickslotPanel: {fileID: 3682817167497666258}
   heartrateUI: {fileID: 3246513364041071181}
@@ -2313,93 +2332,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &888240535845170933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2471171583313746231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8bcc1cb5b0ae8479a4f81846d80c24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: fe6ae587
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 758088882b663b34fb241da140086839, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
---- !u!114 &2231101106673666491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2471171583313746231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8bcc1cb5b0ae8479a4f81846d80c24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: fe6ae587
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 03b1e1729892a1f47a99ca78ad4d436b, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
---- !u!114 &4888605273697329305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2471171583313746231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8bcc1cb5b0ae8479a4f81846d80c24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: fe6ae587
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 2bb0a6d3a93c3ab4792859e8c978c345, type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
 --- !u!114 &5194116449721980452
 MonoBehaviour:
   m_ObjectHideFlags: 0

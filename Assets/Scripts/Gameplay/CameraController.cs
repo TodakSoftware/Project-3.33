@@ -38,15 +38,18 @@ using Photon.Pun;
         void Update(){
             if(isEnable){
                 parent.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Sensitivity);
-            }
-        }
 
-        void LateUpdate()
-        {
-            if(isEnable){
                 transform.position = boneParent.position;
                 CameraRotate();
             }
+        }
+
+        void FixedUpdate()
+        {
+            /* if(isEnable){
+                transform.position = boneParent.position;
+                CameraRotate();
+            } */
         }
 
         void CameraRotate()

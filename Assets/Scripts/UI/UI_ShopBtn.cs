@@ -16,6 +16,7 @@ public class UI_ShopBtn : MonoBehaviour
     public Button btn;
     public TextMeshProUGUI btnText;
     [HideInInspector] public MobilePhone phoneRef;
+     public AK.Wwise.Event buySound = new AK.Wwise.Event();
 
     public void SetButtonSold(){
         btn.interactable = false;
@@ -30,6 +31,7 @@ public class UI_ShopBtn : MonoBehaviour
             phoneRef.phoneOwner.GetComponent<Human>().playerMoney -= appPrice;
             if(!phoneRef.currentApps.Contains(appCode)){
                 phoneRef.currentApps.Add(appCode);
+                AkSoundEngine.PostEvent(buySound.Name, gameObject);
             }
             phoneRef.RefreshMainScreen();
             phoneRef.RefreshCreditUI();

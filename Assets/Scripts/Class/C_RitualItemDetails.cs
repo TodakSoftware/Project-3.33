@@ -8,7 +8,7 @@ public class C_RitualItemDetails{
     public string displayName;
     [TextArea] public string description;
     public Sprite icon;
-    public GameObject itemPrefab; // The one that spawn somewhere
+    public string networkItemName; // The one that spawn in map
     public GameObject itemMesh; // The one that doesnt include collider
 
     [Header("Settings")]

@@ -13,14 +13,20 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     [HideInInspector] public bool gameStart;
     [HideInInspector] public bool gameEnded;
+    int totalRitualItem;
+    public List<string> filterItemLists = new List<string>();
     // Game Rules
 
     // Starting Game Related 
+    [Header("Spawnpoint Related")]
     public List<Transform> spawnpoints_Human = new List<Transform>();
     public List<Transform> spawnpoints_Ghost = new List<Transform>();
     public List<Transform> spawnpoints_RitualItems = new List<Transform>();
     public List<Transform> spawnpoints_CapturedRoom = new List<Transform>();
-    [HideInInspector] public List<int> humanSpawnedPosition, ghostSpawnedPosition; 
+    // Unique list (Avoid Duplicate/Double spawn) * Handle by GenerateRandomIndex function
+    List<int> selectedHumanSpawnpoints = new List<int>();
+    List<int> selectedGhostSpawnpoints = new List<int>();
+    List<int> selectedRitualItemSpawnpoints = new List<int>();
 
     [Header("Timer Related")]
     public bool timeOut;
@@ -41,8 +47,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     } // end Awake
 
     void Start(){
-        
-        // Linking data via Game Settings Scriptable Objects
+        // Set Ritual item (Must run before setting spawnpoints)
+        if(PhotonNetwork.CurrentRoom.CustomProperties["GameTotalRitualItem"] != null){
+            totalRitualItem = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameTotalRitualItem"];
+        }else{
+            totalRitualItem = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].totalRitualItems; // amount if ritual item to be spawned. Must less than total ritual item spawnpoints
+        }
+
+        // Set Start & End Timer
+        if(PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] != null){
+            remainingDuration = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] * 60;
+        }else{
+            remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
+        }
 
         // Set Spawnpoints
         if(PhotonNetwork.IsMasterClient){
@@ -51,14 +68,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // Spawn Player
         photonView.RPC("PlayerInGame", RpcTarget.AllBuffered);
-
-        if(PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] != null){
-            remainingDuration = (int)PhotonNetwork.CurrentRoom.CustomProperties["GameMinuteStart"] * 60;
-        }else{
-            remainingDuration = SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime * 60; // 1560 = Starting 26m SOManager.instance.gameSettings.gameMode[NetworkManager.instance.gameModeIndex].minuteStartTime
-        }
-       
-
     } // end Start
 
     // --------------------------------- CLOCK TIMER FUNCTION START ----------------------------------
@@ -79,6 +88,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             remainingDuration++;
             yield return new WaitForSeconds(1f);
         }
+        
         EndTimer();
     }
 
@@ -116,20 +126,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         // Set each players spawnPoints
 
-        if(maxHuman > 0){
-            for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxGhost); i++){
-                int posValue = RandomExcept(0, spawnpoints_Human.Count, humanSpawnedPosition);
-                humanSpawnedPosition.Add(posValue);
-            }
-        }
-        
-        if(maxGhost > 0){
-            for(int i = 0; i < (PhotonNetwork.PlayerList.Length - maxHuman); i++){
-                int posValue2 = RandomExcept(0, spawnpoints_Ghost.Count, ghostSpawnedPosition);
-                ghostSpawnedPosition.Add(posValue2);
-            }
-        }
+        // Generate Unique SpawnPoints
+        GenerateRandomIndex("HumanSpawn", maxHuman, spawnpoints_Human.Count);
+        GenerateRandomIndex("GhostSpawn", maxGhost, spawnpoints_Ghost.Count);
+        GenerateRandomIndex("RitualItem", totalRitualItem, spawnpoints_RitualItems.Count);
+        GenerateRandomIndex("CapturedRoom", spawnpoints_CapturedRoom.Count, spawnpoints_CapturedRoom.Count);
 
+        // Check if we are setting only 1 player, then we are debugging
         if(maxHuman == 1 && maxGhost == 0){
             isDebugMode = true;
         }else if(maxHuman == 0 && maxGhost == 1){
@@ -152,13 +155,16 @@ public class GameManager : MonoBehaviourPunCallbacks
                 ghostCount++;
             }
 
-            if(!gameStart){
+            if(!gameStart && !isDebugMode){
                 gameStart = true;
                 // Start Timer
                 StartCoroutine(UpdateTimer());
                 
                 print("Timer Start!");
             }
+
+            // Spawn Ritual Item on Map
+            SpawnRitualItemOnMap();
         }
         
     } // end PlayerInGame
@@ -167,15 +173,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject player = null;
 
         if(isHuman){
-            if(humanSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
-                player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[humanSpawnedPosition[playerIndex]].position, Quaternion.identity);
+            if(selectedHumanSpawnpoints.Count > 0 && spawnpoints_Human.Count > 0){
+                player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Player_Male01"), spawnpoints_Human[selectedHumanSpawnpoints[playerIndex]].position, Quaternion.identity);
                 playerOwned = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }else{
                 print("Missing spawnpoints : Human");
             }
         }else{
-            if(ghostSpawnedPosition.Count > 0 && spawnpoints_Human.Count > 0){
-                player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[ghostSpawnedPosition[playerIndex]].position, Quaternion.identity);
+            if(selectedGhostSpawnpoints.Count > 0 && spawnpoints_Human.Count > 0){
+                player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[selectedGhostSpawnpoints[playerIndex]].position, Quaternion.identity);
                 playerOwned = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }else{
                 print("Missing spawnpoints : Ghost");
@@ -190,17 +196,66 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     } // end SpawnPlayers
 
-    int RandomExcept(int min, int max, List<int> except)
-    {
-        int random = Random.Range(min, max);
-        foreach(int nmbr in except){
-            if(random >= nmbr){
-                random = (random + 1) % max;
+    void SpawnRitualItemOnMap(){
+        if(selectedRitualItemSpawnpoints.Count > 0 && spawnpoints_RitualItems.Count > 0){
+            for(int i = 0; i < totalRitualItem; i++){
+                    var item = PhotonNetwork.Instantiate(GetRitualItemPrefabName(filterItemLists[i].ToString()), spawnpoints_RitualItems[selectedRitualItemSpawnpoints[i]].position, Quaternion.identity);
             }
         }
+    }
+
+    string GetRitualItemPrefabName(string itemCode){ // Get itemPrefab Name of the item code
+        if(filterItemLists.Count > 0){
+            foreach(var go in SOManager.instance.ritualItems.ritualItemLists){
+                if(itemCode == go.code){
+                    return go.networkItemName;
+                }
+            }
+        }
+
+        return "";
+    } // end GetRitualItemPrefabName
+
+    // Handle Random Index Function
+    void GenerateRandomIndex(string variableName, int _howMuch, int _total){
         
-        return random;
-    } // end RandomExcept
+        if(_howMuch <= _total){
+            switch(variableName){
+                case "HumanSpawn":
+                    while(selectedHumanSpawnpoints.Count < _howMuch && spawnpoints_Human.Count > 0){
+                        var randomValue = Random.Range(0, _total);
+                        if(!selectedHumanSpawnpoints.Contains(randomValue)){
+                            selectedHumanSpawnpoints.Add(randomValue);
+                        }
+                    }
+                break;
+
+                case "GhostSpawn":
+                    while(selectedGhostSpawnpoints.Count < _howMuch && spawnpoints_Ghost.Count > 0){
+                        var randomValue = Random.Range(0, _total);
+                        if(!selectedGhostSpawnpoints.Contains(randomValue)){
+                            selectedGhostSpawnpoints.Add(randomValue);
+                        }
+                    }
+                break;
+
+                case "RitualItem":
+                    while(selectedRitualItemSpawnpoints.Count < _howMuch && spawnpoints_RitualItems.Count > 0){
+                        var randomValue = Random.Range(0, _total);
+                        if(!selectedRitualItemSpawnpoints.Contains(randomValue)){
+                            selectedRitualItemSpawnpoints.Add(randomValue);
+                        }
+                    }
+                break;
+
+                default:
+                    print("Invalid variable name");
+                break;
+            } // end switch
+        }else{
+            print("GenerateRandomIndex() Error: " + _howMuch + " > " + _total);
+        }
+    } //end GenerateRandomIndex
 
 
 // ---------------------------------------------------- WIN LOSE CONDITION START ----------------------------------------
@@ -215,13 +270,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 UIManager.instance.VictoryUI(false);
             }
         }
-    } // end HumanWin
+    } // end HumanWin / ghost lose
 
     public void LeaveRoom(){
         if(PhotonNetwork.InRoom){
             PhotonNetwork.LeaveRoom();
         }
-    }
+    } // end LeaveRoom
 // ---------------------------------------------------- WIN LOSE CONDITION END ----------------------------------------
 
 
@@ -229,7 +284,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps){
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && gameStart && !gameEnded){
+        if((GetAllPlayersGhost().Count + GetAllPlayersHuman().Count) == PhotonNetwork.PlayerList.Length && gameStart && !gameEnded && PhotonNetwork.IsMasterClient){
             CheckWinningCondition();
         }
     } // end OnPlayerPropertiesUpdate

@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     [SerializeField] float staminaAmount = 100f;
     [SerializeField] float staminaDrainPerSecond = 20f;
     [SerializeField] float staminaRegenPerSecond = 10f;
+    
     // ----------------------------------------------------------------------------------
     // ANIMATION RELATED
     float inputVertical, inputHorizontal, smoothVer, smoothHor;
@@ -134,7 +135,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
                     anim.SetBool("Running", false);
                     walkForward = false;
                     isRunning = false;
-                }
+
+                    // if we are human && stamina 0, enable penat UI
+                    if(team == E_Team.HUMAN && !GetComponent<PlayerUI>().staminaDeprecateUI.activeSelf){
+                        GetComponent<PlayerUI>().staminaDeprecateUI.SetActive(true);
+                    }
+                } // end if stamina <= 0
             }
         }else{
             if(enableStaminaDrain && !isRunning && staminaAmount < 100f){ // Handle Stamina Regen
@@ -142,7 +148,13 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
                 if(staminaAmount > 50f){ // Minimum value for player can run again
                     canRun = true;
-                }
+
+                    // if we are human && stamina less than 60, disable penat UI
+                    if(team == E_Team.HUMAN && GetComponent<PlayerUI>().staminaDeprecateUI.activeSelf){
+                        GetComponent<PlayerUI>().staminaDeprecateUI.SetActive(false);
+                    }
+
+                } // end if stamina > 50f
             }
         }
 
