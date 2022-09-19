@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8555326236871991034}
   - component: {fileID: 8555326236871991035}
   - component: {fileID: 4770499993438110798}
+  - component: {fileID: 794986513016402107}
   m_Layer: 0
   m_Name: UI_Jumpscare
   m_TagString: Untagged
@@ -205,3 +206,20 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 6c8b8ea2c5b66fd4ca45b0c5c5622569, type: 2}
+--- !u!114 &794986513016402107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8555326236871991030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2822988ccbae1d45bf49e63968c37af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 784acd9a0360cc0489c3b25184f95b2c, type: 2}
+  playOnEnable: 1
