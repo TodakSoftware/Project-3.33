@@ -40,9 +40,9 @@ public class Ghost : MonoBehaviourPunCallbacks
                 mesh.SetActive(false); // local
             }
 
-            if(!isInvisible){
+            /* if(!isInvisible){
                 photonView.RPC("SetInvisible", RpcTarget.Others, true);
-            }
+            } */
         }
     }
 
@@ -180,16 +180,16 @@ public class Ghost : MonoBehaviourPunCallbacks
         isAttacking = true;
         canAttacking = false;
         attackTimer = attackCooldown;
-        photonView.RPC("SetInvisible", RpcTarget.Others, false);
+        //photonView.RPC("SetInvisible", RpcTarget.Others, false);
         playerController.anim.SetTrigger("Attack/Jumpscare");
         yield return new WaitForSeconds(1f);
         isAttacking = false;
 
         // Hide Mesh
         yield return new WaitForSeconds(3f);
-        if(!isInvisible){
+        /* if(!isInvisible){
             photonView.RPC("SetInvisible", RpcTarget.Others, true);
-        }
+        } */
     }
 
     public void EnableCaughtCollider(){
