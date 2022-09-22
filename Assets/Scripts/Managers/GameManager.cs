@@ -147,22 +147,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         int ghostCount = 0;
         
         if(playersInRoom == PhotonNetwork.PlayerList.Length){
-            /* if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
-                SpawnPlayers(true, humanCount); // <-- TRUE : We spawn human
+            if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
+                //SpawnPlayers(true, humanCount); // <-- TRUE : We spawn human
                 humanCount ++;
             }else if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Ghost"){
-                SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
+                //SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
                 ghostCount++;
-            } */
+            }
 
-            foreach(var player in PhotonNetwork.PlayerList){
-                if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
-                    SpawnPlayers(true, humanCount); // <-- TRUE : We spawn human
-                    humanCount ++;
-                }else if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Ghost"){
-                    SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
-                    ghostCount++;
-                }
+            for(int i = 0; i < humanCount; i++){
+                SpawnPlayers(true, i);
+            }
+
+            for(int y = 0; y < ghostCount; y++){
+                SpawnPlayers(false, y);
             }
 
             if(!gameStart && !isDebugMode){
