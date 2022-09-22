@@ -147,12 +147,22 @@ public class GameManager : MonoBehaviourPunCallbacks
         int ghostCount = 0;
         
         if(playersInRoom == PhotonNetwork.PlayerList.Length){
-            if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
+            /* if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
                 SpawnPlayers(true, humanCount); // <-- TRUE : We spawn human
                 humanCount ++;
             }else if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Ghost"){
                 SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
                 ghostCount++;
+            } */
+
+            foreach(var player in PhotonNetwork.PlayerList){
+                if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Human"){
+                    SpawnPlayers(true, humanCount); // <-- TRUE : We spawn human
+                    humanCount ++;
+                }else if(PhotonNetwork.LocalPlayer.CustomProperties["Team"].ToString() == "Ghost"){
+                    SpawnPlayers(false, ghostCount); // <-- FALSE : We spawn ghost
+                    ghostCount++;
+                }
             }
 
             if(!gameStart && !isDebugMode){
@@ -180,7 +190,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 print("Missing spawnpoints : Human");
             }
         }else{
-            if(selectedGhostSpawnpoints.Count > 0 && spawnpoints_Human.Count > 0){
+            if(selectedGhostSpawnpoints.Count > 0 && spawnpoints_Ghost.Count > 0){
                 player = PhotonNetwork.Instantiate(NetworkManager.GetPhotonPrefab("Characters", "Ghost_Pocong01"), spawnpoints_Ghost[selectedGhostSpawnpoints[playerIndex]].position, Quaternion.identity);
                 playerOwned = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }else{
