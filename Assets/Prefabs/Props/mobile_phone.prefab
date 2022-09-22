@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 5944376566516646599}
   - component: {fileID: 5194116449721980452}
   - component: {fileID: 1122384489959603385}
+  - component: {fileID: 8546107413605157966}
   m_Layer: 15
   m_Name: mobile_phone
   m_TagString: Untagged
@@ -2380,6 +2381,35 @@ MonoBehaviour:
   groupIdInternal: 0
   valueGuidInternal: 
   groupGuidInternal: 
+--- !u!114 &8546107413605157966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471171583313746231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8bcc1cb5b0ae8479a4f81846d80c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 958ca0ea
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4e58561aa2f40a246be3f7c5288b55c6, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
 --- !u!1 &2471438403626859166
 GameObject:
   m_ObjectHideFlags: 0
@@ -6786,8 +6816,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8291595324318940039}
   m_HandleRect: {fileID: 1519912092439571290}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
