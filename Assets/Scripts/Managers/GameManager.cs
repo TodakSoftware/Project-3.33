@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         GenerateRandomIndex("HumanSpawn", maxHuman, spawnpoints_Human.Count);
         GenerateRandomIndex("GhostSpawn", maxGhost, spawnpoints_Ghost.Count);
         GenerateRandomIndex("RitualItem", totalRitualItem, spawnpoints_RitualItems.Count);
-        GenerateRandomIndex("CapturedRoom", spawnpoints_CapturedRoom.Count, spawnpoints_CapturedRoom.Count);
+        //GenerateRandomIndex("CapturedRoom", spawnpoints_CapturedRoom.Count, spawnpoints_CapturedRoom.Count);
 
         // Check if we are setting only 1 player, then we are debugging
         if(maxHuman == 1 && maxGhost == 0){
@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     void SpawnRitualItemOnMap(){
         if(selectedRitualItemSpawnpoints.Count > 0 && spawnpoints_RitualItems.Count > 0){
             for(int i = 0; i < totalRitualItem; i++){
-                    var item = PhotonNetwork.Instantiate(GetRitualItemPrefabName(filterItemLists[i].ToString()), spawnpoints_RitualItems[selectedRitualItemSpawnpoints[i]].position, Quaternion.identity);
+                var item = PhotonNetwork.Instantiate(GetRitualItemPrefabName(filterItemLists[i].ToString()), spawnpoints_RitualItems[selectedRitualItemSpawnpoints[i]].position, Quaternion.identity);
             }
         }
     }

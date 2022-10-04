@@ -75,8 +75,6 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
 
                                     interactable.onInteract.Invoke();
 
-                                    //UI_Simple_Notification_Spawner.instance.CreateNotification();
-
                                     ClearInteraction();
                                 }else{
                                     print("Cannot proceed");
@@ -120,7 +118,10 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
     void AddRitualToInventory(){
         if(interactable != null && interactable.CompareTag("RitualItem") && !GetComponent<PlayerInventory>().IsInventoryFull()){
             print("Added ritual item " + interactable.GetComponent<RitualItem>().code);
-            itemPickupWwiseSound.Post(gameObject);
+            
+            UI_Simple_Notification_Spawner.instance.CreateNotification(NotificationType.PICKUPITEM, "Player"+photonView.OwnerActorNr , interactable.name); // Notification
+
+            itemPickupWwiseSound.Post(gameObject); // play sound
             GetComponent<PlayerInventory>().photonView.RPC("AddRitualItem", RpcTarget.All, interactable.GetComponent<RitualItem>().code);
             interactable.GetComponent<RitualItem>().photonView.RPC("DestroyItem", RpcTarget.All); // Destroy item
         }
