@@ -113,6 +113,7 @@ public class MobilePhone : MonoBehaviour
             HandleDrainCalculation();
         }
 
+            
         // TimerUI
         if(cacheGM.timerRef != null)
         hpClockText.text = cacheGM.timerRef;
@@ -124,13 +125,13 @@ public class MobilePhone : MonoBehaviour
         if(!phoneIsDead && !isCharging){
             currentBattery -= Time.deltaTime * drainRateTotal;
 
-            if(currentBattery < 0){
-                currentBattery = 0;
-                phoneIsDead = true;
-                phoneOwner.GetComponent<PlayerAbilities>().TerminateAllApps();
-
+            if(currentBattery < 1f){
                 phoneCanvas.gameObject.SetActive(false); // Close main apps
                 offScreenCanvas.gameObject.SetActive(true); // Open phone off canvas
+
+                currentBattery = 0f;
+                phoneIsDead = true;
+                phoneOwner.GetComponent<PlayerAbilities>().TerminateAllApps();
             }
         }else{
             phoneOwner.GetComponent<PlayerAbilities>().TerminateAllApps();
@@ -165,6 +166,15 @@ public class MobilePhone : MonoBehaviour
         if(currentBattery < 103f){
             currentBattery += amount;
             isCharging = true;
+
+            if (phoneIsDead && currentBattery >= 1f)
+            {
+                phoneIsDead = false;
+                //phoneOwner.GetComponent<PlayerAbilities>().ToggleFlashlight("A001"); //Waiting for decision from GD
+
+                phoneCanvas.gameObject.SetActive(true); // Close main apps
+                offScreenCanvas.gameObject.SetActive(false); // Open phone off canvas
+            } 
         }else{
             isCharging = false;
         }
