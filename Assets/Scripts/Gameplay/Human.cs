@@ -11,6 +11,11 @@ public class Human : MonoBehaviourPunCallbacks
 
     [Header("ENABLER")]
     public bool canInteractPhone;
+    public bool enableHideMesh;
+
+    [Header("MESH")]
+    public List<GameObject> meshToHide = new List<GameObject>();
+
     // PHONE RELATED 
     [Header("PHONE")]
     public int playerMoney;
@@ -64,9 +69,15 @@ public class Human : MonoBehaviourPunCallbacks
     void Start(){
         
         if(!photonView.IsMine){ // If this script is not ours to control, end it
-            
             return;
         }
+
+        if(photonView.IsMine && enableHideMesh){
+            foreach(var mesh in meshToHide){
+                mesh.SetActive(false); // local
+            }
+        }
+
         if(PhotonNetwork.IsConnected){
             photonView.RPC("SetupPhone", RpcTarget.All);
         }else{
