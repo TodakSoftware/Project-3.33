@@ -47,9 +47,10 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
                                 holdSliderImage.fillAmount = holdTimer / holdDur;
                             
                                 interactable.GetComponent<WallCharger>().AdjustCurrentCharger(-interactable.GetComponent<WallCharger>().currentCharge/100f); //DEDUCT WALL CHARGER BATTERY (holdDur*holdDur)
-                                
+                                //interactable.GetComponent<WallCharger>().AdjustCurrentCharger((-interactable.GetComponent<WallCharger>().currentCharge/103f)*holdSliderImage.fillAmount);
                                 
                                 GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().chargeBattery(interactable.GetComponent<WallCharger>().currentCharge/100f); // Charge Battery
+                                //GetComponent<Human>().instantiatedPhone.GetComponent<MobilePhone>().chargeBattery((interactable.GetComponent<WallCharger>().currentCharge/103f)*holdSliderImage.fillAmount);
 
 
                             }else{

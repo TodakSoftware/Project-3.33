@@ -16,13 +16,27 @@ public class WallCharger : MonoBehaviour
     public bool isBatteryAvailable;
     public Vector2 maxChargeValue = new Vector2 (50, 103);
 
+    [SerializeField] private WallChargeBar _chargebar;
+
+
     // Start is called before the first frame update
     void Start()
     {
+       
         wallChargerPercent = Random.Range(maxChargeValue.x, maxChargeValue.y);
         currentCharge =  Mathf.Round(wallChargerPercent);
+        _chargebar.UpdateBatteryCharge(103f,currentCharge);
+
+
         GetComponent<Interactable>().holdDuration = Mathf.Round(wallChargerPercent/10f);
+        
         isBatteryAvailable = true;
+    }
+
+    void Update(){
+
+        _chargebar.UpdateBatteryCharge(103f,currentCharge);
+
     }
 
     public void AdjustCurrentCharger (float amount)
@@ -42,8 +56,11 @@ public class WallCharger : MonoBehaviour
     }
 
     public void SetNewHoldDuration(){
-        GetComponent<Interactable>().holdDuration = Mathf.Round(currentCharge/10f); 
+        GetComponent<Interactable>().holdDuration = Mathf.Round(currentCharge/10f);
+        
     }
+
+    
 
     
 }
