@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 2876743329806457796}
   - component: {fileID: 1285715259553766901}
   - component: {fileID: 3917286781006613030}
+  - component: {fileID: 7066395656808984076}
   m_Layer: 0
   m_Name: Metal Table_LOD0__vhtpearaw
   m_TagString: Untagged
@@ -228,6 +229,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7066395656808984076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335947980523998790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3637536, y: 0.8639554, z: 0.59454393}
+  m_Center: {x: 0.0021482706, y: 0.42772567, z: -0.0055223554}
 --- !u!1 &8695790039385160321
 GameObject:
   m_ObjectHideFlags: 0
