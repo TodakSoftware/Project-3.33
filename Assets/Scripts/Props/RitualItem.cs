@@ -13,6 +13,7 @@ public class RitualItem : MonoBehaviourPunCallbacks
     [Header("Item Info")]
     public SO_RitualItem ritualItemSO;
     public string code;
+    public string itemName;
     [Header("Material Highlight")]
     public List<MeshRenderer> meshRendererList = new List<MeshRenderer>();
     List<Material> materialList = new List<Material>();
@@ -29,6 +30,9 @@ public class RitualItem : MonoBehaviourPunCallbacks
                 } // end GetCOmponent Interactable
 
                 gameObject.name = item.displayName; // set item name
+                itemName = item.displayName;
+                UI_TaskMain.instance.GenerateTask(itemName);
+
             } // end if(item.code == code)
         } // end foreach
 

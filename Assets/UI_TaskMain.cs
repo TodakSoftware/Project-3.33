@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UI_TaskMain : MonoBehaviour
 {
+    public static UI_TaskMain instance;
     public Animator taskAnimator;
     public float waitTime;
     public bool isShowing;
@@ -11,6 +12,10 @@ public class UI_TaskMain : MonoBehaviour
     public GameObject TaskStatusParent;
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         StartCoroutine(AnimateTaskWindow());
@@ -56,9 +61,10 @@ public class UI_TaskMain : MonoBehaviour
     }
 
 
-    public void GenerateTask()
+    public void GenerateTask(string itemName)
     {
-
+        var taskList = Instantiate(taskStatusPrefab, TaskStatusParent.transform);
+        taskList.GetComponent<UI_TaskPrefabStatus>().SetTaskName(itemName);
     }
 
 }

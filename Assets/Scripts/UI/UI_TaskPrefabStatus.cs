@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_TaskPrefabStatus : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class UI_TaskPrefabStatus : MonoBehaviour
     public Sprite iconComplete;
     public Sprite iconIncomplete;
     public bool isComplete;
+
+    public TextMeshProUGUI taskName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,5 +46,10 @@ public class UI_TaskPrefabStatus : MonoBehaviour
     public void SetToIncomplete()
     {
         statusImage.GetComponent<Image>().sprite = iconIncomplete;
+    }
+
+    public void SetTaskName(string itemName)
+    {
+        taskName.text = "Find and Collect " + itemName;
     }
 }
