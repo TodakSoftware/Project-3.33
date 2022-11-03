@@ -18,6 +18,10 @@ public class WallCharger : MonoBehaviour
 
     [SerializeField] private WallChargeBar _chargebar;
 
+    public GameObject chargebarCanvas;
+
+    public bool isCharge;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,11 +35,15 @@ public class WallCharger : MonoBehaviour
         GetComponent<Interactable>().holdDuration = Mathf.Round(wallChargerPercent/10f);
         
         isBatteryAvailable = true;
+
+        //isCharge = false;
     }
 
     void Update(){
 
         _chargebar.UpdateBatteryCharge(103f,currentCharge);
+        //seeCharge();
+        //isCharge = false;
 
     }
 
@@ -43,6 +51,12 @@ public class WallCharger : MonoBehaviour
     {
        
        Debug.Log(currentCharge + "% Left");
+
+        if (!chargebarCanvas.activeSelf){
+            chargebarCanvas.SetActive(true);
+       } 
+
+       isCharge = true;
 
        if(currentCharge < 1f) //ngak tau sih ngapa jadi begini
        {
@@ -60,7 +74,18 @@ public class WallCharger : MonoBehaviour
         
     }
 
-    
+  /*   public void seeCharge(){
+
+        if (isCharge == true)
+        {
+            chargebarCanvas.SetActive(true);
+        }
+        else
+        {
+            chargebarCanvas.SetActive(false);
+        }
+
+    } */
 
     
-}
+    }
