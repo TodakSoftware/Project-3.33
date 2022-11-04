@@ -92,8 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7424089785416936781}
-  - component: {fileID: 3074096396090014415}
-  - component: {fileID: 1679530417195569943}
   - component: {fileID: 5324230810862406762}
   m_Layer: 0
   m_Name: Teacher_Chair
@@ -119,32 +117,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3074096396090014415
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424089785417232749}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.073234536, z: 0.67463744}
-  m_Center: {x: 0, y: 0.0016173013, z: 0.012681246}
---- !u!65 &1679530417195569943
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424089785417232749}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.060243607, z: 0.50737965}
-  m_Center: {x: 0, y: 0.35150802, z: 0.07123484}
 --- !u!65 &5324230810862406762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -156,8 +128,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.5289831, z: 0.055127114}
-  m_Center: {x: 0, y: 0.55980957, z: -0.28071082}
+  m_Size: {x: 0.61175585, y: 0.8389573, z: 0.66610223}
+  m_Center: {x: 0.010100129, y: 0.41139042, z: -0.0053954856}
 --- !u!1 &7424089785417232751
 GameObject:
   m_ObjectHideFlags: 0
