@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     int remainingDuration;
     [HideInInspector] public string timerRef;
     public GameObject playerOwned;
-    bool isDebugMode;
+    public bool isDebugMode;
     
     // Ingame Related
     int playersInRoom; // Number of players successfully enter the room. For comparing with total of network player list
@@ -45,6 +45,20 @@ public class GameManager : MonoBehaviourPunCallbacks
             Destroy(gameObject);
         }
     } // end Awake
+
+    void Update(){
+        /* if (Input.GetKeyDown(KeyCode.P)){
+            //photonView.RPC("HumanWin", RpcTarget.All, false); //HumanWin(false);
+            UIManager.instance.VictoryUI(true);
+            print ("Lose");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L)){
+            //photonView.RPC("HumanWin", RpcTarget.All, true); //HumanWin(false);
+            UIManager.instance.VictoryUI(false);
+            print ("Win");
+        } */
+    }
 
     void Start(){
         // Set Ritual item (Must run before setting spawnpoints)
