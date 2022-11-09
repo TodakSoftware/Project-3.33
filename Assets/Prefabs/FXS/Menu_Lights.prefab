@@ -322,6 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6308157539572441475}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2760607387700536720, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -369,6 +373,18 @@ PrefabInstance:
     - target: {fileID: 4308391109966567586, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
       propertyPath: m_Name
       value: Ceiling_Light_ON_FL
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281846733342921956, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6281846733342921956, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
+      propertyPath: m_UseViewFrustumForShadowCasterCull
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430789186405059572, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}
+      propertyPath: m_ShadowUpdateMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7cc2572792ee0c488c610ada83c6783, type: 3}

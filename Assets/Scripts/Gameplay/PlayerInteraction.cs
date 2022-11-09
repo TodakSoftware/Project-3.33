@@ -120,7 +120,8 @@ public class PlayerInteraction : MonoBehaviourPunCallbacks
         if(interactable != null && interactable.CompareTag("RitualItem") && !GetComponent<PlayerInventory>().IsInventoryFull()){
             print("Added ritual item " + interactable.GetComponent<RitualItem>().code);
             
-            UI_Simple_Notification_Spawner.instance.CreateNotification(NotificationType.PICKUPITEM, "Player"+photonView.OwnerActorNr , interactable.name); // Notification
+            
+            //UI_Simple_Notification_Spawner.instance.CreateNotification(NotificationType.PICKUPITEM, "Player"+photonView.OwnerActorNr , interactable.name); // Notification
 
             itemPickupWwiseSound.Post(gameObject); // play sound
             GetComponent<PlayerInventory>().photonView.RPC("AddRitualItem", RpcTarget.All, interactable.GetComponent<RitualItem>().code);
