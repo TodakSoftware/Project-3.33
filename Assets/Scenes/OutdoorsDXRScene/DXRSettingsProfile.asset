@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   enabled:
     m_OverrideState: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 600
+    m_Value: 20
   mipFogMaxMip:
     m_OverrideState: 0
     m_Value: 0.5
@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Value: 500
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 30
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -62,8 +62,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 10
   denoisingMode:
-    m_OverrideState: 0
-    m_Value: 2
+    m_OverrideState: 1
+    m_Value: 0
   anisotropy:
     m_OverrideState: 0
     m_Value: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.75
   m_FogControlMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   screenResolutionPercentage:
     m_OverrideState: 0
@@ -80,10 +80,10 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 64
   m_VolumetricFogBudget:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.33
   m_ResolutionDepthRatio:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.666
   directionalLightsOnly:
     m_OverrideState: 0
@@ -118,13 +118,13 @@ MonoBehaviour:
   active: 1
   rotation:
     m_OverrideState: 1
-    m_Value: 119
+    m_Value: 130
   skyIntensityMode:
     m_OverrideState: 1
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   multiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -153,20 +153,20 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0
   flowmap:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 0}
   upperHemisphereOnly:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   scrollOrientation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 1
       customValue: 0
       additiveValue: 0
       multiplyValue: 1
   scrollSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 1
       customValue: 100
